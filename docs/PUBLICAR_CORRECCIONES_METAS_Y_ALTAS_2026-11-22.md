@@ -19,6 +19,7 @@ Estos cambios del repositorio no se activan solo por subirlos a GitHub. Haz un r
 Sube a la raíz de la web de Asistencias, respetando rutas y después de respaldar los originales:
 
 - `integration/asistencia/controllers/TrabajadorController.php` → `controllers/TrabajadorController.php`.
+- `integration/asistencia/models/Usuario.php` → `models/Usuario.php`.
 - `integration/asistencia/views/trabajadores/index.php` → `views/trabajadores/index.php`.
 
 Al crear un trabajador, Administración ahora debe darle una **clave inicial única** de 12 a 128 caracteres y entregársela por un canal privado. En su primer ingreso, la web de Asistencias obliga a cambiarla. La app SIGD no admite esa clave provisional; el trabajador entra a la app después del cambio en la web. Esto afecta solo a nuevas altas hechas con los PHP actualizados; no cambia contraseñas existentes.

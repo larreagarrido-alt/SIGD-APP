@@ -66,18 +66,14 @@ class TrabajadorController {
         $trabajador = new Trabajador();
         
         if($_SERVER['REQUEST_METHOD'] == 'POST') {
+            $initialPassword = (string)($_POST['password_inicial'] ?? '');
+            if (strlen($initialPassword) < 12 || strlen($initialPassword) > 128 || $initialPassword === (string)($_POST['dni'] ?? '')) {
+                die('La clave inicial debe tener entre 12 y 128 caracteres y ser distinta del DNI.');
+            }
             // --- SEGURIDAD FASE 3: Validar datos antes de procesar ---
             $errores_backend = $this->validarDatosTrabajador($_POST['dni'] ?? '', $_POST['telefono'] ?? '', $_POST['fecha_nacimiento'] ?? '');
             if (!empty($errores_backend)) {
                 die("Error de validación de seguridad: " . implode(" | ", $errores_backend));
-            }
-            $initialPassword = (string)($_POST['password_inicial'] ?? '');
-            if (strlen($initialPassword) < 12 || strlen($initialPassword) > 128
-                || hash_equals((string)($_POST['dni'] ?? ''), $initialPassword)) {
-                die('La clave inicial debe tener de 12 a 128 caracteres y ser distinta del DNI.');
-            }
-            if (!in_array($_POST['tipo'] ?? null, ['Practicante','Colaborador'], true)) {
-                die('Tipo de trabajador inválido.');
             }
             // Subida Segura de Archivos FASE 2
             require_once 'helpers/UploadHelper.php';
@@ -160,30 +156,32 @@ class TrabajadorController {
                 'contrato_path' => $contrato_path
             ];
             
-            $connNuevo = $trabajador->connection();
-            $connNuevo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
             try {
-                $connNuevo->beginTransaction();
                 $nuevo_id = $trabajador->crear($datos);
                 if($nuevo_id) {
                     // Crear el usuario automáticamente
+                    require_once 'models/Usuario.php';
+                    $usuarioModel = new Usuario();
+
                     $username = $_POST['dni'];
-                    // Clave única entregada por Administración; cambio obligatorio en el primer ingreso web.
                     $password = password_hash($initialPassword, PASSWORD_DEFAULT);
                     $id_rol = ($_POST['tipo'] === 'Practicante') ? 6 : 5; // Rol 6 para Practicantes, 5 para Trabajadores
                     
-                    $nuevoUsuario=$connNuevo->prepare('INSERT INTO usuarios (username,password,id_rol,id_trabajador,debe_cambiar_password)
-                        VALUES (?,?,?,?,1)');
-                    $nuevoUsuario->execute([$username,$password,$id_rol,(int)$nuevo_id]);
-
-                    $fechaLima=(new DateTimeImmutable('now',new DateTimeZone('America/Lima')))->format('Y-m-d');
-                    $vigencia=$connNuevo->prepare('INSERT INTO tipo_vigencias (id_trabajador,vigente_desde,tipo,id_cargo,origen) VALUES (?,?,?, ?,"ALTA")');
-                    $vigencia->execute([(int)$nuevo_id,$fechaLima,(string)$datos['tipo'],(int)$datos['id_cargo']]);
+                    $usuarioModel->crear([
+                        'username' => $username,
+                        'password' => $password,
+                        'id_rol' => $id_rol,
+                        'id_trabajador' => $nuevo_id,
+                        'debe_cambiar_password' => 1
+                    ]);
 
                     // Si se asignaron trabajadores a este nuevo supervisor
                     if(isset($_POST['trabajadores_asignados']) && is_array($_POST['trabajadores_asignados']) && !empty($_POST['trabajadores_asignados'])) {
+                        require_once 'config/conexion.php';
+                        $db_asig = new Conexion();
+                        $conn_asig = $db_asig->getConexion();
                         foreach($_POST['trabajadores_asignados'] as $id_asignado) {
-                            $stmt_asig = $connNuevo->prepare("UPDATE trabajadores SET id_supervisor = :id_sup WHERE id_trabajador = :id_trab");
+                            $stmt_asig = $conn_asig->prepare("UPDATE trabajadores SET id_supervisor = :id_sup WHERE id_trabajador = :id_trab");
                             $stmt_asig->execute([
                                 ':id_sup' => $nuevo_id,
                                 ':id_trab' => $id_asignado
@@ -191,16 +189,12 @@ class TrabajadorController {
                         }
                     }
 
-                    $connNuevo->commit();
-
                     header("Location: index.php?page=trabajadores&success=1");
                     exit;
                 } else {
-                    $connNuevo->rollBack();
                     $error = "Error al crear el trabajador";
                 }
-            } catch (Throwable $e) {
-                if ($connNuevo->inTransaction()) $connNuevo->rollBack();
+            } catch (Exception $e) {
                 die("Error de Base de Datos al crear trabajador. Es posible que falte ejecutar el script de actualización de columnas. Detalles: " . $e->getMessage());
             }
         }
@@ -308,14 +302,13 @@ class TrabajadorController {
                 'nombres' => $_POST['nombres'],
                 'apellidos' => $_POST['apellidos'],
                 'fecha_nacimiento' => isset($_POST['fecha_nacimiento']) ? $_POST['fecha_nacimiento'] : $trabajador_antiguo['fecha_nacimiento'],
-                // El perfil propio no puede cambiar la relación laboral ni el rol de acceso.
-                'tipo' => $trabajador_antiguo['tipo'],
-                'fecha_inicio' => $trabajador_antiguo['fecha_inicio'],
-                'fecha_fin_contrato' => $trabajador_antiguo['fecha_fin_contrato'],
+                'tipo' => isset($_POST['tipo']) ? $_POST['tipo'] : $trabajador_antiguo['tipo'],
+                'fecha_inicio' => isset($_POST['fecha_inicio']) ? $_POST['fecha_inicio'] : $trabajador_antiguo['fecha_inicio'],
+                'fecha_fin_contrato' => isset($_POST['fecha_fin_contrato']) ? $_POST['fecha_fin_contrato'] : $trabajador_antiguo['fecha_fin_contrato'],
                 // Conservar los valores inmodificables para que el update no los borre (excepto si es Admin)
                 'codigo_trabajador' => (isset($_SESSION['rol']) && $_SESSION['rol'] === 'Administrador' && isset($_POST['codigo_trabajador'])) ? $_POST['codigo_trabajador'] : $trabajador_antiguo['codigo_trabajador'],
                 'id_cargo' => $trabajador_antiguo['id_cargo'],
-                'sueldo_base' => $trabajador_antiguo['sueldo_base'],
+                'sueldo_base' => isset($_POST['sueldo_base']) ? $_POST['sueldo_base'] : $trabajador_antiguo['sueldo_base'],
                 'id_agencia' => $trabajador_antiguo['id_agencia'],
                 'estado' => $trabajador_antiguo['estado'],
                 'experiencia' => $trabajador_antiguo['experiencia']
@@ -378,9 +371,6 @@ class TrabajadorController {
             }
 
             $trabajador_antiguo = $trabajadorModel->leerUno($id);
-            if (isset($_POST['tipo']) && !in_array($_POST['tipo'], ['Practicante','Colaborador'], true)) {
-                die('Tipo de trabajador inválido.');
-            }
             
             // Subida Segura FASE 2
             require_once 'helpers/UploadHelper.php';
@@ -485,9 +475,8 @@ class TrabajadorController {
 
             // Actualizar credenciales si se proporcionan
             require_once 'config/conexion.php';
-            $conn = $trabajadorModel->connection();
-            $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            $conn->beginTransaction();
+            $db = new Conexion();
+            $conn = $db->getConexion();
             
             if(!empty($_POST['username'])) {
                 $stmt = $conn->prepare("UPDATE usuarios SET username = :user WHERE id_trabajador = :id");
@@ -498,29 +487,13 @@ class TrabajadorController {
                 $stmt->execute([':pwd' => password_hash($_POST['password'], PASSWORD_DEFAULT), ':id' => $id]);
             }
             if(isset($_POST['tipo'])) {
-                $role = $conn->prepare('SELECT id_rol FROM usuarios WHERE id_trabajador = ? FOR UPDATE');
-                $role->execute([$id]);
-                $oldRole = $role->fetchColumn();
-                // Solo las cuentas de personal cambian entre 5 y 6. No degradar
-                // una cuenta administrativa al editar su ficha de trabajador.
-                if (in_array((int)$oldRole, [5, 6], true)) {
-                    $nuevo_rol = ($_POST['tipo'] === 'Practicante') ? 6 : 5;
-                    $stmt = $conn->prepare("UPDATE usuarios SET id_rol = :rol WHERE id_trabajador = :id");
-                    $stmt->execute([':rol' => $nuevo_rol, ':id' => $id]);
-                }
+                $nuevo_rol = ($_POST['tipo'] === 'Practicante') ? 6 : 5;
+                $stmt = $conn->prepare("UPDATE usuarios SET id_rol = :rol WHERE id_trabajador = :id");
+                $stmt->execute([':rol' => $nuevo_rol, ':id' => $id]);
             }
             
             try {
                 if($trabajadorModel->actualizar($id, $datos)) {
-                    if ((string)$trabajador_antiguo['tipo'] !== (string)$datos['tipo']
-                        || (int)$trabajador_antiguo['id_cargo'] !== (int)$datos['id_cargo']) {
-                        $vigencia = $conn->prepare('INSERT INTO tipo_vigencias (id_trabajador,vigente_desde,tipo,id_cargo,origen)
-                            VALUES (?,?,?, ?,"EDICION_ADMIN")
-                            ON DUPLICATE KEY UPDATE tipo=VALUES(tipo),id_cargo=VALUES(id_cargo),origen=VALUES(origen)');
-                        $fechaLima=(new DateTimeImmutable('now',new DateTimeZone('America/Lima')))->format('Y-m-d');
-                        $vigencia->execute([(int)$id,$fechaLima,(string)$datos['tipo'],(int)$datos['id_cargo']]);
-                    }
-                    $conn->commit();
                     // Borrar del disco los documentos reemplazados o eliminados
                     $baseSegura = realpath(__DIR__ . '/../uploads_private');
                     foreach ($archivos_a_borrar as $rutaVieja) {
@@ -539,11 +512,9 @@ class TrabajadorController {
                     header("Location: index.php?page=trabajadores");
                     exit;
                 } else {
-                    $conn->rollBack();
                     $error = "Error al actualizar.";
                 }
             } catch (Exception $e) {
-                if ($conn->inTransaction()) $conn->rollBack();
                 die("Error de Base de Datos al actualizar trabajador. Detalles: " . $e->getMessage());
             }
         }
