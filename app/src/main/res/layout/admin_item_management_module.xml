@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/mgmt_row_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="11dp"
+    android:background="@drawable/admin_bg_mgmt_row_card"
+    android:clickable="true"
+    android:elevation="2dp"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:minHeight="76dp"
+    android:orientation="horizontal"
+    android:paddingStart="15dp"
+    android:paddingTop="13dp"
+    android:paddingEnd="15dp"
+    android:paddingBottom="13dp">
+
+    <!-- Ícono grande del módulo dentro de contenedor con color personalizado -->
+    <FrameLayout
+        android:id="@+id/mgmt_row_icon_box"
+        android:layout_width="46dp"
+        android:layout_height="46dp">
+
+        <ImageView
+            android:id="@+id/mgmt_row_icon"
+            android:layout_width="24dp"
+            android:layout_height="24dp"
+            android:layout_gravity="center"
+            android:contentDescription="@null" />
+    </FrameLayout>
+
+    <!-- Título y descripción -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/mgmt_row_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="1"
+            android:textColor="@color/admin_text_primary"
+            android:textSize="15.5sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/mgmt_row_desc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="2"
+            android:textColor="@color/admin_text_secondary"
+            android:textSize="12.5sp" />
+    </LinearLayout>
+
+    <!-- Flecha discreta de navegación -->
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:contentDescription="@null"
+        android:src="@drawable/admin_ic_chevron_right"
+        app:tint="@color/admin_text_muted" />
+</LinearLayout>

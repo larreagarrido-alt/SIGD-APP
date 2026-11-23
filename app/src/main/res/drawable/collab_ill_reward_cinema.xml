@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Halo cálido/violeta -->
+    <path android:pathData="M60,62m-48,0a48,48 0,1 1,96 0a48,48 0,1 1,-96 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="60"
+                android:centerY="62"
+                android:gradientRadius="48"
+                android:type="radial">
+                <item android:color="#4AB54CFF" android:offset="0.0" />
+                <item android:color="#001D102C" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sombra suelo -->
+    <path
+        android:fillColor="#66090412"
+        android:pathData="M22,99C22,95 39,92 60,92C81,92 98,95 98,99C98,103 81,106 60,106C39,106 22,103 22,99Z" />
+
+    <!-- Claqueta de cine detrás a la izquierda -->
+    <path android:pathData="M22,52L64,48L68,88C68.2,90.2 66.6,92.2 64.4,92.4L27.8,95.8C25.6,96 23.6,94.4 23.4,92.2Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="68"
+                android:endY="92"
+                android:startX="22"
+                android:startY="50"
+                android:type="linear">
+                <item android:color="#3D2459" android:offset="0.0" />
+                <item android:color="#1F1033" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Brazo superior inclinado de la claqueta -->
+    <path
+        android:fillColor="#2D1845"
+        android:pathData="M18,43L60,31L62.5,39.5L20.5,51.5Z" />
+    <!-- Franjas blancas/lilas en claqueta -->
+    <path
+        android:fillColor="#F0E2FF"
+        android:pathData="M26,40.7L33,38.7L35.5,47.2L28.5,49.2Z" />
+    <path
+        android:fillColor="#F0E2FF"
+        android:pathData="M42,36.1L49,34.1L51.5,42.6L44.5,44.6Z" />
+    <!-- Estrella dorada en claqueta -->
+    <path
+        android:fillColor="#F6C35D"
+        android:pathData="M43,64L45.3,68.8L50.5,69.5L46.8,73.1L47.7,78.3L43,75.8L38.3,78.3L39.2,73.1L35.5,69.5L40.7,68.8Z" />
+
+    <!-- Palomitas esponjosas -->
+    <path
+        android:fillColor="#FFF5D6"
+        android:pathData="M62,46m-9,0a9,9 0,1 1,18 0a9,9 0,1 1,-18 0" />
+    <path
+        android:fillColor="#FFE5A3"
+        android:pathData="M74,40m-10,0a10,10 0,1 1,20 0a10,10 0,1 1,-20 0" />
+    <path
+        android:fillColor="#FFF8E2"
+        android:pathData="M86,47m-8.5,0a8.5,8.5 0,1 1,17 0a8.5,8.5 0,1 1,-17 0" />
+    <path
+        android:fillColor="#F6C35D"
+        android:pathData="M73,49m-8,0a8,8 0,1 1,16 0a8,8 0,1 1,-16 0" />
+
+    <!-- Cubo de palomitas 3D -->
+    <path android:pathData="M53,51L96,51L89,94C88.6,96.4 86.5,98 84.1,98L64.9,98C62.5,98 60.4,96.4 60,94Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="95"
+                android:endY="90"
+                android:startX="53"
+                android:startY="55"
+                android:type="linear">
+                <item android:color="#FFFFFF" android:offset="0.0" />
+                <item android:color="#EAE0F8" android:offset="0.65" />
+                <item android:color="#C3A8E8" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Franjas violetas del cubo -->
+    <path
+        android:fillColor="#9A36EB"
+        android:pathData="M61,51L69,51L70.5,98L64,98Z" />
+    <path
+        android:fillColor="#7B22CC"
+        android:pathData="M79,51L87,51L84,98L77.5,98Z" />
+
+    <!-- Destello -->
+    <path
+        android:fillColor="#FFF3C2"
+        android:pathData="M96,26L97.5,30L101.5,31.5L97.5,33L96,37L94.5,33L90.5,31.5L94.5,30Z" />
+</vector>

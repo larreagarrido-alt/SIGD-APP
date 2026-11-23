@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="92dp"
+    android:height="92dp"
+    android:viewportWidth="96"
+    android:viewportHeight="96">
+
+    <!-- Halo luminoso violeta detrás del escudo -->
+    <path android:pathData="M48,50m-42,0a42,42 0,1 1,84 0a42,42 0,1 1,-84 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="48"
+                android:centerY="50"
+                android:gradientRadius="42"
+                android:type="radial">
+                <item android:color="#66B54CFF" android:offset="0.0" />
+                <item android:color="#288B30E0" android:offset="0.58" />
+                <item android:color="#008B30E0" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Hojas de laurel doradas izquierda -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M24,72C14,62 12,46 18,32"
+        android:strokeColor="#E8B44B"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.0" />
+    <path android:pathData="M18,34C13,34 11,30 13,26C16,27 18.5,30 18,34Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:endX="18" android:endY="34" android:startX="12" android:startY="26" android:type="linear">
+                <item android:color="#FFE69A" android:offset="0.0" />
+                <item android:color="#D4952B" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M15.5,45C10,45 8,40.5 10.5,36.5C13.8,37.8 16.2,41 15.5,45Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:endX="15.5" android:endY="45" android:startX="9.5" android:startY="36.5" android:type="linear">
+                <item android:color="#FFE69A" android:offset="0.0" />
+                <item android:color="#D4952B" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M16.5,56.5C11,57 9,52.5 11.5,48.5C14.8,49.8 17.2,52.8 16.5,56.5Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:endX="16.5" android:endY="56.5" android:startX="10.5" android:startY="48.5" android:type="linear">
+                <item android:color="#FFE69A" android:offset="0.0" />
+                <item android:color="#D4952B" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M21,67C15.5,68.5 13.5,64.5 15.5,60.2C18.8,61.2 21.2,63.8 21,67Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:endX="21" android:endY="67" android:startX="14.5" android:startY="60.2" android:type="linear">
+                <item android:color="#FFE69A" android:offset="0.0" />
+                <item android:color="#D4952B" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Hojas de laurel doradas derecha -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M72,72C82,62 84,46 78,32"
+        android:strokeColor="#E8B44B"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.0" />
+    <path android:pathData="M78,34C83,34 85,30 83,26C80,27 77.5,30 78,34Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:endX="78" android:endY="34" android:startX="84" android:startY="26" android:type="linear">
+                <item android:color="#FFE69A" android:offset="0.0" />
+                <item android:color="#D4952B" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M80.5,45C86,45 88,40.5 85.5,36.5C82.2,37.8 79.8,41 80.5,45Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:endX="80.5" android:endY="45" android:startX="86.5" android:startY="36.5" android:type="linear">
+                <item android:color="#FFE69A" android:offset="0.0" />
+                <item android:color="#D4952B" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M79.5,56.5C85,57 87,52.5 84.5,48.5C81.2,49.8 78.8,52.8 79.5,56.5Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:endX="79.5" android:endY="56.5" android:startX="85.5" android:startY="48.5" android:type="linear">
+                <item android:color="#FFE69A" android:offset="0.0" />
+                <item android:color="#D4952B" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M75,67C80.5,68.5 82.5,64.5 80.5,60.2C77.2,61.2 74.8,63.8 75,67Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:endX="75" android:endY="67" android:startX="81.5" android:startY="60.2" android:type="linear">
+                <item android:color="#FFE69A" android:offset="0.0" />
+                <item android:color="#D4952B" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Corona dorada tridimensional sobre el escudo -->
+    <path android:pathData="M34,25L31.5,14.5L40.5,19.5L48,10.5L55.5,19.5L64.5,14.5L62,25Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="48"
+                android:endY="26"
+                android:startX="48"
+                android:startY="10"
+                android:type="linear">
+                <item android:color="#FFF3BD" android:offset="0.0" />
+                <item android:color="#F6C35D" android:offset="0.55" />
+                <item android:color="#C7851B" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M33.5,24.5H62.5V27.8H33.5Z">
+        <aapt:attr name="android:fillColor">
+            <gradient android:endX="62.5" android:endY="26" android:startX="33.5" android:startY="26" android:type="linear">
+                <item android:color="#D49326" android:offset="0.0" />
+                <item android:color="#FFE8A3" android:offset="0.5" />
+                <item android:color="#C9881E" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:fillColor="#FFF8D6" android:pathData="M48,10.5m-1.7,0a1.7,1.7 0,1 1,3.4 0a1.7,1.7 0,1 1,-3.4 0" />
+    <path android:fillColor="#FFEAA3" android:pathData="M31.5,14.5m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0" />
+    <path android:fillColor="#FFEAA3" android:pathData="M64.5,14.5m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0" />
+
+    <!-- Marco exterior biselado 3D del escudo violeta -->
+    <path android:pathData="M48,26.5L70,33.5V52.5C70,66.2 59.8,76.4 48,81.5C36.2,76.4 26,66.2 26,52.5V33.5L48,26.5Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="68"
+                android:endY="78"
+                android:startX="28"
+                android:startY="28"
+                android:type="linear">
+                <item android:color="#E4B8FF" android:offset="0.0" />
+                <item android:color="#A648F5" android:offset="0.45" />
+                <item android:color="#531A8C" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Cara interior profunda del escudo violeta -->
+    <path android:pathData="M48,30.5L66.2,36.2V52.2C66.2,63.5 57.6,72.2 48,76.8C38.4,72.2 29.8,63.5 29.8,52.2V36.2L48,30.5Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="42"
+                android:centerY="42"
+                android:gradientRadius="36"
+                android:type="radial">
+                <item android:color="#9C42F5" android:offset="0.0" />
+                <item android:color="#6820B8" android:offset="0.58" />
+                <item android:color="#371166" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Brillo diagonal sutil sobre el escudo -->
+    <path android:pathData="M48,30.5L66.2,36.2V45.5C56,48.5 40,51.5 29.8,51.0V36.2L48,30.5Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="54"
+                android:endY="52"
+                android:startX="34"
+                android:startY="31"
+                android:type="linear">
+                <item android:color="#48FFFFFF" android:offset="0.0" />
+                <item android:color="#00FFFFFF" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Halo dorado detrás de la estrella central -->
+    <path android:pathData="M48,53m-14,0a14,14 0,1 1,28 0a14,14 0,1 1,-28 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="48"
+                android:centerY="53"
+                android:gradientRadius="14"
+                android:type="radial">
+                <item android:color="#55FFE18C" android:offset="0.0" />
+                <item android:color="#00FFE18C" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Estrella central 3D dorada -->
+    <path android:pathData="M48,39.5L51.9,47.5L60.8,48.8L54.3,55.1L55.9,63.9L48,59.7L40.1,63.9L41.7,55.1L35.2,48.8L44.1,47.5Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="56"
+                android:endY="64"
+                android:startX="40"
+                android:startY="40"
+                android:type="linear">
+                <item android:color="#FFF9D6" android:offset="0.0" />
+                <item android:color="#F6C35D" android:offset="0.55" />
+                <item android:color="#D18919" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Faceta luminosa superior de la estrella -->
+    <path
+        android:fillColor="#66FFFFFF"
+        android:pathData="M48,39.5L51.9,47.5L48,52.8L44.1,47.5Z" />
+
+    <!-- Destellos luminosos flotantes -->
+    <path
+        android:fillColor="#FFF4C2"
+        android:pathData="M78,18L79.2,21.3L82.5,22.5L79.2,23.7L78,27L76.8,23.7L73.5,22.5L76.8,21.3Z" />
+    <path
+        android:fillColor="#E3BAFF"
+        android:pathData="M18,17L19,19.5L21.5,20.5L19,21.5L18,24L17,21.5L14.5,20.5L17,19.5Z" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M72.5,79.5m-1.5,0a1.5,1.5 0,1 1,3 0a1.5,1.5 0,1 1,-3 0" />
+    <path
+        android:fillColor="#D9B0FF"
+        android:pathData="M24,80m-1.3,0a1.3,1.3 0,1 1,2.6 0a1.3,1.3 0,1 1,-2.6 0" />
+</vector>

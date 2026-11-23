@@ -1,0 +1,393 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC"
+    android:fillViewport="true"
+    android:overScrollMode="never">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="16dp"
+        android:paddingBottom="40dp">
+
+        <!-- CABECERA DEL INFORME -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kpi_bg_sales_card"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/kpi_bg_badge_number"
+                    android:backgroundTint="#EEF2FF"
+                    android:gravity="center">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/kpi_ic_chart"
+                        app:tint="#4F46E5" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
+                        android:text="Reportes Comerciales"
+                        android:textColor="#1E293B"
+                        android:textSize="17sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Consolidado de Actividades Diarias (KPI) y Hoja de Ruta"
+                        android:textColor="#64748B"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ========================================================= -->
+        <!-- BLOQUE 1: ACTIVIDADES DIARIAS / KPI (METAS SEMANALES)      -->
+        <!-- ========================================================= -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="18dp"
+                android:background="#4F46E5" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif-black"
+                android:text="BLOQUE 1: ACTIVIDADES DIARIAS / KPI"
+                android:textColor="#1E293B"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- Estado 1.A: Bloqueado (semana en progreso) -->
+        <LinearLayout
+            android:id="@+id/llReportKpiLocked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/kpi_bg_sales_card"
+            android:elevation="2dp"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:padding="24dp">
+
+            <ImageView
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:src="@drawable/kpi_ic_lock"
+                app:tint="#F59E0B" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:text="Consolidado Semanal en Progreso"
+                android:textColor="#1E293B"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvReportKpiLockedDays"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:gravity="center"
+                android:text="Has completado 0 de 6 días de la semana.\nEl informe semanal de KPI se consolida automáticamente el sábado al guardar los 6 días."
+                android:textColor="#64748B"
+                android:textSize="12.5sp" />
+
+            <Button
+                android:id="@+id/btnReportGoToKpi"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/kpi_bg_gradient_btn"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:paddingHorizontal="20dp"
+                android:text="Ir a Actividades Diarias"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="12.5sp" />
+        </LinearLayout>
+
+        <!-- Estado 1.B: Desbloqueado (Semana Completa) -->
+        <LinearLayout
+            android:id="@+id/llReportKpiUnlocked"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/kpi_bg_sales_card"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp"
+            android:visibility="gone">
+
+            <!-- Porcentaje Global de Cumplimiento -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/sales_bg_top_tab_active"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-medium"
+                        android:text="CUMPLIMIENTO SEMANAL"
+                        android:textColor="#5B46D6"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif-black"
+                        android:text="Meta Semanal Alcanzada"
+                        android:textColor="#1E293B"
+                        android:textSize="15sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvReportKpiGlobalPercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="100.0%"
+                    android:textColor="#10B981"
+                    android:textSize="24sp" />
+            </LinearLayout>
+
+            <!-- Tabla de los 6 Indicadores -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:text="CUMPLIMIENTO POR INDICADOR"
+                android:textColor="#475569"
+                android:textSize="11.5sp" />
+
+            <LinearLayout
+                android:id="@+id/llReportKpiIndicatorsTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical" />
+
+            <!-- Desglose por Días (Lunes a Sábado) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:text="DESGLOSE DIARIO (LUNES A SÁBADO)"
+                android:textColor="#475569"
+                android:textSize="11.5sp" />
+
+            <LinearLayout
+                android:id="@+id/llReportKpiDailyBreakdown"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="vertical" />
+
+            <!-- Botones de Acción Bloque 1 -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnReportCopyKpi"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_bg_gradient_btn"
+                    android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                    android:text="Copiar Informe KPI"
+                    android:textAllCaps="false"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12.5sp" />
+
+                <Button
+                    android:id="@+id/btnReportResetWeek"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_bg_ghost_btn"
+                    android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                    android:text="Reiniciar Ciclo"
+                    android:textAllCaps="false"
+                    android:textColor="#EF4444"
+                    android:textSize="12.5sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ========================================================= -->
+        <!-- BLOQUE 2: HOJA DE RUTA (ACTIVIDADES COMERCIALES)           -->
+        <!-- ========================================================= -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="26dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <View
+                android:layout_width="4dp"
+                android:layout_height="18dp"
+                android:background="#10B981" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:fontFamily="sans-serif-black"
+                android:text="BLOQUE 2: HOJA DE RUTA"
+                android:textColor="#1E293B"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- Resumen de Hoja de Ruta -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/kpi_bg_sales_card"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvReportRouteCountTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                        android:text="0 Actividades Comerciales"
+                        android:textColor="#1E293B"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Historial de visitas, llamadas y resultados"
+                        android:textColor="#64748B"
+                        android:textSize="11.5sp" />
+                </LinearLayout>
+
+                <Button
+                    android:id="@+id/btnReportCopyRoute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:background="@drawable/kpi_bg_translucent_pill"
+                    android:backgroundTint="#EEF2FF"
+                    android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                    android:paddingHorizontal="12dp"
+                    android:text="Copiar Ruta"
+                    android:textAllCaps="false"
+                    android:textColor="#4F46E5"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <!-- Lista de registros de Hoja de Ruta -->
+            <LinearLayout
+                android:id="@+id/llReportRouteItemsContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical" />
+
+            <!-- Estado Vacío Bloque 2 -->
+            <LinearLayout
+                android:id="@+id/llReportRouteEmptyState"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <ImageView
+                    android:layout_width="40dp"
+                    android:layout_height="40dp"
+                    android:src="@drawable/kpi_ic_document"
+                    app:tint="#CBD5E1" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="No hay actividades registradas en la Hoja de Ruta"
+                    android:textColor="#94A3B8"
+                    android:textSize="12.5sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

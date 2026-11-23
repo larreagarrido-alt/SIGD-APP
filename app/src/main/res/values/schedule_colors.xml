@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sch_purple_900">#4C1D95</color>
+    <color name="sch_purple_700">#6D00CC</color>
+    <color name="sch_purple_500">#8B2FE0</color>
+    <color name="sch_purple_200">#E9D5FF</color>
+    <color name="sch_purple_100">#F3E8FF</color>
+    <color name="sch_bg">#F8F7FC</color>
+    <color name="sch_card">#FFFFFF</color>
+    <color name="sch_text">#2D2A45</color>
+    <color name="sch_text_soft">#6B6785</color>
+    <color name="sch_amber">#FBBF24</color>
+    <color name="sch_amber_dark">#92400E</color>
+    <color name="sch_amber_soft">#FEF3C7</color>
+    <color name="sch_line">#D8C7F3</color>
+    <color name="sch_tab_inactive">#8E88AB</color>
+
+    <color name="sch_level_excellent">#16A34A</color>
+    <color name="sch_level_very_good">#2563EB</color>
+    <color name="sch_level_good">#EAB308</color>
+    <color name="sch_level_regular">#F97316</color>
+    <color name="sch_level_poor">#DC2626</color>
+</resources>

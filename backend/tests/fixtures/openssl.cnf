@@ -1,0 +1,6 @@
+# Synthetic EC keys are generated at runtime; no keys or certificates are stored here.
+[req]
+default_bits = 2048
+default_md = sha256
+distinguished_name = synthetic_dn
+[synthetic_dn]

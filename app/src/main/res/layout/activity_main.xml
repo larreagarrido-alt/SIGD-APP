@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/main" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:orientation="vertical" android:gravity="center" android:padding="24dp"
+    android:background="@color/auth_card_bg">
+    <ProgressBar android:id="@+id/entry_progress" android:layout_width="48dp" android:layout_height="48dp" />
+    <TextView android:id="@+id/entry_status" android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:layout_marginTop="20dp" android:gravity="center" android:text="@string/nav_verifying_session"
+        android:textColor="@color/auth_ink" android:textSize="18sp" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/entry_retry"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp"
+        android:layout_marginTop="24dp" android:text="@string/nav_retry" android:enabled="false" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/entry_account"
+        android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp"
+        android:text="@string/nav_account_title" />
+    <com.google.android.material.button.MaterialButton android:id="@+id/btn_logout"
+        style="@style/Widget.Material3.Button.TextButton" android:layout_width="match_parent"
+        android:layout_height="wrap_content" android:minHeight="48dp" android:text="@string/auth_sign_out" />
+</LinearLayout>

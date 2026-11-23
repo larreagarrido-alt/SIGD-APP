@@ -1,0 +1,860 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="10dp"
+        android:paddingBottom="24dp">
+
+        <!-- Barra de los 6 Días (Lunes a Sábado) distribuida de borde a borde -->
+        <LinearLayout
+            android:id="@+id/llDayTabsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="4dp"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:paddingVertical="4dp"
+            android:weightSum="6">
+
+            <!-- 6 pestañas de día (LUN a SÁB) distribuidas simétricamente -->
+        </LinearLayout>
+
+        <!-- Tarjeta del Día Actual en Edición -->
+        <LinearLayout
+            android:id="@+id/llCurrentDayHeader"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/kpi_bg_sales_card"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <ImageView
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/kpi_bg_circle_icon_light"
+                android:padding="9dp"
+                android:src="@drawable/kpi_ic_calendar"
+                app:tint="#5B46D6" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvDayNameTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Lunes"
+                    android:textColor="#0F172A"
+                    android:textSize="18sp" />
+
+                <TextView
+                    android:id="@+id/tvDayFullDate"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Lunes, 12 de octubre de 2026"
+                    android:textColor="#64748B"
+                    android:textSize="11.5sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvDayStatusBadge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/kpi_bg_pill_status"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="4dp"
+                android:text="En edición"
+                android:textColor="#5B46D6"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- AVISO DE DÍA BLOQUEADO (si el usuario pulsa un día bloqueado) -->
+        <LinearLayout
+            android:id="@+id/llDayLockedBanner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/kpi_bg_day_tab_locked"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="14dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="8dp"
+                android:src="@drawable/kpi_ic_lock"
+                app:tint="#EF4444" />
+
+            <TextView
+                android:id="@+id/tvDayLockedMessage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-medium"
+                android:text="Debes guardar el día anterior para desbloquear este día."
+                android:textColor="#EF4444"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- CONTENEDOR DE INDICADORES (Visible cuando el día está abierto) -->
+        <LinearLayout
+            android:id="@+id/llMetasContentContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Card 1: Llamadas comerciales -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/kpi_bg_sales_card"
+                android:elevation="1dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/kpi_bg_circle_icon_light"
+                        android:padding="7dp"
+                        android:src="@drawable/kpi_ic_phone"
+                        app:tint="#5B46D6" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                            android:text="Llamadas comerciales"
+                            android:textColor="#0F172A"
+                            android:textSize="13.5sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Trabajo en oficina"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvValueLlamadas"
+                        android:layout_width="58dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/kpi_bg_stepper_input"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="#0F172A"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ProgressBar
+                        android:id="@+id/pbCardLlamadas"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/kpi_progress_drawable" />
+
+                    <TextView
+                        android:id="@+id/tvCardRatioLlamadas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="0 / 100 sem"
+                        android:textColor="#64748B"
+                        android:textSize="10.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvCardPercentLlamadas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="0%"
+                        android:textColor="#5B46D6"
+                        android:textSize="11.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Card 2: Nuevas visitas a nuevas empresas -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/kpi_bg_sales_card"
+                android:elevation="1dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/kpi_bg_circle_icon_light"
+                        android:padding="7dp"
+                        android:src="@drawable/kpi_ic_walk"
+                        app:tint="#0284C7" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                            android:text="Nuevas visitas a nuevas empresas"
+                            android:textColor="#0F172A"
+                            android:textSize="13.5sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Trabajo de campo"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvValueVisitas"
+                        android:layout_width="58dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/kpi_bg_stepper_input"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="#0F172A"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ProgressBar
+                        android:id="@+id/pbCardVisitas"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/kpi_progress_drawable" />
+
+                    <TextView
+                        android:id="@+id/tvCardRatioVisitas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="0 / 60 sem"
+                        android:textColor="#64748B"
+                        android:textSize="10.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvCardPercentVisitas"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="0%"
+                        android:textColor="#0284C7"
+                        android:textSize="11.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Card 3: Cotizaciones a prospectos enviadas -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/kpi_bg_sales_card"
+                android:elevation="1dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/kpi_bg_circle_icon_light"
+                        android:padding="7dp"
+                        android:src="@drawable/kpi_ic_document"
+                        app:tint="#8B5CF6" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                            android:text="Cotizaciones a prospectos enviadas"
+                            android:textColor="#0F172A"
+                            android:textSize="13.5sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Meta semanal 30"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvValueCotiz"
+                        android:layout_width="58dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/kpi_bg_stepper_input"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="#0F172A"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ProgressBar
+                        android:id="@+id/pbCardCotiz"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/kpi_progress_drawable" />
+
+                    <TextView
+                        android:id="@+id/tvCardRatioCotiz"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="0 / 30 sem"
+                        android:textColor="#64748B"
+                        android:textSize="10.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvCardPercentCotiz"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="0%"
+                        android:textColor="#8B5CF6"
+                        android:textSize="11.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Card 4: Empresas en seguimiento -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/kpi_bg_sales_card"
+                android:elevation="1dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/kpi_bg_circle_icon_light"
+                        android:padding="7dp"
+                        android:src="@drawable/kpi_ic_link"
+                        app:tint="#F59E0B" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                            android:text="Empresas en seguimiento"
+                            android:textColor="#0F172A"
+                            android:textSize="13.5sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Con interés"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvValueSeguimiento"
+                        android:layout_width="58dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/kpi_bg_stepper_input"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="#0F172A"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ProgressBar
+                        android:id="@+id/pbCardSeguimiento"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/kpi_progress_drawable" />
+
+                    <TextView
+                        android:id="@+id/tvCardRatioSeguimiento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="0 / 50 sem"
+                        android:textColor="#64748B"
+                        android:textSize="10.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvCardPercentSeguimiento"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="0%"
+                        android:textColor="#F59E0B"
+                        android:textSize="11.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Card 5: Nuevos prospectos potenciales -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/kpi_bg_sales_card"
+                android:elevation="1dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/kpi_bg_circle_icon_light"
+                        android:padding="7dp"
+                        android:src="@drawable/kpi_ic_user_plus"
+                        app:tint="#6366F1" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                            android:text="Nuevos prospectos potenciales"
+                            android:textColor="#0F172A"
+                            android:textSize="13.5sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Meta semanal 15"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvValueProspectos"
+                        android:layout_width="58dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/kpi_bg_stepper_input"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="#0F172A"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ProgressBar
+                        android:id="@+id/pbCardProspectos"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/kpi_progress_drawable" />
+
+                    <TextView
+                        android:id="@+id/tvCardRatioProspectos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="0 / 15 sem"
+                        android:textColor="#64748B"
+                        android:textSize="10.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvCardPercentProspectos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="0%"
+                        android:textColor="#6366F1"
+                        android:textSize="11.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Card 6: Nuevos clientes (Cierres) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:background="@drawable/kpi_bg_sales_card"
+                android:elevation="1dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="32dp"
+                        android:layout_height="32dp"
+                        android:background="@drawable/kpi_bg_circle_icon_light"
+                        android:padding="7dp"
+                        android:src="@drawable/kpi_ic_handshake"
+                        app:tint="#10B981" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                            android:text="Nuevos clientes"
+                            android:textColor="#0F172A"
+                            android:textSize="13.5sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Meta semanal 3"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvValueClientes"
+                        android:layout_width="58dp"
+                        android:layout_height="40dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/kpi_bg_stepper_input"
+                        android:fontFamily="sans-serif-black"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="#0F172A"
+                        android:textSize="17sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ProgressBar
+                        android:id="@+id/pbCardClientes"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="0dp"
+                        android:layout_height="5dp"
+                        android:layout_weight="1"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/kpi_progress_drawable" />
+
+                    <TextView
+                        android:id="@+id/tvCardRatioClientes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="0 / 3 sem"
+                        android:textColor="#64748B"
+                        android:textSize="10.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvCardPercentClientes"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:fontFamily="sans-serif-black"
+                        android:text="0%"
+                        android:textColor="#10B981"
+                        android:textSize="11.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Card: Observaciones del día (0/400) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/kpi_bg_sales_card"
+                android:elevation="1dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="14dp"
+                android:paddingVertical="10dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="30dp"
+                        android:layout_height="30dp"
+                        android:background="@drawable/kpi_bg_circle_icon_light"
+                        android:padding="6dp"
+                        android:src="@drawable/kpi_ic_document"
+                        app:tint="#5B46D6" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                            android:text="Observaciones del día"
+                            android:textColor="#0F172A"
+                            android:textSize="13.5sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Opcional pero muy útil para tu informe"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvObsCounter"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0/400"
+                        android:textColor="#94A3B8"
+                        android:textSize="11sp" />
+                </LinearLayout>
+
+                <EditText
+                    android:id="@+id/etDayObservaciones"
+                    android:layout_width="match_parent"
+                    android:layout_height="68dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/kpi_bg_input"
+                    android:gravity="top|start"
+                    android:hint="Describe brevemente lo que hiciste hoy..."
+                    android:maxLength="400"
+                    android:padding="10dp"
+                    android:textColor="#0F172A"
+                    android:textColorHint="#94A3B8"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Card Aviso de Candado -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/kpi_bg_day_tab_locked"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="14dp">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginEnd="10dp"
+                    android:src="@drawable/kpi_ic_lock"
+                    app:tint="#5B46D6" />
+
+                <TextView
+                    android:id="@+id/tvLockExplanation"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:lineSpacingExtra="2dp"
+                    android:text="Días guardados: 0 de 6. Al guardar el sábado se desbloqueará automáticamente tu resumen semanal completo."
+                    android:textColor="#475569"
+                    android:textSize="11.5sp" />
+            </LinearLayout>
+
+            <!-- Botón Guardar Día -->
+            <Button
+                android:id="@+id/btnSaveDayAction"
+                android:layout_width="match_parent"
+                android:layout_height="52dp"
+                android:background="@drawable/kpi_bg_gradient_btn"
+                android:elevation="3dp"
+                android:fontFamily="sans-serif-black"
+                android:text="Guardar Lunes"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp" />
+
+            <TextView
+                android:id="@+id/tvSaveConditionHint"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:layout_marginBottom="16dp"
+                android:gravity="center"
+                android:text="Agrega al menos un avance o una observación para guardar"
+                android:textColor="#94A3B8"
+                android:textSize="11sp" />
+
+        </LinearLayout>
+
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

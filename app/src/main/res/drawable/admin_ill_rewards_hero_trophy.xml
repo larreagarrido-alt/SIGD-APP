@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="116dp"
+    android:height="116dp"
+    android:viewportWidth="160"
+    android:viewportHeight="160">
+
+    <!-- Halo ambiental violeta y dorado suave -->
+    <path android:pathData="M82,78m-66,0a66,66 0,1 1,132 0a66,66 0,1 1,-132 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="82"
+                android:centerY="78"
+                android:gradientRadius="66"
+                android:type="radial">
+                <item android:color="#52F6C35D" android:offset="0.0" />
+                <item android:color="#3AB54CFF" android:offset="0.48" />
+                <item android:color="#0011091F" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sombra delicada en la base -->
+    <path
+        android:fillColor="#66090412"
+        android:pathData="M24,137C24,131.5 50,127 82,127C114,127 140,131.5 140,137C140,142.5 114,146.5 82,146.5C50,146.5 24,142.5 24,137Z" />
+
+    <!-- Asas laterales del trofeo dorado -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M54,44C40,44 36,56 42,67C46,74 53,77 60,77"
+        android:strokeWidth="6"
+        android:strokeColor="#E8A938"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M110,44C124,44 128,56 122,67C118,74 111,77 104,77"
+        android:strokeWidth="6"
+        android:strokeColor="#C9831B"
+        android:strokeLineCap="round" />
+
+    <!-- Pedestal del trofeo -->
+    <path android:pathData="M74,89L90,89L92,107L72,107Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="92"
+                android:endY="107"
+                android:startX="72"
+                android:startY="89"
+                android:type="linear">
+                <item android:color="#FFE38E" android:offset="0.0" />
+                <item android:color="#D68E1E" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M62,107C62,104.8 63.8,103 66,103L98,103C100.2,103 102,104.8 102,107L104,115L60,115Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="104"
+                android:endY="115"
+                android:startX="60"
+                android:startY="103"
+                android:type="linear">
+                <item android:color="#FFF0A8" android:offset="0.0" />
+                <item android:color="#F6C35D" android:offset="0.55" />
+                <item android:color="#B87010" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Base oscura elegante del trofeo -->
+    <path android:pathData="M55,115C55,113.3 56.3,112 58,112L106,112C107.7,112 109,113.3 109,115L111,126C111,128.2 109.2,130 107,130L57,130C54.8,130 53,128.2 53,126Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="111"
+                android:endY="126"
+                android:startX="53"
+                android:startY="114"
+                android:type="linear">
+                <item android:color="#49236E" android:offset="0.0" />
+                <item android:color="#26113D" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Placa dorada en la base -->
+    <path
+        android:fillColor="#F6C35D"
+        android:pathData="M69,118L95,118C96.1,118 97,118.9 97,120L97,123C97,124.1 96.1,125 95,125L69,125C67.9,125 67,124.1 67,123L67,120C67,118.9 67.9,118 69,118Z" />
+
+    <!-- Copa principal del trofeo 3D -->
+    <path android:pathData="M50,35C50,32.2 52.2,30 55,30L109,30C111.8,30 114,32.2 114,35L112,56C110.5,76 98.5,91 82,91C65.5,91 53.5,76 52,56Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="114"
+                android:endY="86"
+                android:startX="50"
+                android:startY="32"
+                android:type="linear">
+                <item android:color="#FFF4B8" android:offset="0.0" />
+                <item android:color="#F6C35D" android:offset="0.46" />
+                <item android:color="#C97F14" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Brillo especular izquierdo de la copa -->
+    <path
+        android:fillColor="#55FFFFFF"
+        android:pathData="M56,37L62,37L63.5,57C64.2,68 68,77 73,83C65,78 58.5,67 57.2,55Z" />
+
+    <!-- Estrella dorada en relieve en el centro del trofeo -->
+    <path
+        android:fillColor="#B06808"
+        android:pathData="M82,45.5L85.8,53.2L94.3,54.4L88.1,60.4L89.6,68.8L82,64.8L74.4,68.8L75.9,60.4L69.7,54.4L78.2,53.2Z" />
+    <path
+        android:fillColor="#FFF9DB"
+        android:pathData="M82,44L85.8,51.7L94.3,52.9L88.1,58.9L89.6,67.3L82,63.3L74.4,67.3L75.9,58.9L69.7,52.9L78.2,51.7Z" />
+
+    <!-- Caja de regalo violeta 3D (izquierda delantera) -->
+    <path android:pathData="M24,99L46,106L46,133L26.5,126.5C25,126 24,124.6 24,123Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="46"
+                android:endY="133"
+                android:startX="24"
+                android:startY="99"
+                android:type="linear">
+                <item android:color="#C86EFF" android:offset="0.0" />
+                <item android:color="#8B30E0" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M46,106L68,99L68,123C68,124.6 67,126 65.5,126.5L46,133Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="68"
+                android:endY="129"
+                android:startX="46"
+                android:startY="102"
+                android:type="linear">
+                <item android:color="#9B3CEB" android:offset="0.0" />
+                <item android:color="#5917A1" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Tapa regalo izquierdo -->
+    <path android:pathData="M21,95L46,87L71,95L46,103Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="71"
+                android:endY="99"
+                android:startX="21"
+                android:startY="91"
+                android:type="linear">
+                <item android:color="#E5B2FF" android:offset="0.0" />
+                <item android:color="#B54CFF" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <!-- Cinta dorada regalo izquierdo -->
+    <path android:pathData="M32.5,101.8L38.5,103.8L38.5,130.5L32.5,128.5Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="38.5"
+                android:endY="130"
+                android:startX="32.5"
+                android:startY="102"
+                android:type="linear">
+                <item android:color="#FFF0A8" android:offset="0.0" />
+                <item android:color="#E5A22E" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#F6C35D"
+        android:pathData="M53.5,103.8L59.5,101.8L59.5,128.5L53.5,130.5Z" />
+    <path
+        android:fillColor="#FFE99A"
+        android:pathData="M46,89m-5,0a5,3.5 0,1 1,10 0a5,3.5 0,1 1,-10 0" />
+
+    <!-- Caja de regalo violeta 3D pequeña (derecha delantera) -->
+    <path android:pathData="M101,106L119,112L119,134L103,128.8C101.8,128.4 101,127.3 101,126Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="119"
+                android:endY="134"
+                android:startX="101"
+                android:startY="106"
+                android:type="linear">
+                <item android:color="#D282FF" android:offset="0.0" />
+                <item android:color="#8B30E0" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M119,112L137,106L137,126C137,127.3 136.2,128.4 135,128.8L119,134Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="137"
+                android:endY="130"
+                android:startX="119"
+                android:startY="108"
+                android:type="linear">
+                <item android:color="#9738E6" android:offset="0.0" />
+                <item android:color="#521494" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#E9BEFF"
+        android:pathData="M98.5,102.5L119,96L139.5,102.5L119,109.5Z" />
+    <path
+        android:fillColor="#F6C35D"
+        android:pathData="M107.5,108.2L112.5,109.8L112.5,131.8L107.5,130.2Z" />
+    <path
+        android:fillColor="#D99422"
+        android:pathData="M125.5,109.8L130.5,108.2L130.5,130.2L125.5,131.8Z" />
+
+    <!-- Destellos luminosos -->
+    <path
+        android:fillColor="#FFF3C2"
+        android:pathData="M31,26L33,31.5L38.5,33.5L33,35.5L31,41L29,35.5L23.5,33.5L29,31.5Z" />
+    <path
+        android:fillColor="#E7C2FF"
+        android:pathData="M133,24L134.8,28.8L139.6,30.6L134.8,32.4L133,37.2L131.2,32.4L126.4,30.6L131.2,28.8Z" />
+    <path
+        android:fillColor="#FFF3C2"
+        android:pathData="M139,72L140.2,75.2L143.4,76.4L140.2,77.6L139,80.8L137.8,77.6L134.6,76.4L137.8,75.2Z" />
+    <path
+        android:fillColor="#99FFFFFF"
+        android:pathData="M24,72m-2.2,0a2.2,2.2 0,1 1,4.4 0a2.2,2.2 0,1 1,-4.4 0" />
+</vector>

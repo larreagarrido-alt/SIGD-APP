@@ -1,0 +1,84 @@
+<resources xmlns:tools="http://schemas.android.com/tools">
+    <!-- Base application theme. -->
+    <style name="Base.Theme.KPIWeb" parent="Theme.Material3.DayNight.NoActionBar">
+        <!-- Customize your light theme here. -->
+        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+    </style>
+
+    <style name="Theme.KPIWeb" parent="Base.Theme.KPIWeb" />
+
+    <!-- Tema adaptativo Claro/Oscuro para Seguridad y dispositivos / Seguridad facial -->
+    <style name="Theme.KPIWeb.SecurityDark" parent="Theme.Material3.DayNight.NoActionBar">
+        <item name="android:windowBackground">@color/admin_bg_main</item>
+        <item name="colorPrimary">@color/admin_purple_primary</item>
+        <item name="colorOnPrimary">#FFFFFF</item>
+        <item name="colorSurface">@color/admin_card_bg</item>
+        <item name="colorOnSurface">@color/admin_text_primary</item>
+        <item name="colorSurfaceContainerHigh">@color/admin_card_bg</item>
+        <item name="colorOutline">@color/admin_border</item>
+        <item name="android:statusBarColor">@color/admin_bg_main</item>
+        <item name="android:navigationBarColor">@color/admin_bg_main</item>
+        <item name="materialAlertDialogTheme">@style/ThemeOverlay.KPIWeb.SecurityDarkDialog</item>
+    </style>
+
+    <style name="ThemeOverlay.KPIWeb.SecurityDarkDialog" parent="ThemeOverlay.Material3.MaterialAlertDialog">
+        <item name="colorSurface">@color/admin_card_bg</item>
+        <item name="colorSurfaceContainerHigh">@color/admin_card_bg</item>
+        <item name="colorOnSurface">@color/admin_text_primary</item>
+        <item name="colorOnSurfaceVariant">@color/admin_text_secondary</item>
+        <item name="colorPrimary">@color/admin_purple_primary</item>
+    </style>
+
+    <style name="Theme.KPIWeb.Collaborator" parent="Theme.KPIWeb">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+        <item name="android:textViewStyle">@style/CollabTextView</item>
+    </style>
+
+    <style name="CollabTextView" parent="Widget.AppCompat.TextView">
+        <item name="android:fontFamily">sans-serif</item>
+        <item name="fontFamily">sans-serif</item>
+    </style>
+
+    <style name="Theme.KPIWeb.DatePicker" parent="android:Theme.Material.Dialog">
+        <item name="android:colorAccent">@color/personal_purple_accent</item>
+        <item name="android:colorPrimary">@color/personal_purple_accent</item>
+    </style>
+
+    <style name="CollabCircleImageView" parent="">
+        <item name="cornerSize">50%</item>
+    </style>
+
+    <style name="CollabRoundedAvatar" parent="">
+        <item name="cornerSize">12dp</item>
+    </style>
+
+    <!-- Estilos de formulario e interfaz KPI de Joel -->
+    <style name="KpiCard">
+        <item name="android:background">@drawable/kpi_bg_card_white</item>
+        <item name="android:elevation">2dp</item>
+        <item name="android:padding">14dp</item>
+    </style>
+
+    <style name="KpiInput">
+        <item name="android:background">@drawable/kpi_junior_bg_input</item>
+        <item name="android:textColor">@color/kpi_text_primary</item>
+        <item name="android:textColorHint">@color/kpi_gray_light</item>
+        <item name="android:textSize">14sp</item>
+        <item name="android:paddingStart">12dp</item>
+        <item name="android:paddingEnd">12dp</item>
+    </style>
+
+    <style name="KpiSectionTitle">
+        <item name="android:textColor">@color/kpi_text_primary</item>
+        <item name="android:textSize">13sp</item>
+        <item name="android:textStyle">bold</item>
+        <item name="android:letterSpacing">0.04</item>
+    </style>
+
+    <style name="KpiLabelSubtitle">
+        <item name="android:textColor">@color/kpi_text_secondary</item>
+        <item name="android:textSize">11sp</item>
+        <item name="android:textStyle">bold</item>
+    </style>
+</resources>

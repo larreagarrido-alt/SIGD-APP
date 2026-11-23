@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta Oficial SIGD (Modo Oscuro / Night — Conservada intacta) -->
+    <color name="admin_bg_main">#10091D</color>
+    <color name="admin_bg_drawer">#160C26</color>
+    <color name="admin_card_bg">#251733</color>
+    <color name="admin_surface_secondary">#1E122C</color>
+    <color name="admin_surface_tertiary">#2F1C42</color>
+    <color name="admin_border">#3D2652</color>
+    <color name="admin_border_light">#553573</color>
+
+    <!-- Morados y Acentos Oficiales -->
+    <color name="admin_purple_primary">#8738F5</color>
+    <color name="admin_purple_highlight">#A855F7</color>
+    <color name="admin_purple_accent">#BB75FF</color>
+    <color name="admin_purple_header_start">#31144D</color>
+    <color name="admin_purple_header_end">#10091D</color>
+
+    <!-- Textos de Alta Legibilidad -->
+    <color name="admin_text_primary">#F5EDFF</color>
+    <color name="admin_text_secondary">#B9A7D0</color>
+    <color name="admin_text_muted">#836F9C</color>
+
+    <!-- Estados Semánticos de KPIs -->
+    <color name="admin_status_assigned">#8738F5</color>
+    <color name="admin_status_assigned_bg">#2E1848</color>
+    <color name="admin_status_delivered">#22C55E</color>
+    <color name="admin_status_delivered_bg">#133824</color>
+    <color name="admin_status_pending">#F59E0B</color>
+    <color name="admin_status_pending_bg">#3D2711</color>
+    <color name="admin_status_overdue">#EF4444</color>
+    <color name="admin_status_overdue_bg">#3E161C</color>
+
+    <!-- Alertas y Badges Complementarios -->
+    <color name="admin_cyan_brain">#06B6D4</color>
+    <color name="admin_cyan_brain_bg">#0E3342</color>
+    <color name="admin_alert_bg">#2A1D20</color>
+    <color name="admin_alert_border">#7C3A27</color>
+    <color name="admin_alert_text_title">#FDE047</color>
+    <color name="admin_alert_text_body">#FED7AA</color>
+    <color name="admin_alert_icon">#F59E0B</color>
+    <color name="admin_danger_text">#F87171</color>
+    <color name="admin_badge_green_pill">#14432A</color>
+
+    <!-- Tokens unificados (Modo Oscuro SIGD) -->
+    <color name="admin_dash_header_start">#211138</color>
+    <color name="admin_dash_surface_secondary">#1B1028</color>
+    <color name="admin_dash_hero_start">#311A4D</color>
+    <color name="admin_dash_hero_end">#1D102E</color>
+    <color name="admin_dash_bottom_nav">#150B24</color>
+    <color name="admin_dash_purple_dark">#581C87</color>
+    <color name="admin_dash_lilac_accent">#D8B4FE</color>
+    <color name="admin_dash_nav_active">#BB75FF</color>
+    <color name="admin_dash_nav_inactive">#8A70B0</color>
+    <color name="admin_dash_text_secondary">#BCA4E3</color>
+    <color name="admin_dash_text_muted">#8A70B0</color>
+    <color name="admin_dash_green">#1DD1A1</color>
+    <color name="admin_dash_amber">#FECA57</color>
+    <color name="admin_dash_red">#FF6B6B</color>
+    <color name="admin_dash_cyan">#38BDF8</color>
+    <color name="admin_dash_badge_purple_bg">#338738F5</color>
+    <color name="admin_dash_badge_green_bg">#261DD1A1</color>
+    <color name="admin_dash_badge_amber_bg">#26FECA57</color>
+    <color name="admin_dash_badge_red_bg">#26FF6B6B</color>
+    <color name="admin_dash_badge_cyan_bg">#2638BDF8</color>
+
+    <!-- Tokens de Seguridad / Advertencia / Crítico (Modo Oscuro) -->
+    <color name="sigd_sec_warn_bg">#2B182C</color>
+    <color name="sigd_sec_warn_border">#8F5468</color>
+    <color name="sigd_sec_crit_bg">#341426</color>
+    <color name="sigd_sec_crit_border">#FF819D</color>
+    <color name="sigd_sec_coral">#FF819D</color>
+    <color name="sigd_sec_mint">#57D6A0</color>
+</resources>

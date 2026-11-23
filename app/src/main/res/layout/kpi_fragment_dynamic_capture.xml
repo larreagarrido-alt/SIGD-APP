@@ -1,0 +1,300 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kpi_light_bg"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck,TooManyViews">
+
+    <!-- Top Header Corporativo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:elevation="3dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="16dp">
+
+        <ImageView
+            android:id="@+id/btnDynBack"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/kpi_senior_bg_stepper_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:src="@drawable/kpi_ic_back"
+            app:tint="#0F172A" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Formulario Dinámico KPI"
+                android:textColor="#0F172A"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDynDateLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Jornada del día de hoy"
+                android:textColor="#64748B"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvDynLockBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kpi_senior_bg_pill_yellow"
+            android:paddingStart="8dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="4dp"
+            android:text="Editable"
+            android:textColor="#854D0E"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/btnDynHistory"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/kpi_senior_bg_stepper_btn"
+            android:clickable="true"
+            android:contentDescription="Historial"
+            android:focusable="true"
+            android:padding="8dp"
+            android:src="@drawable/kpi_ic_calendar"
+            app:tint="#5B21B6" />
+    </LinearLayout>
+
+    <!-- Selector de Rol para Evaluación / Prueba -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Puesto:"
+            android:textColor="#334155"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <Spinner
+            android:id="@+id/spDynSelectRole"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/kpi_junior_bg_spinner" />
+
+        <TextView
+            android:id="@+id/btnUnlockDynamicForTesting"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/kpi_senior_bg_pill_yellow"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="8dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="6dp"
+            android:text="Desbloquear"
+            android:textColor="#854D0E"
+            android:textSize="11sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Justificación de Salida a Campo / Trabajo en Terreno (SIGD 2026) -->
+    <LinearLayout
+        android:id="@+id/cardFieldWorkContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/kpi_bg_card_white"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Jornada en Terreno / Salida a Campo"
+                    android:textColor="#0F172A"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Justifica el 100% de la jornada si estuviste fuera"
+                    android:textColor="#64748B"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <com.google.android.material.switchmaterial.SwitchMaterial
+                android:id="@+id/swFieldWorkJustified"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:thumbTint="#5B21B6"
+                app:trackTint="#DDD6FE" />
+        </LinearLayout>
+
+        <EditText
+            android:id="@+id/etFieldWorkReason"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:background="@drawable/kpi_senior_bg_input"
+            android:hint="Motivo de salida (ej. Sesión con cliente en Miraflores)"
+            android:padding="10dp"
+            android:textColor="#0F172A"
+            android:textSize="12sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Resumen en Vivo de Cumplimiento Consolidado -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:background="@drawable/kpi_bg_card_white"
+        android:elevation="2dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CUMPLIMIENTO PONDERADO TOTAL"
+                    android:textColor="#64748B"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDynLiveTotalPercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="0.0%"
+                    android:textColor="#5B21B6"
+                    android:textSize="26sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvDynLiveOverallLevel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/kpi_senior_bg_pill_green"
+                android:paddingStart="12dp"
+                android:paddingTop="6dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="6dp"
+                android:text="EXCELENTE"
+                android:textColor="#166534"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ProgressBar
+            android:id="@+id/pbDynLiveProgress"
+            style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent"
+            android:layout_height="8dp"
+            android:layout_marginTop="10dp"
+            android:max="100"
+            android:progress="0"
+            android:progressTint="#5B21B6" />
+
+        <TextView
+            android:id="@+id/tvDynLiveStatusDesc"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Ingresa tus números en las cajas inferiores para calcular el resultado."
+            android:textColor="#64748B"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- Lista de Entradas de KPI Dinámicos -->
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvDynamicKpis"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:paddingStart="16dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp" />
+
+    <!-- Barra Inferior de Guardado con Huella -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:elevation="6dp"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <Button
+            android:id="@+id/btnSaveDynamicKpi"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:background="@drawable/kpi_senior_bg_btn_primary"
+            android:backgroundTint="@null"
+            android:text="Confirmar Entrega Diaria con Huella"
+            android:textColor="#FFFFFF"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

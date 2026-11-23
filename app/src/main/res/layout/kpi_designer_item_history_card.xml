@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/kpi_bg_card_white"
+    android:clickable="true"
+    android:elevation="2dp"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="14dp"
+    android:paddingTop="14dp"
+    android:paddingEnd="14dp"
+    android:paddingBottom="14dp">
+
+    <!-- Icono Calendario -->
+    <FrameLayout
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/kpi_bg_circle_icon_light">
+
+        <ImageView
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:src="@drawable/kpi_ic_calendar"
+            app:tint="#5B21B6" />
+    </FrameLayout>
+
+    <!-- Información de Semana y Fechas -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/tvHistoryWeekTitle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Semana 5"
+            android:textColor="#0F172A"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvHistoryDateRange"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="08/09/2026 - 13/09/2026"
+            android:textColor="#64748B"
+            android:textSize="11sp" />
+
+        <TextView
+            android:id="@+id/tvHistoryActivitiesCount"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:text="24 de 25 actividades"
+            android:textColor="#334155"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Badge Circular Porcentaje -->
+    <FrameLayout
+        android:layout_width="38dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="6dp"
+        android:background="@drawable/kpi_bg_circle_icon_light">
+
+        <TextView
+            android:id="@+id/tvHistoryPercentBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="96%"
+            android:textColor="#5B21B6"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </FrameLayout>
+
+    <!-- Badge Nivel (BUENO / REGULAR) -->
+    <TextView
+        android:id="@+id/tvHistoryLevelBadge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:background="#FEF3C7"
+        android:paddingStart="8dp"
+        android:paddingTop="3dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="3dp"
+        android:text="BUENO"
+        android:textColor="#B45309"
+        android:textSize="10sp"
+        android:textStyle="bold" />
+
+    <!-- Flecha Abrir Detalle -->
+    <ImageView
+        android:layout_width="18dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="8dp"
+        android:src="@drawable/kpi_ic_chevron_right"
+        app:tint="#94A3B8" />
+
+</LinearLayout>

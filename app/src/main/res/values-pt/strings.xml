@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Configurações (Português) -->
+    <string name="settings_screen_title">Configurações</string>
+    <string name="settings_screen_sub">Preferências e personalização do WEBSITE</string>
+
+    <string name="settings_section_appearance">APARÊNCIA</string>
+    <string name="settings_section_notifications">NOTIFICAÇÕES</string>
+    <string name="settings_section_language">IDIOMA</string>
+    <string name="settings_section_accessibility">ACESSIBILIDADE</string>
+    <string name="settings_section_security">SEGURANÇA E ACESSO</string>
+    <string name="settings_security_devices">Segurança e dispositivos</string>
+    <string name="settings_security_devices_desc">Gerencie biometria, acessos e dispositivos vinculados</string>
+    <string name="settings_section_privacy">PRIVACIDADE E PERMISSÕES</string>
+    <string name="settings_section_help">AJUDA E SUPORTE</string>
+    <string name="settings_section_about">SOBRE O SIGD</string>
+
+    <string name="settings_theme_dark_title">Modo escuro</string>
+    <string name="settings_theme_dark_desc">Design dark premium oficial do WEBSITE (Recomendado)</string>
+    <string name="settings_theme_light_title">Modo claro</string>
+    <string name="settings_theme_light_desc">Interface para ambientes com alta luminosidade</string>
+    <string name="settings_theme_system_title">Seguir o sistema</string>
+    <string name="settings_theme_system_desc">Sincronizar automaticamente com o tema do Android</string>
+
+    <string name="settings_notif_master_title">Notificações gerais</string>
+    <string name="settings_notif_master_desc">Ativar ou silenciar notificações do dispositivo</string>
+    <string name="settings_notif_reminders_title">Lembretes de atividades</string>
+    <string name="settings_notif_reminders_desc">Alertas de compromissos e tarefas programadas</string>
+    <string name="settings_notif_kpi_title">Avisos relacionados a KPI</string>
+    <string name="settings_notif_kpi_desc">Atualizações de metas, conquistas e rendimento</string>
+    <string name="settings_notif_news_title">Novidades do WEBSITE</string>
+    <string name="settings_notif_news_desc">Anúncios institucionais e novos recursos</string>
+    <string name="settings_notif_alerts_title">Alertas importantes</string>
+    <string name="settings_notif_alerts_desc">Avisos críticos de segurança e sistema</string>
+
+    <string name="settings_lang_title">Idioma do aplicativo</string>
+    <string name="settings_lang_current">Português</string>
+    <string name="settings_lang_desc">Selecione sua preferência de idioma</string>
+
+    <string name="settings_access_text_scale_title">Tamanho do texto</string>
+    <string name="settings_access_text_scale_desc">Ajustar a escala tipográfica da interface</string>
+    <string name="settings_access_animations_title">Reduzir animações</string>
+    <string name="settings_access_animations_desc">Minimizar transições para maior fluidez</string>
+    <string name="settings_access_contrast_title">Alto contraste</string>
+    <string name="settings_access_contrast_desc">Realçar a visibilidade dos elementos</string>
+
+    <!-- Navegação e Módulos do Colaborador -->
+    <string name="collab_nav_home">Início</string>
+    <string name="collab_nav_wellness">Bem-estar</string>
+    <string name="collab_nav_kpi">KPI</string>
+    <string name="collab_nav_notifications">Notificações</string>
+    <string name="collab_nav_menu">Menu</string>
+
+    <string name="collab_role_badge">Colaborador</string>
+    <string name="collab_greeting_prefix">Olá, %1$s</string>
+    <string name="collab_switch_profile_hint">Trocar perfil</string>
+    <string name="collab_hero_badge_title">MEU DESEMPENHO</string>
+</resources>
+

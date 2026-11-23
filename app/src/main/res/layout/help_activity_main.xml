@@ -1,0 +1,853 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/collab_bg_main"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- Encabezado Superior -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/admin_space_lg"
+        android:paddingTop="@dimen/admin_space_md"
+        android:paddingEnd="@dimen/admin_space_lg"
+        android:paddingBottom="@dimen/admin_space_md">
+
+        <!-- Botón Regresar -->
+        <FrameLayout
+            android:id="@+id/help_btn_back"
+            android:layout_width="@dimen/admin_icon_btn_size"
+            android:layout_height="@dimen/admin_icon_btn_size"
+            android:background="@drawable/collab_bg_circle_button"
+            android:clickable="true"
+            android:contentDescription="Regresar"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/admin_ic_chevron_left"
+                app:tint="@color/collab_text_primary" />
+        </FrameLayout>
+
+        <!-- Título y Subtítulo -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/admin_space_md"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/help_screen_title"
+                android:textColor="@color/collab_text_primary"
+                android:textSize="@dimen/admin_text_xl"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/help_screen_subtitle"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs" />
+        </LinearLayout>
+
+        <!-- Icono Moderno de Ayuda y Soporte + Marca WEBSITE -->
+        <FrameLayout
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/collab_bg_icon_badge_purple">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/collab_ic_help_support"
+                app:tint="@color/collab_purple_accent" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/collab_divider" />
+
+    <!-- Contenido Scrollable -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="48dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/admin_space_lg">
+
+            <!-- Buscador Interactivo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/collab_bg_input_box"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp">
+
+                <ImageView
+                    android:layout_width="20dp"
+                    android:layout_height="20dp"
+                    android:src="@drawable/help_ic_search"
+                    app:tint="@color/collab_purple_accent" />
+
+                <EditText
+                    android:id="@+id/help_et_search"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:background="@null"
+                    android:hint="@string/help_search_hint"
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:textColor="@color/collab_text_primary"
+                    android:textColorHint="@color/collab_text_muted"
+                    android:textSize="@dimen/admin_text_sm" />
+            </LinearLayout>
+
+            <!-- SECCIÓN 1: PREGUNTAS FRECUENTES (Acordeón) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:layout_marginBottom="@dimen/admin_space_md"
+                android:letterSpacing="0.08"
+                android:text="@string/help_section_faq"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="@dimen/admin_space_md">
+
+                <!-- FAQ Item 1 -->
+                <LinearLayout
+                    android:id="@+id/help_faq_header_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="10dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/help_faq_q1"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="@dimen/admin_text_sm"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/help_faq_icon_1"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/admin_ic_chevron_down"
+                        app:tint="@color/collab_purple_accent" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/help_faq_body_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="@string/help_faq_a1"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="@dimen/admin_text_xs"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- FAQ Item 2 -->
+                <LinearLayout
+                    android:id="@+id/help_faq_header_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/help_faq_q2"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="@dimen/admin_text_sm"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/help_faq_icon_2"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/admin_ic_chevron_down"
+                        app:tint="@color/collab_purple_accent" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/help_faq_body_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="@string/help_faq_a2"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="@dimen/admin_text_xs"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- FAQ Item 3 -->
+                <LinearLayout
+                    android:id="@+id/help_faq_header_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/help_faq_q3"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="@dimen/admin_text_sm"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/help_faq_icon_3"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/admin_ic_chevron_down"
+                        app:tint="@color/collab_purple_accent" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/help_faq_body_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="@string/help_faq_a3"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="@dimen/admin_text_xs"
+                    android:visibility="gone" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- FAQ Item 4 -->
+                <LinearLayout
+                    android:id="@+id/help_faq_header_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="12dp"
+                    android:paddingBottom="10dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="@string/help_faq_q4"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="@dimen/admin_text_sm"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:id="@+id/help_faq_icon_4"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/admin_ic_chevron_down"
+                        app:tint="@color/collab_purple_accent" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/help_faq_body_4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="12dp"
+                    android:lineSpacingExtra="4dp"
+                    android:text="@string/help_faq_a4"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="@dimen/admin_text_xs"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- SECCIÓN 2: GUÍA DE USO DE WEBSITE -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:layout_marginBottom="@dimen/admin_space_md"
+                android:letterSpacing="0.08"
+                android:text="@string/help_section_guide"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="@dimen/admin_space_md">
+
+                <!-- Guía 1 -->
+                <LinearLayout
+                    android:id="@+id/help_row_guide_1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/admin_ic_dashboard"
+                        app:tint="@color/collab_purple_accent" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/admin_space_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/help_guide_title1"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/help_guide_desc1"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Guía 2 -->
+                <LinearLayout
+                    android:id="@+id/help_row_guide_2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/admin_ic_users"
+                        app:tint="@color/admin_cyan_brain" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/admin_space_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/help_guide_title2"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/help_guide_desc2"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Guía 3 -->
+                <LinearLayout
+                    android:id="@+id/help_row_guide_3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="8dp"
+                    android:paddingBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/admin_ic_chart"
+                        app:tint="@color/admin_status_delivered" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/admin_space_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/help_guide_title3"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/help_guide_desc3"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- SECCIÓN 3: PROBLEMAS FRECUENTES Y SOLUCIONES -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:layout_marginBottom="@dimen/admin_space_md"
+                android:letterSpacing="0.08"
+                android:text="@string/help_section_troubleshoot"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="@dimen/admin_space_md">
+
+                <!-- Problema 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:orientation="horizontal"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/admin_ic_alert_triangle"
+                        app:tint="@color/admin_status_pending" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/admin_space_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/help_issue_title1"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:lineSpacingExtra="2dp"
+                            android:text="@string/help_issue_desc1"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Problema 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:orientation="horizontal"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/admin_ic_alert_triangle"
+                        app:tint="@color/admin_status_pending" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/admin_space_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/help_issue_title2"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:lineSpacingExtra="2dp"
+                            android:text="@string/help_issue_desc2"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Problema 3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="top"
+                    android:orientation="horizontal"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_marginTop="2dp"
+                        android:src="@drawable/admin_ic_alert_triangle"
+                        app:tint="@color/admin_status_pending" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/admin_space_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/help_issue_title3"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:lineSpacingExtra="2dp"
+                            android:text="@string/help_issue_desc3"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- SECCIÓN 4: ORIENTACIÓN SOBRE MÓDULOS -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:layout_marginBottom="@dimen/admin_space_md"
+                android:letterSpacing="0.08"
+                android:text="@string/help_section_modules"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="@dimen/admin_space_md">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/help_module_dash"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="@dimen/admin_text_xs" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/collab_divider" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/help_module_staff"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="@dimen/admin_text_xs" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/collab_divider" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/help_module_reports"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="@dimen/admin_text_xs" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/collab_divider" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/help_module_ranking"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="@dimen/admin_text_xs" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/collab_divider" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/help_module_rewards"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="@dimen/admin_text_xs" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/collab_divider" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/help_module_wellness"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="@dimen/admin_text_xs" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginBottom="8dp"
+                    android:background="@color/collab_divider" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/help_module_notifs"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="@dimen/admin_text_xs" />
+            </LinearLayout>
+
+            <!-- SECCIÓN 5: CANAL DE SOPORTE TÉCNICO -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:layout_marginBottom="@dimen/admin_space_md"
+                android:letterSpacing="0.08"
+                android:text="@string/help_section_contact"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_card_secondary"
+                android:orientation="vertical"
+                android:padding="@dimen/admin_space_md">
+
+                <!-- Correo Soporte -->
+                <LinearLayout
+                    android:id="@+id/help_row_contact_email"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingTop="6dp"
+                    android:paddingBottom="6dp">
+
+                    <ImageView
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:src="@drawable/account_ic_mail"
+                        app:tint="@color/collab_purple_accent" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="@dimen/admin_space_md"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/help_contact_email_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/help_contact_email_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="6dp"
+                    android:layout_marginBottom="6dp"
+                    android:background="@color/collab_divider" />
+
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

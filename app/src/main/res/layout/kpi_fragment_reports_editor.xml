@@ -1,0 +1,316 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kpi_light_bg"
+    android:orientation="vertical">
+
+    <!-- CABECERA DEL EDITOR VISUAL DE PLANTILLAS -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kpi_bg_header_elegant"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="14dp"
+        android:paddingTop="14dp"
+        android:paddingBottom="12dp">
+
+        <ImageView
+            android:id="@+id/btnEditorBack"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/kpi_bg_translucent_pill"
+            android:clickable="true"
+            android:contentDescription="Volver"
+            android:focusable="true"
+            android:padding="9dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/kpi_ic_arrow_back_bold" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Editor de reportes KPI"
+                android:textColor="#FFFFFF"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SIGD · Plantilla por cargo"
+                android:textColor="#E0E7FF"
+                android:textSize="10.5sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnEditorReset"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/kpi_bg_translucent_pill"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="⋮"
+            android:textColor="#FFFFFF"
+            android:textSize="20sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- PANEL SUPERIOR DE FILTRO DE CARGO Y CONTROLES DE VISTA -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kpi_bg_card_white"
+        android:elevation="3dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="12dp"
+        android:paddingVertical="8dp">
+
+        <!-- Selector de Cargo + Indicador de estado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvEditorCargoLabel"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CARGO A EDITAR"
+                    android:textColor="@color/kpi_primary"
+                    android:textSize="9.5sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spEditorRoleSelector"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/kpi_junior_bg_spinner"
+                    android:paddingHorizontal="8dp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:gravity="end"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvEditorModifiedCount"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#EEF2FF"
+                    android:paddingHorizontal="8dp"
+                    android:paddingVertical="3dp"
+                    android:text="Plantilla Oficial"
+                    android:textColor="@color/kpi_primary"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btnEditorToggleHighlight"
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_marginTop="4dp"
+                    android:background="@drawable/kpi_junior_bg_spinner"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:paddingHorizontal="10dp"
+                    android:text="✎ Guías: ON"
+                    android:textColor="@color/kpi_primary"
+                    android:textSize="10.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Selector de Turno (Visible para cargos de doble turno como Programador Jr / Diseñador Jr) -->
+        <LinearLayout
+            android:id="@+id/llEditorShiftToggle"
+            android:layout_width="match_parent"
+            android:layout_height="30dp"
+            android:layout_marginTop="6dp"
+            android:background="#F1F5F9"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:padding="2dp"
+            android:visibility="gone">
+
+            <TextView
+                android:id="@+id/btnEditorShiftMorning"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/kpi_bg_btn_elegant"
+                android:gravity="center"
+                android:text="☀ Plantilla Turno Mañana"
+                android:textColor="#FFFFFF"
+                android:textSize="10.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnEditorShiftAfternoon"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:gravity="center"
+                android:text="🌙 Plantilla Turno Tarde"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="10.5sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- LIENZO DEL REPORTE OFICIAL EN MODO PLANTILLA LIMPIA EDITABLE -->
+    <ScrollView
+        android:id="@+id/svEditorSheetScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- Aviso interactivo superior + Controles de Zoom -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="6dp"
+                android:background="@drawable/kpi_bg_header_elegant"
+                android:forceDarkAllowed="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="10dp"
+                android:paddingVertical="6dp">
+
+                <TextView
+                    android:id="@+id/btnEditorFitPage"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:minHeight="36dp"
+                    android:gravity="center_vertical"
+                    android:text="Ajustar página"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="28dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/kpi_bg_translucent_pill"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <TextView
+                        android:id="@+id/btnEditorZoomOut"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="−"
+                        android:textColor="#FFFFFF"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvEditorZoomPercent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:minWidth="40dp"
+                        android:paddingHorizontal="4dp"
+                        android:text="100%"
+                        android:textColor="#FFFFFF"
+                        android:textSize="10.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/btnEditorZoomIn"
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="+"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Contenedor con Zoom Interactivo exclusivo del Editor Maestro -->
+            <pe.net.ws.kpiweb.features.kpi.ui.view.KpiZoomableSheetLayout
+                android:id="@+id/zoomEditorSheetLayout"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:forceDarkAllowed="false">
+
+                <!-- Contenedor de la Hoja Oficial SIGD del Cargo Seleccionado -->
+                <FrameLayout
+                    android:id="@+id/flEditorSheetContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:forceDarkAllowed="false" />
+
+            </pe.net.ws.kpiweb.features.kpi.ui.view.KpiZoomableSheetLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- BARRA INFERIOR DE GUARDADO Y SINCRONIZACIÓN -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kpi_bg_card_white"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="10dp">
+
+        <TextView
+            android:id="@+id/btnEditorSaveChanges"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:background="@drawable/kpi_bg_btn_elegant"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="Guardar plantilla"
+            android:textColor="#FFFFFF"
+            android:textSize="13.5sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

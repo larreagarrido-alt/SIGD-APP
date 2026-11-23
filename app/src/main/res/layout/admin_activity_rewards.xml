@@ -1,0 +1,765 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/rewards_scroll"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/admin_bg_main"
+    android:clipToPadding="false"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="32dp">
+
+        <!-- 1. ENCABEZADO PREMIUM -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/rewards_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/collab_bg_circle_button"
+                android:clickable="true"
+                android:contentDescription="Volver"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/admin_ic_chevron_left"
+                    app:tint="@color/collab_lilac_accent" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="10dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Gestión de premios"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="19.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="Administra las recompensas disponibles para tu equipo"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="11.5sp" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/rewards_refresh"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/collab_bg_circle_button"
+                android:clickable="true"
+                android:contentDescription="Actualizar publicaciones"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/rewards_refresh_icon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/admin_ic_refresh"
+                    app:tint="#B54CFF" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- 2. BANNER PREMIUM DE RECOMPENSAS -->
+        <LinearLayout
+            android:id="@+id/rewards_hero_banner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/admin_bg_rewards_hero_banner"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="18dp"
+            android:paddingTop="16dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="16dp">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collab_bg_rewards_points_pill"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="9dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="3dp">
+
+                    <ImageView
+                        android:layout_width="12dp"
+                        android:layout_height="12dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/collaborator_ic_star"
+                        app:tint="#F6C35D" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:text="Recompensas"
+                        android:textColor="#F6C35D"
+                        android:textSize="10.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="9dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="Gestiona y publica premios"
+                    android:textColor="@android:color/white"
+                    android:textSize="17sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="Crea, programa y controla las recompensas de tu equipo"
+                    android:textColor="#E4D5F6"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="106dp"
+                android:layout_height="106dp"
+                android:contentDescription="Trofeo dorado y cajas de regalo"
+                android:scaleType="fitCenter"
+                android:src="@drawable/admin_ill_rewards_hero_trophy" />
+        </LinearLayout>
+
+        <!-- 3. TARJETA DE RESUMEN DE PUBLICACIONES -->
+        <LinearLayout
+            android:id="@+id/rewards_summary_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/admin_bg_rewards_surface_card"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="36dp"
+                    android:layout_height="36dp"
+                    android:background="@drawable/collab_bg_rewards_image_frame">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_rewards_layers"
+                        app:tint="#B54CFF" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Resumen de publicaciones"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <ProgressBar
+                    android:id="@+id/rewards_summary_loading"
+                    style="?android:attr/progressBarStyleSmall"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginEnd="8dp"
+                    android:indeterminate="true"
+                    android:indeterminateTint="#B54CFF"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/rewards_total_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collab_bg_pill_purple"
+                    android:maxLines="1"
+                    android:paddingStart="10dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="4dp"
+                    android:text="Total: 0"
+                    android:textColor="@color/admin_purple_accent"
+                    android:textSize="11.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Cuadrícula adaptable 2x2 de estados reales -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <!-- Activos -->
+                <LinearLayout
+                    android:id="@+id/rewards_stat_active"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/admin_bg_rewards_stat_active"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingTop="11dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="11dp">
+
+                    <FrameLayout
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/collab_bg_icon_badge_green">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/collaborator_ic_check_circle"
+                            app:tint="#57D6A0" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/rewards_count_active"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="0"
+                            android:textColor="@color/admin_status_delivered"
+                            android:textSize="19sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Activos"
+                            android:textColor="@color/admin_text_secondary"
+                            android:textSize="11.5sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Programados -->
+                <LinearLayout
+                    android:id="@+id/rewards_stat_scheduled"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/admin_bg_rewards_stat_scheduled"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingTop="11dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="11dp">
+
+                    <FrameLayout
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/collab_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/admin_ic_calendar"
+                            app:tint="#C69BF5" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/rewards_count_scheduled"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="0"
+                            android:textColor="@color/admin_purple_accent"
+                            android:textSize="19sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Programados"
+                            android:textColor="@color/admin_text_secondary"
+                            android:textSize="11.5sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="2">
+
+                <!-- Vencidos -->
+                <LinearLayout
+                    android:id="@+id/rewards_stat_expired"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/admin_bg_rewards_stat_expired"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingTop="11dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="11dp">
+
+                    <FrameLayout
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/collab_bg_icon_badge_amber">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/collaborator_ic_clock"
+                            app:tint="#F3B76B" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/rewards_count_expired"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="0"
+                            android:textColor="@color/admin_status_pending"
+                            android:textSize="19sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Vencidos"
+                            android:textColor="@color/admin_text_secondary"
+                            android:textSize="11.5sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Borradores -->
+                <LinearLayout
+                    android:id="@+id/rewards_stat_draft"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/admin_bg_rewards_stat_draft"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingTop="11dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="11dp">
+
+                    <FrameLayout
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/collab_bg_icon_badge_cyan">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/collaborator_ic_document"
+                            app:tint="#8CCBFF" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/rewards_count_draft"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="0"
+                            android:textColor="@color/admin_cyan_brain"
+                            android:textSize="19sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Borradores"
+                            android:textColor="@color/admin_text_secondary"
+                            android:textSize="11.5sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 4. BOTÓN PRINCIPAL: AGREGAR PREMIO -->
+        <LinearLayout
+            android:id="@+id/rewards_btn_add"
+            android:layout_width="match_parent"
+            android:layout_height="52dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/admin_bg_rewards_primary_cta"
+            android:clickable="true"
+            android:contentDescription="Agregar premio"
+            android:elevation="4dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_marginEnd="9dp"
+                android:contentDescription="@null"
+                android:src="@drawable/admin_ic_plus_circle"
+                app:tint="@android:color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agregar premio"
+                android:textColor="@android:color/white"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- 5. SECCIÓN: EXPLORAR PREMIOS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="22dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="@drawable/collab_bg_rewards_image_frame">
+
+                <ImageView
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/collab_ic_gift"
+                    app:tint="#B54CFF" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="11dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Explorar premios"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:ellipsize="end"
+                    android:maxLines="2"
+                    android:text="Busca, filtra y gestiona las recompensas registradas"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="11.5sp" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/rewards_list_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_pill_purple"
+                android:maxLines="1"
+                android:paddingStart="10dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="4dp"
+                android:text="0 premios"
+                android:textColor="@color/admin_purple_accent"
+                android:textSize="11.5sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- 6. BUSCADOR PREMIUM -->
+        <LinearLayout
+            android:id="@+id/rewards_search_container"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/admin_bg_rewards_search"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="14dp"
+            android:paddingEnd="8dp">
+
+            <ImageView
+                android:id="@+id/rewards_search_icon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:contentDescription="@null"
+                android:src="@drawable/admin_ic_search"
+                app:tint="@color/admin_text_secondary" />
+
+            <EditText
+                android:id="@+id/rewards_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="Buscar por título o descripción..."
+                android:imeOptions="actionSearch"
+                android:importantForAutofill="no"
+                android:inputType="text"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/admin_text_primary"
+                android:textColorHint="@color/admin_text_muted"
+                android:textSize="13.5sp" />
+
+            <FrameLayout
+                android:id="@+id/rewards_search_clear"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:clickable="true"
+                android:contentDescription="Limpiar búsqueda"
+                android:focusable="true"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/collab_ic_close"
+                    app:tint="@color/admin_text_secondary" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- 7. FILTROS POR ESTADO (CHIPS PREMIUM CON ÍCONOS) -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <LinearLayout
+                android:id="@+id/rewards_filters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal" />
+        </HorizontalScrollView>
+
+        <!-- 8. LISTADO DE PREMIOS REGISTRADOS -->
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rewards_recycler"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:nestedScrollingEnabled="false"
+            android:overScrollMode="never" />
+
+        <!-- 9. ESTADO VACÍO PREMIUM / SIN RESULTADOS / ERROR -->
+        <LinearLayout
+            android:id="@+id/rewards_empty_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/admin_bg_rewards_surface_card"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="24dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="24dp"
+            android:visibility="gone">
+
+            <!-- Ilustración 3D de caja de regalo abierta (visible cuando aún no hay premios) -->
+            <ImageView
+                android:id="@+id/rewards_empty_illustration"
+                android:layout_width="104dp"
+                android:layout_height="104dp"
+                android:contentDescription="Sin premios registrados"
+                android:scaleType="fitCenter"
+                android:src="@drawable/admin_ill_rewards_empty_open_gift" />
+
+            <!-- Ícono compacto para estado de búsqueda sin resultados o error -->
+            <FrameLayout
+                android:id="@+id/rewards_empty_icon_badge"
+                android:layout_width="56dp"
+                android:layout_height="56dp"
+                android:background="@drawable/collab_bg_rewards_image_frame"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/rewards_empty_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/admin_ic_search"
+                    app:tint="#B54CFF" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/rewards_empty_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:text="Aún no hay premios"
+                android:textColor="@color/admin_text_primary"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/rewards_empty_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:text="Publica la primera recompensa para compartirla con tu equipo"
+                android:textColor="@color/admin_text_secondary"
+                android:textSize="13sp" />
+
+            <!-- Acción contextual solo para estados de error o búsqueda/filtros sin resultados -->
+            <TextView
+                android:id="@+id/rewards_empty_action"
+                android:layout_width="wrap_content"
+                android:layout_height="42dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/admin_bg_rewards_secondary_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="24dp"
+                android:paddingEnd="24dp"
+                android:textColor="@color/admin_text_primary"
+                android:textSize="13.5sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+</androidx.core.widget.NestedScrollView>

@@ -1,0 +1,935 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kpi_light_bg"
+    android:fillViewport="true"
+    android:overScrollMode="never"
+    tools:ignore="HardcodedText,Overdraw,KeyboardInaccessibleWidget,TextContrastCheck,TouchTargetSizeCheck,TooManyViews,UseCompoundDrawables,SmallSp,NestedWeights,ContentDescription,Autofill,LabelFor">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ============================================== -->
+        <!-- TARJETA CABECERA: TÍTULO, FECHA Y DÍAS SEMANA  -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:elevation="3dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Encabezado con icono en círculo y badge SIGD -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/kpi_bg_circle_icon_light">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="KPI Diario"
+                        android:src="@drawable/kpi_ic_document"
+                        app:tint="@color/kpi_primary" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvFormRoleHeaderTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="KPI Diario · Producción Creativa"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvFormRoleHeaderSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Control diario de entregables (Lunes a Sábado)"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvFormStyleBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:background="@drawable/kpi_bg_pill_status"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:paddingHorizontal="12dp"
+                    android:text="COLABORADOR"
+                    android:textColor="@color/kpi_success_text"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Selector de Fecha Interactivo (48dp touch target) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:id="@+id/btnSelectDateDesigner"
+                    android:layout_width="0dp"
+                    android:layout_height="48dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_junior_bg_input"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="Calendario"
+                        android:src="@drawable/kpi_ic_calendar"
+                        app:tint="@color/kpi_primary" />
+
+                    <TextView
+                        android:id="@+id/tvFormSelectedDate"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:text="Lunes, 19 de octubre de 2026"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Botón 'Ir a Hoy' (48dp touch target) -->
+                <LinearLayout
+                    android:id="@+id/btnResetDateToday"
+                    android:layout_width="wrap_content"
+                    android:layout_height="48dp"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/kpi_bg_goal_card_selected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:minWidth="58dp"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingEnd="14dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="HOY"
+                        android:textColor="@color/kpi_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Barra Rápida Simétrica de Días de la Semana Actual (LUN a SÁB, 52dp height) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:baselineAligned="false"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:weightSum="6">
+
+                <!-- LUN -->
+                <LinearLayout
+                    android:id="@+id/btnDayLun"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_designer_bg_day_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDayLabelLun"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="LUN"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDayStatusLun"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="•"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- MAR -->
+                <LinearLayout
+                    android:id="@+id/btnDayMar"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_designer_bg_day_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDayLabelMar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MAR"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDayStatusMar"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="•"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- MIÉ -->
+                <LinearLayout
+                    android:id="@+id/btnDayMie"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_designer_bg_day_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDayLabelMie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="MIÉ"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDayStatusMie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="•"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- JUE -->
+                <LinearLayout
+                    android:id="@+id/btnDayJue"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_designer_bg_day_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDayLabelJue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="JUE"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDayStatusJue"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="•"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- VIE -->
+                <LinearLayout
+                    android:id="@+id/btnDayVie"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_designer_bg_day_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDayLabelVie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="VIE"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDayStatusVie"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="•"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- SÁB -->
+                <LinearLayout
+                    android:id="@+id/btnDaySab"
+                    android:layout_width="0dp"
+                    android:layout_height="52dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_designer_bg_day_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDayLabelSab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SÁB"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDayStatusSab"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="•"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============================================== -->
+        <!-- TARJETA DE MODALIDAD Y STEPPERS DE PRODUCCIÓN  -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kpi_bg_card_white"
+            android:elevation="3dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Banner Informativo de Bloqueo / Completado -->
+            <LinearLayout
+                android:id="@+id/containerDayLockBanner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/kpi_designer_bg_day_completed"
+                android:orientation="vertical"
+                android:padding="12dp"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="Bloqueado"
+                        android:src="@drawable/kpi_ic_check"
+                        app:tint="@color/kpi_primary" />
+
+                    <TextView
+                        android:id="@+id/tvLockBannerTitle"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:text="Día registrado y verificado biométricamente"
+                        android:textColor="@color/kpi_success_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/tvLockBannerSubtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Los datos fueron confirmados y enviados a los reportes semanales. El formulario está bloqueado para evitar registros duplicados."
+                    android:textColor="@color/kpi_success_text"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- Panel Resumen de Día / Modalidad / Meta Diaria con Estilo Destacado -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/kpi_bg_goal_card_selected"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="104dp"
+                        android:layout_height="wrap_content"
+                        android:text="DÍA ACTIVO"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvFormDayName"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/kpi_bg_pill_status"
+                        android:paddingHorizontal="10dp"
+                        android:paddingVertical="3dp"
+                        android:text="LUNES"
+                        android:textColor="@color/kpi_success_text"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="104dp"
+                        android:layout_height="wrap_content"
+                        android:text="MODALIDAD"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvFormModality"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="B - Audiovisual + Diseño"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="104dp"
+                        android:layout_height="wrap_content"
+                        android:text="META DIARIA"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvFormDailyGoal"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="02 videos + 02 diseños"
+                        android:textColor="@color/kpi_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:letterSpacing="0.06"
+                android:text="CANTIDAD DE ENTREGABLES REALIZADOS"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <!-- ============================================== -->
+            <!-- STEPPER 1: DISEÑOS GRÁFICOS                    -->
+            <!-- ============================================== -->
+            <LinearLayout
+                android:id="@+id/containerStepperDesigns"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/kpi_designer_bg_day_unselected"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <FrameLayout
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/kpi_bg_circle_icon_light">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Diseños"
+                        android:src="@drawable/kpi_ic_image"
+                        app:tint="#E11D48" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitleDesigns"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Diseños gráficos"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvMetaDesignsSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Meta: 02 diseños"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Caja numérica interactiva (abre teclado numérico personalizado) -->
+                <LinearLayout
+                    android:layout_width="72dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/kpi_senior_bg_input"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btnMinusDesigns"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tvDesignsCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="2"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/btnPlusDesigns"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ============================================== -->
+            <!-- STEPPER 2: VIDEOS                              -->
+            <!-- ============================================== -->
+            <LinearLayout
+                android:id="@+id/containerStepperVideos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/kpi_designer_bg_day_unselected"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <FrameLayout
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/kpi_bg_circle_icon_light">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Videos"
+                        android:src="@drawable/kpi_ic_video"
+                        app:tint="#0284C7" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitleVideos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Videos y Reels"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvMetaVideosSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Meta: 02 videos"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Caja numérica interactiva (abre teclado numérico personalizado) -->
+                <LinearLayout
+                    android:layout_width="72dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/kpi_senior_bg_input"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btnMinusVideos"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tvVideosCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/btnPlusVideos"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ============================================== -->
+            <!-- STEPPER 3: SESIONES FOTOGRÁFICAS               -->
+            <!-- ============================================== -->
+            <LinearLayout
+                android:id="@+id/containerStepperPhotos"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/kpi_designer_bg_day_unselected"
+                android:baselineAligned="false"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <FrameLayout
+                    android:layout_width="42dp"
+                    android:layout_height="42dp"
+                    android:background="@drawable/kpi_bg_circle_icon_light">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Sesiones fotográficas"
+                        android:src="@drawable/kpi_ic_target"
+                        app:tint="#10B981" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvTitlePhotos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sesiones fotográficas"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvMetaPhotosSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="No aplica este día"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Caja numérica interactiva (abre teclado numérico personalizado) -->
+                <LinearLayout
+                    android:layout_width="72dp"
+                    android:layout_height="48dp"
+                    android:background="@drawable/kpi_senior_bg_input"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageButton
+                        android:id="@+id/btnMinusPhotos"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/tvPhotosCount"
+                        android:layout_width="match_parent"
+                        android:layout_height="match_parent"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="0"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="16sp"
+                        android:textStyle="bold" />
+
+                    <ImageButton
+                        android:id="@+id/btnPlusPhotos"
+                        android:layout_width="0dp"
+                        android:layout_height="0dp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="12dp"
+                android:background="@color/kpi_border" />
+
+            <!-- Observaciones del día (opcional) -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Observaciones del día (opcional)"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etDailyObservations"
+                android:layout_width="match_parent"
+                android:layout_height="68dp"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/kpi_junior_bg_input"
+                android:clickable="true"
+                android:cursorVisible="false"
+                android:focusable="false"
+                android:gravity="top"
+                android:hint="Toca aquí para escribir con el teclado de letras..."
+                android:importantForAutofill="no"
+                android:inputType="none"
+                android:maxLength="200"
+                android:padding="12dp"
+                android:textColor="@color/kpi_text_primary"
+                android:textColorHint="@color/kpi_text_secondary"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/tvCharCounter"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="4dp"
+                android:text="0/200"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="12sp" />
+
+            <!-- ============================================== -->
+            <!-- BOTÓN 1: GUARDAR AVANCE DEL DÍA (SIN BLOQUEAR) -->
+            <!-- ============================================== -->
+            <LinearLayout
+                android:id="@+id/btnSaveDailyDraft"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/kpi_bg_goal_card_selected"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:minHeight="54dp"
+                android:orientation="vertical"
+                android:paddingHorizontal="16dp"
+                android:paddingVertical="8dp">
+
+                <TextView
+                    android:id="@+id/tvDraftButtonTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Guardar Avance del Día (Sin Bloquear)"
+                    android:textColor="@color/kpi_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDraftButtonSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Puedes seguir llenando Lunes a Sábado antes del envío final"
+                    android:textColor="@color/kpi_text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- ============================================== -->
+            <!-- BOTÓN 2: ENVIAR REPORTE FINAL CON HUELLA    -->
+            <!-- ============================================== -->
+            <LinearLayout
+                android:id="@+id/btnSaveDailyProduction"
+                android:layout_width="match_parent"
+                android:layout_height="58dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/kpi_bg_gradient_btn"
+                android:clickable="true"
+                android:elevation="4dp"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingEnd="16dp">
+
+                <ImageView
+                    android:id="@+id/ivSaveButtonIcon"
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:contentDescription="Guardar"
+                    android:src="@drawable/kpi_ic_target"
+                    app:tint="#FFFFFF" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvSaveButtonTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Enviar Reporte Final (Cerrar con Huella)"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSaveButtonSubtitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sella tus KPIs finales y desbloquea al Pandita Feliz"
+                        android:textColor="#FFFFFF"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Botón opcional para modificar si ya estaba bloqueado -->
+            <LinearLayout
+                android:id="@+id/btnUnlockRecord"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/kpi_designer_bg_day_unselected"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Modificar datos (Re-autenticar con biometría)"
+                    android:textColor="@color/kpi_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

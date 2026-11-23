@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Módulo Ayuda y Soporte -->
+    <string name="help_screen_title">Ayuda y soporte</string>
+    <string name="help_screen_subtitle">Centro de orientación y asistencia para el colaborador</string>
+    <string name="help_search_hint">Buscar dudas sobre KPI, notificaciones o ajustes…</string>
+
+    <!-- Secciones -->
+    <string name="help_section_faq">PREGUNTAS FRECUENTES DEL COLABORADOR</string>
+    <string name="help_section_guide">GUÍA DE USO EN WEBSITE</string>
+    <string name="help_section_troubleshoot">SOLUCIÓN DE DUDAS RÁPIDAS</string>
+    <string name="help_section_modules">ORIENTACIÓN SOBRE APARTADOS</string>
+    <string name="help_section_contact">CANAL DE CONTACTO Y SOPORTE</string>
+
+    <!-- FAQ Items orientados al Colaborador -->
+    <string name="help_faq_q1">¿Cómo ingreso y consulto el apartado Mis KPI?</string>
+    <string name="help_faq_a1">Presiona el botón central destacado KPI en la barra de navegación inferior o el acceso directo Mis KPI desde tu pantalla de Inicio. Allí podrás consultar tus indicadores asignados, completados, pendientes y su fecha límite.</string>
+
+    <string name="help_faq_q2">¿Cómo consulto mis notificaciones y recordatorios?</string>
+    <string name="help_faq_a2">Toca el icono Notificaciones en la barra inferior. Puedes filtrar tus avisos por categoría (Todas, KPI, Actividades, Evaluación o General), marcarlos como leídos o tocar uno para ir directamente al apartado relacionado.</string>
+
+    <string name="help_faq_q3">¿Cómo cambio el tema entre Modo claro, Modo oscuro o Sistema?</string>
+    <string name="help_faq_a3">Abre la pestaña Menú en la barra inferior e ingresa a Configuración. En la sección Apariencia selecciona Modo claro, Modo oscuro o Utilizar configuración del sistema; el cambio se aplica inmediatamente en toda tu interfaz.</string>
+
+    <string name="help_faq_q4">¿Dónde consulto mi cuenta?</string>
+    <string name="help_faq_a4">Abre Menú y selecciona Mi cuenta para revisar los datos de tu perfil y las opciones de seguridad disponibles.</string>
+
+    <!-- Guía de uso -->
+    <string name="help_guide_title1">Cómo ingresar y dar seguimiento a Mis KPI</string>
+    <string name="help_guide_desc1">Pasos para revisar metas asignadas, avances, fechas de corte y estados de evaluación.</string>
+    <string name="help_guide_title2">Uso del centro de Notificaciones y alertas</string>
+    <string name="help_guide_desc2">Cómo filtrar avisos, probar recordatorios locales y navegar al módulo relacionado.</string>
+    <string name="help_guide_title3">Configuración de apariencia, privacidad y cuenta</string>
+    <string name="help_guide_desc3">Guía para personalizar el tema morado, gestionar permisos y administrar tu perfil.</string>
+
+    <!-- Problemas frecuentes -->
+    <string name="help_issue_title1">Mi evaluación aparece como "Pendiente de evaluación"</string>
+    <string name="help_issue_desc1">Significa que el período sigue en consolidación y aún no se ha publicado el puntaje final. Tus avances de KPI continúan registrándose con normalidad.</string>
+    <string name="help_issue_title2">No recibo los recordatorios locales de KPI</string>
+    <string name="help_issue_desc2">Verifica en Configuración &gt; Notificaciones que las alertas maestras y de KPI estén activadas, y en Privacidad y permisos que Android tenga el permiso concedido.</string>
+    <string name="help_issue_title3">Necesito revisar mis datos de perfil</string>
+    <string name="help_issue_desc3">Abre Menú &gt; Mi cuenta. Si algún dato laboral no corresponde, consulta al personal responsable de mantenerlo actualizado.</string>
+
+    <!-- Orientación de módulos -->
+    <string name="help_module_dash">Inicio: Resumen de tu rendimiento, KPI asignados, pendientes, completados y próxima entrega.</string>
+    <string name="help_module_staff">Bienestar: Abre el Test de Bienestar desde la barra inferior para consultar y registrar tu autoevaluación local.</string>
+    <string name="help_module_reports">Mis KPI: Consulta detallada de tus indicadores asignados y estado de cumplimiento.</string>
+    <string name="help_module_ranking">Notificaciones: Bandeja de avisos por tipo, filtros por categoría y recordatorios locales.</string>
+    <string name="help_module_rewards">Mi cuenta: Información personal y laboral del colaborador y opciones de seguridad.</string>
+    <string name="help_module_wellness">Configuración: Cambio real entre Modo claro, Modo oscuro y Sistema, y control de alertas.</string>
+    <string name="help_module_notifs">Privacidad y permisos: Estado de permisos del sistema y gestión de datos locales.</string>
+
+    <!-- Contacto (Sin inventar correos institucionales) -->
+    <string name="help_contact_email_title">Correo de soporte institucional</string>
+    <string name="help_contact_email_desc">Correo de soporte por definir</string>
+</resources>

@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="116dp"
+    android:height="116dp"
+    android:viewportWidth="160"
+    android:viewportHeight="160">
+
+    <!-- Halo lavanda suave de fondo -->
+    <path android:pathData="M80,76m-66,0a66,66 0,1 1,132 0a66,66 0,1 1,-132 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="80"
+                android:centerY="76"
+                android:gradientRadius="66"
+                android:type="radial">
+                <item android:color="#52B54CFF" android:offset="0.0" />
+                <item android:color="#248B30E0" android:offset="0.58" />
+                <item android:color="#0011091F" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sombra suave en la base -->
+    <path
+        android:fillColor="#550A0414"
+        android:pathData="M34,138C34,132.5 54,128.5 80,128.5C106,128.5 126,132.5 126,138C126,143.5 106,147 80,147C54,147 34,143.5 34,138Z" />
+
+    <!-- Hemisferio izquierdo del cerebro (volumen violeta-lila 3D) -->
+    <path android:pathData="M78,34C66,32 54,36 47,45C38,48 33,57 35,67C31,75 34,86 42,92C45,101 55,107 66,105C72,107 76,104 78,99Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="78"
+                android:endY="106"
+                android:startX="34"
+                android:startY="35"
+                android:type="linear">
+                <item android:color="#E8CEFF" android:offset="0.0" />
+                <item android:color="#B982F7" android:offset="0.52" />
+                <item android:color="#7B35CC" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Hemisferio derecho del cerebro (sombreado más profundo) -->
+    <path android:pathData="M82,34C94,32 106,36 113,45C122,48 127,57 125,67C129,75 126,86 118,92C115,101 105,107 94,105C88,107 84,104 82,99Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="126"
+                android:endY="104"
+                android:startX="82"
+                android:startY="35"
+                android:type="linear">
+                <item android:color="#D5AEFF" android:offset="0.0" />
+                <item android:color="#9C56E8" android:offset="0.55" />
+                <item android:color="#6121A8" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Pliegues suaves internos del cerebro -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M53,51C59,48 66,51 67,57M45,67C52,65 57,69 57,76M51,86C56,83 62,84 65,89"
+        android:strokeWidth="2.4"
+        android:strokeColor="#66FFFFFF"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M107,51C101,48 94,51 93,57M115,67C108,65 103,69 103,76M109,86C104,83 98,84 95,89"
+        android:strokeWidth="2.4"
+        android:strokeColor="#55F1D9FF"
+        android:strokeLineCap="round" />
+
+    <!-- Halo central luminoso detrás del corazón -->
+    <path android:pathData="M80,71m-24,0a24,24 0,1 1,48 0a24,24 0,1 1,-48 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="80"
+                android:centerY="71"
+                android:gradientRadius="24"
+                android:type="radial">
+                <item android:color="#88FFFFFF" android:offset="0.0" />
+                <item android:color="#33D28CFF" android:offset="0.6" />
+                <item android:color="#008B30E0" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Corazón en el centro del cerebro -->
+    <path android:pathData="M80,87C80,87 62,76 62,64.8C62,59 66.5,55 71.8,55C75.5,55 78.5,57.1 80,59.8C81.5,57.1 84.5,55 88.2,55C93.5,55 98,59 98,64.8C98,76 80,87 80,87Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="96"
+                android:endY="86"
+                android:startX="64"
+                android:startY="55"
+                android:type="linear">
+                <item android:color="#FFB3E6" android:offset="0.0" />
+                <item android:color="#D264FF" android:offset="0.52" />
+                <item android:color="#8B30E0" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Línea de pulso dentro del corazón -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M67,70.5L73.5,70.5L76.5,64.5L80.2,76.5L83.8,67.5L86.8,70.5L93,70.5"
+        android:strokeWidth="2.3"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- Mano izquierda sosteniendo suavemente -->
+    <path android:pathData="M24,104C29,100 37,102 44,108L61,118C68,121 74,122 79,122L79,134C67,135 54,132 42,124L25,112C22,110 21.5,106 24,104Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="79"
+                android:endY="134"
+                android:startX="24"
+                android:startY="102"
+                android:type="linear">
+                <item android:color="#F7EDFF" android:offset="0.0" />
+                <item android:color="#D4B5F7" android:offset="0.65" />
+                <item android:color="#9B6ED6" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Mano derecha sosteniendo suavemente -->
+    <path android:pathData="M136,104C131,100 123,102 116,108L99,118C92,121 86,122 81,122L81,134C93,135 106,132 118,124L135,112C138,110 138.5,106 136,104Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="136"
+                android:endY="126"
+                android:startX="81"
+                android:startY="112"
+                android:type="linear">
+                <item android:color="#DFC4FC" android:offset="0.0" />
+                <item android:color="#B384EB" android:offset="0.65" />
+                <item android:color="#7C4EB8" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Destellos delicados -->
+    <path
+        android:fillColor="#FFF2C6"
+        android:pathData="M30,30L31.8,34.8L36.6,36.6L31.8,38.4L30,43.2L28.2,38.4L23.4,36.6L28.2,34.8Z" />
+    <path
+        android:fillColor="#E9CCFF"
+        android:pathData="M131,28L132.5,32L136.5,33.5L132.5,35L131,39L129.5,35L125.5,33.5L129.5,32Z" />
+    <path
+        android:fillColor="#9957D6A0"
+        android:pathData="M135,78m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0" />
+    <path
+        android:fillColor="#99FFFFFF"
+        android:pathData="M24,74m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+</vector>

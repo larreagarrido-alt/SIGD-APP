@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/collab_wellness_option_card_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?attr/selectableItemBackground"
+    android:gravity="center_vertical"
+    android:minHeight="72dp"
+    android:orientation="horizontal"
+    android:paddingStart="12dp"
+    android:paddingTop="9dp"
+    android:paddingEnd="14dp"
+    android:paddingBottom="9dp">
+
+    <!-- Contenedor sutil para la carita ilustrada 3D (52dp) o ícono de escala -->
+    <FrameLayout
+        android:id="@+id/collab_wellness_option_icon_box"
+        android:layout_width="56dp"
+        android:layout_height="56dp"
+        android:clipChildren="false"
+        android:clipToPadding="false"
+        android:importantForAccessibility="noHideDescendants">
+
+        <ImageView
+            android:id="@+id/collab_wellness_option_icon"
+            android:layout_width="52dp"
+            android:layout_height="52dp"
+            android:layout_gravity="center"
+            android:contentDescription="@null"
+            android:scaleType="fitCenter" />
+
+        <TextView
+            android:id="@+id/collab_wellness_option_badge_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:includeFontPadding="false"
+            android:textColor="@color/collab_purple_accent"
+            android:textSize="14sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- Texto principal y descripción secundaria breve -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="10dp"
+        android:layout_weight="1"
+        android:importantForAccessibility="noHideDescendants"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/collab_wellness_option_label"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="2"
+            android:textColor="@color/collab_text_primary"
+            android:textSize="15.5sp" />
+
+        <TextView
+            android:id="@+id/collab_wellness_option_subtitle"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="2"
+            android:textColor="@color/collab_text_secondary"
+            android:textSize="12sp"
+            android:visibility="gone" />
+    </LinearLayout>
+
+    <!-- Indicador circular de selección a la derecha -->
+    <FrameLayout
+        android:id="@+id/collab_wellness_option_check_ring"
+        android:layout_width="26dp"
+        android:layout_height="26dp"
+        android:importantForAccessibility="noHideDescendants">
+
+        <ImageView
+            android:id="@+id/collab_wellness_option_check_icon"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:layout_gravity="center"
+            android:contentDescription="@null"
+            android:src="@drawable/collab_ic_wellness_check"
+            android:visibility="invisible" />
+    </FrameLayout>
+
+</LinearLayout>

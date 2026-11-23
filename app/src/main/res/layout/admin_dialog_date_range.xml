@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/admin_bg_card"
+    android:orientation="vertical"
+    android:padding="20dp">
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/admin_dialog_range_title"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="17sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="@string/admin_dialog_start_date"
+        android:textColor="@color/admin_text_secondary"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/admin_tv_dialog_start_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/admin_bg_chip_unselected"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="12dp"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="14sp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="14dp"
+        android:text="@string/admin_dialog_end_date"
+        android:textColor="@color/admin_text_secondary"
+        android:textSize="13sp" />
+
+    <TextView
+        android:id="@+id/admin_tv_dialog_end_date"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/admin_bg_chip_unselected"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="12dp"
+        android:textColor="@color/admin_text_primary"
+        android:textSize="14sp" />
+
+    <TextView
+        android:id="@+id/admin_tv_dialog_error"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="@string/admin_error_invalid_range"
+        android:textColor="@color/admin_danger_text"
+        android:textSize="12sp"
+        android:visibility="gone" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:gravity="end"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/admin_btn_dialog_cancel"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="14dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="8dp"
+            android:text="@string/admin_dialog_cancel"
+            android:textColor="@color/admin_text_secondary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/admin_btn_dialog_apply"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/admin_bg_chip_selected"
+            android:clickable="true"
+            android:focusable="true"
+            android:paddingStart="18dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="8dp"
+            android:text="@string/admin_dialog_apply"
+            android:textColor="@color/admin_text_primary"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Halo violeta luminoso -->
+    <path android:pathData="M60,60m-48,0a48,48 0,1 1,96 0a48,48 0,1 1,-96 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="60"
+                android:centerY="60"
+                android:gradientRadius="48"
+                android:type="radial">
+                <item android:color="#52B54CFF" android:offset="0.0" />
+                <item android:color="#001D102C" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sombra base -->
+    <path
+        android:fillColor="#66090412"
+        android:pathData="M24,96C24,92 40,89 60,89C80,89 96,92 96,96C96,100 80,103 60,103C40,103 24,100 24,96Z" />
+
+    <!-- Ticket trasero decorativo inclinado -->
+    <path
+        android:fillColor="#4A2478"
+        android:pathData="M24,42L91,27C94.2,26.3 97.4,28.3 98.1,31.5L104.5,60.2C105.2,63.4 103.2,66.6 100,67.3L33,82.3C29.8,83 26.6,81 25.9,77.8L19.5,49.1C18.8,45.9 20.8,42.7 24,42Z" />
+
+    <!-- Ticket frontal 3D con muescas laterales -->
+    <path android:pathData="M20,45C20,41.7 22.7,39 26,39L94,39C97.3,39 100,41.7 100,45L100,55C96.7,55 94,57.7 94,61C94,64.3 96.7,67 100,67L100,77C100,80.3 97.3,83 94,83L26,83C22.7,83 20,80.3 20,77L20,67C23.3,67 26,64.3 26,61C26,57.7 23.3,55 20,55Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="100"
+                android:endY="83"
+                android:startX="20"
+                android:startY="39"
+                android:type="linear">
+                <item android:color="#C76BFF" android:offset="0.0" />
+                <item android:color="#8B30E0" android:offset="0.55" />
+                <item android:color="#59159E" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Borde interno sutil -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M27,44L93,44L93,78L27,78Z"
+        android:strokeWidth="1.2"
+        android:strokeColor="#55FFFFFF" />
+
+    <!-- Línea punteada de corte -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M74,45L74,49M74,54L74,58M74,63L74,67M74,72L74,76"
+        android:strokeWidth="2"
+        android:strokeColor="#88FFFFFF"
+        android:strokeLineCap="round" />
+
+    <!-- Símbolo % luminoso -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M41,70L57,52"
+        android:strokeWidth="3.5"
+        android:strokeColor="#FFF3C2"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M42,54m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
+        android:strokeWidth="2.8"
+        android:strokeColor="#FFFFFF" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M56,68m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0"
+        android:strokeWidth="2.8"
+        android:strokeColor="#FFFFFF" />
+
+    <!-- Estrella en sección derecha del ticket -->
+    <path
+        android:fillColor="#F6C35D"
+        android:pathData="M84,54L85.7,57.8L89.8,58.3L86.8,61.1L87.5,65.2L84,63.2L80.5,65.2L81.2,61.1L78.2,58.3L82.3,57.8Z" />
+
+    <!-- Destellos -->
+    <path
+        android:fillColor="#FFF3C2"
+        android:pathData="M24,25L25.6,29L29.6,30.6L25.6,32.2L24,36.2L22.4,32.2L18.4,30.6L22.4,29Z" />
+</vector>

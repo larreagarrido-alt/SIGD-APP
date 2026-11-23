@@ -1,0 +1,469 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/collab_prog_bg_main"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- 1. ENCABEZADO PREMIUM DE PREMIOS Y BENEFICIOS -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/collab_bg_header_gradient"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="14dp">
+
+        <FrameLayout
+            android:id="@+id/collab_rewards_btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/collab_bg_circle_button"
+            android:clickable="true"
+            android:contentDescription="Volver"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:src="@drawable/admin_ic_chevron_left"
+                app:tint="@color/collab_lilac_accent" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_marginEnd="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Premios y Beneficios"
+                android:textColor="@color/collab_text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/collab_rewards_tv_header_sub"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="2"
+                android:text="Reconoce tus logros y canjéalos por beneficios"
+                android:textColor="@color/collab_prog_text_secondary"
+                android:textSize="11.5sp" />
+        </LinearLayout>
+
+        <!-- Botón Ver Ranking con trofeo -->
+        <LinearLayout
+            android:id="@+id/collab_rewards_btn_go_ranking"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:background="@drawable/collab_bg_btn_rewards_header"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="11dp"
+            android:paddingEnd="12dp">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:contentDescription="Ranking"
+                android:src="@drawable/collaborator_ic_trophy"
+                app:tint="@android:color/white" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:maxLines="1"
+                android:text="Ver Ranking"
+                android:textColor="@android:color/white"
+                android:textSize="11.5sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 2. CONTENIDO DESPLAZABLE -->
+    <ScrollView
+        android:id="@+id/collab_rewards_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:id="@+id/collab_rewards_main_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="28dp">
+
+            <!-- ========================================================= -->
+            <!-- BANNER PRINCIPAL DE RECOMPENSAS CON REGALO 3D             -->
+            <!-- ========================================================= -->
+            <LinearLayout
+                android:id="@+id/collab_rewards_hero_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_rewards_hero_banner"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="18dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="16dp">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:lineSpacingExtra="2dp"
+                        android:text="Canjea tus puntos por premios y beneficios"
+                        android:textColor="@android:color/white"
+                        android:textSize="16.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:lineSpacingExtra="1dp"
+                        android:text="Tu esfuerzo también tiene recompensa"
+                        android:textColor="#D8C2F0"
+                        android:textSize="12sp" />
+
+                    <!-- Saldo real de puntos confirmados (visible cuando el servidor o perfil los provee) -->
+                    <LinearLayout
+                        android:id="@+id/collab_rewards_hero_points_pill"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/collab_bg_rewards_points_pill"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="10dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="11dp"
+                        android:paddingBottom="5dp"
+                        android:visibility="gone">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:contentDescription="Puntos acumulados"
+                            android:src="@drawable/collab_ic_coins"
+                            app:tint="@color/collab_prog_gold" />
+
+                        <TextView
+                            android:id="@+id/collab_rewards_tv_hero_points"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:maxLines="1"
+                            android:text="0 pts"
+                            android:textColor="@color/collab_prog_gold"
+                            android:textSize="11.5sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Ilustración vectorial 3D independiente y adaptable -->
+                <ImageView
+                    android:id="@+id/collab_rewards_iv_hero_gift"
+                    android:layout_width="108dp"
+                    android:layout_height="108dp"
+                    android:contentDescription="Ilustración de caja de regalo con moneda dorada"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/collab_ill_rewards_hero_gift" />
+            </LinearLayout>
+
+            <!-- ========================================================= -->
+            <!-- SECCIÓN: PREMIOS DISPONIBLES                              -->
+            <!-- ========================================================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="38dp"
+                    android:layout_height="38dp"
+                    android:background="@drawable/collab_bg_rewards_image_frame">
+
+                    <ImageView
+                        android:layout_width="19dp"
+                        android:layout_height="19dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Premios disponibles"
+                        android:src="@drawable/collab_ic_gift"
+                        app:tint="@color/collab_prog_violet_glow" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="11dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Premios disponibles"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="16.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Explora los beneficios que puedes canjear con tus puntos"
+                        android:textColor="@color/collab_prog_text_secondary"
+                        android:textSize="11.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ========================================================= -->
+            <!-- BUSCADOR DE PREMIOS (ANCHO COMPLETO)                      -->
+            <!-- ========================================================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="46dp"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/collab_bg_rewards_search_bar"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingEnd="8dp">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:contentDescription="Buscar"
+                    android:src="@drawable/collab_ic_search"
+                    app:tint="@color/collab_prog_text_secondary" />
+
+                <EditText
+                    android:id="@+id/collab_rewards_et_search"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:hint="Buscar premios..."
+                    android:imeOptions="actionSearch"
+                    android:importantForAutofill="no"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/collab_text_primary"
+                    android:textColorHint="@color/collab_text_muted"
+                    android:textSize="13.5sp" />
+
+                <FrameLayout
+                    android:id="@+id/collab_rewards_btn_clear_search"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:clickable="true"
+                    android:contentDescription="Limpiar búsqueda"
+                    android:focusable="true"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_gravity="center"
+                        android:src="@drawable/collab_ic_close"
+                        app:tint="@color/collab_prog_text_secondary" />
+                </FrameLayout>
+            </LinearLayout>
+
+            <!-- ========================================================= -->
+            <!-- ESTADO 1: CARGANDO CATÁLOGO                               -->
+            <!-- ========================================================= -->
+            <LinearLayout
+                android:id="@+id/collab_rewards_state_loading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/collab_bg_rewards_card"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="20dp"
+                android:paddingTop="28dp"
+                android:paddingEnd="20dp"
+                android:paddingBottom="28dp"
+                android:visibility="gone">
+
+                <ProgressBar
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:indeterminate="true"
+                    android:indeterminateTint="@color/collab_prog_violet_glow" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Consultando catálogo de premios..."
+                    android:textColor="@color/collab_text_primary"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:gravity="center"
+                    android:text="Verificando publicaciones vigentes disponibles para tu cuenta"
+                    android:textColor="@color/collab_prog_text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- ========================================================= -->
+            <!-- ESTADO 2: VACÍO / SIN RESULTADOS / ERROR                  -->
+            <!-- ========================================================= -->
+            <LinearLayout
+                android:id="@+id/collab_rewards_state_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/collab_bg_rewards_card"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="24dp"
+                android:paddingTop="28dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="28dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/collab_rewards_empty_iv"
+                    android:layout_width="86dp"
+                    android:layout_height="86dp"
+                    android:contentDescription="Sin premios disponibles"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/collab_ill_reward_empty_gift" />
+
+                <TextView
+                    android:id="@+id/collab_rewards_empty_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center"
+                    android:text="Aún no hay premios disponibles"
+                    android:textColor="@color/collab_text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/collab_rewards_empty_subtitle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:text="Sigue participando y acumulando puntos para futuras recompensas"
+                    android:textColor="@color/collab_prog_text_secondary"
+                    android:textSize="12.5sp" />
+
+                <TextView
+                    android:id="@+id/collab_rewards_empty_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/collab_bg_rewards_cta_btn"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:paddingStart="20dp"
+                    android:paddingEnd="20dp"
+                    android:text="Reintentar"
+                    android:textColor="@android:color/white"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- ========================================================= -->
+            <!-- ESTADO 3: CUADRÍCULA RESPONSIVA DE PREMIOS (2 COLUMNAS)   -->
+            <!-- ========================================================= -->
+            <LinearLayout
+                android:id="@+id/collab_rewards_grid_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="vertical"
+                android:visibility="gone" />
+
+            <!-- ========================================================= -->
+            <!-- TARJETA INFORMATIVA DE CIERRE DEL CATÁLOGO                -->
+            <!-- (Visible únicamente cuando hay premios reales mostrados)  -->
+            <!-- ========================================================= -->
+            <LinearLayout
+                android:id="@+id/collab_rewards_end_info_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/collab_bg_rewards_search_bar"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingStart="16dp"
+                android:paddingTop="13dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="13dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="Información del catálogo"
+                    android:src="@drawable/collab_ic_gift"
+                    app:tint="@color/collab_prog_text_secondary" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Por el momento no hay más premios disponibles"
+                    android:textColor="@color/collab_prog_text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 3. BARRA DE NAVEGACIÓN INFERIOR SIGD -->
+    <include layout="@layout/collaborator_layout_bottom_nav" />
+
+</LinearLayout>

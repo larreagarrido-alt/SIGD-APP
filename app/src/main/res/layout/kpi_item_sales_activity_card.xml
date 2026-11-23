@@ -1,0 +1,389 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    app:cardBackgroundColor="@color/kpi_card_bg"
+    app:cardCornerRadius="14dp"
+    app:cardElevation="2dp"
+    app:strokeColor="@color/kpi_border"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Barra de acento según categoría -->
+        <View
+            android:id="@+id/vAccentLineSales"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="#10B981" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <!-- Fila superior: Icono, Número, Badge y Eliminar -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvSalesIcon"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/kpi_bg_badge_number"
+                        android:gravity="center"
+                        android:text="VEN"
+                        android:textSize="10sp" />
+
+                    <TextView
+                        android:id="@+id/tvSalesNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="01"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvSalesStatusBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/kpi_bg_pill_status"
+                        android:paddingStart="8dp"
+                        android:paddingTop="2dp"
+                        android:paddingEnd="8dp"
+                        android:paddingBottom="2dp"
+                        android:text="● Concretado"
+                        android:textColor="@color/kpi_status_entregado"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btnDeleteSalesActivity"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:background="?android:attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Eliminar gestión"
+                    android:padding="2dp"
+                    android:src="@android:drawable/ic_menu_delete"
+                    app:tint="@color/kpi_danger" />
+            </RelativeLayout>
+
+            <!-- Fila 1: Cliente / Empresa y Tipo de Gestión -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1.2"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Cliente / Empresa"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etSalesClient"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/kpi_bg_input"
+                        android:hint="Ej: Restaurante El Pacífico"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textColorHint="@color/kpi_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Tipo de gestión"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spSalesType"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/kpi_bg_input"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Fila 2: Detalle de la gestión comercial -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Detalle / Requerimiento comercial"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etSalesDetail"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/kpi_bg_input"
+                android:hint="Describa el acuerdo, necesidad o resultado del contacto..."
+                android:minHeight="40dp"
+                android:paddingStart="10dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="8dp"
+                android:textColor="@color/kpi_text_primary"
+                android:textColorHint="@color/kpi_text_secondary"
+                android:textSize="12sp" />
+
+            <!-- Fila 3: Horarios con reloj interactivo -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Hora inicio"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/llSalesStartTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/kpi_bg_input"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp">
+
+                        <TextView
+                            android:id="@+id/tvSalesStartTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="03:30 pm"
+                            android:textColor="@color/kpi_text_primary"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:contentDescription="Hora inicio"
+                            android:src="@drawable/kpi_ic_clock"
+                            app:tint="@color/kpi_primary" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Hora fin"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/llSalesEndTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/kpi_bg_input"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp">
+
+                        <TextView
+                            android:id="@+id/tvSalesEndTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="04:15 pm"
+                            android:textColor="@color/kpi_text_primary"
+                            android:textSize="12sp" />
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:contentDescription="Hora fin"
+                            android:src="@drawable/kpi_ic_clock"
+                            app:tint="@color/kpi_primary" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Fila 4: Estado comercial -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Estado de la gestión"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgSalesStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbSalesConcretado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Concretado"
+                    android:textColor="@color/kpi_text_primary"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rbSalesPendiente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="En seguimiento"
+                    android:textColor="@color/kpi_text_primary"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rbSalesCampo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Visita en terreno"
+                    android:textColor="@color/kpi_status_justificado"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </RadioGroup>
+
+            <!-- Banner Informativo de Justificación ante Admin -->
+            <LinearLayout
+                android:id="@+id/llSalesCampoNotice"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:background="@drawable/kpi_bg_pill_status"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="8dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="✓ JUSTIFICADO ADMIN:"
+                    android:textColor="@color/kpi_status_justificado"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:text="Visita presencial a cliente acreditada. No baja tu porcentaje de KPI."
+                    android:textColor="@color/kpi_text_primary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <!-- Fila 5: Monto de cotización / venta (S/.) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="4dp"
+                    android:text="Monto cotizado o cerrado (S/.)"
+                    android:textColor="@color/kpi_text_secondary"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/etSalesMonto"
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:background="@drawable/kpi_bg_input"
+                    android:hint="0.00"
+                    android:inputType="numberDecimal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp"
+                    android:textColor="#10B981"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

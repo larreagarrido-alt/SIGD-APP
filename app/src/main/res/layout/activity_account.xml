@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/account_root" android:layout_width="match_parent" android:layout_height="match_parent"
+    android:fillViewport="true" android:background="@drawable/auth_login_background">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="24dp">
+        <ImageView android:layout_width="96dp" android:layout_height="96dp" android:layout_marginTop="16dp"
+            android:src="@drawable/sigd_logo" android:scaleType="fitCenter" android:contentDescription="@string/auth_logo_description" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="28dp" android:text="@string/nav_account_title"
+            android:textColor="@android:color/white" android:textSize="26sp" />
+        <TextView android:id="@+id/tv_welcome_name" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:textColor="@color/auth_light_text" android:textSize="18sp" />
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:text="@string/nav_account_description"
+            android:textColor="@color/auth_light_text" android:textSize="16sp" />
+        <TextView android:id="@+id/account_dashboard_notice" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="20dp" android:visibility="gone"
+            android:text="@string/nav_no_dashboard" android:textColor="@color/auth_light_text" android:textSize="14sp" />
+        <ProgressBar android:id="@+id/account_progress" android:layout_width="48dp"
+            android:layout_height="48dp" android:layout_gravity="center_horizontal"
+            android:layout_marginTop="24dp" />
+        <TextView android:id="@+id/account_status" android:layout_width="match_parent"
+            android:layout_height="wrap_content" android:layout_marginTop="12dp"
+            android:gravity="center" android:text="@string/nav_verifying_session"
+            android:textColor="@color/auth_light_text" android:textSize="14sp" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/account_retry"
+            android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="12dp" android:minHeight="48dp"
+            android:text="@string/nav_retry" android:enabled="false" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_face_enrollment"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp"
+            android:layout_marginTop="28dp" android:text="@string/auth_face_security" android:enabled="false" android:backgroundTint="@color/auth_brand_purple" />
+        <com.google.android.material.button.MaterialButton android:id="@+id/btn_logout"
+            android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="52dp"
+            android:layout_marginTop="12dp" android:text="@string/auth_sign_out" android:backgroundTint="@color/auth_brand_purple_dark" />
+    </LinearLayout>
+</ScrollView>

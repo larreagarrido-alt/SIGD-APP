@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android"
+    android:shape="rectangle">
+    <solid android:color="@color/collab_prog_row_self_bg" />
+    <corners android:radius="14dp" />
+    <stroke
+        android:width="1.4dp"
+        android:color="@color/collab_prog_violet_glow" />
+</shape>

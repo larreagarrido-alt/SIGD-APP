@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta Oficial SIGD (Modo Oscuro / Night) para Personal -->
+    <color name="personal_bg_main">#0D0714</color>
+    <color name="personal_header_bg">#140B20</color>
+    <color name="personal_card_bg">#1A1028</color>
+    <color name="personal_surface_secondary">#1E122C</color>
+    <color name="personal_surface_tertiary">#251733</color>
+    <color name="personal_divider">#2A1A3C</color>
+    <color name="personal_border">#38224E</color>
+    <color name="personal_border_light">#553573</color>
+
+    <!-- Morados y Acentos Oficiales -->
+    <color name="personal_purple_primary">#8738F5</color>
+    <color name="personal_purple_highlight">#A855F7</color>
+    <color name="personal_purple_accent">#BB75FF</color>
+    <color name="personal_purple_glow">#4D8738F5</color>
+    <color name="personal_purple_header_start">#260E3F</color>
+    <color name="personal_purple_header_end">#0D0714</color>
+
+    <!-- Textos de Alta Legibilidad -->
+    <color name="personal_text_primary">#F5EDFF</color>
+    <color name="personal_text_secondary">#B9A7D0</color>
+    <color name="personal_text_muted">#836F9C</color>
+
+    <!-- Estados Laborales y Semánticos -->
+    <color name="personal_status_delivered">#22C55E</color>
+    <color name="personal_status_delivered_bg">#133824</color>
+    <color name="personal_status_pending">#F59E0B</color>
+    <color name="personal_status_pending_bg">#3D2711</color>
+    <color name="personal_cyan_brain">#06B6D4</color>
+    <color name="personal_cyan_brain_bg">#0E3342</color>
+    <color name="personal_status_leave">#BB75FF</color>
+    <color name="personal_status_leave_bg">#2E1848</color>
+
+    <!-- Estados para Indicadores y Actividades -->
+    <color name="personal_semantic_green">#10B981</color>
+    <color name="personal_semantic_green_bg">#2610B981</color>
+    <color name="personal_semantic_amber">#F59E0B</color>
+    <color name="personal_semantic_amber_bg">#26F59E0B</color>
+    <color name="personal_semantic_red">#EF4444</color>
+    <color name="personal_semantic_red_bg">#26EF4444</color>
+    <color name="personal_semantic_violet">#BB75FF</color>
+    <color name="personal_semantic_violet_bg">#268738F5</color>
+    <color name="personal_ring_track">#251733</color>
+</resources>

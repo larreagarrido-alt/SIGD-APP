@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="84dp"
+    android:height="84dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Halo suave de fondo -->
+    <path android:pathData="M60,64m-46,0a46,46 0,1 1,92 0a46,46 0,1 1,-92 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="60"
+                android:centerY="64"
+                android:gradientRadius="46"
+                android:type="radial">
+                <item android:color="#38B54CFF" android:offset="0.0" />
+                <item android:color="#0011091F" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sombra base -->
+    <path
+        android:fillColor="#55090412"
+        android:pathData="M28,100C28,95.5 42,92 60,92C78,92 92,95.5 92,100C92,104.5 78,108 60,108C42,108 28,104.5 28,100Z" />
+
+    <!-- Interior abierto de la caja -->
+    <path
+        android:fillColor="#26143A"
+        android:pathData="M31,56L60,46L89,56L60,67Z" />
+
+    <!-- Cara frontal izquierda -->
+    <path android:pathData="M31,56L60,67L60,99L33.5,89C32,88.4 31,87 31,85.4Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="60"
+                android:endY="99"
+                android:startX="31"
+                android:startY="56"
+                android:type="linear">
+                <item android:color="#6D4A91" android:offset="0.0" />
+                <item android:color="#492B68" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Cara frontal derecha -->
+    <path android:pathData="M60,67L89,56L89,85.4C89,87 88,88.4 86.5,89L60,99Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="89"
+                android:endY="94"
+                android:startX="60"
+                android:startY="60"
+                android:type="linear">
+                <item android:color="#533275" android:offset="0.0" />
+                <item android:color="#361E50" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Cinta decorativa discreta -->
+    <path
+        android:fillColor="#8B30E0"
+        android:pathData="M41.5,60L50,63.2L50,95.2L41.5,92Z" />
+    <path
+        android:fillColor="#6A22B2"
+        android:pathData="M70,63.2L78.5,60L78.5,92L70,95.2Z" />
+
+    <!-- Tapa entreabierta inclinada hacia atrás -->
+    <path android:pathData="M24,42L56,28L88,36L56,51Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="88"
+                android:endY="44"
+                android:startX="24"
+                android:startY="32"
+                android:type="linear">
+                <item android:color="#B389DB" android:offset="0.0" />
+                <item android:color="#7A4EA8" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#5B3484"
+        android:pathData="M24,42L56,51L56,57L24,48Z" />
+
+    <!-- Destellos sutiles saliendo de la caja (promesa de futuros premios) -->
+    <path
+        android:fillColor="#F6C35D"
+        android:pathData="M61,15L62.8,19.7L67.5,21.5L62.8,23.3L61,28L59.2,23.3L54.5,21.5L59.2,19.7Z" />
+    <path
+        android:fillColor="#D9B4FF"
+        android:pathData="M86,21L87.2,24L90.2,25.2L87.2,26.4L86,29.4L84.8,26.4L81.8,25.2L84.8,24Z" />
+    <path
+        android:fillColor="#AAFFFFFF"
+        android:pathData="M34,24m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+</vector>

@@ -1,0 +1,833 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/admin_notifs_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/collab_prog_bg_main"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- 1. ENCABEZADO PREMIUM UNIFICADO CON EL COLABORADOR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/collab_bg_header_gradient"
+        android:orientation="vertical"
+        android:paddingStart="18dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="18dp"
+        android:paddingBottom="14dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/admin_notifications_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/admin_bg_circle_icon_button"
+                android:clickable="true"
+                android:contentDescription="Volver"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/admin_ic_chevron_left"
+                    app:tint="@color/collab_text_primary" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Notificaciones"
+                    android:textColor="@color/collab_text_primary"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Mantente al día con tu equipo"
+                    android:textColor="@color/collab_notif_text_secondary"
+                    android:textSize="12.5sp" />
+            </LinearLayout>
+
+            <!-- Campana elegante a la derecha idéntica al Colaborador -->
+            <FrameLayout
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:background="@drawable/collab_bg_notif_header_bell">
+
+                <ImageView
+                    android:layout_width="21dp"
+                    android:layout_height="21dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="Notificaciones"
+                    android:src="@drawable/collab_ic_nav_bell"
+                    app:tint="@color/collab_notif_violet_soft" />
+
+                <View
+                    android:id="@+id/admin_notifs_header_bell_dot"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_gravity="top|end"
+                    android:layout_marginTop="8dp"
+                    android:layout_marginEnd="8dp"
+                    android:background="@drawable/collab_bg_notif_chip_selected"
+                    android:visibility="gone" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- 2. BADGE DE ESTADO DE AVISOS + ACCIÓN GLOBAL "MARCAR TODAS" -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/admin_notifs_tv_unread_badge"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_notif_status_positive"
+                android:paddingStart="10dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="4dp"
+                android:text="Sin pendientes"
+                android:textColor="@color/collab_notif_positive"
+                android:textSize="11.5sp"
+                android:textStyle="bold" />
+
+            <View
+                android:layout_width="0dp"
+                android:layout_height="1dp"
+                android:layout_weight="1" />
+
+            <TextView
+                android:id="@+id/admin_notifs_btn_mark_all_read"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_notif_chip_unselected"
+                android:clickable="true"
+                android:focusable="true"
+                android:paddingStart="11dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="11dp"
+                android:paddingBottom="5dp"
+                android:text="Marcar todas"
+                android:textColor="@color/collab_notif_violet_soft"
+                android:textSize="11.5sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- CONTENIDO DESPLAZABLE -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="18dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="18dp"
+            android:paddingBottom="28dp">
+
+            <!-- 3. SECCIÓN: MIS AVISOS + CONTADOR REAL -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Mis avisos"
+                    android:textColor="@color/collab_text_primary"
+                    android:textSize="16.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/admin_notifs_tv_total_count"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="0 notificaciones"
+                    android:textColor="@color/collab_notif_text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <!-- 4. FILTROS IGUALES AL COLABORADOR: TODOS · NO LEÍDOS · IMPORTANTES -->
+            <HorizontalScrollView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:overScrollMode="never"
+                android:scrollbars="none">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/admin_notif_chip_all"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:background="@drawable/collab_bg_notif_chip_selected"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:minWidth="78dp"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="Todos"
+                        android:textColor="@android:color/white"
+                        android:textSize="12.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/admin_notif_chip_unread"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/collab_bg_notif_chip_unselected"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="No leídos"
+                        android:textColor="@color/collab_notif_text_secondary"
+                        android:textSize="12.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/admin_notif_chip_important"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/collab_bg_notif_chip_unselected"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingStart="16dp"
+                        android:paddingEnd="16dp"
+                        android:text="Importantes"
+                        android:textColor="@color/collab_notif_text_secondary"
+                        android:textSize="12.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </HorizontalScrollView>
+
+            <!-- 5A. ESTADO DE CARGA (SKELETON IDÉNTICO AL COLABORADOR) -->
+            <LinearLayout
+                android:id="@+id/admin_notifs_loading_container"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collab_bg_notif_card_read"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="14dp">
+
+                    <View
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:background="@drawable/collab_bg_notif_skeleton_bar" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="130dp"
+                            android:layout_height="12dp"
+                            android:background="@drawable/collab_bg_notif_skeleton_bar" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="9dp"
+                            android:background="@drawable/collab_bg_notif_skeleton_bar" />
+
+                        <View
+                            android:layout_width="180dp"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/collab_bg_notif_skeleton_bar" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/collab_bg_notif_card_read"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="14dp">
+
+                    <View
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:background="@drawable/collab_bg_notif_skeleton_bar" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="165dp"
+                            android:layout_height="12dp"
+                            android:background="@drawable/collab_bg_notif_skeleton_bar" />
+
+                        <View
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="9dp"
+                            android:background="@drawable/collab_bg_notif_skeleton_bar" />
+
+                        <View
+                            android:layout_width="140dp"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/collab_bg_notif_skeleton_bar" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 5B. ESTADO DE ERROR DE BANDEJA -->
+            <LinearLayout
+                android:id="@+id/admin_notifs_error_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/collab_bg_notif_empty_card"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="22dp"
+                android:paddingTop="24dp"
+                android:paddingEnd="22dp"
+                android:paddingBottom="24dp"
+                android:visibility="gone">
+
+                <FrameLayout
+                    android:layout_width="56dp"
+                    android:layout_height="56dp"
+                    android:background="@drawable/collab_bg_icon_badge_red">
+
+                    <ImageView
+                        android:layout_width="26dp"
+                        android:layout_height="26dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="Error al cargar avisos"
+                        android:src="@drawable/admin_ic_alert_triangle"
+                        app:tint="@color/collab_status_overdue" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/admin_notifs_error_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center"
+                    android:text="No se pudieron cargar tus avisos"
+                    android:textColor="@color/collab_text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/admin_notifs_error_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:textColor="@color/collab_notif_text_secondary"
+                    android:textSize="12.5sp" />
+
+                <TextView
+                    android:id="@+id/admin_notifs_btn_retry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/collab_bg_notif_chip_selected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:paddingStart="22dp"
+                    android:paddingEnd="22dp"
+                    android:text="Reintentar"
+                    android:textColor="@android:color/white"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- 5C. LISTADO REAL DE NOTIFICACIONES -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/admin_notifs_recycler_view"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                android:visibility="gone" />
+
+            <!-- 5D. ESTADO VACÍO PREMIUM IDÉNTICO AL COLABORADOR -->
+            <LinearLayout
+                android:id="@+id/admin_notifs_empty_card"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/collab_bg_notif_empty_card"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="24dp"
+                android:paddingTop="28dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="28dp"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="96dp"
+                    android:layout_height="96dp"
+                    android:contentDescription="Sin avisos pendientes"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/collab_ill_notif_empty_bell" />
+
+                <TextView
+                    android:id="@+id/admin_notifs_empty_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center"
+                    android:text="¡Todo al día!"
+                    android:textColor="@color/collab_text_primary"
+                    android:textSize="17.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/admin_notifs_empty_detail"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:text="No tienes notificaciones administrativas por ahora. Cuando haya novedades, aparecerán aquí."
+                    android:textColor="@color/collab_notif_text_secondary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/admin_notifs_empty_status_chip"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/collab_bg_notif_status_positive"
+                    android:paddingStart="12dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="5dp"
+                    android:text="No hay avisos pendientes"
+                    android:textColor="@color/collab_notif_positive"
+                    android:textSize="11.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- 6 & 7. RESUMEN OPERATIVO DEL ADMINISTRADOR + FORMULARIOS KPI RECIBIDOS -->
+            <LinearLayout
+                android:id="@+id/admin_summary_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="20dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Resumen operativo"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="16.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/admin_notifications_week_chip"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/collab_bg_pill_purple"
+                        android:paddingStart="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="4dp"
+                        android:textColor="@color/collab_notif_violet_soft"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/admin_notifications_period"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="Consultando período del servidor…"
+                    android:textColor="@color/collab_notif_text_secondary"
+                    android:textSize="12sp" />
+
+                <!-- Estado de error independiente del resumen operativo -->
+                <LinearLayout
+                    android:id="@+id/admin_summary_error_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/collab_bg_notif_card_read"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="14dp"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/admin_summary_error_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Resumen no disponible"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="13.5sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/admin_summary_error_detail"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:textColor="@color/collab_notif_text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/admin_summary_btn_retry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="34dp"
+                        android:background="@drawable/collab_bg_notif_chip_unselected"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="Reintentar"
+                        android:textColor="@color/collab_notif_violet_soft"
+                        android:textSize="11.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Tarjeta moderna: Formularios KPI recibidos (conservar acceso a Reportes) -->
+                <LinearLayout
+                    android:id="@+id/admin_summary_forms_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/collab_bg_notif_card_read"
+                    android:clickable="true"
+                    android:contentDescription="Formularios KPI recibidos. Abrir reportes"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="14dp"
+                    android:visibility="gone">
+
+                    <FrameLayout
+                        android:layout_width="44dp"
+                        android:layout_height="44dp"
+                        android:background="@drawable/collab_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/admin_ic_file_check_2"
+                            app:tint="@color/collab_notif_violet_soft" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Formularios KPI recibidos"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="14.5sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/admin_summary_forms_desc"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="3dp"
+                            android:ellipsize="end"
+                            android:maxLines="2"
+                            android:text="Total acumulado · abre Reportes para ver cada ficha"
+                            android:textColor="@color/collab_notif_text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/admin_summary_forms_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0"
+                        android:textColor="@color/collab_notif_violet_soft"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:layout_marginStart="6dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_notif_text_secondary" />
+                </LinearLayout>
+
+                <!-- Otros contadores operativos reales (KPI vencidos, pendientes, actividades por revisar) -->
+                <LinearLayout
+                    android:id="@+id/admin_notifications_summary_extra"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="Los formularios recibidos pertenecen al resumen operativo y se muestran separados de tus avisos personales."
+                    android:textColor="@color/collab_notif_text_secondary"
+                    android:textSize="11.5sp" />
+            </LinearLayout>
+
+            <!-- 8. SECCIÓN INFORMATIVA "¿QUÉ ENCONTRARÁS AQUÍ?" (solo informativa, igual al Colaborador) -->
+            <LinearLayout
+                android:id="@+id/admin_notifs_info_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="¿Qué encontrarás aquí?"
+                    android:textColor="@color/collab_notif_text_secondary"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold" />
+
+                <!-- Fila 1 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/collab_bg_notif_card_read"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/collab_ic_notif_clipboard_check"
+                            app:tint="@color/collab_notif_violet_soft" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="9dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Evaluaciones KPI"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/collab_bg_notif_card_read"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/collab_ic_notif_calendar_clock"
+                            app:tint="@color/collab_notif_positive" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="9dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Recordatorios"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Fila 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/collab_bg_notif_card_read"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/admin_ic_shield_check"
+                            app:tint="@color/collab_prog_gold" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="9dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Aprobaciones"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="5dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/collab_bg_notif_card_read"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="12dp">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:contentDescription="@null"
+                            android:src="@drawable/admin_ic_users_round"
+                            app:tint="@color/collab_notif_violet_soft" />
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="9dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Avisos del equipo"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

@@ -1,0 +1,251 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/collab_bg_main"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- 1. ENCABEZADO -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/collab_bg_header_gradient"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/admin_space_lg"
+        android:paddingTop="@dimen/admin_space_md"
+        android:paddingEnd="@dimen/admin_space_lg"
+        android:paddingBottom="@dimen/admin_space_md">
+
+        <FrameLayout
+            android:id="@+id/collab_kpi_btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:visibility="visible"
+            android:background="@drawable/collab_bg_circle_button"
+            android:clickable="true"
+            android:contentDescription="Volver"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/admin_ic_chevron_left"
+                app:tint="@color/collab_text_primary" />
+        </FrameLayout>
+
+        <ImageView
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="6dp"
+            android:contentDescription="SIGD"
+            android:scaleType="fitCenter"
+            android:src="@drawable/auth_sigd_logo_transparent" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/collab_kpi_tv_header_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="KPI"
+                android:textColor="@color/collab_text_primary"
+                android:textSize="@dimen/admin_text_xl"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/collab_kpi_tv_header_sub"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Tu cargo actual"
+                android:textColor="@color/collab_text_secondary"
+                android:textSize="@dimen/admin_text_xs" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+    <!-- 2. CONTENEDOR OFICIAL DEL FRAGMENT KPI DE JOEL -->
+    <FrameLayout
+        android:id="@+id/main"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:visibility="visible" />
+
+    <!-- 3. CONTENIDO DE RESPALDO (SOLO SI EL FRAGMENT NO PUDO CARGAR) -->
+    <ScrollView
+        android:id="@+id/collab_kpi_fallback_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:scrollbars="none"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/admin_space_lg">
+
+            <!-- TARJETA DE RESUMEN DE KPI DEL COLABORADOR ACTIVO -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.08"
+                android:text="RESUMEN DEL COLABORADOR ACTIVO"
+                android:textColor="@color/collab_text_secondary"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="@dimen/admin_space_md">
+
+                <TextView
+                    android:id="@+id/collab_kpi_tv_collab_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Lucía Gómez"
+                    android:textColor="@color/collab_text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/collab_kpi_tv_collab_role"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Product Designer • UI/UX • Diseño y Producto"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="12sp" />
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="12dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Contadores: Asignados | Completados | Pendientes -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal"
+                    android:weightSum="3">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/collab_kpi_tv_assigned"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="5"
+                            android:textColor="@color/collab_purple_accent"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Asignados"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/collab_kpi_tv_completed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="3"
+                            android:textColor="@color/collab_status_completed"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Completados"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/collab_kpi_tv_pending"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="2"
+                            android:textColor="@color/collab_status_pending"
+                            android:textSize="22sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Pendientes"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/collab_kpi_container_list"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical" />
+
+            <com.google.android.material.button.MaterialButton
+                android:id="@+id/collab_kpi_btn_return_dashboard"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="20dp"
+                android:backgroundTint="@color/collab_purple_primary"
+                android:text="Volver al Dashboard del Colaborador"
+                android:textAllCaps="false"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold"
+                app:cornerRadius="14dp" />
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 4. BARRA DE NAVEGACIÓN INFERIOR (INICIO | IA | KPI | NOTIFICACIONES | MENÚ) -->
+    <include layout="@layout/collaborator_layout_bottom_nav" />
+
+</LinearLayout>

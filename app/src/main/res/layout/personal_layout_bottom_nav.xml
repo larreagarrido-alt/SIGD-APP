@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/personal_bottom_nav_container"
+    android:layout_width="match_parent"
+    android:layout_height="68dp"
+    android:background="@drawable/admin_bg_bottom_nav"
+    android:baselineAligned="false"
+    android:elevation="12dp"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="4dp"
+    android:paddingEnd="4dp"
+    android:weightSum="5">
+
+    <!-- 1. PERSONAL (Activa en este módulo — misma familia Lucide que admin_layout_bottom_nav) -->
+    <LinearLayout
+        android:id="@+id/personal_nav_tab_staff"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        tools:ignore="TouchTargetSizeCheck">
+
+        <View
+            android:id="@+id/personal_nav_indicator_staff"
+            android:layout_width="20dp"
+            android:layout_height="3dp"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/admin_bg_nav_indicator"
+            android:visibility="visible" />
+
+        <ImageView
+            android:id="@+id/personal_nav_ic_staff"
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="Personal"
+            android:src="@drawable/admin_ic_dash_users"
+            app:tint="@color/admin_dash_nav_active" />
+
+        <TextView
+            android:id="@+id/personal_nav_tv_staff"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Personal"
+            android:textColor="@color/admin_dash_nav_active"
+            android:textSize="10.5sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- 2. REPORTES -->
+    <LinearLayout
+        android:id="@+id/personal_nav_tab_reports"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        tools:ignore="TouchTargetSizeCheck">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="3dp"
+            android:layout_marginBottom="4dp"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="Reportes"
+            android:src="@drawable/collab_ic_nav_kpi"
+            app:tint="@color/admin_dash_nav_inactive" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Reportes"
+            android:textColor="@color/admin_dash_nav_inactive"
+            android:textSize="10.5sp" />
+    </LinearLayout>
+
+    <!-- 3. INICIO (Botón Central Destacado unificado) -->
+    <LinearLayout
+        android:id="@+id/personal_nav_tab_home"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="2dp"
+        android:paddingBottom="4dp"
+        tools:ignore="TouchTargetSizeCheck">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="3dp"
+            android:layout_marginBottom="3dp"
+            android:visibility="invisible" />
+
+        <FrameLayout
+            android:layout_width="44dp"
+            android:layout_height="30dp"
+            android:background="@drawable/admin_bg_nav_center_pill">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:contentDescription="Inicio"
+                android:src="@drawable/collab_ic_nav_home"
+                app:tint="@android:color/white" />
+        </FrameLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Inicio"
+            android:textColor="@color/admin_dash_nav_inactive"
+            android:textSize="10.5sp" />
+    </LinearLayout>
+
+    <!-- 4. NOTIFICACIONES -->
+    <LinearLayout
+        android:id="@+id/personal_nav_tab_notifs"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        tools:ignore="TouchTargetSizeCheck">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="3dp"
+            android:layout_marginBottom="4dp"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="Notificaciones"
+            android:src="@drawable/collab_ic_nav_bell"
+            app:tint="@color/admin_dash_nav_inactive" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Notificaciones"
+            android:textColor="@color/admin_dash_nav_inactive"
+            android:textSize="10sp" />
+    </LinearLayout>
+
+    <!-- 5. MENÚ -->
+    <LinearLayout
+        android:id="@+id/personal_nav_tab_menu"
+        android:layout_width="0dp"
+        android:layout_height="match_parent"
+        android:layout_weight="1"
+        android:background="?attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="vertical"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        tools:ignore="TouchTargetSizeCheck">
+
+        <View
+            android:layout_width="20dp"
+            android:layout_height="3dp"
+            android:layout_marginBottom="4dp"
+            android:visibility="invisible" />
+
+        <ImageView
+            android:layout_width="22dp"
+            android:layout_height="22dp"
+            android:contentDescription="Menú"
+            android:src="@drawable/collab_ic_nav_menu"
+            app:tint="@color/admin_dash_nav_inactive" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Menú"
+            android:textColor="@color/admin_dash_nav_inactive"
+            android:textSize="10.5sp" />
+    </LinearLayout>
+
+</LinearLayout>

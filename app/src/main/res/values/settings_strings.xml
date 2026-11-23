@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="settings_security_devices">Seguridad y dispositivos</string>
+    <string name="settings_security_devices_desc">Gestiona biometría, accesos y dispositivos vinculados</string>
+    <string name="settings_section_security">SEGURIDAD Y ACCESO</string>
+    <!-- Configuración General -->
+    <string name="settings_screen_title">Configuración</string>
+    <string name="settings_screen_sub">Preferencias y personalización de WEBSITE</string>
+
+    <!-- Secciones -->
+    <string name="settings_section_appearance">APARIENCIA</string>
+    <string name="settings_section_notifications">NOTIFICACIONES</string>
+    <string name="settings_section_language">IDIOMA</string>
+    <string name="settings_section_accessibility">ACCESIBILIDAD</string>
+    <string name="settings_section_privacy">PRIVACIDAD Y PERMISOS</string>
+    <string name="settings_section_help">AYUDA Y SOPORTE</string>
+    <string name="settings_section_about">ACERCA DE SIGD</string>
+
+    <!-- Apariencia -->
+    <string name="settings_theme_dark_title">Modo oscuro</string>
+    <string name="settings_theme_dark_desc">Diseño dark premium oficial de WEBSITE (Recomendado)</string>
+    <string name="settings_theme_light_title">Modo claro</string>
+    <string name="settings_theme_light_desc">Interfaz para entornos de alta iluminación</string>
+    <string name="settings_theme_system_title">Seguir sistema</string>
+    <string name="settings_theme_system_desc">Sincronizar automáticamente con el tema de Android</string>
+
+    <!-- Notificaciones -->
+    <string name="settings_notif_master_title">Notificaciones generales</string>
+    <string name="settings_notif_master_desc">Activar o silenciar notificaciones del dispositivo</string>
+    <string name="settings_notif_reminders_title">Recordatorios de actividades</string>
+    <string name="settings_notif_reminders_desc">Alertas de compromisos y tareas programadas</string>
+    <string name="settings_notif_kpi_title">Avisos relacionados con KPI</string>
+    <string name="settings_notif_kpi_desc">Actualizaciones sobre metas, logros y rendimiento</string>
+    <string name="settings_notif_news_title">Novedades de WEBSITE</string>
+    <string name="settings_notif_news_desc">Anuncios institucionales y nuevas características</string>
+    <string name="settings_notif_alerts_title">Alertas importantes</string>
+    <string name="settings_notif_alerts_desc">Avisos críticos de seguridad y sistema</string>
+
+    <!-- Idioma -->
+    <string name="settings_lang_title">Idioma de la aplicación</string>
+    <string name="settings_lang_current">Español (Predeterminado)</string>
+    <string name="settings_lang_desc">Selecciona tu preferencia de idioma</string>
+
+    <!-- Accesibilidad -->
+    <string name="settings_access_text_scale_title">Tamaño de texto</string>
+    <string name="settings_access_text_scale_desc">Ajustar el tamaño de la tipografía de la interfaz</string>
+    <string name="settings_access_animations_title">Reducir animaciones</string>
+    <string name="settings_access_animations_desc">Minimizar transiciones dinámicas para mayor fluidez</string>
+    <string name="settings_access_contrast_title">Alto contraste</string>
+    <string name="settings_access_contrast_desc">Realzar visibilidad y diferenciación de elementos</string>
+
+    <!-- Privacidad -->
+    <string name="settings_privacy_data_title">Información y datos recopilados</string>
+    <string name="settings_privacy_data_desc">Consulta qué información utiliza WEBSITE</string>
+    <string name="settings_privacy_permissions_title">Permisos de la aplicación</string>
+    <string name="settings_privacy_permissions_desc">Administrar permisos del sistema en Android</string>
+    <string name="settings_privacy_policy_title">Política de privacidad institucional</string>
+    <string name="settings_privacy_policy_desc">Normas de confidencialidad y tratamiento de datos</string>
+
+    <!-- Ayuda -->
+    <string name="settings_help_faq_title">Preguntas frecuentes</string>
+    <string name="settings_help_faq_desc">Respuestas rápidas sobre el funcionamiento de WEBSITE</string>
+    <string name="settings_help_guide_title">Guía de utilización</string>
+    <string name="settings_help_guide_desc">Manual paso a paso para aprovechar los módulos</string>
+    <string name="settings_help_support_title">Contacto con soporte técnico</string>
+    <string name="settings_help_support_desc">Atención a incidencias y consultas institucionales</string>
+
+    <!-- FAQ Contents -->
+    <string name="settings_faq_1_q">¿Cómo se calculan mis indicadores KPI?</string>
+    <string name="settings_faq_1_a">Los indicadores se consolidan automáticamente a partir de las entregas y tareas registradas en la plataforma central, calculando el porcentaje de cumplimiento sobre la meta establecida para tu período actual.</string>
+
+    <string name="settings_faq_2_q">¿Con qué frecuencia se actualizan las metas y métricas?</string>
+    <string name="settings_faq_2_a">Las métricas se sincronizan al inicio de cada jornada laboral y cada vez que se registra una entrega autorizada en los módulos del sistema.</string>
+
+    <string name="settings_faq_3_q">¿Cómo solicito una corrección en mi información laboral?</string>
+    <string name="settings_faq_3_a">El rol, departamento e identificador oficial son administrados por el área de Recursos Humanos. Puedes solicitar una actualización contactando a soporte institucional.</string>
+
+    <string name="settings_faq_4_q">¿Qué debo hacer si olvido mi contraseña?</string>
+    <string name="settings_faq_4_a">Comunícate inmediatamente con el administrador del sistema o solicita el restablecimiento seguro de credenciales con tu correo corporativo.</string>
+
+    <!-- Acerca de -->
+    <string name="settings_about_app_name">SIGD</string>
+    <string name="settings_about_app_desc">Sistema Integral de Gestión de Desempeño</string>
+    <string name="settings_about_rights">Desarrollado por Website · © 2026 · 2026-jadiel</string>
+</resources>

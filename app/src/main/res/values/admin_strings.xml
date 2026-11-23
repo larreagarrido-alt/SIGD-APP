@@ -1,0 +1,146 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Identidad WEBSITE Oficial -->
+    <string name="admin_app_brand_name">WEBSITE</string>
+    <string name="admin_dashboard_title">WEBSITE</string>
+    <string name="admin_dashboard_subtitle">Panel de administración</string>
+    <string name="admin_badge_admin">Administrador</string>
+    <string name="admin_greeting_title">Buen día, Daniela</string>
+    <string name="admin_greeting_sub">Viernes, 16 de octubre • Todo el equipo en marcha.</string>
+
+    <!-- Filtros de Fecha -->
+    <string name="admin_filter_today">Hoy</string>
+    <string name="admin_filter_yesterday">Ayer</string>
+    <string name="admin_filter_this_week">Semana</string>
+    <string name="admin_filter_last_week">Semana pasada</string>
+    <string name="admin_filter_this_month">Mes</string>
+    <string name="admin_filter_last_month">Mes pasado</string>
+    <string name="admin_filter_custom">Personalizado</string>
+
+    <!-- Modos de Vista -->
+    <string name="admin_view_day">Día</string>
+    <string name="admin_view_week">Semana</string>
+    <string name="admin_view_month">Mes</string>
+
+    <!-- Tarjeta Destacada de Rendimiento General (Figma) -->
+    <string name="admin_hero_badge_period">OCTUBRE 2026</string>
+    <string name="admin_hero_headline">Rendimiento general\ndel equipo.</string>
+    <string name="admin_hero_subline">El trabajo en equipo impulsa grandes resultados.</string>
+    <string name="admin_hero_progress_label">de avance</string>
+    <string name="admin_hero_progress_footer">Evaluaciones del mes • 36 de 40</string>
+
+    <!-- KPIs Principales -->
+    <string name="admin_kpi_assigned">KPI asignados</string>
+    <string name="admin_kpi_delivered">KPI entregados</string>
+    <string name="admin_kpi_pending">KPI pendientes</string>
+    <string name="admin_kpi_overdue">KPI vencidos</string>
+
+    <!-- Resumen del Equipo -->
+    <string name="admin_team_collaborators">Colaboradores</string>
+    <string name="admin_team_general_avg">Promedio general</string>
+    <string name="admin_team_tests_completed">Tests completados</string>
+    <string name="admin_team_kpi_on_track">Asistencia</string>
+
+    <!-- Secciones del Nuevo Diseño Figma -->
+    <string name="admin_section_today_summary">Resumen de hoy</string>
+    <string name="admin_section_see_all">Ver todas</string>
+    <string name="admin_today_action_title">Revisar evaluaciones pendientes</string>
+    <string name="admin_today_action_sub">Hay 4 evaluaciones listas para aprobar</string>
+    <string name="admin_today_action_btn">Revisar ahora</string>
+    <string name="admin_action_manage_team_title">Gestionar equipo</string>
+    <string name="admin_action_manage_team_sub">Altas / Bajas / Roles</string>
+    <string name="admin_action_generate_report_title">Generar reporte</string>
+    <string name="admin_action_generate_report_sub">Rendimiento del equipo</string>
+
+    <!-- Alertas y Novedades -->
+    <string name="admin_section_alerts_news">Alertas y novedades</string>
+    <string name="admin_alert_1_title">Evaluaciones pendientes</string>
+    <string name="admin_alert_1_sub">4 evaluaciones por revisar • Hace 1 hora</string>
+    <string name="admin_alert_2_title">Nuevo colaborador</string>
+    <string name="admin_alert_2_sub">María López se unió al equipo • Hace 3 horas</string>
+    <string name="admin_alert_3_title">Reporte mensual disponible</string>
+    <string name="admin_alert_3_sub">El reporte de octubre ya está listo • Ayer, 18:20</string>
+
+    <!-- Gráficos y Secciones Anteriores Conservadas -->
+    <string name="admin_section_monthly_chart">Promedio del equipo por mes</string>
+    <string name="admin_section_wellness_alerts">Alertas de bienestar</string>
+    <string name="admin_wellness_action_view">Ver colaboradores</string>
+    <string name="admin_section_employees">Resumen por colaborador</string>
+    <string name="admin_empty_employees">No se encontraron registros de colaboradores para este período.</string>
+    <string name="admin_footer_text">Rendimiento · Bienestar · Crecimiento</string>
+
+    <!-- Menú Lateral -->
+    <string name="admin_menu_app_title">WEBSITE</string>
+    <string name="admin_menu_app_sub">Panel de administración</string>
+    <string name="admin_menu_dashboard">Dashboard</string>
+    <string name="admin_menu_users">Colaboradores</string>
+    <string name="admin_menu_kpi_config">Configuración KPI</string>
+    <string name="admin_menu_psychological_test">Test psicológico</string>
+    <string name="admin_menu_ranking_rewards">Ranking y premios</string>
+    <string name="admin_menu_rewards_config">Config. de premios</string>
+    <string name="admin_menu_reports">Reportes</string>
+    <string name="admin_menu_view_as_collab">Ver como colaborador</string>
+    <string name="admin_menu_logout">Cerrar sesión</string>
+    <string name="admin_module_not_available">Módulo en desarrollo (próxima entrega)</string>
+
+    <!-- Diálogo Selector de Rango -->
+    <string name="admin_dialog_range_title">Seleccionar rango personalizado</string>
+    <string name="admin_dialog_start_date">Fecha inicial:</string>
+    <string name="admin_dialog_end_date">Fecha final:</string>
+    <string name="admin_dialog_apply">Aplicar</string>
+    <string name="admin_dialog_cancel">Cancelar</string>
+    <string name="admin_error_invalid_range">La fecha inicial no puede ser posterior a la fecha final</string>
+
+    <!-- Accesibilidad -->
+    <string name="admin_desc_open_menu">Abrir menú lateral</string>
+    <string name="admin_desc_close_menu">Cerrar menú lateral</string>
+    <string name="admin_desc_date_prev">Fecha o período anterior</string>
+    <string name="admin_desc_date_next">Fecha o período siguiente</string>
+    <string name="admin_desc_notifications">Notificaciones</string>
+    <string name="admin_lbl_assigned">Asignados</string>
+    <string name="admin_lbl_delivered">Entregados</string>
+    <string name="admin_lbl_pending">Pendientes</string>
+
+    <!-- Pantalla Menú de Módulos (Página 1 Figma / Doc2) -->
+    <string name="admin_menu_screen_title">Menú</string>
+    <string name="admin_menu_screen_sub">Nexo digital • Tu centro de gestión</string>
+    <string name="admin_menu_account_title">Mi cuenta</string>
+
+    <string name="admin_mod_dashboard">Dashboard</string>
+    <string name="admin_mod_dashboard_desc">Panel general</string>
+    <string name="admin_mod_collaborators">Personal</string>
+    <string name="admin_mod_collaborators_desc">Directorio y equipo</string>
+    <string name="admin_mod_kpi">KPI</string>
+    <string name="admin_mod_kpi_desc">Metas y entregas</string>
+    <string name="admin_mod_wellness">Bienestar</string>
+    <string name="admin_mod_wellness_desc">Salud y clima</string>
+    <string name="admin_mod_ranking">Ranking</string>
+    <string name="admin_mod_ranking_desc">Posiciones del equipo</string>
+    <string name="admin_mod_rewards">Premios</string>
+    <string name="admin_mod_rewards_desc">Canjes y logros</string>
+    <string name="admin_mod_rewards_config">Configuración de premios</string>
+    <string name="admin_mod_rewards_config_desc">Reglas y catálogo</string>
+    <string name="admin_mod_reports">Reportes</string>
+    <string name="admin_mod_reports_desc">Métricas y exportación</string>
+    <string name="admin_mod_notifs">Notificaciones</string>
+    <string name="admin_mod_notifs_desc">Avisos y alertas</string>
+
+    <string name="admin_opt_general_config">Configuración general</string>
+    <string name="admin_opt_help_support">Ayuda y soporte</string>
+    <string name="admin_opt_switch_view">Cambiar vista</string>
+    <string name="admin_opt_switch_view_sub">Modo colaborador</string>
+    <string name="admin_opt_logout">Cerrar sesión</string>
+
+    <string name="admin_dialog_logout_title">Cerrar sesión</string>
+    <string name="admin_dialog_logout_msg">¿Estás seguro de que deseas cerrar sesión en WEBSITE?</string>
+    <string name="admin_dialog_logout_confirm">Cerrar sesión</string>
+    <string name="admin_dialog_logout_cancel">Cancelar</string>
+
+    <!-- Barra de Navegación Inferior Administrador -->
+    <string name="admin_nav_personal">Personal</string>
+    <string name="admin_nav_reports">Reportes</string>
+    <string name="admin_nav_home">Inicio</string>
+    <string name="admin_nav_notifications">Notificaciones</string>
+    <string name="admin_nav_menu">Menú</string>
+</resources>
+

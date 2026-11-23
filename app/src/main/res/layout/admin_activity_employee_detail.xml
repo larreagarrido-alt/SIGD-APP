@@ -1,0 +1,990 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/personal_bg_main"
+    android:orientation="vertical">
+
+    <!-- Barra Superior Sticky -->
+    <LinearLayout
+        android:id="@+id/layout_detail_topbar"
+        android:layout_width="match_parent"
+        android:layout_height="56dp"
+        android:background="@color/personal_header_bg"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingEnd="16dp">
+
+        <ImageButton
+            android:id="@+id/ib_detail_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Regresar"
+            android:src="@drawable/personal_ic_arrow_back" />
+
+        <TextView
+            android:id="@+id/tv_detail_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="@string/personal_detail_title"
+            android:textColor="@color/personal_text_primary"
+            android:textSize="17sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/personal_divider" />
+
+    <!-- Contenido Scrollable Completo -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="36dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- ============================================== -->
+            <!-- TARJETA DEL COLABORADOR (HEADER DEL PERFIL)     -->
+            <!-- ============================================== -->
+            <LinearLayout
+                android:id="@+id/card_employee_header"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/personal_bg_card_surface"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Fila Principal: Avatar, Datos y Estado -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <!-- Avatar -->
+                    <TextView
+                        android:id="@+id/tv_detail_avatar"
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+                        android:background="@drawable/personal_bg_avatar_circle"
+                        android:gravity="center"
+                        android:text="CM"
+                        android:textColor="#FFFFFF"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <!-- Nombre, Cargo y Código -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tv_detail_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Carlos Mendoza"
+                            android:textColor="@color/personal_text_primary"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tv_detail_role"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Tech Lead &amp; Principal Architect"
+                            android:textColor="@color/personal_text_secondary"
+                            android:textSize="13sp" />
+
+                        <TextView
+                            android:id="@+id/tv_detail_dept_code"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Tecnología e Innovación • EMP-1001"
+                            android:textColor="@color/personal_text_muted"
+                            android:textSize="11sp" />
+                    </LinearLayout>
+
+                    <!-- Estado Laboral Badge -->
+                    <TextView
+                        android:id="@+id/tv_detail_status"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/personal_bg_status_active"
+                        android:paddingStart="10dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="4dp"
+                        android:text="Activo"
+                        android:textColor="@color/personal_status_delivered"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Divisor Sutil -->
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="12dp"
+                    android:background="@color/personal_divider" />
+
+                <!-- Datos de Contacto Ficticios -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal">
+
+                    <!-- Correo -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/personal_ic_mail" />
+
+                        <TextView
+                            android:id="@+id/tv_detail_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="c.mendoza@website.pe"
+                            android:textColor="@color/personal_text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <!-- Teléfono -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:src="@drawable/personal_ic_phone" />
+
+                        <TextView
+                            android:id="@+id/tv_detail_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="+51 987 654 321"
+                            android:textColor="@color/personal_text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ============================================== -->
+            <!-- SELECTOR DE PESTAÑAS (Resumen | Indicadores | Actividades) -->
+            <!-- ============================================== -->
+            <LinearLayout
+                android:id="@+id/layout_tab_selector"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/personal_bg_tab_container"
+                android:orientation="horizontal"
+                android:padding="4dp">
+
+                <TextView
+                    android:id="@+id/btn_tab_summary"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/personal_bg_tab_selected"
+                    android:gravity="center"
+                    android:text="@string/personal_tab_summary"
+                    android:textColor="@color/personal_text_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/btn_tab_kpi"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/personal_bg_tab_unselected"
+                    android:gravity="center"
+                    android:text="@string/personal_tab_kpi"
+                    android:textColor="@color/personal_text_secondary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/btn_tab_activities"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/personal_bg_tab_unselected"
+                    android:gravity="center"
+                    android:text="@string/personal_tab_activities"
+                    android:textColor="@color/personal_text_secondary"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- ============================================== -->
+            <!-- PESTAÑA 1: RESUMEN                              -->
+            <!-- ============================================== -->
+            <LinearLayout
+                android:id="@+id/layout_content_summary"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:visibility="visible">
+
+                <!-- TARJETA HERO: RENDIMIENTO GENERAL -->
+                <LinearLayout
+                    android:id="@+id/card_hero_performance"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/personal_bg_hero_card"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <!-- Cabecera de la Tarjeta Hero -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/personal_bg_period_capsule"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingEnd="10dp"
+                            android:paddingBottom="4dp">
+
+                            <ImageView
+                                android:layout_width="14dp"
+                                android:layout_height="14dp"
+                                android:src="@drawable/personal_ic_calendar" />
+
+                            <TextView
+                                android:id="@+id/tv_hero_period"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="6dp"
+                                android:text="@string/personal_hero_period_default"
+                                android:textColor="@color/personal_purple_accent"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <View
+                            android:layout_width="0dp"
+                            android:layout_height="1dp"
+                            android:layout_weight="1" />
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:src="@drawable/personal_ic_sparkle" />
+                    </LinearLayout>
+
+                    <!-- Cuerpo de Rendimiento General: Texto + Anillo Circular -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/personal_hero_title"
+                                android:textColor="@color/personal_text_primary"
+                                android:textSize="18sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/tv_hero_subtitle"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Vas +8 pp frente a septiembre"
+                                android:textColor="@color/personal_text_secondary"
+                                android:textSize="13sp" />
+
+                            <TextView
+                                android:id="@+id/tv_hero_status"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:background="@drawable/personal_bg_status_active"
+                                android:paddingStart="10dp"
+                                android:paddingTop="3dp"
+                                android:paddingEnd="10dp"
+                                android:paddingBottom="3dp"
+                                android:text="Desempeño Sobresaliente"
+                                android:textColor="@color/personal_status_delivered"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- Anillo Circular de Rendimiento -->
+                        <pe.net.ws.kpiweb.features.admin.personal.view.CircularProgressView
+                            android:id="@+id/cpv_hero_score"
+                            android:layout_width="100dp"
+                            android:layout_height="100dp"
+                            android:layout_marginStart="12dp" />
+                    </LinearLayout>
+
+                    <!-- Barra de progreso inferior del Hero -->
+                    <TextView
+                        android:id="@+id/tv_hero_evaluations"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:text="Evaluaciones del mes • 16 de 18 aprobadas"
+                        android:textColor="@color/personal_text_muted"
+                        android:textSize="12sp" />
+
+                    <ProgressBar
+                        android:id="@+id/pb_hero_evaluations"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="5dp"
+                        android:layout_marginTop="6dp"
+                        android:max="100"
+                        android:progress="88"
+                        android:progressDrawable="@drawable/personal_progress_horizontal" />
+                </LinearLayout>
+
+                <!-- ESTADÍSTICAS PERSONALES (3 Tarjetas) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <!-- KPI Asignados -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/personal_bg_card_surface"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/personal_stat_kpi_assigned"
+                            android:textColor="@color/personal_text_muted"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tv_stat_assigned"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="4"
+                            android:textColor="@color/personal_text_primary"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- KPI Cumplidos -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="3dp"
+                        android:layout_marginEnd="3dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/personal_bg_card_surface"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/personal_stat_kpi_completed"
+                            android:textColor="@color/personal_text_muted"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tv_stat_completed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="3"
+                            android:textColor="@color/personal_status_delivered"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- KPI Pendientes -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/personal_bg_card_surface"
+                        android:orientation="vertical"
+                        android:padding="12dp">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/personal_stat_kpi_pending"
+                            android:textColor="@color/personal_text_muted"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/tv_stat_pending"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:text="1"
+                            android:textColor="@color/personal_semantic_amber"
+                            android:textSize="20sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- EVOLUCIÓN DEL RENDIMIENTO (GRÁFICO DE LÍNEAS) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/personal_bg_card_surface"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/personal_evolution_title"
+                        android:textColor="@color/personal_text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/personal_evolution_subtitle"
+                        android:textColor="@color/personal_text_muted"
+                        android:textSize="12sp" />
+
+                    <pe.net.ws.kpiweb.features.admin.personal.view.PerformanceLineChartView
+                        android:id="@+id/chart_performance_evolution"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginTop="12dp" />
+                </LinearLayout>
+
+                <!-- INFORMACIÓN LABORAL (SOLO LECTURA) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/personal_bg_card_surface"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/personal_labor_title"
+                        android:textColor="@color/personal_text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <!-- Grid Laboral -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/personal_labor_hire_date"
+                                android:textColor="@color/personal_text_muted"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/tv_labor_hire_date"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="15/01/2021"
+                                android:textColor="@color/personal_text_primary"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/personal_labor_schedule"
+                                android:textColor="@color/personal_text_muted"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/tv_labor_schedule"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="08:30 - 17:30"
+                                android:textColor="@color/personal_text_primary"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/personal_labor_contract"
+                                android:textColor="@color/personal_text_muted"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/tv_labor_contract"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Plazo Indeterminado"
+                                android:textColor="@color/personal_text_primary"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="@string/personal_labor_modality"
+                                android:textColor="@color/personal_text_muted"
+                                android:textSize="11sp" />
+
+                            <TextView
+                                android:id="@+id/tv_labor_modality"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Híbrida (3x2)"
+                                android:textColor="@color/personal_text_primary"
+                                android:textSize="13sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ============================================== -->
+            <!-- PESTAÑA 2: INDICADORES                          -->
+            <!-- ============================================== -->
+            <LinearLayout
+                android:id="@+id/layout_content_kpi"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- Encabezado de Indicadores y Selector de Períodos -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/personal_kpi_header_title"
+                    android:textColor="@color/personal_text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/personal_detail_server_reports_action"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/personal_bg_card_surface"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Reportes recibidos"
+                        android:textColor="@color/personal_text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Abrir los formularios guardados en el servidor para este trabajador"
+                        android:textColor="@color/personal_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Selector de Períodos -->
+                <HorizontalScrollView
+                    android:id="@+id/personal_detail_kpi_periods"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/layout_kpi_period_chips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/chip_kpi_this_month"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/personal_bg_dept_chip_selected"
+                            android:paddingStart="14dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="14dp"
+                            android:paddingBottom="6dp"
+                            android:text="@string/personal_period_this_month"
+                            android:textColor="@color/personal_text_primary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/chip_kpi_this_week"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/personal_bg_dept_chip_unselected"
+                            android:paddingStart="14dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="14dp"
+                            android:paddingBottom="6dp"
+                            android:text="@string/personal_period_this_week"
+                            android:textColor="@color/personal_text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/chip_kpi_prev_month"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/personal_bg_dept_chip_unselected"
+                            android:paddingStart="14dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="14dp"
+                            android:paddingBottom="6dp"
+                            android:text="@string/personal_period_prev_month"
+                            android:textColor="@color/personal_text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/chip_kpi_custom"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/personal_bg_dept_chip_unselected"
+                            android:paddingStart="14dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="14dp"
+                            android:paddingBottom="6dp"
+                            android:text="@string/personal_period_custom"
+                            android:textColor="@color/personal_text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <!-- Listado de Indicadores Asignados -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_kpi_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:nestedScrollingEnabled="false" />
+
+                <TextView
+                    android:id="@+id/personal_detail_kpi_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/personal_bg_card_secondary"
+                    android:padding="18dp"
+                    android:text="Los indicadores de este trabajador todavía no están conectados a esta vista. No se muestran cifras de demostración."
+                    android:textColor="@color/personal_text_secondary"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+
+                <!-- Gráfico de Historial de Evaluaciones -->
+                <LinearLayout
+                    android:id="@+id/personal_detail_kpi_history"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/personal_bg_card_surface"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/personal_kpi_history_title"
+                        android:textColor="@color/personal_text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="@string/personal_kpi_history_subtitle"
+                        android:textColor="@color/personal_text_muted"
+                        android:textSize="12sp" />
+
+                    <pe.net.ws.kpiweb.features.admin.personal.view.KpiBarChartView
+                        android:id="@+id/chart_kpi_bar_history"
+                        android:layout_width="match_parent"
+                        android:layout_height="160dp"
+                        android:layout_marginTop="12dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ============================================== -->
+            <!-- PESTAÑA 3: ACTIVIDADES                          -->
+            <!-- ============================================== -->
+            <LinearLayout
+                android:id="@+id/layout_content_activities"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- Encabezado de Actividades y Filtros -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="@string/personal_activities_header_title"
+                    android:textColor="@color/personal_text_primary"
+                    android:textSize="16sp"
+                    android:textStyle="bold" />
+
+                <!-- Chips de Filtros de Actividades -->
+                <HorizontalScrollView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/layout_activity_filter_chips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/chip_act_all"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/personal_bg_dept_chip_selected"
+                            android:paddingStart="14dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="14dp"
+                            android:paddingBottom="6dp"
+                            android:text="Todas"
+                            android:textColor="@color/personal_text_primary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/chip_act_pending"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/personal_bg_dept_chip_unselected"
+                            android:paddingStart="14dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="14dp"
+                            android:paddingBottom="6dp"
+                            android:text="Pendientes"
+                            android:textColor="@color/personal_text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/chip_act_in_progress"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/personal_bg_dept_chip_unselected"
+                            android:paddingStart="14dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="14dp"
+                            android:paddingBottom="6dp"
+                            android:text="En proceso"
+                            android:textColor="@color/personal_text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/chip_act_completed"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:background="@drawable/personal_bg_dept_chip_unselected"
+                            android:paddingStart="14dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="14dp"
+                            android:paddingBottom="6dp"
+                            android:text="Completadas"
+                            android:textColor="@color/personal_text_secondary"
+                            android:textSize="12sp" />
+
+                        <TextView
+                            android:id="@+id/chip_act_overdue"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/personal_bg_dept_chip_unselected"
+                            android:paddingStart="14dp"
+                            android:paddingTop="6dp"
+                            android:paddingEnd="14dp"
+                            android:paddingBottom="6dp"
+                            android:text="Vencidas"
+                            android:textColor="@color/personal_text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </HorizontalScrollView>
+
+                <!-- Sección: Próxima Actividad Destacada -->
+                <LinearLayout
+                    android:id="@+id/card_upcoming_activity"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/personal_bg_hero_card"
+                    android:orientation="vertical"
+                    android:padding="16dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="@string/personal_upcoming_section_title"
+                        android:textColor="@color/personal_purple_accent"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_upcoming_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Revisión arquitectónica de Microservicios"
+                        android:textColor="@color/personal_text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tv_upcoming_deadline"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Fecha límite: 24/10/2026"
+                        android:textColor="@color/personal_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Listado de Actividades -->
+                <androidx.recyclerview.widget.RecyclerView
+                    android:id="@+id/rv_activities_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:nestedScrollingEnabled="false" />
+
+                <!-- Estado Vacío de Actividades -->
+                <TextView
+                    android:id="@+id/tv_activities_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="24dp"
+                    android:gravity="center"
+                    android:padding="24dp"
+                    android:text="@string/personal_activities_empty"
+                    android:textColor="@color/personal_text_muted"
+                    android:textSize="13sp"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+</LinearLayout>

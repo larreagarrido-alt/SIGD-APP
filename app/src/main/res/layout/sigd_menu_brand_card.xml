@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Componente compartido de cabecera institucional SIGD by website para los menús de Colaborador y Administrador -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sigd_menu_brand_card"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/admin_bg_card_hero"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:paddingStart="16dp"
+    android:paddingTop="14dp"
+    android:paddingEnd="16dp"
+    android:paddingBottom="14dp">
+
+    <!-- Logotipo oficial SIGD by website transparente con contraste automático en modo claro -->
+    <FrameLayout
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/sigd_bg_brand_logo_contrast"
+        android:paddingStart="8dp"
+        android:paddingTop="6dp"
+        android:paddingEnd="8dp"
+        android:paddingBottom="6dp">
+
+        <ImageView
+            android:id="@+id/sigd_menu_brand_logo"
+            android:layout_width="50dp"
+            android:layout_height="54dp"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/auth_logo_description"
+            android:scaleType="fitCenter"
+            android:src="@drawable/auth_sigd_logo_transparent" />
+    </FrameLayout>
+
+    <!-- Textos institucionales ordenados y con jerarquía limpia -->
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="14dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/admin_bg_badge_period"
+            android:includeFontPadding="false"
+            android:letterSpacing="0.08"
+            android:paddingStart="8dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="3dp"
+            android:text="PLATAFORMA OFICIAL"
+            android:textColor="@color/admin_purple_accent"
+            android:textSize="9.5sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="2"
+            android:text="Gestión de Rendimiento y KPI"
+            android:textColor="@color/admin_text_primary"
+            android:textSize="14.5sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:ellipsize="end"
+            android:includeFontPadding="false"
+            android:maxLines="2"
+            android:text="Sistema Integral de Gestión del Desempeño"
+            android:textColor="@color/admin_dash_text_secondary"
+            android:textSize="11.5sp" />
+    </LinearLayout>
+</LinearLayout>

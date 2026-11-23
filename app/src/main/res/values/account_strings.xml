@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Módulo Mi Cuenta -->
+    <string name="account_screen_title">Mi cuenta</string>
+    <string name="account_screen_sub">Perfil profesional y seguridad</string>
+    <string name="account_section_info">INFORMACIÓN PERSONAL Y LABORAL</string>
+    <string name="account_section_security">SEGURIDAD Y GESTIÓN</string>
+
+    <string name="account_label_email">Correo electrónico</string>
+    <string name="account_label_phone">Teléfono de contacto</string>
+    <string name="account_label_department">Departamento</string>
+    <string name="account_label_employee_id">Código de colaborador</string>
+    <string name="account_label_hire_date">Fecha de ingreso</string>
+    <string name="account_label_status">Estado de cuenta</string>
+
+    <string name="account_btn_edit_profile">Editar información de contacto</string>
+    <string name="account_btn_change_password">Cambiar contraseña</string>
+
+    <string name="account_badge_verified">Verificado</string>
+    <string name="account_badge_server_only">Servidor</string>
+    <string name="account_server_only_notice">El rol, departamento e identificador oficial son administrados por el sistema central y no pueden alterarse desde el dispositivo.</string>
+
+    <!-- Editar Perfil -->
+    <string name="account_edit_title">Editar información</string>
+    <string name="account_edit_sub">Actualiza tus datos autorizados de contacto</string>
+    <string name="account_edit_name_hint">Nombre completo</string>
+    <string name="account_edit_phone_hint">Teléfono móvil</string>
+    <string name="account_edit_email_readonly">Correo corporativo (Solo lectura)</string>
+    <string name="account_edit_save">Guardar cambios</string>
+    <string name="account_edit_cancel">Cancelar</string>
+    <string name="account_edit_disclaimer">Mantén tu información de contacto actualizada para recibir notificaciones y comunicados oficiales de WEBSITE.</string>
+
+    <!-- Cambiar Contraseña -->
+    <string name="account_pwd_title">Cambiar contraseña</string>
+    <string name="account_pwd_sub">Actualiza tus credenciales de acceso seguro</string>
+    <string name="account_pwd_current_hint">Contraseña actual</string>
+    <string name="account_pwd_new_hint">Nueva contraseña (mínimo 8 caracteres)</string>
+    <string name="account_pwd_confirm_hint">Confirmar nueva contraseña</string>
+    <string name="account_pwd_submit">Actualizar contraseña</string>
+    <string name="account_pwd_cancel">Cancelar</string>
+    <string name="account_pwd_notice">Por seguridad institucional, la actualización de contraseñas requiere validación directa con el servidor central. No se almacenan contraseñas en este dispositivo.</string>
+</resources>

@@ -1,0 +1,150 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/kpi_bg_card_white"
+    android:orientation="vertical"
+    android:padding="16dp"
+    android:fitsSystemWindows="true"
+    tools:ignore="HardcodedText,SmallSp,VisualLintOverlap,SpeakableTextPresentCheck">
+
+    <!-- CABECERA DEL HISTORIAL -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/kpi_bg_circle_icon_light"
+            android:gravity="center">
+
+            <ImageView
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:contentDescription="@null"
+                android:importantForAccessibility="no"
+                android:src="@drawable/kpi_ic_calendar"
+                app:tint="@color/kpi_primary" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Historial de Reportes Semanales"
+                android:textColor="@color/kpi_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Archivo SIGD · Fichas oficiales consolidadas"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="11.5sp" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btnHistoryClose"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:contentDescription="Cerrar"
+            android:focusable="true"
+            android:padding="12dp"
+            android:src="@drawable/kpi_ic_back"
+            app:tint="@color/kpi_text_secondary" />
+    </LinearLayout>
+
+    <!-- BANNER DE REGLA DE CIERRE DOMINICAL -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@drawable/kpi_sheet_cell_yellow"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp"
+        android:paddingVertical="8dp">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:contentDescription="@null"
+            android:importantForAccessibility="no"
+            android:src="@drawable/kpi_ic_clock"
+            app:tint="#854D0E" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="Cierre automático: Los domingos a las 23:59 se consolidan los reportes y se reinician los formularios activos."
+            android:textColor="#854D0E"
+            android:textSize="10.5sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- CONTENEDOR DESPLAZABLE DE LA LISTA DE SEMANAS ARCHIVADAS -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="240dp"
+        android:layout_marginTop="12dp"
+        android:fillViewport="true"
+        tools:ignore="SpeakableTextPresentCheck">
+
+        <LinearLayout
+            android:id="@+id/llHistoryItemsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <!-- ELEMENTOS DE VISTA PREVIA PARA EL DISEÑADOR DE ANDROID STUDIO -->
+            <include
+                android:id="@+id/history_preview_item_1"
+                layout="@layout/kpi_item_history_week"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:visibility="visible" />
+
+            <include
+                android:id="@+id/history_preview_item_2"
+                layout="@layout/kpi_item_history_week"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                tools:visibility="visible" />
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- BOTÓN PARA FORZAR / PROBAR CIERRE DOMINICAL -->
+    <TextView
+        android:id="@+id/btnForceSundayArchival"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/kpi_bg_card_electric_accent"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:minHeight="48dp"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="10dp"
+        android:text="Ejecutar Cierre y Limpieza Dominical (Prueba manual)"
+        android:textColor="@color/kpi_info_text"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+</LinearLayout>

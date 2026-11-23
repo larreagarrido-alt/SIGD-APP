@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kpi_light_bg"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText,Overdraw,UseCompoundDrawables,ContentDescription,DisableBaselineAlignment,SmallSp,TextContrastCheck,TouchTargetSizeCheck">
+
+    <!-- ============================================== -->
+    <!-- BARRA SUPERIOR WEBSITE+                        -->
+    <!-- ============================================== -->
+    <LinearLayout
+        android:id="@+id/toolbarDesigner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kpi_header_gradient"
+        android:baselineAligned="false"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="12dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="14dp">
+
+        <!-- Botón Retroceso (Regresa al panel general de selección) -->
+        <ImageView
+            android:id="@+id/btnDesignerBack"
+            android:visibility="gone"
+            android:layout_width="48dp"
+            android:layout_height="48dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Volver"
+            android:padding="12dp"
+            android:src="@drawable/kpi_ic_arrow_back"
+            app:tint="#FFFFFF" />
+
+        <!-- Identidad Website+ y Título -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SIGD · SISTEMA DE DESEMPEÑO"
+                android:textColor="#E0E7FF"
+                android:textSize="11sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/tvDesignerHeaderTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Registro diario"
+                android:textColor="#FFFFFF"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDesignerHeaderSubtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Diseñador Gráfico · Producción Semanal"
+                android:textColor="#C7D2FE"
+                android:textSize="12sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- Botón Reporte directo (idéntico al de Senior y Junior) -->
+        <TextView
+            android:id="@+id/btnDesignerGoToReport"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="6dp"
+            android:background="@drawable/kpi_bg_translucent_pill"
+            android:fontFamily="sans-serif-medium"
+            android:gravity="center"
+            android:paddingStart="12dp"
+            android:paddingTop="8dp"
+            android:paddingEnd="12dp"
+            android:paddingBottom="8dp"
+            android:text="📊 Reporte"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <!-- Campana de Notificación -->
+        <ImageView
+            android:id="@+id/btnDesignerNotification"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="?attr/selectableItemBackgroundBorderless"
+            android:contentDescription="Notificaciones"
+            android:padding="8dp"
+            android:src="@drawable/kpi_ic_calendar"
+            app:tint="#FFFFFF" />
+    </LinearLayout>
+
+    <!-- CONTENEDOR DE FRAGMENTOS (KPI DIARIO / REPORTES) -->
+    <FrameLayout
+        android:id="@+id/flDesignerContent"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+</LinearLayout>

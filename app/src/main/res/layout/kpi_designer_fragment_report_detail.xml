@@ -1,0 +1,1282 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC"
+    android:fillViewport="true">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ============================================== -->
+        <!-- ENCABEZADO DEL DETALLE SEMANAL                 -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="12dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:id="@+id/btnDetailBack"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="?attr/selectableItemBackgroundBorderless"
+                    android:contentDescription="Regresar al historial"
+                    android:padding="6dp"
+                    android:src="@drawable/kpi_ic_arrow_back"
+                    app:tint="#5B21B6" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:id="@+id/tvDetailTitle"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reporte semanal"
+                        android:textColor="#0F172A"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Diseñador Gráfico"
+                        android:textColor="#64748B"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Badges de Semana y Nivel -->
+                <TextView
+                    android:id="@+id/tvDetailWeekBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="#DCFCE7"
+                    android:paddingStart="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="3dp"
+                    android:text="Semana 5"
+                    android:textColor="#15803D"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDetailLevelTopBadge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:background="#FEF3C7"
+                    android:paddingStart="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="3dp"
+                    android:text="★ BUENO"
+                    android:textColor="#B45309"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Selector de Fecha / Rango -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/kpi_junior_bg_input"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="10dp"
+                android:paddingEnd="10dp">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/kpi_ic_calendar"
+                    app:tint="#5B21B6" />
+
+                <TextView
+                    android:id="@+id/tvDetailDateRangeSelector"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="Del 08 al 13 de septiembre de 2026"
+                    android:textColor="#0F172A"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▾"
+                    android:textColor="#64748B" />
+            </LinearLayout>
+
+            <!-- Chips de días (Lun a Sáb con ✓) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/chipLun"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Lun ✓"
+                    android:textColor="#16A34A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/chipMar"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Mar ✓"
+                    android:textColor="#16A34A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/chipMie"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Mié ✓"
+                    android:textColor="#16A34A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/chipJue"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Jue ✓"
+                    android:textColor="#16A34A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/chipVie"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Vie ✓"
+                    android:textColor="#16A34A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/chipSab"
+                    android:layout_width="0dp"
+                    android:layout_height="24dp"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Sáb ✓"
+                    android:textColor="#16A34A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============================================== -->
+        <!-- GRAN MÉTRICA CIRCULAR CON CUMPLIMIENTO         -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:elevation="2dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="16dp">
+
+            <FrameLayout
+                android:layout_width="72dp"
+                android:layout_height="72dp"
+                android:background="@drawable/kpi_bg_circle_icon_light">
+
+                <TextView
+                    android:id="@+id/tvDetailBigPercent"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center"
+                    android:text="96%"
+                    android:textColor="#5B21B6"
+                    android:textSize="20sp"
+                    android:textStyle="bold" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="14dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvDetailActivitiesRatio"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="24 de 25 actividades"
+                    android:textColor="#0F172A"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDetailLevelBadgeSub"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="#FEF3C7"
+                    android:paddingStart="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="2dp"
+                    android:text="★ BUENO"
+                    android:textColor="#B45309"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text="Cumple con la mitad recomendada."
+                    android:textColor="#64748B"
+                    android:textSize="10sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============================================== -->
+        <!-- SECCIÓN 1. CONTROL DIARIO DE PRODUCCIÓN        -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/kpi_bg_badge_number"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Control diario de producción"
+                    android:textColor="#0F172A"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Cabecera de la tabla -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginTop="10dp"
+                android:background="#F1F5F9"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.2"
+                    android:text="Día"
+                    android:textColor="#64748B"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.8"
+                    android:text="Modalidad"
+                    android:textColor="#64748B"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Meta"
+                    android:textColor="#64748B"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    android:text="Dis"
+                    android:textColor="#64748B"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    android:text="Vid"
+                    android:textColor="#64748B"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    android:text="Total"
+                    android:textColor="#64748B"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="%"
+                    android:textColor="#64748B"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Contenedor dinámico de filas diarias de la tabla -->
+            <LinearLayout
+                android:id="@+id/containerTableDaysRows"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical" />
+
+            <!-- Fila TOTAL SEMANAL -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="4dp"
+                android:background="#EDE9FE"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="6dp"
+                android:paddingEnd="6dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="4"
+                    android:text="TOTAL SEMANAL"
+                    android:textColor="#5B21B6"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTableTotalDesigns"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    android:text="17"
+                    android:textColor="#5B21B6"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTableTotalVideos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textColor="#5B21B6"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTableTotalAll"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="0.8"
+                    android:gravity="center"
+                    android:text="24"
+                    android:textColor="#5B21B6"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvTableTotalPercent"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="96%"
+                    android:textColor="#16A34A"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Nota explicativa -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="• La meta diaria corresponde a la modalidad asignada para cada día.\n• El total semanal es la sumatoria de diseños, videos y sesiones fotográficas."
+                android:textColor="#64748B"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- ============================================== -->
+        <!-- SECCIÓN 2. RESUMEN SEMANAL DE PRODUCCIÓN       -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/kpi_bg_badge_number"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Resumen semanal de producción"
+                    android:textColor="#0F172A"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Tabla Resumen -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:layout_marginTop="10dp"
+                android:background="#F1F5F9"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.6"
+                    android:text="Indicador"
+                    android:textColor="#64748B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Meta semanal"
+                    android:textColor="#64748B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="Resultado"
+                    android:textColor="#64748B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="%"
+                    android:textColor="#64748B"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Fila Diseños -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.6"
+                    android:text="Diseños gráficos"
+                    android:textColor="#0F172A"
+                    android:textSize="11sp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="18"
+                    android:textColor="#64748B"
+                    android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/tvSec2ResDesigns"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="17"
+                    android:textColor="#0F172A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvSec2PercDesigns"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="94.44%"
+                    android:textColor="#16A34A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Fila Videos -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.6"
+                    android:text="Videos"
+                    android:textColor="#0F172A"
+                    android:textSize="11sp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="6"
+                    android:textColor="#64748B"
+                    android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/tvSec2ResVideos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textColor="#0F172A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvSec2PercVideos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="83.33%"
+                    android:textColor="#D97706"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Fila Sesiones -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="32dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.6"
+                    android:text="Sesiones fotográficas"
+                    android:textColor="#0F172A"
+                    android:textSize="11sp" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#64748B"
+                    android:textSize="11sp" />
+                <TextView
+                    android:id="@+id/tvSec2ResPhotos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#0F172A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvSec2PercPhotos"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="100%"
+                    android:textColor="#16A34A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Fila TOTAL GENERAL -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="34dp"
+                android:layout_marginTop="4dp"
+                android:background="#EDE9FE"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="8dp"
+                android:paddingEnd="8dp">
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1.6"
+                    android:text="TOTAL GENERAL"
+                    android:textColor="#5B21B6"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="25 actividades"
+                    android:textColor="#5B21B6"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvSec2ResTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="24"
+                    android:textColor="#5B21B6"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+                <TextView
+                    android:id="@+id/tvSec2PercTotal"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:text="96%"
+                    android:textColor="#16A34A"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============================================== -->
+        <!-- SECCIÓN 3. ACCIONES QUE REALIZA EL DISEÑADOR   -->
+        <!-- (ÚNICA SECCIÓN EDITABLE DESDE EL HISTORIAL)    -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/kpi_bg_badge_number"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Acciones que realiza el diseñador gráfico"
+                    android:textColor="#0F172A"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:layout_marginBottom="8dp"
+                android:text="Marca las actividades efectuadas en el período. Puedes actualizar esta sección:"
+                android:textColor="#64748B"
+                android:textSize="11sp" />
+
+            <!-- Las 9 casillas -->
+            <CheckBox
+                android:id="@+id/cbAction1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Producción de diseños gráficos (posts, banners, piezas digitales, etc.)"
+                android:textColor="#0F172A"
+                android:textSize="12sp"
+                app:buttonTint="#5B21B6" />
+
+            <CheckBox
+                android:id="@+id/cbAction2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Edición y montaje de videos."
+                android:textColor="#0F172A"
+                android:textSize="12sp"
+                app:buttonTint="#5B21B6" />
+
+            <CheckBox
+                android:id="@+id/cbAction3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Diseño de piezas para campañas y redes sociales."
+                android:textColor="#0F172A"
+                android:textSize="12sp"
+                app:buttonTint="#5B21B6" />
+
+            <CheckBox
+                android:id="@+id/cbAction4"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Adaptación de piezas a diferentes formatos."
+                android:textColor="#0F172A"
+                android:textSize="12sp"
+                app:buttonTint="#5B21B6" />
+
+            <CheckBox
+                android:id="@+id/cbAction5"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Preparación de material gráfico para la web."
+                android:textColor="#0F172A"
+                android:textSize="12sp"
+                app:buttonTint="#5B21B6" />
+
+            <CheckBox
+                android:id="@+id/cbAction6"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Edición y retoque de fotografías (cuando corresponda)."
+                android:textColor="#0F172A"
+                android:textSize="12sp"
+                app:buttonTint="#5B21B6" />
+
+            <CheckBox
+                android:id="@+id/cbAction7"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Organización y entrega de archivos finales."
+                android:textColor="#0F172A"
+                android:textSize="12sp"
+                app:buttonTint="#5B21B6" />
+
+            <CheckBox
+                android:id="@+id/cbAction8"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="true"
+                android:text="Cumplimiento de las metas diarias de producción."
+                android:textColor="#0F172A"
+                android:textSize="12sp"
+                app:buttonTint="#5B21B6" />
+
+            <CheckBox
+                android:id="@+id/cbAction9"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:checked="false"
+                android:text="Otras actividades asignadas."
+                android:textColor="#0F172A"
+                android:textSize="12sp"
+                app:buttonTint="#5B21B6" />
+
+            <!-- Botón Guardar acciones con biometría -->
+            <LinearLayout
+                android:id="@+id/btnSaveActions"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:background="@drawable/kpi_bg_gradient_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/kpi_ic_target"
+                    app:tint="#FFFFFF" />
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:gravity="center"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Guardar acciones"
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Se solicitará tu huella o reconocimiento facial"
+                        android:textColor="#E0E7FF"
+                        android:textSize="9sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============================================== -->
+        <!-- SECCIÓN 4. EVALUACIÓN KPI - PRODUCTIVIDAD       -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/kpi_bg_badge_number"
+                    android:gravity="center"
+                    android:text="4"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Evaluación KPI – Productividad"
+                    android:textColor="#0F172A"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Tabla de Escala de Productividad -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:orientation="vertical">
+
+                <!-- 1. Excelente -->
+                <LinearLayout
+                    android:id="@+id/rowLevelExcelente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="#DCFCE7"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="★ EXCELENTE  ·  90% – 100%  (25 actividades)"
+                        android:textColor="#15803D"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cumple y/o supera el objetivo."
+                        android:textColor="#166534"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- 2. Muy bueno -->
+                <LinearLayout
+                    android:id="@+id/rowLevelMuyBueno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="#E0F2FE"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="★ MUY BUENO  ·  80% – 89%  (20 actividades)"
+                        android:textColor="#0369A1"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cumple y está por llegar al objetivo."
+                        android:textColor="#075985"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- 3. Bueno (Destacado activo en demo) -->
+                <LinearLayout
+                    android:id="@+id/rowLevelBueno"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="#FEF3C7"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="★ BUENO  ·  60% – 79%  (15 actividades)  ◄ ACTIVO"
+                        android:textColor="#B45309"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cumple con la mitad recomendada con la empresa."
+                        android:textColor="#92400E"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- 4. Regular -->
+                <LinearLayout
+                    android:id="@+id/rowLevelRegular"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="#FFEDD5"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="★ REGULAR  ·  40% – 59%  (10 actividades)"
+                        android:textColor="#C2410C"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Baja expectativa con la empresa."
+                        android:textColor="#9A3412"
+                        android:textSize="10sp" />
+                </LinearLayout>
+
+                <!-- 5. Deficiente -->
+                <LinearLayout
+                    android:id="@+id/rowLevelDeficiente"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:background="#FEE2E2"
+                    android:orientation="vertical"
+                    android:padding="8dp">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="★ DEFICIENTE  ·  &lt; 40%  (9 actividades)"
+                        android:textColor="#B91C1C"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="No cumple con las expectativas."
+                        android:textColor="#991B1B"
+                        android:textSize="10sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============================================== -->
+        <!-- SECCIÓN 5. OBSERVACIONES GENERALES             -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:background="@drawable/kpi_bg_badge_number"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:text="Observaciones generales"
+                    android:textColor="#0F172A"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvDetailGeneralObservations"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="#F8FAFC"
+                android:padding="12dp"
+                android:text="Semana con buen desempeño. Se cumplió con la mayoría de metas diarias asignadas. Se recomienda mejorar la producción de videos y mantener la constancia en la entrega de piezas finales."
+                android:textColor="#0F172A"
+                android:textSize="12sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="end"
+                android:layout_marginTop="4dp"
+                android:text="146/200"
+                android:textColor="#94A3B8"
+                android:textSize="10sp" />
+        </LinearLayout>
+
+        <!-- ============================================== -->
+        <!-- COMPLEMENTOS VISUALES: GRÁFICOS Y DESCARGA     -->
+        <!-- ============================================== -->
+        <!-- Gráfica de producción semanal -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Gráfica de producción semanal"
+                android:textColor="#0F172A"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <pe.net.ws.kpiweb.features.kpi.designer.ui.view.KpiDesignerDailyBarChartView
+                android:id="@+id/chartDetailWeeklyBars"
+                android:layout_width="match_parent"
+                android:layout_height="170dp"
+                android:layout_marginTop="10dp" />
+        </LinearLayout>
+
+        <!-- Distribución de actividades (Donut) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Distribución de actividades"
+                android:textColor="#0F172A"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <pe.net.ws.kpiweb.features.kpi.designer.ui.view.KpiDesignerDonutChartView
+                android:id="@+id/chartDetailDonut"
+                android:layout_width="match_parent"
+                android:layout_height="160dp"
+                android:layout_marginTop="10dp" />
+
+            <!-- Leyenda con porcentajes -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvLegendDesigns"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="● Diseños gráficos   17 (70.8%)"
+                    android:textColor="#E11D48"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvLegendVideos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="● Videos   5 (20.8%)"
+                    android:textColor="#0284C7"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvLegendPhotos"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:text="● Sesiones fotográficas   1 (4.2%)"
+                    android:textColor="#10B981"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Botón Descargar Reporte (PDF) -->
+        <LinearLayout
+            android:id="@+id/btnDownloadPdfReport"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginBottom="24dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:clickable="true"
+            android:elevation="2dp"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/kpi_ic_document"
+                app:tint="#5B21B6" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:text="Descargar reporte (PDF)"
+                android:textColor="#5B21B6"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

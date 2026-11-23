@@ -1,0 +1,938 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.core.widget.NestedScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kpi_light_bg"
+    android:fillViewport="true"
+    tools:ignore="HardcodedText,TextContrastCheck,TouchTargetSizeCheck,TooManyViews">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!-- ============================================== -->
+        <!-- CABECERA: TÍTULO Y SELECTOR DE 2 PESTAÑAS      -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="14dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="14dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:src="@drawable/kpi_ic_chart"
+                    app:tint="#5B21B6" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Reportes"
+                        android:textColor="#0F172A"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Consulta tu progreso y reportes"
+                        android:textColor="#64748B"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Selector Horizontal de 2 Pestañas: [ Semanal ] | [ Historial ] -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="14dp"
+                android:background="#EDE9FE"
+                android:orientation="horizontal"
+                android:padding="3dp">
+
+                <!-- Pestaña 1: Semanal -->
+                <LinearLayout
+                    android:id="@+id/tabDesignerWeekly"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_bg_tab_active_purple"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/ivTabWeekly"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/kpi_ic_calendar"
+                        app:tint="#FFFFFF" />
+
+                    <TextView
+                        android:id="@+id/tvTabWeekly"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Semanal"
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Pestaña 2: Historial -->
+                <LinearLayout
+                    android:id="@+id/tabDesignerHistory"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="3dp"
+                    android:layout_weight="1"
+                    android:background="@android:color/transparent"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:id="@+id/ivTabHistory"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/kpi_ic_clock"
+                        app:tint="#5B21B6" />
+
+                    <TextView
+                        android:id="@+id/tvTabHistory"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Historial"
+                        android:textColor="#5B21B6"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============================================== -->
+        <!-- VISTA 1: PESTAÑA SEMANAL                       -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:id="@+id/containerDesignerWeeklyTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="visible">
+
+            <!-- Selector de Semana -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/kpi_junior_bg_input"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="12dp"
+                android:paddingEnd="12dp">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/kpi_ic_calendar"
+                    app:tint="#5B21B6" />
+
+                <TextView
+                    android:id="@+id/tvCurrentWeekSelector"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:text="Semana del 04 al 09 de septiembre de 2026"
+                    android:textColor="#0F172A"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="▾"
+                    android:textColor="#64748B" />
+            </LinearLayout>
+
+            <!-- Burbujas de Días (Lun a Sáb) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/kpi_bg_card_white"
+                android:elevation="2dp"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:padding="12dp">
+
+                <!-- Lun -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Lun"
+                        android:textColor="#64748B"
+                        android:textSize="10sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="04/09"
+                        android:textColor="#94A3B8"
+                        android:textSize="9sp" />
+                    <TextView
+                        android:id="@+id/tvDayBubbleLun"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginTop="4dp"
+                        android:background="#DCFCE7"
+                        android:gravity="center"
+                        android:text="✓"
+                        android:textColor="#16A34A"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Mar -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mar"
+                        android:textColor="#64748B"
+                        android:textSize="10sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="05/09"
+                        android:textColor="#94A3B8"
+                        android:textSize="9sp" />
+                    <TextView
+                        android:id="@+id/tvDayBubbleMar"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginTop="4dp"
+                        android:background="#DCFCE7"
+                        android:gravity="center"
+                        android:text="✓"
+                        android:textColor="#16A34A"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Mié -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Mié"
+                        android:textColor="#64748B"
+                        android:textSize="10sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="06/09"
+                        android:textColor="#94A3B8"
+                        android:textSize="9sp" />
+                    <TextView
+                        android:id="@+id/tvDayBubbleMie"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginTop="4dp"
+                        android:background="#DCFCE7"
+                        android:gravity="center"
+                        android:text="✓"
+                        android:textColor="#16A34A"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Jue -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Jue"
+                        android:textColor="#64748B"
+                        android:textSize="10sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="07/09"
+                        android:textColor="#94A3B8"
+                        android:textSize="9sp" />
+                    <TextView
+                        android:id="@+id/tvDayBubbleJue"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginTop="4dp"
+                        android:background="#DCFCE7"
+                        android:gravity="center"
+                        android:text="✓"
+                        android:textColor="#16A34A"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Vie -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Vie"
+                        android:textColor="#64748B"
+                        android:textSize="10sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="08/09"
+                        android:textColor="#94A3B8"
+                        android:textSize="9sp" />
+                    <TextView
+                        android:id="@+id/tvDayBubbleVie"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginTop="4dp"
+                        android:background="#DCFCE7"
+                        android:gravity="center"
+                        android:text="✓"
+                        android:textColor="#16A34A"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Sáb -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:gravity="center"
+                    android:orientation="vertical">
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Sáb"
+                        android:textColor="#64748B"
+                        android:textSize="10sp" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="09/09"
+                        android:textColor="#94A3B8"
+                        android:textSize="9sp" />
+                    <TextView
+                        android:id="@+id/tvDayBubbleSab"
+                        android:layout_width="22dp"
+                        android:layout_height="22dp"
+                        android:layout_marginTop="4dp"
+                        android:background="#F1F5F9"
+                        android:gravity="center"
+                        android:text="○"
+                        android:textColor="#94A3B8"
+                        android:textSize="12sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Tarjeta: Cumplimiento Semanal -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/kpi_bg_card_white"
+                android:elevation="2dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="16dp">
+
+                <!-- Círculo de porcentaje 80% -->
+                <FrameLayout
+                    android:layout_width="68dp"
+                    android:layout_height="68dp"
+                    android:background="@drawable/kpi_bg_circle_icon_light">
+
+                    <TextView
+                        android:id="@+id/tvWeeklyProgressPercent"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_gravity="center"
+                        android:text="80%"
+                        android:textColor="#5B21B6"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </FrameLayout>
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Cumplimiento semanal"
+                        android:textColor="#0F172A"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvWeeklyActivitiesRatio"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="20 de 25 actividades"
+                        android:textColor="#334155"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/tvWeeklyLevelBadge"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="#FEF3C7"
+                            android:paddingStart="8dp"
+                            android:paddingTop="2dp"
+                            android:paddingEnd="8dp"
+                            android:paddingBottom="2dp"
+                            android:text="★ BUENO"
+                            android:textColor="#B45309"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvWeeklyLevelDesc"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="6dp"
+                            android:text="Cumple con la mitad recomendada."
+                            android:textColor="#64748B"
+                            android:textSize="10sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Tarjeta: Resumen de la semana -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/kpi_bg_card_white"
+                android:elevation="2dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Resumen de la semana"
+                    android:textColor="#0F172A"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Grid 2x2 de métricas semanales -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="horizontal">
+
+                    <!-- Diseños -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="#F8FAFC"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Diseños"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+                        <TextView
+                            android:id="@+id/tvResumenDesigns"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="17 / 18   94.44%"
+                            android:textColor="#E11D48"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Videos -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="#F8FAFC"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Videos"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+                        <TextView
+                            android:id="@+id/tvResumenVideos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="6 / 6   100%"
+                            android:textColor="#0284C7"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:orientation="horizontal">
+
+                    <!-- Sesiones fotográficas -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="#F8FAFC"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Sesiones fotográficas"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+                        <TextView
+                            android:id="@+id/tvResumenPhotos"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="1 / 1   100%"
+                            android:textColor="#10B981"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <!-- Total actividades -->
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="#F8FAFC"
+                        android:orientation="vertical"
+                        android:padding="10dp">
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Total actividades"
+                            android:textColor="#64748B"
+                            android:textSize="11sp" />
+                        <TextView
+                            android:id="@+id/tvResumenTotal"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="24 / 25   96%"
+                            android:textColor="#5B21B6"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Tarjeta: Producción por día (Gráfico de Barras) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/kpi_bg_card_white"
+                android:elevation="2dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Producción por día"
+                        android:textColor="#0F172A"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <!-- Leyenda -->
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="● Diseños"
+                        android:textColor="#E11D48"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="● Videos"
+                        android:textColor="#0284C7"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="● Fotos"
+                        android:textColor="#10B981"
+                        android:textSize="10sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <pe.net.ws.kpiweb.features.kpi.designer.ui.view.KpiDesignerDailyBarChartView
+                    android:id="@+id/chartWeeklyDailyProduction"
+                    android:layout_width="match_parent"
+                    android:layout_height="170dp"
+                    android:layout_marginTop="10dp" />
+
+                <!-- Botón: Ver Detalle Completo de la Semana -->
+                <LinearLayout
+                    android:id="@+id/btnViewWeeklyReportDetail"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/kpi_bg_gradient_btn"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/kpi_ic_document"
+                        app:tint="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Ver Detalle Completo de la Semana"
+                        android:textColor="#FFFFFF"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- ============================================== -->
+        <!-- VISTA 2: PESTAÑA HISTORIAL                     -->
+        <!-- ============================================== -->
+        <LinearLayout
+            android:id="@+id/containerDesignerHistoryTab"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <!-- Fila: Estadísticas generales y selector de período -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Estadísticas generales"
+                    android:textColor="#0F172A"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <!-- Selector de período -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:background="@drawable/kpi_junior_bg_input"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="8dp"
+                    android:paddingEnd="8dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Últimas 8 semanas"
+                        android:textColor="#0F172A"
+                        android:textSize="11sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="▾"
+                        android:textColor="#64748B" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 4 Tarjetas de Estadísticas (Grid 2x2) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="horizontal">
+
+                <!-- 1. Total diseños -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_bg_card_white"
+                    android:elevation="2dp"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/kpi_ic_image"
+                        app:tint="#E11D48" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Total diseños"
+                        android:textColor="#64748B"
+                        android:textSize="11sp" />
+                    <TextView
+                        android:id="@+id/tvHistoryStatDesigns"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="142"
+                        android:textColor="#0F172A"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- 2. Total videos -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_bg_card_white"
+                    android:elevation="2dp"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/kpi_ic_video"
+                        app:tint="#0284C7" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Total videos"
+                        android:textColor="#64748B"
+                        android:textSize="11sp" />
+                    <TextView
+                        android:id="@+id/tvHistoryStatVideos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="52"
+                        android:textColor="#0F172A"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="14dp"
+                android:orientation="horizontal">
+
+                <!-- 3. Total sesiones -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_bg_card_white"
+                    android:elevation="2dp"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/kpi_ic_target"
+                        app:tint="#10B981" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Total sesiones"
+                        android:textColor="#64748B"
+                        android:textSize="11sp" />
+                    <TextView
+                        android:id="@+id/tvHistoryStatPhotos"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="8"
+                        android:textColor="#0F172A"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- 4. Promedio cumplimiento -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_bg_card_white"
+                    android:elevation="2dp"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/kpi_ic_chart"
+                        app:tint="#5B21B6" />
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Promedio cumplimiento"
+                        android:textColor="#64748B"
+                        android:textSize="11sp" />
+                    <TextView
+                        android:id="@+id/tvHistoryStatCompliance"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="87%"
+                        android:textColor="#5B21B6"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Tarjeta: Cumplimiento por semana (Gráfico de Evolución) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="14dp"
+                android:background="@drawable/kpi_bg_card_white"
+                android:elevation="2dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Cumplimiento por semana"
+                    android:textColor="#0F172A"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <pe.net.ws.kpiweb.features.kpi.designer.ui.view.KpiDesignerEvolutionChartView
+                    android:id="@+id/chartHistoryEvolution"
+                    android:layout_width="match_parent"
+                    android:layout_height="150dp"
+                    android:layout_marginTop="10dp" />
+            </LinearLayout>
+
+            <!-- Sección: Historial de reportes -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="10dp"
+                android:text="Historial de reportes"
+                android:textColor="#0F172A"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <!-- Lista de Semanas Anteriores -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/rvHistoryReports"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:nestedScrollingEnabled="false" />
+        </LinearLayout>
+    </LinearLayout>
+
+</androidx.core.widget.NestedScrollView>

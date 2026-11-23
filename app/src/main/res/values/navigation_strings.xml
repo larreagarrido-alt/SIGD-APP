@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="nav_account_title">Cuenta y seguridad</string>
+    <string name="nav_account_welcome">Bienvenido, %1$s</string>
+    <string name="nav_account_description">Administra el acceso a tu cuenta desde este celular.</string>
+    <string name="nav_no_dashboard">Tu sesión está iniciada. Todavía no hay un módulo principal conectado para tu perfil. Puedes gestionar tu seguridad o cerrar sesión.</string>
+    <string name="nav_admin_grant_missing">Tu cuenta tiene un rol de gestión, pero el servidor no le concedió acceso al dashboard administrativo. Solicita a WEBSITE que revise el permiso dashboard.admin. No se mostrarán datos de colaborador como sustituto.</string>
+    <string name="nav_verifying_session">Comprobando tu sesión…</string>
+    <string name="nav_session_unavailable">No se pudo abrir el inicio de tu cuenta. Reintenta la comprobación o entra a Cuenta y seguridad.</string>
+    <string name="nav_access_forbidden">El servidor no autorizó el acceso. Reintenta la comprobación o cierra sesión.</string>
+    <string name="nav_account_unavailable">No se pudo verificar tu cuenta. Reintenta cuando vuelva la conexión o cierra sesión.</string>
+    <string name="nav_retry">Reintentar</string>
+</resources>

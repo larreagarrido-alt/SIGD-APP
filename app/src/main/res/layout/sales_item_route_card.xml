@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/kpi_bg_sales_card"
+    android:elevation="2dp"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Fila superior: Tipo de Actividad, Horario y Botón Editar -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- Badge Tipo de Actividad -->
+        <LinearLayout
+            android:id="@+id/llBadgeType"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kpi_bg_badge_number"
+            android:backgroundTint="#EEF2FF"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="4dp">
+
+            <ImageView
+                android:id="@+id/ivRouteTypeIcon"
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/kpi_ic_walk"
+                app:tint="#4F46E5" />
+
+            <TextView
+                android:id="@+id/tvRouteType"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:text="Visita Comercial"
+                android:textColor="#4F46E5"
+                android:textSize="10.5sp" />
+        </LinearLayout>
+
+        <!-- Horario -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="12dp"
+                android:layout_height="12dp"
+                android:src="@drawable/kpi_ic_clock"
+                app:tint="#94A3B8" />
+
+            <TextView
+                android:id="@+id/tvRouteTimeRange"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="sans-serif-medium"
+                android:text="09:30 AM - 10:15 AM"
+                android:textColor="#64748B"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <!-- Botón Editar -->
+        <ImageButton
+            android:id="@+id/btnRouteEdit"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/kpi_bg_stepper_btn_light"
+            android:contentDescription="Editar registro"
+            android:padding="7dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/kpi_ic_edit"
+            app:tint="#5B46D6" />
+
+        <!-- Botón Eliminar -->
+        <ImageButton
+            android:id="@+id/btnRouteDelete"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:layout_marginStart="4dp"
+            android:background="@drawable/kpi_bg_stepper_btn_light"
+            android:contentDescription="Eliminar registro"
+            android:padding="7dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/kpi_ic_minus"
+            app:tint="#EF4444" />
+    </LinearLayout>
+
+    <!-- Nombre del Negocio / Empresa -->
+    <TextView
+        android:id="@+id/tvRouteBusinessName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:fontFamily="sans-serif-black"
+        android:text="Distribuidora Los Andes S.A.C."
+        android:textColor="#1E293B"
+        android:textSize="16sp" />
+
+    <!-- Contacto y Teléfono -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:src="@drawable/kpi_ic_user"
+            app:tint="#64748B" />
+
+        <TextView
+            android:id="@+id/tvRouteContact"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="sans-serif-medium"
+            android:text="Contacto"
+            android:textColor="#475569"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/tvRouteContactDivider"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="6dp"
+            android:text="•"
+            android:textColor="#94A3B8" />
+
+        <ImageView
+            android:id="@+id/ivRoutePhoneIcon"
+            android:layout_width="12dp"
+            android:layout_height="12dp"
+            android:src="@drawable/kpi_ic_phone"
+            app:tint="#64748B" />
+
+        <TextView
+            android:id="@+id/tvRoutePhone"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:fontFamily="sans-serif"
+            android:text="987 654 321"
+            android:textColor="#64748B"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+    <!-- Dirección escrita manualmente (opcional) -->
+    <LinearLayout
+        android:id="@+id/llRouteAddressContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="13dp"
+            android:layout_height="13dp"
+            android:src="@drawable/kpi_ic_pin"
+            app:tint="#8B5CF6" />
+
+        <TextView
+            android:id="@+id/tvRouteManualAddress"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:layout_weight="1"
+            android:fontFamily="sans-serif"
+            android:text="Av. Los Ingenieros 340, Urb. La Encalada"
+            android:textColor="#475569"
+            android:textSize="11.5sp" />
+    </LinearLayout>
+
+    <!-- Línea divisoria suave -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginVertical="10dp"
+        android:background="#F1F5F9" />
+
+    <!-- Fila inferior: Resultado Comercial y Fecha/Día -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- Badge Resultado Comercial -->
+        <LinearLayout
+            android:id="@+id/llBadgeResult"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kpi_bg_badge_number"
+            android:backgroundTint="#D1FAE5"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp">
+
+            <ImageView
+                android:id="@+id/ivRouteResultIcon"
+                android:layout_width="11dp"
+                android:layout_height="11dp"
+                android:src="@drawable/kpi_ic_check"
+                app:tint="#059669" />
+
+            <TextView
+                android:id="@+id/tvRouteResult"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:text="Venta Cerrada"
+                android:textColor="#059669"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tvRouteDateBadge"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:gravity="end"
+            android:text="Viernes, 16 de oct"
+            android:textColor="#94A3B8"
+            android:textSize="11sp" />
+    </LinearLayout>
+
+    <!-- Observaciones / Comentarios si existen -->
+    <TextView
+        android:id="@+id/tvRouteObservations"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/kpi_bg_stepper_input"
+        android:fontFamily="sans-serif-light"
+        android:padding="8dp"
+        android:text="Cliente solicitó propuesta para diseño de sitio web corporativo y paquete de marketing digital."
+        android:textColor="#475569"
+        android:textSize="11.5sp" />
+</LinearLayout>

@@ -1,0 +1,2006 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llDesignerSheetRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:elevation="3dp"
+    android:orientation="vertical"
+    android:padding="6dp"
+    tools:ignore="HardcodedText,SmallSp,TooManyViews">
+
+    <!-- ========================================================================= -->
+    <!-- CABECERA OFICIAL: DISEÑADOR GRÁFICO (SIGD 2026)                           -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- LOGO AGENCIA -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:text="SIGD"
+                android:textColor="#1E1B4B"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.08"
+                android:text="Agencia Creativa"
+                android:textColor="#64748B"
+                android:textSize="8sp" />
+        </LinearLayout>
+
+        <!-- TITULAR CENTRAL -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="REPORTE SEMANAL DE PRODUCCIÓN"
+                android:textColor="#1E1B4B"
+                android:textSize="11.5sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="sans-serif-black"
+                android:text="DISEÑADOR GRÁFICO"
+                android:textColor="#2E2A72"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="center"
+                android:text=">>> PLANIFICA • PRODUCE • CREA • GENERA RESULTADOS"
+                android:textColor="#1E1B4B"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- RECUADRO DE PERIODO Y FECHAS -->
+        <LinearLayout
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kpi_sheet_cell_data"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:background="#2E2A72"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Periodo:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDgPeriodNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="37"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvDgDateFrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="4dp"
+                android:paddingTop="1dp"
+                android:text="Del:  14 / 09 / 2026"
+                android:textColor="#1E293B"
+                android:textSize="7.5sp" />
+
+            <TextView
+                android:id="@+id/tvDgDateTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="4dp"
+                android:paddingBottom="2dp"
+                android:text="al:   20 / 09 / 2026"
+                android:textColor="#1E293B"
+                android:textSize="7.5sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- FICHA DE DATOS DEL COLABORADOR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:background="@drawable/kpi_sheet_cell_data"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.25"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDgCollabName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Colaborador:  —"
+                android:textColor="#0F172A"
+                android:textSize="8.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgCollabRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Cargo:  DISEÑADORA GRÁFICA."
+                android:textColor="#334155"
+                android:textSize="8sp" />
+
+            <TextView
+                android:id="@+id/tvDgCollabShift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Turno:  ☑ Turno mañana    ☐ Turno tarde"
+                android:textColor="#334155"
+                android:textSize="8sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvDgCollabArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Área:  TEAM CREATIVO."
+                android:textColor="#334155"
+                android:textSize="8sp" />
+
+            <TextView
+                android:id="@+id/tvDgCollabSupervisor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Responsable evaluación:  —"
+                android:textColor="#334155"
+                android:textSize="8sp" />
+
+            <TextView
+                android:id="@+id/tvDgCollabBoss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Jefe inmediato:  —"
+                android:textColor="#334155"
+                android:textSize="8sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_vertical"
+            android:gravity="center"
+            android:orientation="vertical">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:src="@drawable/kpi_ic_palette"
+                app:tint="#2E2A72" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="Creatividad\nque genera\nresultados"
+                android:textColor="#1E1B4B"
+                android:textSize="7sp"
+                android:textStyle="italic|bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- BLOQUE 1: CONTROL DIARIO DE PRODUCCIÓN                                    -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@drawable/kpi_sheet_badge_section"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#2E2A72"
+            android:textSize="9sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginStart="3dp"
+            android:background="#2E2A72"
+            android:gravity="center_vertical"
+            android:paddingStart="4dp"
+            android:text="CONTROL DIARIO DE PRODUCCIÓN"
+            android:textColor="#FFFFFF"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- TABLA DEL BLOQUE 1 (RESPONSIVA 100% ANCHO DE PANTALLA) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical">
+
+        <!-- ENCABEZADOS -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="#2E2A72"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="DÍA"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="MODALIDAD Y\nACTIVIDAD PRINCIPAL"
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="16"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="META DIARIA\n(por turno)"
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="DISEÑOS\nREALIZADOS"
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="VIDEOS\nREALIZADOS"
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="TOTAL\nPRODUC."
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="%\nCUMP."
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="OBSERV."
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- LUNES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="LUNES"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="2dp"
+                android:text="Modalidad B (Audiov.+Dis.)"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="16"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="02 vid + 02 dis"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvDgDis_0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="6"
+                android:textColor="#0F172A"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgVid_0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#0F172A"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgTot_0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="6"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgPct_0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgObs_0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="2dp"
+                android:text="Trabajar Posta Canal"
+                android:textColor="#475569"
+                android:textSize="5.5sp" />
+        </LinearLayout>
+
+        <!-- MARTES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="MARTES"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="2dp"
+                android:text="Modalidad A (Diseño gr.)"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="16"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="06 diseños"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvDgDis_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#0F172A"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgVid_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#0F172A"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgTot_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgPct_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="25%"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgObs_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="2dp"
+                android:text="Diseño WhatsApp + post"
+                android:textColor="#475569"
+                android:textSize="5.5sp" />
+        </LinearLayout>
+
+        <!-- MIÉRCOLES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="MIÉRCOLES"
+                android:textColor="#1E1B4B"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="2dp"
+                android:text="Modalidad B (Audiov.+Dis.)"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="16"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="02 vid + 02 dis"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvDgDis_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="#0F172A"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgVid_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#0F172A"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgTot_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgPct_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgObs_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="2dp"
+                android:text="Diseño Caleta"
+                android:textColor="#475569"
+                android:textSize="5.5sp" />
+        </LinearLayout>
+
+        <!-- JUEVES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="JUEVES"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="2dp"
+                android:text="Modalidad A (Diseño gr.)"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="16"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="06 diseños"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvDgDis_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="#0F172A"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgVid_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#0F172A"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgTot_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgPct_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgObs_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="2dp"
+                android:text="Campañas My.Cl"
+                android:textColor="#475569"
+                android:textSize="5.5sp" />
+        </LinearLayout>
+
+        <!-- VIERNES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="VIERNES"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="2dp"
+                android:text="Modalidad B (Audiov.+Dis.)"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="16"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="02 vid + 02 dis"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvDgDis_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="6"
+                android:textColor="#0F172A"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgVid_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#0F172A"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgTot_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="6"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgPct_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgObs_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="2dp"
+                android:text="—"
+                android:textColor="#475569"
+                android:textSize="5.5sp" />
+        </LinearLayout>
+
+        <!-- SÁBADO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="20dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="SÁBADO"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="25"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="2dp"
+                android:text="Sesión fotográfica (Prod.)"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="16"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="01 sesión fotog."
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvDgDis_5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#0F172A"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgVid_5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#0F172A"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgTot_5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgPct_5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgObs_5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:ellipsize="end"
+                android:gravity="center_vertical"
+                android:maxLines="1"
+                android:paddingHorizontal="2dp"
+                android:text="Sesión Don Hugo"
+                android:textColor="#475569"
+                android:textSize="5.5sp" />
+        </LinearLayout>
+
+        <!-- FILA TOTAL SEMANAL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="22dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="#2E2A72"
+                android:gravity="center"
+                android:text="TOTAL SEMANAL"
+                android:textColor="#FFFFFF"
+                android:textSize="7.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="32"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="18 dis / 06 vid / 01 ses (25 act)"
+                android:textColor="#334155"
+                android:textSize="5.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgDis_Total"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="17"
+                android:textColor="#1E1B4B"
+                android:textSize="8sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgVid_Total"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="—"
+                android:textColor="#64748B"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvDgTot_Total"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="17"
+                android:textColor="#1E1B4B"
+                android:textSize="8sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDgPct_Total"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="94.4%"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="10"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:text="" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- NOTA Y MODALIDADES -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.1"
+            android:text="Nota: • La meta diaria corresponde a la modalidad asignada.\n• El total semanal es la sumatoria de diseños, videos y sesiones."
+            android:textColor="#64748B"
+            android:textSize="6.5sp" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="0.9"
+            android:gravity="end"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MODALIDAD A (DISEÑO): Meta 06 dis / turno"
+                android:textColor="#2E2A72"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="MODALIDAD B (AUDIOV.): Meta 02 vid + 02 dis"
+                android:textColor="#2E2A72"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- BLOQUE 2 Y BLOQUE 3: RESUMEN Y ACCIONES DEL CARGO                         -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:weightSum="100">
+
+        <!-- LADO IZQUIERDO: BLOQUE 2 RESUMEN -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:layout_weight="48"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/kpi_sheet_badge_section"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="#2E2A72"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="3dp"
+                    android:background="#2E2A72"
+                    android:gravity="center_vertical"
+                    android:paddingStart="4dp"
+                    android:text="RESUMEN SEMANAL DE PRODUCCIÓN"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- TABLA RESUMEN -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:background="#2E2A72"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="38"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="INDICADOR"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="22"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="META"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="RESULT."
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="% CUMP."
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Diseños gráficos -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="38"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="3dp"
+                        android:text="Diseños gráficos"
+                        android:textColor="#1E293B"
+                        android:textSize="6.5sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="22"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="18"
+                        android:textColor="#334155"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDgResDesigns"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="17"
+                        android:textColor="#0F172A"
+                        android:textSize="7sp" />
+
+                    <TextView
+                        android:id="@+id/tvDgPctDesigns"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="94.44%"
+                        android:textColor="#0F172A"
+                        android:textSize="6.5sp" />
+                </LinearLayout>
+
+                <!-- Videos -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="38"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="3dp"
+                        android:text="Videos"
+                        android:textColor="#1E293B"
+                        android:textSize="6.5sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="22"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="06"
+                        android:textColor="#334155"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDgResVideos"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="—"
+                        android:textColor="#64748B"
+                        android:textSize="7sp" />
+
+                    <TextView
+                        android:id="@+id/tvDgPctVideos"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="0%"
+                        android:textColor="#0F172A"
+                        android:textSize="6.5sp" />
+                </LinearLayout>
+
+                <!-- Sesiones fotográficas -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="38"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="3dp"
+                        android:text="Sesiones fotog."
+                        android:textColor="#1E293B"
+                        android:textSize="6.5sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="22"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="01"
+                        android:textColor="#334155"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDgResPhotos"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="3"
+                        android:textColor="#0F172A"
+                        android:textSize="7sp" />
+
+                    <TextView
+                        android:id="@+id/tvDgPctPhotos"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="300%"
+                        android:textColor="#0F172A"
+                        android:textSize="6.5sp" />
+                </LinearLayout>
+
+                <!-- TOTAL GENERAL -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="38"
+                        android:background="#2E2A72"
+                        android:gravity="center"
+                        android:text="TOTAL GENERAL"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="22"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="25 act."
+                        android:textColor="#1E1B4B"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDgResGrandTotal"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="20"
+                        android:textColor="#1E1B4B"
+                        android:textSize="8sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvDgPctGrandTotal"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="20"
+                        android:background="@drawable/kpi_sheet_cell_yellow"
+                        android:gravity="center"
+                        android:text="80%"
+                        android:textColor="#854D0E"
+                        android:textSize="7.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- LADO DERECHO: BLOQUE 3 ACCIONES QUE REALIZA -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_weight="52"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="16dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="@drawable/kpi_sheet_badge_section"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="#2E2A72"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="3dp"
+                    android:background="#2E2A72"
+                    android:gravity="center_vertical"
+                    android:paddingStart="4dp"
+                    android:text="ACCIONES QUE REALIZA EL DISEÑADOR"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:orientation="vertical"
+                android:padding="3dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="☑  Producción de diseños gráficos (posts, banners, etc.)"
+                    android:textColor="#334155"
+                    android:textSize="6.5sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="☑  Edición y montaje de videos."
+                    android:textColor="#334155"
+                    android:textSize="6.5sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="☑  Diseño de piezas para campañas y redes sociales."
+                    android:textColor="#334155"
+                    android:textSize="6.5sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="☑  Adaptación de piezas a diferentes formatos."
+                    android:textColor="#334155"
+                    android:textSize="6.5sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="☑  Preparación de material gráfico según brief."
+                    android:textColor="#334155"
+                    android:textSize="6.5sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="☑  Edición y retoque de fotografías."
+                    android:textColor="#334155"
+                    android:textSize="6.5sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="☑  Organización y entrega de archivos finales."
+                    android:textColor="#334155"
+                    android:textSize="6.5sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="☑  Cumplimiento de las metas diarias de producción."
+                    android:textColor="#334155"
+                    android:textSize="6.5sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="☑  Otras actividades asignadas."
+                    android:textColor="#334155"
+                    android:textSize="6.5sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- BLOQUE 4: EVALUACIÓN KPI - PRODUCTIVIDAD                                  -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@drawable/kpi_sheet_badge_section"
+            android:gravity="center"
+            android:text="4"
+            android:textColor="#2E2A72"
+            android:textSize="9sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginStart="3dp"
+            android:background="#2E2A72"
+            android:gravity="center_vertical"
+            android:paddingStart="4dp"
+            android:text="EVALUACIÓN KPI – PRODUCTIVIDAD"
+            android:textColor="#FFFFFF"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- TABLA DE NIVELES KPI -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:background="#2E2A72"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="NIVEL KPI"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="% CUMPLIMIENTO"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="26"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="PRODUCCIÓN ESPERADA"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="32"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="DESCRIPCIÓN"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- EXCELENTE -->
+        <LinearLayout
+            android:id="@+id/rowDgLevelExcelente"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="4dp"
+                android:text="★ EXCELENTE"
+                android:textColor="#16A34A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="90% – 100%"
+                android:textColor="#334155"
+                android:textSize="6.5sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="26"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="25 actividades"
+                android:textColor="#334155"
+                android:textSize="6.5sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="32"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="4dp"
+                android:text="Cumple y/o supera objetivo."
+                android:textColor="#334155"
+                android:textSize="6sp" />
+        </LinearLayout>
+
+        <!-- MUY BUENO -->
+        <LinearLayout
+            android:id="@+id/rowDgLevelMuyBueno"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="4dp"
+                android:text="★ MUY BUENO"
+                android:textColor="#2563EB"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="80% – 89%"
+                android:textColor="#334155"
+                android:textSize="6.5sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="26"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="20 actividades"
+                android:textColor="#334155"
+                android:textSize="6.5sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="32"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="4dp"
+                android:text="Cumple y por llegar a meta."
+                android:textColor="#334155"
+                android:textSize="6sp" />
+        </LinearLayout>
+
+        <!-- BUENO -->
+        <LinearLayout
+            android:id="@+id/rowDgLevelBueno"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="4dp"
+                android:text="★ BUENO"
+                android:textColor="#CA8A04"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="60% – 79%"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="26"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="15 actividades"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="32"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="4dp"
+                android:text="Cumple con la mitad encomendada."
+                android:textColor="#854D0E"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- REGULAR -->
+        <LinearLayout
+            android:id="@+id/rowDgLevelRegular"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="4dp"
+                android:text="★ REGULAR"
+                android:textColor="#EA580C"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="40% – 59%"
+                android:textColor="#334155"
+                android:textSize="6.5sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="26"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="10 actividades"
+                android:textColor="#334155"
+                android:textSize="6.5sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="32"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="4dp"
+                android:text="Baja expectativa con la empresa."
+                android:textColor="#334155"
+                android:textSize="6sp" />
+        </LinearLayout>
+
+        <!-- DEFICIENTE -->
+        <LinearLayout
+            android:id="@+id/rowDgLevelDeficiente"
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="4dp"
+                android:text="★ DEFICIENTE"
+                android:textColor="#DC2626"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="&lt; 40%"
+                android:textColor="#334155"
+                android:textSize="6.5sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="26"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="9 actividades"
+                android:textColor="#334155"
+                android:textSize="6.5sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="32"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="4dp"
+                android:text="No cumple expectativas empresa."
+                android:textColor="#334155"
+                android:textSize="6sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- BLOQUE 5: OBSERVACIONES GENERALES                                         -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@drawable/kpi_sheet_badge_section"
+            android:gravity="center"
+            android:text="5"
+            android:textColor="#2E2A72"
+            android:textSize="9sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="16dp"
+            android:layout_marginStart="3dp"
+            android:background="#2E2A72"
+            android:gravity="center_vertical"
+            android:paddingStart="4dp"
+            android:text="OBSERVACIONES GENERALES"
+            android:textColor="#FFFFFF"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/kpi_sheet_cell_data"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <TextView
+            android:id="@+id/tvDgGeneralObservations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-medium"
+            android:lineSpacingExtra="3dp"
+            android:text="NO CUMPLE CON LAS METAS DIARIAS ASIGNADOS. CUMPLIR Y RESPETAR LAS METAS DIARIAS ASIGNADAS."
+            android:textColor="#1E1B4B"
+            android:textSize="8.5sp" />
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- PIE DE PÁGINA CORPORATIVO SIGD                                            -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="26dp"
+        android:layout_marginTop="6dp"
+        android:background="#2E2A72"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="SIGD"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="SISTEMA INTEGRAL\nGESTIÓN DESEMPEÑO"
+            android:textColor="#C7D2FE"
+            android:textSize="5.5sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TU TALENTO HACE CRECER RESULTADOS"
+            android:textColor="#FFFFFF"
+            android:textSize="8.5sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text=">>>>>"
+            android:textColor="#C7D2FE"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

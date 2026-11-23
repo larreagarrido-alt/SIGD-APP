@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ========================================================= -->
+    <!-- MODO OSCURO: IDENTIDAD VIOLETA SIGD                         -->
+    <!-- ========================================================= -->
+
+    <!-- Identidad violeta -->
+    <color name="kpi_primary">#A967F2</color>
+    <color name="kpi_primary_hover">#C18EF7</color>
+    <color name="kpi_secondary">#D8B4FE</color>
+    <color name="kpi_danger">#FB7185</color>
+    <color name="kpi_warning">#FBBF24</color>
+    <color name="kpi_dark">#F8FAFC</color>
+
+    <!-- Superficies SIGD -->
+    <color name="kpi_light_bg">#11091F</color>
+    <color name="kpi_card_bg">#251630</color>
+    <color name="kpi_input_bg">#302044</color>
+    <color name="kpi_border">#674182</color>
+
+    <!-- Tipografía y Textos en Fondo Oscuro -->
+    <color name="kpi_text_primary">#F8FAFC</color>
+    <color name="kpi_text_secondary">#D0B9E0</color>
+    <color name="kpi_gray">#C3AED3</color>
+    <color name="kpi_gray_light">#D8B4FE</color>
+    <color name="kpi_surface_variant">#302044</color>
+    <color name="kpi_on_primary">#FFFFFF</color>
+    <color name="kpi_success_text">#86EFAC</color>
+    <color name="kpi_warning_text">#C4B5FD</color>
+    <color name="kpi_info_text">#D8B4FE</color>
+
+    <!-- Variantes violeta para Practicantes y Colaboradores -->
+    <color name="kpi_practicante_start">#6025AB</color>
+    <color name="kpi_practicante_end">#9333EA</color>
+    <color name="kpi_practicante_card_bg">#2A173A</color>
+    <color name="kpi_practicante_stroke">#8B57B8</color>
+
+    <color name="kpi_colaborador_start">#5B21B6</color>
+    <color name="kpi_colaborador_end">#8B30E0</color>
+    <color name="kpi_colaborador_card_bg">#281A39</color>
+    <color name="kpi_colaborador_stroke">#7C3AED</color>
+
+    <!-- Acentos de Sección y Badges -->
+    <color name="kpi_badge_purple">#D8B4FE</color>
+    <color name="kpi_badge_purple_bg">#40255C</color>
+    <color name="kpi_header_gradient_start">#3E176B</color>
+    <color name="kpi_header_gradient_end">#8B30E0</color>
+
+    <!-- Categorías de actividades -->
+    <color name="kpi_cat_desarrollo">#B887F4</color>
+    <color name="kpi_cat_desarrollo_bg">#3B2252</color>
+    <color name="kpi_cat_correccion">#FB7185</color>
+    <color name="kpi_cat_correccion_bg">#4C0519</color>
+    <color name="kpi_cat_mejora">#C084FC</color>
+    <color name="kpi_cat_mejora_bg">#2E1065</color>
+    <color name="kpi_cat_maquetacion">#D39AEB</color>
+    <color name="kpi_cat_maquetacion_bg">#452550</color>
+    <color name="kpi_cat_api">#A78BFA</color>
+    <color name="kpi_cat_api_bg">#38215A</color>
+    <color name="kpi_cat_mantenimiento">#34D399</color>
+    <color name="kpi_cat_mantenimiento_bg">#064E3B</color>
+
+    <!-- Estados SIGD -->
+    <color name="kpi_status_entregado">#34D399</color>
+    <color name="kpi_status_entregado_bg">#064E3B</color>
+    <color name="kpi_status_pendiente">#FBBF24</color>
+    <color name="kpi_status_pendiente_bg">#451A03</color>
+    <color name="kpi_status_justificado">#C4A0F8</color>
+    <color name="kpi_status_justificado_bg">#3D2457</color>
+
+    <!-- Barra de progreso en vivo -->
+    <color name="kpi_progress_start">#7C3AED</color>
+    <color name="kpi_progress_mid">#9333EA</color>
+    <color name="kpi_progress_end">#C15CEB</color>
+
+    <!-- Botón guardar violeta -->
+    <color name="kpi_btn_save_start">#5B21B6</color>
+    <color name="kpi_btn_save_end">#8B30E0</color>
+</resources>

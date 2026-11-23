@@ -1,0 +1,2652 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llOfficialGmSheetRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:elevation="3dp"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:ignore="HardcodedText,SmallSp,TooManyViews">
+
+    <!-- ========================================================================= -->
+    <!-- CABECERA PRINCIPAL OFICIAL SIGD · GERENTE GENERAL                         -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- LOGO AGENCIA -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="SIGD"
+                android:textColor="#1E1B4B"
+                android:textSize="18sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.08"
+                android:text="Agencia Creativa"
+                android:textColor="#64748B"
+                android:textSize="8sp" />
+        </LinearLayout>
+
+        <!-- TITULAR CENTRAL -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="REPORTE SEMANAL DE GESTIÓN"
+                android:textColor="#1E1B4B"
+                android:textSize="11.5sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:textStyle="bold"
+                android:text="GERENTE GENERAL"
+                android:textColor="#4338CA"
+                android:textSize="15sp" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="center"
+                android:text=">>> DIRIGE • PLANIFICA • SUPERVISA • EVALÚA RESULTADOS"
+                android:textColor="#1E1B4B"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- RECUADRO DE SEMANA Y FECHAS -->
+        <LinearLayout
+            android:layout_width="86dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kpi_sheet_cell_data"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:background="#2E2A72"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="3dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="SEMANA N.º"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvGmWeekNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="37"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvGmDateFrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="3dp"
+                android:paddingTop="1dp"
+                android:text="Del 04/09/2026"
+                android:textColor="#1E293B"
+                android:textSize="7.5sp" />
+
+            <TextView
+                android:id="@+id/tvGmDateTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="3dp"
+                android:paddingBottom="2dp"
+                android:text="al  10/09/2026"
+                android:textColor="#1E293B"
+                android:textSize="7.5sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- FICHA DE DATOS DEL COLABORADOR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:background="@drawable/kpi_sheet_cell_data"
+        android:orientation="horizontal"
+        android:padding="6dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.2"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvGmCollabName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Colaborador: MANUEL CASTILLO"
+                android:textColor="#0F172A"
+                android:textSize="9.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvGmCollabRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Cargo: Gerente General"
+                android:textColor="#334155"
+                android:textSize="8.5sp" />
+
+            <TextView
+                android:id="@+id/tvGmCollabShift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Turno: Mañana (08:00 a.m. – 01:30 p.m.)"
+                android:textColor="#334155"
+                android:textSize="8.5sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvGmCollabArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Área: Gerencia General"
+                android:textColor="#334155"
+                android:textSize="8.5sp" />
+
+            <TextView
+                android:id="@+id/tvGmCollabSupervisor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Responsable de evaluación: Directorio"
+                android:textColor="#334155"
+                android:textSize="8.5sp" />
+
+            <TextView
+                android:id="@+id/tvGmCollabBoss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Jefe inmediato: Directorio"
+                android:textColor="#334155"
+                android:textSize="8.5sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom"
+            android:text="Dirección\nque impulsa\nresultados"
+            android:textColor="#1E1B4B"
+            android:textSize="8sp"
+            android:textStyle="italic|bold" />
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- BLOQUE 1: CONTROL DIARIO DE GESTIÓN (PROPIA)                              -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="18dp"
+            android:layout_height="18dp"
+            android:background="@drawable/kpi_sheet_badge_section"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#2E2A72"
+            android:textSize="10sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="18dp"
+            android:layout_marginStart="4dp"
+            android:background="#2E2A72"
+            android:gravity="center_vertical"
+            android:paddingStart="6dp"
+            android:text="CONTROL DIARIO DE GESTIÓN (PROPIA)"
+            android:textColor="#FFFFFF"
+            android:textSize="9sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:orientation="vertical">
+
+        <!-- Fila Encabezados Bloque 1 -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:background="#2E2A72"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="DÍAS"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="23"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="INDICADOR / ACTIVIDAD PRINCIPAL"
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="META DEL DÍA"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="SEGUIMIENTO\nREALIZADO"
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="RES.\n(%)"
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_header"
+                android:gravity="center"
+                android:text="OBSERVACIONES"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- LUNES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="LUNES"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="23"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="2dp">
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@drawable/kpi_ic_target"
+                    app:tint="#2E2A72" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:text="Seguimiento de objetivos"
+                    android:textColor="#0F172A"
+                    android:textSize="6sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="3dp"
+                android:text="Revisar 2 – 3 indicadores prioritarios"
+                android:textColor="#334155"
+                android:textSize="5.8sp" />
+
+            <TextView
+                android:id="@+id/tvGmB1Track_0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="3 indicadores"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1Pct_0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#1E1B4B"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1Obs_0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="3dp"
+                android:text="Revisión y alineación de metas."
+                android:textColor="#334155"
+                android:textSize="5.8sp" />
+        </LinearLayout>
+
+        <!-- MARTES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="MARTES"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="23"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="2dp">
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@drawable/kpi_ic_senior_crown"
+                    app:tint="#2E2A72" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:text="Gestión estratégica"
+                    android:textColor="#0F172A"
+                    android:textSize="6sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="3dp"
+                android:text="Resolver 1 – 2 asuntos prioritarios"
+                android:textColor="#334155"
+                android:textSize="5.8sp" />
+
+            <TextView
+                android:id="@+id/tvGmB1Track_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="2 asuntos"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1Pct_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#1E1B4B"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1Obs_1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="3dp"
+                android:text="Definición de acciones comerciales."
+                android:textColor="#334155"
+                android:textSize="5.8sp" />
+        </LinearLayout>
+
+        <!-- MIÉRCOLES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="MIÉRCOLES"
+                android:textColor="#1E1B4B"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="23"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="2dp">
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@drawable/kpi_ic_users"
+                    app:tint="#2E2A72" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:text="Seguimiento de áreas"
+                    android:textColor="#0F172A"
+                    android:textSize="6sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="3dp"
+                android:text="Revisar avances de las áreas programadas"
+                android:textColor="#334155"
+                android:textSize="5.8sp" />
+
+            <TextView
+                android:id="@+id/tvGmB1Track_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="4 áreas"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1Pct_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#1E1B4B"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1Obs_2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="3dp"
+                android:text="Seguimiento a Marketing, Producción y Operaciones."
+                android:textColor="#334155"
+                android:textSize="5.5sp" />
+        </LinearLayout>
+
+        <!-- JUEVES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="JUEVES"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="23"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="2dp">
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@drawable/kpi_ic_briefcase"
+                    app:tint="#2E2A72" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:text="Control de recursos"
+                    android:textColor="#0F172A"
+                    android:textSize="6sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="3dp"
+                android:text="Verificar compromisos presupuestarios del día"
+                android:textColor="#334155"
+                android:textSize="5.8sp" />
+
+            <TextView
+                android:id="@+id/tvGmB1Track_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="Presupuesto y gastos"
+                android:textColor="#1E1B4B"
+                android:textSize="6sp"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1Pct_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#1E1B4B"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1Obs_3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="3dp"
+                android:text="Control de gastos y disponibilidades."
+                android:textColor="#334155"
+                android:textSize="5.8sp" />
+        </LinearLayout>
+
+        <!-- VIERNES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="VIERNES"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="23"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="2dp">
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@drawable/kpi_ic_check"
+                    app:tint="#2E2A72" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:text="Cumplimiento del SIGD"
+                    android:textColor="#0F172A"
+                    android:textSize="6sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="3dp"
+                android:text="Revisar incidencias y acciones pendientes"
+                android:textColor="#334155"
+                android:textSize="5.8sp" />
+
+            <TextView
+                android:id="@+id/tvGmB1Track_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="0 incidencias"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1Pct_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#1E1B4B"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1Obs_4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="3dp"
+                android:text="Se mantuvo el cumplimiento del SIGD."
+                android:textColor="#334155"
+                android:textSize="5.8sp" />
+        </LinearLayout>
+
+        <!-- SÁBADO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="11"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="SÁBADO"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="23"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="2dp">
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@drawable/kpi_ic_star"
+                    app:tint="#2E2A72" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:text="Revisión general y coordinación"
+                    android:textColor="#0F172A"
+                    android:textSize="5.8sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="3dp"
+                android:text="Consolidar avances y planificar la siguiente semana"
+                android:textColor="#334155"
+                android:textSize="5.6sp" />
+
+            <TextView
+                android:id="@+id/tvGmB1Track_5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="Plan semanal"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1Pct_5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#1E1B4B"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1Obs_5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center_vertical"
+                android:paddingHorizontal="3dp"
+                android:text="Cierre de avances y definición de prioridades."
+                android:textColor="#334155"
+                android:textSize="5.8sp" />
+        </LinearLayout>
+
+        <!-- TOTAL SEMANAL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="24dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="34"
+                android:background="#2E2A72"
+                android:gravity="center"
+                android:text="TOTAL SEMANAL"
+                android:textColor="#FFFFFF"
+                android:textSize="8.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="22"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="6 actividades"
+                android:textColor="#1E1B4B"
+                android:textSize="7.5sp"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1TotalDone"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="15"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="6 realizadas"
+                android:textColor="#1E1B4B"
+                android:textSize="7.5sp"
+                android:textStyle="italic|bold" />
+
+            <TextView
+                android:id="@+id/tvGmB1TotalPct"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="9"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#1E1B4B"
+                android:textSize="8sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="20"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:gravity="center"
+                android:text="—"
+                android:textColor="#64748B"
+                android:textSize="8sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- BLOQUE 2: SUPERVISIÓN DE LAS ÁREAS Y RUTINA DE GESTIÓN                    -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <!-- Lado Izquierdo: Bloque 2 Supervisión de las Áreas (~60%) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:layout_weight="1.5"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/kpi_sheet_badge_section"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="#2E2A72"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="3dp"
+                    android:background="#2E2A72"
+                    android:gravity="center_vertical"
+                    android:paddingStart="4dp"
+                    android:text="SUPERVISIÓN DE LAS ÁREAS DE LA EMPRESA"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:orientation="vertical">
+
+                <!-- Header Bloque 2 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    android:background="#2E2A72"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="DÍA"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="ÁREAS\nSUPERVISADAS"
+                        android:textColor="#FFFFFF"
+                        android:textSize="5.8sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="13"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="CUMP.\n(%)"
+                        android:textColor="#FFFFFF"
+                        android:textSize="5.8sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="PRINCIPALES\nOBSERVACIONES"
+                        android:textColor="#FFFFFF"
+                        android:textSize="5.8sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="ACCIONES\nREALIZADAS"
+                        android:textColor="#FFFFFF"
+                        android:textSize="5.8sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- LUN -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="LUNES"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Area_0"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="Marketing / Diseño"
+                        android:textColor="#0F172A"
+                        android:textSize="5.8sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Pct_0"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="13"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Obs_0"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="2dp"
+                        android:text="Avance de campañas."
+                        android:textColor="#334155"
+                        android:textSize="5.8sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Act_0"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="2dp"
+                        android:text="Ajuste de contenidos."
+                        android:textColor="#334155"
+                        android:textSize="5.8sp" />
+                </LinearLayout>
+
+                <!-- MAR -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="MARTES"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Area_1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="Producción Audiovisual"
+                        android:textColor="#0F172A"
+                        android:textSize="5.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Pct_1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="13"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Obs_1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="2dp"
+                        android:text="Cumplimiento de cronograma."
+                        android:textColor="#334155"
+                        android:textSize="5.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Act_1"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="2dp"
+                        android:text="Revisión y validación."
+                        android:textColor="#334155"
+                        android:textSize="5.8sp" />
+                </LinearLayout>
+
+                <!-- MIE -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="MIÉRCOLES"
+                        android:textColor="#1E1B4B"
+                        android:textSize="5.8sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Area_2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="Comercial / Ventas"
+                        android:textColor="#0F172A"
+                        android:textSize="5.8sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Pct_2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="13"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="95%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Obs_2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="2dp"
+                        android:text="Menor alcance en leads."
+                        android:textColor="#334155"
+                        android:textSize="5.8sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Act_2"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="2dp"
+                        android:text="Refuerzo de pauta."
+                        android:textColor="#334155"
+                        android:textSize="5.8sp" />
+                </LinearLayout>
+
+                <!-- JUE -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="JUEVES"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Area_3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="Administración"
+                        android:textColor="#0F172A"
+                        android:textSize="5.8sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Pct_3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="13"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Obs_3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="2dp"
+                        android:text="Procesos en orden."
+                        android:textColor="#334155"
+                        android:textSize="5.8sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Act_3"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="2dp"
+                        android:text="Control de documentos."
+                        android:textColor="#334155"
+                        android:textSize="5.8sp" />
+                </LinearLayout>
+
+                <!-- VIE -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="VIERNES"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Area_4"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="Contabilidad"
+                        android:textColor="#0F172A"
+                        android:textSize="5.8sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Pct_4"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="13"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Obs_4"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="2dp"
+                        android:text="Registros al día."
+                        android:textColor="#334155"
+                        android:textSize="5.8sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Act_4"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="2dp"
+                        android:text="Validación de reportes."
+                        android:textColor="#334155"
+                        android:textSize="5.8sp" />
+                </LinearLayout>
+
+                <!-- SAB -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="15"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="SÁBADO"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Area_5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="Todas las áreas"
+                        android:textColor="#0F172A"
+                        android:textSize="5.8sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Pct_5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="13"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Obs_5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="2dp"
+                        android:text="Consolidación semanal."
+                        android:textColor="#334155"
+                        android:textSize="5.8sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2Act_5"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="24"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingHorizontal="2dp"
+                        android:text="Reunión de cierre."
+                        android:textColor="#334155"
+                        android:textSize="5.8sp" />
+                </LinearLayout>
+
+                <!-- PROMEDIO SEMANAL -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="39"
+                        android:background="#2E2A72"
+                        android:gravity="center"
+                        android:text="PROMEDIO SEMANAL"
+                        android:textColor="#FFFFFF"
+                        android:textSize="7.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB2AvgPct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="61"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="99%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="9sp"
+                        android:textStyle="italic|bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Lado Derecho: Rutina de Gestión (~40%) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:background="#2E2A72"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <ImageView
+                    android:layout_width="10dp"
+                    android:layout_height="10dp"
+                    android:src="@drawable/kpi_ic_clock"
+                    app:tint="#FFFFFF" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="RUTINA DE GESTIÓN (08:00 - 01:30)"
+                    android:textColor="#FFFFFF"
+                    android:textSize="6.8sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:orientation="vertical"
+                android:padding="3dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="2dp"
+                    android:text="08:00 – 08:30  Revisión de indicadores y agenda diaria"
+                    android:textColor="#1E293B"
+                    android:textSize="6.2sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="2dp"
+                    android:text="08:30 – 09:30  Reunión de coordinación con áreas"
+                    android:textColor="#1E293B"
+                    android:textSize="6.2sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="2dp"
+                    android:text="09:30 – 10:30  Seguimiento de proyectos y campañas"
+                    android:textColor="#1E293B"
+                    android:textSize="6.2sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="2dp"
+                    android:text="10:30 – 12:00  Revisión de recursos y presupuesto"
+                    android:textColor="#1E293B"
+                    android:textSize="6.2sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="2dp"
+                    android:text="12:00 – 01:00  Toma de decisiones y ajustes"
+                    android:textColor="#1E293B"
+                    android:textSize="6.2sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:paddingVertical="2dp"
+                    android:text="01:00 – 01:30  Registro y cierre de avances del día"
+                    android:textColor="#1E293B"
+                    android:textSize="6.2sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- BLOQUE 3 Y BLOQUE 4: RESUMEN SEMANAL E INDICADORES CLAVE (KPI)            -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:weightSum="2">
+
+        <!-- BLOQUE 3: RESUMEN SEMANAL DE GESTIÓN (PROPIA) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/kpi_sheet_badge_section"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="#2E2A72"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="3dp"
+                    android:background="#2E2A72"
+                    android:gravity="center_vertical"
+                    android:paddingStart="4dp"
+                    android:text="RESUMEN SEMANAL DE GESTIÓN (PROPIA)"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:orientation="vertical">
+
+                <!-- Header B3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#2E2A72"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="INDICADOR"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="META SEM."
+                        android:textColor="#FFFFFF"
+                        android:textSize="6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.75"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="RES."
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.9"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="% CUMP."
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Fila 1: Indicadores prioritarios revisados -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="19dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingStart="3dp"
+                        android:text="Indicadores prioritarios"
+                        android:textColor="#0F172A"
+                        android:textSize="6.2sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="12 – 18"
+                        android:textColor="#334155"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB3IndRes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.75"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="18"
+                        android:textColor="#1E1B4B"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB3IndPct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.9"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Fila 2: Asuntos prioritarios resueltos -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="19dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingStart="3dp"
+                        android:text="Asuntos prioritarios"
+                        android:textColor="#0F172A"
+                        android:textSize="6.2sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="6 – 12"
+                        android:textColor="#334155"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB3IssRes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.75"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="11"
+                        android:textColor="#1E1B4B"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB3IssPct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.9"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Fila 3: Seguimiento de áreas -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="19dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingStart="3dp"
+                        android:text="Seguimiento de áreas"
+                        android:textColor="#0F172A"
+                        android:textSize="6.2sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#334155"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB3AreasRes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.75"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB3AreasPct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.9"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Fila 4: Control de recursos -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="19dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingStart="3dp"
+                        android:text="Control de recursos"
+                        android:textColor="#0F172A"
+                        android:textSize="6.2sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#334155"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB3RescRes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.75"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB3RescPct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.9"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Fila 5: Cumplimiento del SIGD -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="19dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingStart="3dp"
+                        android:text="Cumplimiento del SIGD"
+                        android:textColor="#0F172A"
+                        android:textSize="6.2sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#334155"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB3SigdRes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.75"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB3SigdPct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.9"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- TOTAL GENERAL B3 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    android:background="#2E2A72"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:gravity="center_vertical"
+                        android:paddingStart="4dp"
+                        android:text="TOTAL GENERAL"
+                        android:textColor="#FFFFFF"
+                        android:textSize="7.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB3GrandTotalPct"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="2.5"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="9sp"
+                        android:textStyle="italic|bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- BLOQUE 4: INDICADORES CLAVE DEL CARGO (KPI) -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/kpi_sheet_badge_section"
+                    android:gravity="center"
+                    android:text="4"
+                    android:textColor="#2E2A72"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="3dp"
+                    android:background="#2E2A72"
+                    android:gravity="center_vertical"
+                    android:paddingStart="4dp"
+                    android:text="INDICADORES CLAVE DEL CARGO (KPI)"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="3dp"
+                android:orientation="vertical">
+
+                <!-- Header B4 -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#2E2A72"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="INDICADOR"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.7"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="PESO"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="RES."
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.95"
+                        android:background="@drawable/kpi_sheet_cell_header"
+                        android:gravity="center"
+                        android:text="POND."
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- KPI 1: Seguimiento de objetivos (25%) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="19dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingStart="3dp"
+                        android:text="Seguimiento objetivos"
+                        android:textColor="#0F172A"
+                        android:textSize="6.2sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.7"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="25%"
+                        android:textColor="#0F172A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB4ObjRes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB4ObjPond"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.95"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="25%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.8sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- KPI 2: Gestión estratégica (25%) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="19dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingStart="3dp"
+                        android:text="Gestión estratégica"
+                        android:textColor="#0F172A"
+                        android:textSize="6.2sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.7"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="25%"
+                        android:textColor="#0F172A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB4EstRes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB4EstPond"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.95"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="25%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.8sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- KPI 3: Supervisión de áreas (20%) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="19dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingStart="3dp"
+                        android:text="Supervisión de áreas"
+                        android:textColor="#0F172A"
+                        android:textSize="6.2sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.7"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="20%"
+                        android:textColor="#0F172A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB4SupRes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="95%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB4SupPond"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.95"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="19%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.8sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- KPI 4: Control de recursos (15%) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="19dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingStart="3dp"
+                        android:text="Control de recursos"
+                        android:textColor="#0F172A"
+                        android:textSize="6.2sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.7"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="15%"
+                        android:textColor="#0F172A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB4RecRes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB4RecPond"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.95"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="15%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.8sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- KPI 5: Cumplimiento del SIGD (15%) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="19dp"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.5"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center_vertical"
+                        android:paddingStart="3dp"
+                        android:text="Cumplimiento del SIGD"
+                        android:textColor="#0F172A"
+                        android:textSize="6.2sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.7"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="15%"
+                        android:textColor="#0F172A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB4SigdRes"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.85"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.5sp" />
+
+                    <TextView
+                        android:id="@+id/tvGmB4SigdPond"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.95"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="15%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.8sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- TOTAL Y PROMEDIO PONDERADO FINAL -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    android:background="#2E2A72"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.1"
+                        android:gravity="center"
+                        android:text="TOTAL"
+                        android:textColor="#FFFFFF"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.6"
+                        android:background="@drawable/kpi_sheet_cell_data"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#1E1B4B"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1.35"
+                        android:gravity="center"
+                        android:paddingHorizontal="2dp"
+                        android:text="PROMEDIO PONDERADO"
+                        android:textColor="#FFFFFF"
+                        android:textSize="5.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvGmB4FinalScore"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="0.95"
+                        android:background="@drawable/kpi_sheet_cell_yellow"
+                        android:gravity="center"
+                        android:text="99%"
+                        android:textColor="#000000"
+                        android:textSize="9sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- BLOQUES 5, 6, 7: LOGROS, DIFICULTADES Y PLAN DE MEJORA                     -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <!-- BLOQUE 5: LOGROS DE LA SEMANA -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="2dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/kpi_sheet_badge_section"
+                    android:gravity="center"
+                    android:text="5"
+                    android:textColor="#2E2A72"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="2dp"
+                    android:background="#2E2A72"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="3dp">
+
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:src="@drawable/kpi_ic_trophy"
+                        app:tint="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="LOGROS DE LA SEMANA"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.2sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvGmAchievements"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:padding="3dp"
+                android:text="• Cumplimiento del 100% de la gestión.\n• Avance de campañas digitales.\n• Coordinación efectiva entre áreas."
+                android:textColor="#1E293B"
+                android:textSize="6.2sp" />
+        </LinearLayout>
+
+        <!-- BLOQUE 6: DIFICULTADES / INCIDENCIAS -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="2dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/kpi_sheet_badge_section"
+                    android:gravity="center"
+                    android:text="6"
+                    android:textColor="#2E2A72"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="2dp"
+                    android:background="#2E2A72"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="3dp">
+
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:src="@drawable/kpi_ic_warning"
+                        app:tint="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="DIFICULTADES / INCID."
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.2sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvGmDifficulties"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:padding="3dp"
+                android:text="• Menor alcance en leads (miércoles).\n• Ajustes en el presupuesto de pauta."
+                android:textColor="#1E293B"
+                android:textSize="6.2sp" />
+        </LinearLayout>
+
+        <!-- BLOQUE 7: PLAN DE MEJORA -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="2dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:background="@drawable/kpi_sheet_badge_section"
+                    android:gravity="center"
+                    android:text="7"
+                    android:textColor="#2E2A72"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="18dp"
+                    android:layout_marginStart="2dp"
+                    android:background="#2E2A72"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="3dp">
+
+                    <ImageView
+                        android:layout_width="10dp"
+                        android:layout_height="10dp"
+                        android:src="@drawable/kpi_ic_trending_up"
+                        app:tint="#FFFFFF" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="2dp"
+                        android:text="PLAN DE MEJORA"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6.2sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvGmImprovementPlan"
+                android:layout_width="match_parent"
+                android:layout_height="56dp"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:padding="3dp"
+                android:text="• Fortalecer la generación de leads.\n• Optimizar el uso del presupuesto."
+                android:textColor="#1E293B"
+                android:textSize="6.2sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- PIE DE PÁGINA CORPORATIVO SIGD                                            -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="32dp"
+        android:layout_marginTop="8dp"
+        android:background="#2E2A72"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingHorizontal="10dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif-black"
+            android:text="SIGD"
+            android:textColor="#FFFFFF"
+            android:textSize="10sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:text="SISTEMA INTEGRAL\nDE GESTIÓN DEL DESEMPEÑO"
+            android:textColor="#C7D2FE"
+            android:textSize="5.2sp" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center"
+            android:text="TU LIDERAZGO GENERA RESULTADOS REALES"
+            android:textColor="#FFFFFF"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="end"
+            android:text="Más dirección • Más control\nMás crecimiento"
+            android:textColor="#C7D2FE"
+            android:textSize="5.8sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>
+

@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="sch_purple_900">#250E45</color>
+    <color name="sch_purple_700">#7133BF</color>
+    <color name="sch_purple_500">#A56AF4</color>
+    <color name="sch_purple_200">#CDA9F8</color>
+    <color name="sch_purple_100">#402357</color>
+    <color name="sch_bg">#10081B</color>
+    <color name="sch_card">#241333</color>
+    <color name="sch_text">#F6EFFD</color>
+    <color name="sch_text_soft">#C8B5D8</color>
+    <color name="sch_amber">#FBBF24</color>
+    <color name="sch_amber_dark">#FCD77F</color>
+    <color name="sch_amber_soft">#3D301C</color>
+    <color name="sch_line">#614077</color>
+    <color name="sch_tab_inactive">#B9A6CB</color>
+</resources>

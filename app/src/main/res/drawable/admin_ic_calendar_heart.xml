@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Lucide calendar-heart -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M3,10H21"
+        android:strokeWidth="2"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M8,2V6M16,2V6"
+        android:strokeWidth="2"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M21,10.5V6A2,2 0,0 0,19 4H5A2,2 0,0 0,3 6V20A2,2 0,0 0,5 22H10.5"
+        android:strokeWidth="2"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M21.29,14.7A2.43,2.43 0,0 0,17.64 14.51L17.5,14.65L17.36,14.51A2.43,2.43 0,0 0,13.71 14.7A2.4,2.4 0,0 0,13.52 18.08L16.82,21.56A0.9,0.9 0,0 0,18.18 21.56L21.48,18.08A2.4,2.4 0,0 0,21.29 14.7Z"
+        android:strokeWidth="1.9"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

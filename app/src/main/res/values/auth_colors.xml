@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- SIGD by website — Premium Violet & Lavender Palette -->
+    <color name="auth_brand_purple">#7209B7</color>
+    <color name="auth_brand_purple_bright">#9517D5</color>
+    <color name="auth_brand_purple_dark">#5B0794</color>
+    <color name="auth_brand_purple_pressed">#4A057A</color>
+    <color name="auth_brand_fuchsia">#9517D5</color>
+    <color name="auth_brand_fuchsia_glow">#389517D5</color>
+    <color name="auth_brand_purple_glow">#307209B7</color>
+
+    <color name="auth_background">#21083B</color>
+    <color name="auth_background_mid">#310654</color>
+    <color name="auth_background_bottom">#1B0631</color>
+
+    <color name="auth_ink">#2B1045</color>
+    <color name="auth_ink_heading">#2B1045</color>
+    <color name="auth_muted">#806C90</color>
+    <color name="auth_light_text">#EBDCF8</color>
+    <color name="auth_subtle_text">#9B88AC</color>
+
+    <color name="auth_border">#DDCBEA</color>
+    <color name="auth_field">#FAF7FD</color>
+    <color name="auth_soft">#EAE0F5</color>
+    <color name="auth_soft_pressed">#DFD0F0</color>
+    <color name="auth_biometric_btn_bg">#FAF7FD</color>
+    <color name="auth_biometric_btn_stroke">#D4BFE6</color>
+
+    <color name="auth_card_bg">#F3EDF9</color>
+    <color name="auth_card_stroke">#DDCBEA</color>
+
+    <color name="auth_error">#B3261E</color>
+    <color name="auth_error_bg">#FFF1F2</color>
+    <color name="auth_error_border">#FECDD3</color>
+    <color name="auth_error_text">#BE123C</color>
+
+    <color name="auth_badge_bg">#251144</color>
+    <color name="auth_badge_stroke">#6A2BA3</color>
+    <color name="auth_badge_text">#F5E8FF</color>
+    <color name="auth_panel">#F3EDF9</color>
+    <color name="auth_form_header_start">#4A148C</color>
+    <color name="auth_form_header_end">#35105E</color>
+</resources>

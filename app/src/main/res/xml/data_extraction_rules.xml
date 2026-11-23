@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<data-extraction-rules>
+    <cloud-backup>
+        <exclude domain="sharedpref" path="wsp_session_prefs.xml" />
+        <exclude domain="sharedpref" path="wsp_biometric_vault.xml" />
+        <exclude domain="sharedpref" path="wsp_android_credential.xml" />
+        <exclude domain="sharedpref" path="wsp_face_device.xml" />
+        <exclude domain="sharedpref" path="wsp_face_registration_attempt.xml" />
+    </cloud-backup>
+    <device-transfer>
+        <exclude domain="sharedpref" path="wsp_session_prefs.xml" />
+        <exclude domain="sharedpref" path="wsp_biometric_vault.xml" />
+        <exclude domain="sharedpref" path="wsp_android_credential.xml" />
+        <exclude domain="sharedpref" path="wsp_face_device.xml" />
+        <exclude domain="sharedpref" path="wsp_face_registration_attempt.xml" />
+    </device-transfer>
+</data-extraction-rules>

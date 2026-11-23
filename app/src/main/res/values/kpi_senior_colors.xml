@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Colores unificados del módulo Diseñador Senior / Vista Semanal (Modo Claro: Morado Encendido / Medio Fucsia) -->
+    <color name="kpi_senior_primary">#A21CAF</color>
+    <color name="kpi_senior_primary_dark">#86198F</color>
+    <color name="kpi_senior_primary_light">#FAE8FF</color>
+    <color name="kpi_senior_accent_purple">#C026D3</color>
+    <color name="kpi_senior_purple_dark">#701A75</color>
+    
+    <!-- Colores de filas pastel para la tabla diaria (Lunes a Sábado) -->
+    <color name="kpi_senior_table_header">#4A044E</color>
+    <color name="kpi_senior_day_lun_bg">#EFF6FF</color>
+    <color name="kpi_senior_day_lun_text">#1D4ED8</color>
+    <color name="kpi_senior_day_mar_bg">#F0FDF4</color>
+    <color name="kpi_senior_day_mar_text">#15803D</color>
+    <color name="kpi_senior_day_mie_bg">#FFFBEB</color>
+    <color name="kpi_senior_day_mie_text">#B45309</color>
+    <color name="kpi_senior_day_jue_bg">#FDF2F8</color>
+    <color name="kpi_senior_day_jue_text">#BE185D</color>
+    <color name="kpi_senior_day_vie_bg">#F5F3FF</color>
+    <color name="kpi_senior_day_vie_text">#6D28D9</color>
+    <color name="kpi_senior_day_sab_bg">#EEF2FF</color>
+    <color name="kpi_senior_day_sab_text">#4338CA</color>
+
+    <!-- Badges y estados -->
+    <color name="kpi_senior_badge_yellow_bg">#FEF08A</color>
+    <color name="kpi_senior_badge_yellow_text">#854D0E</color>
+    <color name="kpi_senior_badge_green_bg">#DCFCE7</color>
+    <color name="kpi_senior_badge_green_text">#166534</color>
+    <color name="kpi_senior_badge_blue_bg">#E0F2FE</color>
+    <color name="kpi_senior_badge_blue_text">#0369A1</color>
+    <color name="kpi_senior_badge_orange_bg">#FFEDD5</color>
+    <color name="kpi_senior_badge_orange_text">#C2410C</color>
+    
+    <!-- Tarjetas de producción (Diseños, Videos, Sesiones, Otras) -->
+    <color name="kpi_senior_card_designs_bg">#FDF2F8</color>
+    <color name="kpi_senior_card_designs_accent">#DB2777</color>
+    <color name="kpi_senior_card_videos_bg">#EFF6FF</color>
+    <color name="kpi_senior_card_videos_accent">#5B21B6</color>
+    <color name="kpi_senior_card_sessions_bg">#F0FDF4</color>
+    <color name="kpi_senior_card_sessions_accent">#16A34A</color>
+    <color name="kpi_senior_card_other_bg">#FFF7ED</color>
+    <color name="kpi_senior_card_other_accent">#EA580C</color>
+</resources>

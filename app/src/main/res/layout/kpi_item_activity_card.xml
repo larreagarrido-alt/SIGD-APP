@@ -1,0 +1,430 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.google.android.material.card.MaterialCardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="16dp"
+    app:cardBackgroundColor="@color/kpi_card_bg"
+    app:cardCornerRadius="16dp"
+    app:cardElevation="2dp"
+    app:strokeColor="@color/kpi_border"
+    app:strokeWidth="1dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Barra de acento superior de color según categoría -->
+        <View
+            android:id="@+id/vAccentLine"
+            android:layout_width="match_parent"
+            android:layout_height="4dp"
+            android:background="@color/kpi_cat_desarrollo" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Cabecera de la Actividad: Ícono + Número + Estado + Eliminar -->
+            <RelativeLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentStart="true"
+                    android:layout_centerVertical="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/tvCategoryIcon"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:background="@drawable/kpi_bg_commit_badge"
+                        android:gravity="center"
+                        android:text="&lt;&gt;"
+                        android:textColor="@color/kpi_cat_desarrollo"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvItemNumber"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="01"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvStatusBadge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:background="@drawable/kpi_bg_pill_status"
+                        android:paddingStart="10dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="10dp"
+                        android:paddingBottom="3dp"
+                        android:text="● Entregado"
+                        android:textColor="@color/kpi_status_entregado"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <ImageView
+                    android:id="@+id/btnDeleteActivity"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_alignParentEnd="true"
+                    android:layout_centerVertical="true"
+                    android:contentDescription="Eliminar actividad"
+                    android:src="@android:drawable/ic_menu_delete"
+                    app:tint="@color/kpi_gray_light" />
+            </RelativeLayout>
+
+            <!-- Fila 1: Nº, Proyecto (Editable) y Tipo (Se oculta en Salida a campo) -->
+            <LinearLayout
+                android:id="@+id/llProjectAndTypeRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal">
+
+                <!-- Nº -->
+                <LinearLayout
+                    android:layout_width="48dp"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="N°"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCardNumberBox"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/kpi_bg_input"
+                        android:gravity="center"
+                        android:text="01"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Proyecto (Escrito libremente por el usuario) -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1.25"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Proyecto"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <AutoCompleteTextView
+                        android:id="@+id/etProject"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/kpi_bg_input"
+                        android:completionThreshold="1"
+                        android:hint="Escribe el proyecto..."
+                        android:inputType="textCapSentences"
+                        android:maxLines="1"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp"
+                        android:singleLine="true"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textColorHint="@color/kpi_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Tipo -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1.05"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Tipo"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <Spinner
+                        android:id="@+id/spType"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/kpi_bg_input"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Fila 2: Horarios (Hora Inicio y Hora Fin vacíos antes de colocarlos) -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:orientation="horizontal">
+
+                <!-- Hora Inicio -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Hora inicio"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/llStartTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/kpi_bg_input"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp">
+
+                        <TextView
+                            android:id="@+id/tvStartTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="--:--"
+                            android:textColor="@color/kpi_text_primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:contentDescription="Seleccionar hora inicio"
+                            android:src="@drawable/kpi_ic_clock"
+                            app:tint="@color/kpi_primary" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Hora Fin -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Hora fin"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <LinearLayout
+                        android:id="@+id/llEndTime"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/kpi_bg_input"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:foreground="?android:attr/selectableItemBackground"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:paddingStart="10dp"
+                        android:paddingEnd="10dp">
+
+                        <TextView
+                            android:id="@+id/tvEndTime"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="--:--"
+                            android:textColor="@color/kpi_text_primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <ImageView
+                            android:layout_width="16dp"
+                            android:layout_height="16dp"
+                            android:contentDescription="Seleccionar hora fin"
+                            android:src="@drawable/kpi_ic_clock"
+                            app:tint="@color/kpi_primary" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Fila 3: Actividad / Tarea (o Justificación si es Salida a Campo) -->
+            <TextView
+                android:id="@+id/tvActivityLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Actividad / Tarea"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <EditText
+                android:id="@+id/etActivityDescription"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/kpi_bg_input"
+                android:hint="Describa la actividad o tarea realizada..."
+                android:minHeight="42dp"
+                android:paddingStart="12dp"
+                android:paddingTop="8dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="8dp"
+                android:textColor="@color/kpi_text_primary"
+                android:textColorHint="@color/kpi_text_secondary"
+                android:textSize="13sp" />
+
+            <!-- Fila 4: Estado de la actividad -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="4dp"
+                android:text="Estado de la actividad"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <RadioGroup
+                android:id="@+id/rgStatus"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="8dp"
+                android:orientation="horizontal">
+
+                <RadioButton
+                    android:id="@+id/rbEntregado"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:checked="true"
+                    android:text="Entregado"
+                    android:textColor="@color/kpi_text_primary"
+                    android:textSize="12sp" />
+
+                <RadioButton
+                    android:id="@+id/rbPendiente"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="16dp"
+                    android:text="Pendiente"
+                    android:textColor="@color/kpi_text_primary"
+                    android:textSize="12sp" />
+            </RadioGroup>
+
+            <!-- Fila 5: Bugs y Hash de Commit Git -->
+            <LinearLayout
+                android:id="@+id/llBugsAndCommitRow"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <!-- Bugs -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Bugs"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/etBugs"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/kpi_bg_input"
+                        android:gravity="center"
+                        android:inputType="number"
+                        android:text="0"
+                        android:textColor="@color/kpi_text_primary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- Commit -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="12dp"
+                    android:layout_weight="1.6"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginBottom="4dp"
+                        android:text="Commit Git"
+                        android:textColor="@color/kpi_text_secondary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <EditText
+                        android:id="@+id/tvCommitHash"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:background="@drawable/kpi_bg_commit_badge"
+                        android:gravity="center"
+                        android:hint="hash git (ej: a3b2c1d)"
+                        android:paddingStart="8dp"
+                        android:paddingEnd="8dp"
+                        android:textColor="@color/kpi_primary"
+                        android:textColorHint="@color/kpi_text_secondary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+
+</com.google.android.material.card.MaterialCardView>

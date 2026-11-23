@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="24dp"
+    android:height="24dp"
+    android:viewportWidth="24"
+    android:viewportHeight="24">
+    <!-- Lucide heart-handshake -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,14C20.49,12.54 22,10.79 22,8.5C22,5.5 19.5,3 16.5,3C14.74,3 13.5,3.5 12,5C10.5,3.5 9.26,3 7.5,3C4.5,3 2,5.5 2,8.5C2,10.8 3.5,12.55 5,14L12,21L19,14Z"
+        android:strokeWidth="2"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M12,5L9.04,7.96C8.65,8.35 8.65,8.98 9.04,9.37C9.43,9.76 10.06,9.76 10.45,9.37L12,7.82L15.18,11C15.57,11.39 15.57,12.02 15.18,12.41L13.5,14.1"
+        android:strokeWidth="1.8"
+        android:strokeColor="#FFFFFF"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

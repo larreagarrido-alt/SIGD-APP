@@ -1,0 +1,127 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Iluminación morada suave -->
+    <path android:pathData="M60,60m-54,0a54,54 0,1 1,108 0a54,54 0,1 1,-108 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="60"
+                android:centerY="60"
+                android:gradientRadius="54"
+                android:type="radial">
+                <item android:color="#42B54CFF" android:offset="0.0" />
+                <item android:color="#1E8B30E0" android:offset="0.58" />
+                <item android:color="#00281638" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Contenedor circular violeta -->
+    <path android:pathData="M60,60m-39,0a39,39 0,1 1,78 0a39,39 0,1 1,-78 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="90"
+                android:endY="92"
+                android:startX="30"
+                android:startY="28"
+                android:type="linear">
+                <item android:color="#40235F" android:offset="0.0" />
+                <item android:color="#27143D" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M60,60m-38.4,0a38.4,38.4 0,1 1,76.8 0a38.4,38.4 0,1 1,-76.8 0"
+        android:strokeWidth="1.2"
+        android:strokeColor="#66D4A9FF" />
+
+    <!-- Sombra bajo el trofeo -->
+    <path
+        android:fillColor="#4D0A0414"
+        android:pathData="M42,84.5C42,82.5 50,81 60,81C70,81 78,82.5 78,84.5C78,86.5 70,88 60,88C50,88 42,86.5 42,84.5Z" />
+
+    <!-- Asas del trofeo -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M44,44C35.5,44 33,51.5 37,57.5C39.5,61.2 43.5,62.5 47.5,62.5"
+        android:strokeWidth="3.6"
+        android:strokeColor="#D9A348"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M76,44C84.5,44 87,51.5 83,57.5C80.5,61.2 76.5,62.5 72.5,62.5"
+        android:strokeWidth="3.6"
+        android:strokeColor="#BC8228"
+        android:strokeLineCap="round" />
+
+    <!-- Pedestal y base -->
+    <path android:pathData="M55.5,67L64.5,67L66,76L54,76Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="66"
+                android:endY="76"
+                android:startX="54"
+                android:startY="67"
+                android:type="linear">
+                <item android:color="#FFE69A" android:offset="0.0" />
+                <item android:color="#C98824" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M47,77.5C47,75.8 48.3,74.5 50,74.5L70,74.5C71.7,74.5 73,75.8 73,77.5L74,82C74,83.1 73.1,84 72,84L48,84C46.9,84 46,83.1 46,82Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="74"
+                android:endY="83"
+                android:startX="46"
+                android:startY="75"
+                android:type="linear">
+                <item android:color="#F8DC88" android:offset="0.0" />
+                <item android:color="#C47D1A" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Copa dorada 3D -->
+    <path android:pathData="M42,39C42,37.3 43.3,36 45,36L75,36C76.7,36 78,37.3 78,39L76.8,50.5C75.8,61.2 69.2,69 60,69C50.8,69 44.2,61.2 43.2,50.5Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="78"
+                android:endY="66"
+                android:startX="42"
+                android:startY="36"
+                android:type="linear">
+                <item android:color="#FFF3BC" android:offset="0.0" />
+                <item android:color="#F2C36D" android:offset="0.5" />
+                <item android:color="#C47D1A" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Brillo izquierdo de la copa -->
+    <path
+        android:fillColor="#55FFFFFF"
+        android:pathData="M46,40L49.5,40L50.5,52C51,57.5 53,62 55.5,65C50.5,62 47,56 46.4,50Z" />
+
+    <!-- Estrella interior -->
+    <path
+        android:fillColor="#FFF8D8"
+        android:pathData="M60,44.5L62.1,48.8L66.8,49.5L63.4,52.8L64.2,57.5L60,55.3L55.8,57.5L56.6,52.8L53.2,49.5L57.9,48.8Z" />
+
+    <!-- Destellos discretos -->
+    <path
+        android:fillColor="#FFF3C2"
+        android:pathData="M24,31L25.4,34.8L29.2,36.2L25.4,37.6L24,41.4L22.6,37.6L18.8,36.2L22.6,34.8Z" />
+    <path
+        android:fillColor="#D4A9FF"
+        android:pathData="M95,29L96.2,32L99.2,33.2L96.2,34.4L95,37.4L93.8,34.4L90.8,33.2L93.8,32Z" />
+    <path
+        android:fillColor="#88FFFFFF"
+        android:pathData="M97,76m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+</vector>

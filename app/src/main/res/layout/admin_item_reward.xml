@@ -1,0 +1,220 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/admin_bg_rewards_surface_card"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <!-- Vista previa de imagen real (solo visible si el premio tiene imagen) -->
+    <FrameLayout
+        android:id="@+id/reward_item_image_wrap"
+        android:layout_width="match_parent"
+        android:layout_height="152dp"
+        android:layout_marginBottom="12dp"
+        android:background="@drawable/collab_bg_rewards_image_frame"
+        android:clipToOutline="true"
+        android:visibility="gone">
+
+        <ImageView
+            android:id="@+id/reward_item_image"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Imagen de la publicación"
+            android:scaleType="centerInside" />
+    </FrameLayout>
+
+    <!-- Cabecera: título + badges reales + menú de opciones -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="top"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/reward_item_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:lineSpacingExtra="1dp"
+                android:maxLines="2"
+                android:textColor="@color/admin_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/reward_item_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:maxLines="1"
+                    android:paddingStart="9dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="9dp"
+                    android:paddingBottom="3dp"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <!-- Puntos requeridos reales (visible solo si el servidor envía puntos_requeridos > 0) -->
+                <LinearLayout
+                    android:id="@+id/reward_item_points_wrap"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:background="@drawable/collab_bg_rewards_points_pill"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="8dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="3dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="11dp"
+                        android:layout_height="11dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/collaborator_ic_star"
+                        app:tint="#F6C35D" />
+
+                    <TextView
+                        android:id="@+id/reward_item_points"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:maxLines="1"
+                        android:textColor="#F6C35D"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/reward_item_more"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/collab_bg_circle_button"
+            android:clickable="true"
+            android:contentDescription="Más opciones"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="17dp"
+                android:layout_height="17dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/admin_ic_more_vert"
+                app:tint="@color/admin_text_secondary" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Descripción resumida -->
+    <TextView
+        android:id="@+id/reward_item_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="2dp"
+        android:maxLines="3"
+        android:textColor="@color/admin_text_secondary"
+        android:textSize="13sp" />
+
+    <!-- Programación: fechas de inicio y vencimiento -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:background="@drawable/collab_bg_rewards_image_frame"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="11dp"
+        android:paddingTop="8dp"
+        android:paddingEnd="11dp"
+        android:paddingBottom="8dp">
+
+        <ImageView
+            android:layout_width="15dp"
+            android:layout_height="15dp"
+            android:contentDescription="@null"
+            android:src="@drawable/admin_ic_calendar_range"
+            app:tint="@color/admin_purple_accent" />
+
+        <TextView
+            android:id="@+id/reward_item_dates"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:textColor="@color/admin_text_secondary"
+            android:textSize="11.5sp" />
+    </LinearLayout>
+
+    <!-- Divisor y acciones administrativas reales -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginTop="12dp"
+        android:layout_marginBottom="11dp"
+        android:background="@color/admin_border" />
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/reward_item_btn_edit"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_weight="1"
+            android:background="@drawable/admin_bg_rewards_secondary_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Editar / renovar"
+            android:textColor="@color/admin_text_primary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/reward_item_btn_toggle"
+            android:layout_width="0dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:background="@drawable/admin_bg_rewards_chip_inactive"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:maxLines="1"
+            android:paddingStart="10dp"
+            android:paddingEnd="10dp"
+            android:text="Desactivar"
+            android:textColor="@color/admin_text_secondary"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

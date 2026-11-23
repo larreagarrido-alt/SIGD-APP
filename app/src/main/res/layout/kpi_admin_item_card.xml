@@ -1,0 +1,191 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/kpi_bg_card_white"
+    android:elevation="2dp"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Fila Superior: Badges de Área/Puesto y Switch de Estado -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvCardArea"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kpi_senior_bg_pill_green"
+            android:paddingStart="8dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="3dp"
+            android:text="COMERCIAL"
+            android:textColor="@color/kpi_success_text"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvCardRole"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:background="@drawable/kpi_senior_bg_pill_yellow"
+            android:paddingStart="8dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="3dp"
+            android:text="Asesor de Ventas"
+            android:textColor="@color/kpi_warning_text"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/tvCardVersion"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:background="@color/kpi_surface_variant"
+            android:paddingStart="6dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="6dp"
+            android:paddingBottom="2dp"
+            android:text="v1"
+            android:textColor="@color/kpi_text_secondary"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <com.google.android.material.switchmaterial.SwitchMaterial
+            android:id="@+id/swCardStatus"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:checked="true"
+            app:useMaterialThemeColors="true" />
+    </LinearLayout>
+
+    <!-- Nombre del KPI -->
+    <TextView
+        android:id="@+id/tvCardKpiName"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:text="Prospecciones y llamadas diarias"
+        android:textColor="@color/kpi_text_primary"
+        android:textSize="15sp"
+        android:textStyle="bold" />
+
+    <!-- Descripción breve -->
+    <TextView
+        android:id="@+id/tvCardKpiDesc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:text="Contactar a potenciales clientes empresariales para calificar interés."
+        android:textColor="@color/kpi_text_secondary"
+        android:textSize="12sp" />
+
+    <!-- Fila de Metas, Peso y Tipo -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="12dp"
+        android:background="@color/kpi_surface_variant"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="META PROGRAMADA"
+                android:textColor="@color/kpi_gray_light"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCardTarget"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15 llamadas"
+                android:textColor="@color/kpi_text_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="PESO"
+                android:textColor="@color/kpi_gray_light"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCardWeight"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="25%"
+                android:textColor="@color/kpi_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="TIPO / SENTIDO"
+                android:textColor="@color/kpi_gray_light"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCardTypePolarity"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cantidad (▲)"
+                android:textColor="@color/kpi_info_text"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <ImageView
+            android:id="@+id/btnCardEdit"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/kpi_senior_bg_stepper_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:padding="8dp"
+            android:src="@drawable/kpi_ic_menu"
+            app:tint="@color/kpi_primary" />
+    </LinearLayout>
+
+</LinearLayout>

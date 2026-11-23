@@ -1,0 +1,1934 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layoutOfficialCommunitySheetRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:elevation="3dp"
+    android:orientation="vertical"
+    android:padding="6dp"
+    tools:ignore="HardcodedText,SmallSp,TooManyViews">
+
+    <!-- ========================================================================= -->
+    <!-- CABECERA OFICIAL: COMMUNITY MANAGER (SIGD 2026)                          -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- LOGO AGENCIA -->
+        <LinearLayout
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#2E2A72"
+            android:gravity="center"
+            android:orientation="vertical"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="5dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="SIGD"
+                android:textColor="#FFFFFF"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Agencia Creativa"
+                android:textColor="#C7D2FE"
+                android:textSize="7sp" />
+        </LinearLayout>
+
+        <!-- TITULAR CENTRAL -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingHorizontal="4dp">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="REPORTE SEMANAL DE PRODUCCIÓN"
+                android:textColor="#1E1B4B"
+                android:textSize="10.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:text="COMMUNITY MANAGER"
+                android:textColor="#4C1D95"
+                android:textSize="13.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:gravity="center"
+                android:text=">>> GESTIONA REDES • PUBLICA • INTERACTÚA • ANALIZA RESULTADOS"
+                android:textColor="#1E1B4B"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- RECUADRO DE PERIODO Y FECHAS -->
+        <LinearLayout
+            android:layout_width="88dp"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kpi_sheet_cell_data"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="18dp"
+                android:background="#2E2A72"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Periodo:"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvCommWeekNumber"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="37"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TextView
+                android:id="@+id/tvCommDateFrom"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="4dp"
+                android:paddingTop="1dp"
+                android:text="Del:  04 / 09 / 2026"
+                android:textColor="#1E293B"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvCommDateTo"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:paddingHorizontal="4dp"
+                android:paddingBottom="2dp"
+                android:text="al:   10 / 09 / 2026"
+                android:textColor="#1E293B"
+                android:textSize="7sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- FICHA DE DATOS DEL COLABORADOR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:background="@drawable/kpi_sheet_cell_data"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:padding="5dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.15"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvCommCollabName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Colaborador:  NICOL RAMOS"
+                android:textColor="#0F172A"
+                android:textSize="8sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommCollabRole"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Cargo:  COMMUNITY MANAGER"
+                android:textColor="#334155"
+                android:textSize="7.5sp" />
+
+            <TextView
+                android:id="@+id/tvCommCollabShift"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Turno:  ☑ Turno mañana   ☐ Turno tarde"
+                android:textColor="#334155"
+                android:textSize="7.5sp" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1.15"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvCommCollabArea"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Área:  MARKETING DIGITAL"
+                android:textColor="#0F172A"
+                android:textSize="7.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommCollabSupervisor"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Responsable de evaluación:  MANUEL CASTILLO"
+                android:textColor="#334155"
+                android:textSize="7sp" />
+
+            <TextView
+                android:id="@+id/tvCommCollabBoss"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:text="Jefe inmediato:  JEFFERSON CUEVA"
+                android:textColor="#334155"
+                android:textSize="7sp" />
+        </LinearLayout>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:paddingHorizontal="4dp"
+            android:text="📢 Conecta\nmarca y\ncomunidad"
+            android:textColor="#311068"
+            android:textSize="6.5sp"
+            android:textStyle="bold|italic" />
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- SECCIÓN 1: CONTROL DIARIO DE PRODUCCIÓN                                   -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:background="@drawable/kpi_sheet_badge_section"
+            android:gravity="center"
+            android:text="1"
+            android:textColor="#2E2A72"
+            android:textSize="9sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:letterSpacing="0.04"
+            android:text="CONTROL DIARIO DE PRODUCCIÓN"
+            android:textColor="#2E2A72"
+            android:textSize="8.5sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- TABLA DE CONTROL DIARIO (9 COLUMNAS) -->
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:stretchColumns="*">
+
+        <!-- CABECERA DE LA TABLA -->
+        <TableRow
+            android:background="#2E2A72"
+            android:paddingVertical="3dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="DÍA"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:gravity="center"
+                android:text="MODALIDAD / ACTIVIDAD PRINCIPAL"
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="META DIARIA\n(por turno)"
+                android:textColor="#FFFFFF"
+                android:textSize="5.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="PUBLICACIONES\nREALIZADAS"
+                android:textColor="#FFFFFF"
+                android:textSize="5.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="INTERACCIONES\nATENDIDAS"
+                android:textColor="#FFFFFF"
+                android:textSize="5.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="OTRAS\nACTIVIDADES"
+                android:textColor="#FFFFFF"
+                android:textSize="5.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="TOTAL\nACT."
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:gravity="center"
+                android:text="%\nCUMPL."
+                android:textColor="#FFFFFF"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:gravity="center"
+                android:text="OBSERVACIONES"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <!-- FILA LUNES -->
+        <TableRow
+            android:background="#FFFFFF"
+            android:paddingVertical="2dp">
+
+            <TextView
+                android:id="@+id/tvCommDay1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="LUNES"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommAct1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:paddingStart="2dp"
+                android:text="Gestión de redes\n(Programación y pub.)"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvCommMeta1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="1 - 2 pub."
+                android:textColor="#475569"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvCommPub1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommInt1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="8"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommOtr1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommTot1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="11"
+                android:textColor="#2E2A72"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommPct1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#16A34A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommObs1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:paddingStart="2dp"
+                android:text="Publicación en FB e IG."
+                android:textColor="#475569"
+                android:textSize="5.5sp" />
+        </TableRow>
+
+        <!-- FILA MARTES -->
+        <TableRow
+            android:background="#F8FAFC"
+            android:paddingVertical="2dp">
+
+            <TextView
+                android:id="@+id/tvCommDay2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="MARTES"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommAct2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:paddingStart="2dp"
+                android:text="Atención a la comunidad\n(Mensajes y coment.)"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvCommMeta2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="≥ 10 int."
+                android:textColor="#475569"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvCommPub2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommInt2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="11"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommOtr2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommTot2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="14"
+                android:textColor="#2E2A72"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommPct2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#16A34A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommObs2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:paddingStart="2dp"
+                android:text="Respuesta a mensajes y consultas."
+                android:textColor="#475569"
+                android:textSize="5.5sp" />
+        </TableRow>
+
+        <!-- FILA MIÉRCOLES -->
+        <TableRow
+            android:background="#FFFFFF"
+            android:paddingVertical="2dp">
+
+            <TextView
+                android:id="@+id/tvCommDay3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="MIÉRC."
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommAct3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:paddingStart="2dp"
+                android:text="Seguimiento de redes\n(Interacción y alcance)"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvCommMeta3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="≥ 10 int."
+                android:textColor="#475569"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvCommPub3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommInt3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="10"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommOtr3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommTot3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="13"
+                android:textColor="#2E2A72"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommPct3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#16A34A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommObs3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:paddingStart="2dp"
+                android:text="Monitoreo de interacciones."
+                android:textColor="#475569"
+                android:textSize="5.5sp" />
+        </TableRow>
+
+        <!-- FILA JUEVES -->
+        <TableRow
+            android:background="#F8FAFC"
+            android:paddingVertical="2dp">
+
+            <TextView
+                android:id="@+id/tvCommDay4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="JUEVES"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommAct4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:paddingStart="2dp"
+                android:text="Gestión de publicaciones\n(Según calendario)"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvCommMeta4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="1 - 2 pub."
+                android:textColor="#475569"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvCommPub4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="2"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommInt4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="9"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommOtr4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommTot4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="12"
+                android:textColor="#2E2A72"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommPct4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#16A34A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommObs4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:paddingStart="2dp"
+                android:text="Contenidos programados."
+                android:textColor="#475569"
+                android:textSize="5.5sp" />
+        </TableRow>
+
+        <!-- FILA VIERNES -->
+        <TableRow
+            android:background="#FFFFFF"
+            android:paddingVertical="2dp">
+
+            <TextView
+                android:id="@+id/tvCommDay5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="VIERNES"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommAct5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:paddingStart="2dp"
+                android:text="Revisión de métricas\n(Alcance e interacción)"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvCommMeta5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="1 análisis"
+                android:textColor="#475569"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvCommPub5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommInt5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="7"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommOtr5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommTot5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="9"
+                android:textColor="#2E2A72"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommPct5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#16A34A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommObs5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:paddingStart="2dp"
+                android:text="Rendimiento de la semana."
+                android:textColor="#475569"
+                android:textSize="5.5sp" />
+        </TableRow>
+
+        <!-- FILA SÁBADO -->
+        <TableRow
+            android:background="#F8FAFC"
+            android:paddingVertical="2dp">
+
+            <TextView
+                android:id="@+id/tvCommDay6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="SÁBADO"
+                android:textColor="#0F172A"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommAct6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:paddingStart="2dp"
+                android:text="Reporte semanal\n(Resumen y avances)"
+                android:textColor="#334155"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvCommMeta6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="1 reporte"
+                android:textColor="#475569"
+                android:textSize="6sp" />
+
+            <TextView
+                android:id="@+id/tvCommPub6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="0"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommInt6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="5"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommOtr6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="1"
+                android:textColor="#0F172A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommTot6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="6"
+                android:textColor="#2E2A72"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommPct6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#16A34A"
+                android:textSize="7sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommObs6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:paddingStart="2dp"
+                android:text="Elaboración del reporte."
+                android:textColor="#475569"
+                android:textSize="5.5sp" />
+        </TableRow>
+
+        <!-- FILA TOTAL SEMANAL -->
+        <TableRow
+            android:background="#2E2A72"
+            android:paddingVertical="3dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="TOTAL"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:gravity="center"
+                android:text="TOTAL SEMANAL"
+                android:textColor="#FFFFFF"
+                android:textSize="6.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="≥ 10 pub / ≥ 50 int"
+                android:textColor="#E0E7FF"
+                android:textSize="5sp" />
+
+            <TextView
+                android:id="@+id/tvCommTotalPub"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="9"
+                android:textColor="#FFFFFF"
+                android:textSize="7.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommTotalInt"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.0"
+                android:gravity="center"
+                android:text="50"
+                android:textColor="#FFFFFF"
+                android:textSize="7.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommTotalOtr"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="6"
+                android:textColor="#FFFFFF"
+                android:textSize="7.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommGrandTotal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.8"
+                android:gravity="center"
+                android:text="65"
+                android:textColor="#FFFFFF"
+                android:textSize="8sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvCommTotalPct"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="0.9"
+                android:background="#16A34A"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="#FFFFFF"
+                android:textSize="7.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.2"
+                android:gravity="center"
+                android:text="—"
+                android:textColor="#FFFFFF"
+                android:textSize="6sp" />
+        </TableRow>
+    </TableLayout>
+
+    <!-- NOTA AL PIE DE LA TABLA -->
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:text="Nota: La meta diaria puede variar según el calendario de contenidos. El total semanal es la sumatoria de publicaciones, interacciones y otras actividades. • Publicación: Post, Carrusel o Historia. • Interacción: Mensajes, comentarios, consultas y respuestas."
+        android:textColor="#64748B"
+        android:textSize="5.5sp"
+        android:textStyle="italic" />
+
+    <!-- ========================================================================= -->
+    <!-- BLOQUES 2 Y 3: RESUMEN SEMANAL + ACCIONES COMMUNITY MANAGER               -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:baselineAligned="false"
+        android:orientation="horizontal">
+
+        <!-- BLOQUE 2: RESUMEN SEMANAL DE PRODUCCIÓN -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="3dp"
+            android:layout_weight="1.1"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:background="@drawable/kpi_sheet_badge_section"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="#2E2A72"
+                    android:textSize="8sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="RESUMEN SEMANAL DE PRODUCCIÓN"
+                    android:textColor="#2E2A72"
+                    android:textSize="7sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:stretchColumns="*">
+
+                <TableRow
+                    android:background="#2E2A72"
+                    android:paddingVertical="2dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.2"
+                        android:gravity="center"
+                        android:text="INDICADOR"
+                        android:textColor="#FFFFFF"
+                        android:textSize="5.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center"
+                        android:text="META SEMANAL"
+                        android:textColor="#FFFFFF"
+                        android:textSize="5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:text="RESULTADO"
+                        android:textColor="#FFFFFF"
+                        android:textSize="5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center"
+                        android:text="% CUMPL."
+                        android:textColor="#FFFFFF"
+                        android:textSize="5sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <!-- 1. Publicaciones -->
+                <TableRow
+                    android:background="#FFFFFF"
+                    android:paddingVertical="1.5dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.2"
+                        android:paddingStart="2dp"
+                        android:text="📢 Publicaciones"
+                        android:textColor="#0F172A"
+                        android:textSize="6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center"
+                        android:text="≥ 10"
+                        android:textColor="#475569"
+                        android:textSize="6sp" />
+
+                    <TextView
+                        android:id="@+id/tvCommResPub"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:text="9"
+                        android:textColor="#0F172A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCommPctPub"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center"
+                        android:text="90%"
+                        android:textColor="#16A34A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <!-- 2. Interacciones -->
+                <TableRow
+                    android:background="#F8FAFC"
+                    android:paddingVertical="1.5dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.2"
+                        android:paddingStart="2dp"
+                        android:text="💬 Interacciones atendidas"
+                        android:textColor="#0F172A"
+                        android:textSize="6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center"
+                        android:text="≥ 50"
+                        android:textColor="#475569"
+                        android:textSize="6sp" />
+
+                    <TextView
+                        android:id="@+id/tvCommResInt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:text="50"
+                        android:textColor="#0F172A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCommPctInt"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#16A34A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <!-- 3. Metricas -->
+                <TableRow
+                    android:background="#FFFFFF"
+                    android:paddingVertical="1.5dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.2"
+                        android:paddingStart="2dp"
+                        android:text="📊 Análisis de métricas"
+                        android:textColor="#0F172A"
+                        android:textSize="6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center"
+                        android:text="≥ 1"
+                        android:textColor="#475569"
+                        android:textSize="6sp" />
+
+                    <TextView
+                        android:id="@+id/tvCommResMet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="#0F172A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCommPctMet"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#16A34A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <!-- 4. Reporte -->
+                <TableRow
+                    android:background="#F8FAFC"
+                    android:paddingVertical="1.5dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.2"
+                        android:paddingStart="2dp"
+                        android:text="📋 Reporte de avances"
+                        android:textColor="#0F172A"
+                        android:textSize="6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center"
+                        android:text="≥ 1"
+                        android:textColor="#475569"
+                        android:textSize="6sp" />
+
+                    <TextView
+                        android:id="@+id/tvCommResRep"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:text="1"
+                        android:textColor="#0F172A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/tvCommPctRep"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center"
+                        android:text="100%"
+                        android:textColor="#16A34A"
+                        android:textSize="6.5sp"
+                        android:textStyle="bold" />
+                </TableRow>
+
+                <!-- TOTAL GENERAL -->
+                <TableRow
+                    android:background="#2E2A72"
+                    android:paddingVertical="2dp">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="2.2"
+                        android:paddingStart="2dp"
+                        android:text="TOTAL GENERAL"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:gravity="center"
+                        android:text="4 indicadores"
+                        android:textColor="#E0E7FF"
+                        android:textSize="5.5sp" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.0"
+                        android:gravity="center"
+                        android:text="—"
+                        android:textColor="#FFFFFF"
+                        android:textSize="6sp" />
+
+                    <TextView
+                        android:id="@+id/tvCommGeneralPct"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1.2"
+                        android:background="#16A34A"
+                        android:gravity="center"
+                        android:text="98%"
+                        android:textColor="#FFFFFF"
+                        android:textSize="7sp"
+                        android:textStyle="bold" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <!-- BLOQUE 3: ACCIONES QUE REALIZA EL COMMUNITY MANAGER -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:layout_weight="0.9"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:background="@drawable/kpi_sheet_badge_section"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="#2E2A72"
+                    android:textSize="8sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:text="ACCIONES DEL COMMUNITY MANAGER"
+                    android:textColor="#2E2A72"
+                    android:textSize="7sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:background="@drawable/kpi_sheet_cell_data"
+                android:orientation="vertical"
+                android:padding="3dp">
+
+                <TextView
+                    android:id="@+id/cbCommAction1"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="☑ Gestionar y mantener activas las RR.SS."
+                    android:textColor="#0F172A"
+                    android:textSize="6sp" />
+
+                <TextView
+                    android:id="@+id/cbCommAction2"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1.5dp"
+                    android:text="☑ Programar y publicar contenidos."
+                    android:textColor="#0F172A"
+                    android:textSize="6sp" />
+
+                <TextView
+                    android:id="@+id/cbCommAction3"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1.5dp"
+                    android:text="☑ Atender mensajes, comentarios y dudas."
+                    android:textColor="#0F172A"
+                    android:textSize="6sp" />
+
+                <TextView
+                    android:id="@+id/cbCommAction4"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1.5dp"
+                    android:text="☑ Seguimiento de métricas (alcance e int.)."
+                    android:textColor="#0F172A"
+                    android:textSize="6sp" />
+
+                <TextView
+                    android:id="@+id/cbCommAction5"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1.5dp"
+                    android:text="☑ Elaborar el reporte semanal de resultados."
+                    android:textColor="#0F172A"
+                    android:textSize="6sp" />
+
+                <TextView
+                    android:id="@+id/cbCommAction6"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1.5dp"
+                    android:text="☑ Coordinar la presencia digital de marca."
+                    android:textColor="#0F172A"
+                    android:textSize="6sp" />
+
+                <TextView
+                    android:id="@+id/cbCommActionOther"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1.5dp"
+                    android:text="☐ Otras actividades asignadas."
+                    android:textColor="#64748B"
+                    android:textSize="5.5sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- BLOQUE 4: EVALUACIÓN KPI - PRODUCTIVIDAD                                   -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:background="@drawable/kpi_sheet_badge_section"
+            android:gravity="center"
+            android:text="4"
+            android:textColor="#2E2A72"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="EVALUACIÓN KPI – PRODUCTIVIDAD"
+            android:textColor="#2E2A72"
+            android:textSize="7sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:stretchColumns="*">
+
+        <TableRow
+            android:background="#2E2A72"
+            android:paddingVertical="2dp">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:gravity="center"
+                android:text="NIVEL KPI"
+                android:textColor="#FFFFFF"
+                android:textSize="5.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="% CUMPLIMIENTO"
+                android:textColor="#FFFFFF"
+                android:textSize="5.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:gravity="center"
+                android:text="RESULTADO GENERAL"
+                android:textColor="#FFFFFF"
+                android:textSize="5.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.6"
+                android:gravity="center"
+                android:text="DESCRIPCIÓN"
+                android:textColor="#FFFFFF"
+                android:textSize="5.5sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <!-- EXCELENTE -->
+        <TableRow
+            android:id="@+id/rowCommLevelExcelente"
+            android:background="#FFFFFF"
+            android:paddingVertical="1.5dp">
+
+            <TextView
+                android:id="@+id/ivCommCheckExcelente"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:gravity="center_vertical|start"
+                android:paddingStart="8dp"
+                android:paddingEnd="2dp"
+                android:text="⭐ EXCELENTE"
+                android:textColor="#16A34A"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="90% – 100%"
+                android:textColor="#16A34A"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:gravity="center"
+                android:text="≥ 62 actividades"
+                android:textColor="#16A34A"
+                android:textSize="6sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.6"
+                android:paddingStart="2dp"
+                android:text="Cumple y supera el objetivo semanal."
+                android:textColor="#16A34A"
+                android:textSize="5.5sp"
+                android:textStyle="bold" />
+        </TableRow>
+
+        <!-- MUY BUENO -->
+        <TableRow
+            android:id="@+id/rowCommLevelMuyBueno"
+            android:background="#FFFFFF"
+            android:paddingVertical="1.5dp">
+
+            <TextView
+                android:id="@+id/ivCommCheckMuyBueno"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:gravity="center_vertical|start"
+                android:paddingStart="8dp"
+                android:paddingEnd="2dp"
+                android:text="⭐ MUY BUENO"
+                android:textColor="#0284C7"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="80% – 89%"
+                android:textColor="#0284C7"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:gravity="center"
+                android:text="52 – 61 actividades"
+                android:textColor="#0284C7"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.6"
+                android:paddingStart="2dp"
+                android:text="Cumple y está por llegar al objetivo."
+                android:textColor="#0284C7"
+                android:textSize="5.5sp" />
+        </TableRow>
+
+        <!-- BUENO -->
+        <TableRow
+            android:id="@+id/rowCommLevelBueno"
+            android:background="#F8FAFC"
+            android:paddingVertical="1.5dp">
+
+            <TextView
+                android:id="@+id/ivCommCheckBueno"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:gravity="center_vertical|start"
+                android:paddingStart="8dp"
+                android:paddingEnd="2dp"
+                android:text="⭐ BUENO"
+                android:textColor="#D97706"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="60% – 79%"
+                android:textColor="#D97706"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:gravity="center"
+                android:text="39 – 51 actividades"
+                android:textColor="#D97706"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.6"
+                android:paddingStart="2dp"
+                android:text="Cumple con la mitad recomendada."
+                android:textColor="#D97706"
+                android:textSize="5.5sp" />
+        </TableRow>
+
+        <!-- REGULAR -->
+        <TableRow
+            android:id="@+id/rowCommLevelRegular"
+            android:background="#FFFFFF"
+            android:paddingVertical="1.5dp">
+
+            <TextView
+                android:id="@+id/ivCommCheckRegular"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:gravity="center_vertical|start"
+                android:paddingStart="8dp"
+                android:paddingEnd="2dp"
+                android:text="⭐ REGULAR"
+                android:textColor="#EA580C"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="40% – 59%"
+                android:textColor="#EA580C"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:gravity="center"
+                android:text="26 – 38 actividades"
+                android:textColor="#EA580C"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.6"
+                android:paddingStart="2dp"
+                android:text="Baja actividad respecto a la meta."
+                android:textColor="#EA580C"
+                android:textSize="5.5sp" />
+        </TableRow>
+
+        <!-- DEFICIENTE -->
+        <TableRow
+            android:id="@+id/rowCommLevelDeficiente"
+            android:background="#F8FAFC"
+            android:paddingVertical="1.5dp">
+
+            <TextView
+                android:id="@+id/ivCommCheckDeficiente"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.3"
+                android:gravity="center_vertical|start"
+                android:paddingStart="8dp"
+                android:paddingEnd="2dp"
+                android:text="⭐ DEFICIENTE"
+                android:textColor="#DC2626"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.2"
+                android:gravity="center"
+                android:text="&lt; 40%"
+                android:textColor="#DC2626"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1.4"
+                android:gravity="center"
+                android:text="≤ 25 actividades"
+                android:textColor="#DC2626"
+                android:textSize="6sp" />
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="2.6"
+                android:paddingStart="2dp"
+                android:text="No cumple con las expectativas del área."
+                android:textColor="#DC2626"
+                android:textSize="5.5sp" />
+        </TableRow>
+    </TableLayout>
+
+    <!-- ========================================================================= -->
+    <!-- BLOQUE 5: OBSERVACIONES GENERALES                                         -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:background="@drawable/kpi_sheet_badge_section"
+            android:gravity="center"
+            android:text="5"
+            android:textColor="#2E2A72"
+            android:textSize="8sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="OBSERVACIONES GENERALES"
+            android:textColor="#2E2A72"
+            android:textSize="7sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:background="@drawable/kpi_sheet_cell_data"
+        android:padding="4dp">
+
+        <TextView
+            android:id="@+id/tvCommGeneralObservations"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Se cumplió con la gestión de redes sociales, la publicación de 9 contenidos, la atención de 50 interacciones y la entrega del reporte semanal, alcanzando un 98% de cumplimiento general."
+            android:textColor="#1E293B"
+            android:textSize="6.5sp"
+            android:textStyle="italic" />
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- PIE DE PÁGINA OFICIAL SIGD                                                -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingVertical="2dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#2E2A72"
+            android:paddingHorizontal="4dp"
+            android:paddingVertical="1dp"
+            android:text="w+ SIGD"
+            android:textColor="#FFFFFF"
+            android:textSize="6sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="3dp"
+            android:text="SISTEMA INTEGRAL DE GESTIÓN DEL DESEMPEÑO"
+            android:textColor="#2E2A72"
+            android:textSize="5.5sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="TU TALENTO HACE CRECER RESULTADOS &gt;&gt;&gt;"
+            android:textColor="#4C1D95"
+            android:textSize="6.5sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>
+

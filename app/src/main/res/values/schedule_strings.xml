@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="sch_card_title">Horario de actividades diarias</string>
+    <string name="sch_card_subtitle">Consulta el horario asignado a tu cargo</string>
+    <string name="sch_title">Horario de actividades diarias</string>
+    <string name="sch_subtitle">CEO – Gerencia · Planificación · Supervisión · Estrategia · Resultados</string>
+    <string name="sch_back">Volver</string>
+    <string name="sch_cargo_label">Cargo:</string>
+    <string name="sch_pick_cargo">Selecciona un cargo</string>
+    <string name="sch_editor_title">Editor de Horarios</string>
+    <string name="sch_editor_card_title">Editor de Horarios</string>
+    <string name="sch_editor_card_subtitle">Edita y publica los horarios del equipo</string>
+    <string name="sch_generated_note">Horario propuesto a partir de los KPI del cargo. Revísalo y edítalo.</string>
+    <string name="sch_tab_schedule">Horario</string>
+    <string name="sch_tab_kpis">KPIs</string>
+    <string name="sch_tab_evaluation">Evaluación</string>
+    <string name="sch_today">HOY</string>
+    <string name="sch_now">AHORA</string>
+    <string name="sch_day_summary">%1$s a %2$s · %3$d actividades</string>
+    <string name="sch_day_off_summary">Día no laborable</string>
+    <string name="sch_off_label">NO LABORABLE</string>
+    <string name="sch_break_label">BREAK</string>
+    <string name="sch_quote">La disciplina de hoy, construye los resultados de mañana.</string>
+    <string name="sch_motto">Disciplina hoy, grandes resultados mañana</string>
+    <string name="sch_pillar_plan">Planificar</string>
+    <string name="sch_pillar_supervise">Supervisar</string>
+    <string name="sch_pillar_strategy">Estrategia</string>
+    <string name="sch_pillar_results">Resultados</string>
+    <string name="sch_kpis_header">KPIs – Gerencia</string>
+    <string name="sch_kpis_sub">Indicadores, metas y frecuencia de seguimiento</string>
+    <string name="sch_eval_header">Parámetros de evaluación</string>
+    <string name="sch_eval_sub">Niveles de desempeño según el porcentaje de cumplimiento</string>
+    <string name="sch_freq_weekly">Semanal</string>
+    <string name="sch_freq_monthly">Mensual</string>
+</resources>

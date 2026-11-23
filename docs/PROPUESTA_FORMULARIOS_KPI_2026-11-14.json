@@ -1,0 +1,17 @@
+{
+  "approval_reference": "",
+  "approved_by_user_id": null,
+  "mappings": [
+    {"id_cargo": 1, "tipo_formulario": "GERENCIA"},
+    {"id_cargo": 3, "tipo_formulario": "DISENADOR"},
+    {"id_cargo": 4, "tipo_formulario": "PROGRAMACION"},
+    {"id_cargo": 5, "tipo_formulario": "VENTAS"},
+    {"id_cargo": 6, "tipo_formulario": "PROGRAMACION"},
+    {"id_cargo": 7, "tipo_formulario": "DISENADOR_JUNIOR"},
+    {"id_cargo": 13, "tipo_formulario": "COMMUNITY"},
+    {"id_cargo": 14, "tipo_formulario": "DISENADOR_SENIOR"},
+    {"id_cargo": 15, "tipo_formulario": "COMMUNITY"},
+    {"id_cargo": 16, "tipo_formulario": "COMMUNITY"},
+    {"id_cargo": 17, "tipo_formulario": "VIDEO"}
+  ]
+}

@@ -1,0 +1,516 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/personal_root"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/personal_bg_main"
+    android:fitsSystemWindows="true">
+
+    <!-- 1. ENCABEZADO PREMIUM FIJO -->
+    <LinearLayout
+        android:id="@+id/personal_header_bar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="@drawable/personal_bg_header_gradient"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="13dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="13dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageButton
+            android:id="@+id/personal_btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/admin_bg_circle_icon_button"
+            android:contentDescription="Volver"
+            android:padding="10dp"
+            android:scaleType="fitCenter"
+            android:src="@drawable/admin_ic_chevron_left"
+            app:tint="@color/personal_text_primary" />
+
+        <FrameLayout
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:layout_marginStart="12dp"
+            android:background="@drawable/collab_bg_rewards_image_frame">
+
+            <ImageView
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/admin_ic_users_round"
+                app:tint="@color/personal_purple_accent" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="11dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/personal_tv_header_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/personal_title"
+                android:textColor="@color/personal_text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/personal_tv_header_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="@string/personal_subtitle"
+                android:textColor="@color/personal_text_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- CONTENIDO PRINCIPAL DESPLAZABLE -->
+    <androidx.core.widget.NestedScrollView
+        android:id="@+id/personal_scroll"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none"
+        app:layout_constraintBottom_toTopOf="@id/personal_bottom_nav_include"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/personal_header_bar">
+
+        <LinearLayout
+            android:id="@+id/personal_content_root"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="14dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="24dp">
+
+            <!-- 2. BUSCADOR PREMIUM (inmediatamente debajo del encabezado) -->
+            <LinearLayout
+                android:id="@+id/personal_search_container"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:background="@drawable/personal_bg_search_premium"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingEnd="8dp">
+
+                <ImageView
+                    android:id="@+id/personal_iv_search_icon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/admin_ic_search"
+                    app:tint="@color/personal_text_secondary" />
+
+                <EditText
+                    android:id="@+id/personal_et_search"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:background="@null"
+                    android:hint="Buscar por nombre, cargo o código..."
+                    android:imeOptions="actionSearch"
+                    android:inputType="text"
+                    android:maxLines="1"
+                    android:singleLine="true"
+                    android:textColor="@color/personal_text_primary"
+                    android:textColorHint="@color/personal_text_muted"
+                    android:textSize="13.5sp" />
+
+                <ImageButton
+                    android:id="@+id/personal_btn_clear_search"
+                    android:layout_width="32dp"
+                    android:layout_height="32dp"
+                    android:background="@drawable/admin_bg_circle_icon_button"
+                    android:contentDescription="Limpiar búsqueda"
+                    android:padding="8dp"
+                    android:scaleType="fitCenter"
+                    android:src="@drawable/admin_ic_close"
+                    android:visibility="gone"
+                    app:tint="@color/personal_text_primary"
+                    tools:visibility="visible" />
+            </LinearLayout>
+
+            <!-- 4. FILTROS DE ESTADO -->
+            <LinearLayout
+                android:id="@+id/personal_filters_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/personal_ic_list_filter"
+                        app:tint="@color/personal_purple_accent" />
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="7dp"
+                        android:layout_weight="1"
+                        android:text="Filtros"
+                        android:textColor="@color/personal_text_primary"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/personal_btn_reset_quick"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:paddingStart="8dp"
+                        android:paddingTop="4dp"
+                        android:paddingEnd="2dp"
+                        android:paddingBottom="4dp"
+                        android:text="Limpiar filtros"
+                        android:textColor="@color/personal_purple_accent"
+                        android:textSize="12sp"
+                        android:textStyle="bold"
+                        android:visibility="gone"
+                        tools:visibility="visible" />
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:id="@+id/personal_hsv_statuses"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:overScrollMode="never"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/personal_layout_status_chips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" />
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <!-- 5. FILTROS POR AGENCIA (SEPARADOS DE ESTADO) -->
+            <LinearLayout
+                android:id="@+id/personal_agency_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/personal_ic_building_2"
+                        app:tint="@color/personal_purple_accent" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Agencia:"
+                        android:textColor="@color/personal_text_secondary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <HorizontalScrollView
+                    android:id="@+id/personal_hsv_departments"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:overScrollMode="never"
+                    android:scrollbars="none">
+
+                    <LinearLayout
+                        android:id="@+id/personal_layout_dept_chips"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal" />
+                </HorizontalScrollView>
+            </LinearLayout>
+
+            <!-- 6. SECCIÓN RESULTADOS + ORDENAR POR -->
+            <LinearLayout
+                android:id="@+id/personal_layout_results_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Resultados"
+                        android:textColor="@color/personal_text_primary"
+                        android:textSize="16.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/personal_tv_results_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:textColor="@color/personal_text_secondary"
+                        android:textSize="12sp"
+                        tools:text="16 colaboradores" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/personal_btn_sort"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:background="@drawable/personal_bg_chip_unselected_premium"
+                    android:clickable="true"
+                    android:contentDescription="Ordenar colaboradores"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="14dp"
+                        android:layout_height="14dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/personal_ic_arrow_up_down"
+                        app:tint="@color/personal_purple_accent" />
+
+                    <TextView
+                        android:id="@+id/personal_tv_sort_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:text="Ordenar por"
+                        android:textColor="@color/personal_text_primary"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ESTADO DE CARGA (SKELETON DISCRETO) -->
+            <LinearLayout
+                android:id="@+id/personal_layout_loading"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/personal_bg_card_premium"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+                    <View
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/collab_bg_notif_skeleton_bar" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="150dp"
+                            android:layout_height="13dp"
+                            android:background="@drawable/collab_bg_notif_skeleton_bar" />
+
+                        <View
+                            android:layout_width="115dp"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/collab_bg_notif_skeleton_bar" />
+
+                        <View
+                            android:layout_width="90dp"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/collab_bg_notif_skeleton_bar" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/personal_bg_card_premium"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+                    <View
+                        android:layout_width="48dp"
+                        android:layout_height="48dp"
+                        android:background="@drawable/collab_bg_notif_skeleton_bar" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <View
+                            android:layout_width="170dp"
+                            android:layout_height="13dp"
+                            android:background="@drawable/collab_bg_notif_skeleton_bar" />
+
+                        <View
+                            android:layout_width="130dp"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="8dp"
+                            android:background="@drawable/collab_bg_notif_skeleton_bar" />
+
+                        <View
+                            android:layout_width="100dp"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="6dp"
+                            android:background="@drawable/collab_bg_notif_skeleton_bar" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 7. LISTADO DE COLABORADORES -->
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/personal_rv_employees"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:nestedScrollingEnabled="false"
+                android:overScrollMode="never"
+                tools:listitem="@layout/personal_item_collaborator" />
+
+            <!-- 8. ESTADO SIN RESULTADOS / ERROR PREMIUM -->
+            <LinearLayout
+                android:id="@+id/personal_layout_empty"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/personal_bg_card_premium"
+                android:gravity="center"
+                android:orientation="vertical"
+                android:paddingStart="24dp"
+                android:paddingTop="30dp"
+                android:paddingEnd="24dp"
+                android:paddingBottom="30dp"
+                android:visibility="gone">
+
+                <FrameLayout
+                    android:layout_width="64dp"
+                    android:layout_height="64dp"
+                    android:background="@drawable/admin_bg_icon_badge_purple">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_users_round"
+                        app:tint="@color/personal_purple_accent" />
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/personal_tv_empty_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center"
+                    android:text="No encontramos colaboradores"
+                    android:textColor="@color/personal_text_primary"
+                    android:textSize="16.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/personal_tv_empty_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:gravity="center"
+                    android:lineSpacingExtra="2dp"
+                    android:text="Prueba con otra búsqueda o ajusta los filtros"
+                    android:textColor="@color/personal_text_secondary"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/personal_btn_empty_reset"
+                    android:layout_width="wrap_content"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/personal_bg_chip_selected_premium"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:paddingStart="22dp"
+                    android:paddingEnd="22dp"
+                    android:text="Limpiar filtros"
+                    android:textColor="@android:color/white"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+        </LinearLayout>
+    </androidx.core.widget.NestedScrollView>
+
+    <!-- BARRA DE NAVEGACIÓN INFERIOR FIJA -->
+    <include
+        android:id="@+id/personal_bottom_nav_include"
+        layout="@layout/personal_layout_bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

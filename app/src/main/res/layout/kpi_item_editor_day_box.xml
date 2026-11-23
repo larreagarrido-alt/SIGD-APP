@@ -1,0 +1,265 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/kpi_bg_card_white"
+    android:elevation="1dp"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:ignore="HardcodedText">
+
+    <!-- CABECERA DEL DÍA -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/tvDayTitleBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kpi_bg_day_tab_active"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="4dp"
+            android:text="LUNES"
+            android:textColor="#FFFFFF"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:layout_weight="1"
+            android:text="Registro Diario de Actividades"
+            android:textColor="@color/kpi_text_secondary"
+            android:textSize="10.5sp" />
+    </LinearLayout>
+
+    <!-- CAJA 1: ACTIVIDAD PRINCIPAL -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[ACTIVIDAD PRINCIPAL]"
+            android:textColor="@color/kpi_text_secondary"
+            android:textSize="9.5sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/btnEditActivity"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/kpi_bg_input"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="7dp">
+
+            <TextView
+                android:id="@+id/tvDayActivityBox"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Gestión de redes (Programación y publicación)"
+                android:textColor="@color/kpi_text_primary"
+                android:textSize="11.5sp" />
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/kpi_ic_edit"
+                app:tint="@color/kpi_primary" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- FILA CON 3 CAJAS: META ESPERADA, REALIZADO Y % CUMPLIMIENTO -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="horizontal"
+        android:weightSum="3">
+
+        <!-- CAJA META ESPERADA -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[META ESPERADA]"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="9.5sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/btnEditExpected"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/kpi_bg_input"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp">
+
+                <TextView
+                    android:id="@+id/tvDayExpectedVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11"
+                    android:textColor="@color/kpi_text_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="6dp"
+                    android:src="@drawable/kpi_ic_edit"
+                    app:tint="@color/kpi_primary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- CAJA REALIZADO -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginHorizontal="2dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[REALIZADO]"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="9.5sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:id="@+id/btnEditActual"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/kpi_bg_input"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="8dp">
+
+                <TextView
+                    android:id="@+id/tvDayActualVal"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="11"
+                    android:textColor="@color/kpi_text_primary"
+                    android:textSize="13sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:layout_marginStart="6dp"
+                    android:src="@drawable/kpi_ic_edit"
+                    app:tint="@color/kpi_primary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- CAJA % CUMPLIMIENTO -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="[% LOGRO]"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="9.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDayPercentageVal"
+                android:layout_width="match_parent"
+                android:layout_height="38dp"
+                android:layout_marginTop="3dp"
+                android:background="@drawable/kpi_bg_card_electric_accent"
+                android:gravity="center"
+                android:text="100%"
+                android:textColor="@color/kpi_primary"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- CAJA OBSERVACIÓN DIARIA -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="[OBSERVACIÓN DEL DÍA]"
+            android:textColor="@color/kpi_text_secondary"
+            android:textSize="9.5sp"
+            android:textStyle="bold" />
+
+        <LinearLayout
+            android:id="@+id/btnEditObservation"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="3dp"
+            android:background="@drawable/kpi_bg_input"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="7dp">
+
+            <TextView
+                android:id="@+id/tvDayObservationVal"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Publicación de contenidos y atención de la comunidad."
+                android:textColor="@color/kpi_text_primary"
+                android:textSize="11sp" />
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:layout_marginStart="6dp"
+                android:src="@drawable/kpi_ic_edit"
+                app:tint="@color/kpi_primary" />
+        </LinearLayout>
+    </LinearLayout>
+</LinearLayout>
+

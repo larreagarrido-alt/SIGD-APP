@@ -1,0 +1,997 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/collab_prog_bg_main"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- 1. ENCABEZADO + BOTÓN RECONOCIMIENTOS -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/collab_bg_header_gradient"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp">
+
+        <FrameLayout
+            android:id="@+id/collab_ranking_btn_back"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/collab_bg_circle_button"
+            android:clickable="true"
+            android:contentDescription="Volver"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:src="@drawable/admin_ic_chevron_left"
+                app:tint="@color/collab_purple_accent" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginEnd="8dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="2"
+                android:text="Mi progreso y reconocimientos"
+                android:textColor="@color/collab_text_primary"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/collab_ranking_tv_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="Tus puntos y progreso"
+                android:textColor="@color/collab_prog_text_secondary"
+                android:textSize="12sp" />
+        </LinearLayout>
+
+        <!-- Botón violeta Reconocimientos con ícono de estrella -->
+        <LinearLayout
+            android:id="@+id/collab_ranking_btn_go_rewards"
+            android:layout_width="wrap_content"
+            android:layout_height="36dp"
+            android:background="@drawable/collab_bg_btn_rewards_header"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="10dp"
+            android:paddingEnd="11dp">
+
+            <ImageView
+                android:layout_width="14dp"
+                android:layout_height="14dp"
+                android:contentDescription="@null"
+                android:src="@drawable/collaborator_ic_star"
+                app:tint="@color/collab_prog_gold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="5dp"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="Reconocimientos"
+                android:textColor="@android:color/white"
+                android:textSize="11.5sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- 2. CONTENIDO SCROLLABLE -->
+    <ScrollView
+        android:id="@+id/collab_ranking_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="6dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="28dp">
+
+            <!-- Banner discreto de estado de carga / sin conexión -->
+            <LinearLayout
+                android:id="@+id/collab_prog_banner_status"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="12dp"
+                android:background="@drawable/collab_bg_progress_stat_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="12dp"
+                android:visibility="gone">
+
+                <TextView
+                    android:id="@+id/collab_prog_tv_banner_msg"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Consultando tus puntos…"
+                    android:textColor="@color/collab_prog_text_secondary"
+                    android:textSize="12.5sp" />
+
+                <TextView
+                    android:id="@+id/collab_prog_btn_retry"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:background="@drawable/collab_bg_pill_purple"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingStart="10dp"
+                    android:paddingTop="5dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="5dp"
+                    android:text="Reintentar"
+                    android:textColor="@color/collab_purple_accent"
+                    android:textSize="11.5sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </LinearLayout>
+
+            <!-- ========================================================= -->
+            <!-- SECCIÓN 2: TARJETA PRINCIPAL — MI NIVEL ACTUAL            -->
+            <!-- ========================================================= -->
+            <LinearLayout
+                android:id="@+id/collab_prog_card_hero_level"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_progress_hero_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="14dp"
+                android:paddingTop="16dp"
+                android:paddingEnd="16dp"
+                android:paddingBottom="16dp">
+
+                <!-- Columna izquierda: Escudo ilustrado 3D + Etiqueta de nivel -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical">
+
+                    <ImageView
+                        android:id="@+id/collab_prog_iv_shield"
+                        android:layout_width="86dp"
+                        android:layout_height="86dp"
+                        android:contentDescription="Insignia de nivel actual"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/collab_ill_level_shield_badge" />
+
+                    <TextView
+                        android:id="@+id/collab_prog_tv_badge_tag"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:background="@drawable/collab_bg_pill_purple"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:paddingStart="9dp"
+                        android:paddingTop="3dp"
+                        android:paddingEnd="9dp"
+                        android:paddingBottom="3dp"
+                        android:text="Sin nivel"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="10.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Columna derecha: Nivel actual + progreso hacia el siguiente nivel -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="14dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:includeFontPadding="false"
+                        android:letterSpacing="0.06"
+                        android:text="TU NIVEL ACTUAL"
+                        android:textColor="@color/collab_prog_violet_glow"
+                        android:textSize="10.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/collab_prog_tv_level_name"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:text="Nivel por asignar"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/collab_prog_tv_level_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:lineSpacingExtra="2dp"
+                        android:text="Completa tus actividades para acumular puntos y avanzar."
+                        android:textColor="@color/collab_prog_text_secondary"
+                        android:textSize="12sp" />
+
+                    <ProgressBar
+                        android:id="@+id/collab_prog_pb_level"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="7dp"
+                        android:layout_marginTop="11dp"
+                        android:max="100"
+                        android:progress="0"
+                        android:progressDrawable="@drawable/collab_bg_wellness_progress" />
+
+                    <TextView
+                        android:id="@+id/collab_prog_tv_level_points"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:text="0 pts acumulados"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="11.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ========================================================= -->
+            <!-- SECCIÓN 3: TRES TARJETAS DE ESTADÍSTICAS                  -->
+            <!-- ========================================================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <!-- Stat 1: Puntos acumulados -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/collab_bg_progress_stat_card"
+                    android:gravity="center_horizontal"
+                    android:minHeight="104dp"
+                    android:orientation="vertical"
+                    android:paddingStart="8dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="12dp">
+
+                    <FrameLayout
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/collab_bg_icon_badge_amber">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/collab_ic_coins"
+                            app:tint="@color/collab_prog_gold" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/collab_prog_stat_points"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="0"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:text="Puntos acumulados"
+                        android:textColor="@color/collab_prog_text_secondary"
+                        android:textSize="10.5sp" />
+                </LinearLayout>
+
+                <!-- Stat 2: Ranking general -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/collab_bg_progress_stat_card"
+                    android:gravity="center_horizontal"
+                    android:minHeight="104dp"
+                    android:orientation="vertical"
+                    android:paddingStart="8dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="12dp">
+
+                    <FrameLayout
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/collab_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/collab_ic_nav_kpi"
+                            app:tint="@color/collab_prog_violet_glow" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/collab_prog_stat_rank"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="—"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:text="Ranking general"
+                        android:textColor="@color/collab_prog_text_secondary"
+                        android:textSize="10.5sp" />
+                </LinearLayout>
+
+                <!-- Stat 3: Posición destacada en la organización -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/collab_bg_progress_stat_card"
+                    android:gravity="center_horizontal"
+                    android:minHeight="104dp"
+                    android:orientation="vertical"
+                    android:paddingStart="8dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="12dp">
+
+                    <FrameLayout
+                        android:layout_width="34dp"
+                        android:layout_height="34dp"
+                        android:background="@drawable/collab_bg_icon_badge_amber">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/collaborator_ic_trophy"
+                            app:tint="@color/collab_prog_gold" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:id="@+id/collab_prog_stat_org"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:ellipsize="end"
+                        android:includeFontPadding="false"
+                        android:maxLines="1"
+                        android:text="—"
+                        android:textColor="@color/collab_prog_gold"
+                        android:textSize="17sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:includeFontPadding="false"
+                        android:maxLines="2"
+                        android:text="En la organización"
+                        android:textColor="@color/collab_prog_text_secondary"
+                        android:textSize="10.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ========================================================= -->
+            <!-- SECCIÓN 4: MI PROGRESO (LÍNEA VISUAL DE NIVELES)          -->
+            <!-- ========================================================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:includeFontPadding="false"
+                    android:text="Mi progreso"
+                    android:textColor="@color/collab_text_primary"
+                    android:textSize="16.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="3dp"
+                    android:includeFontPadding="false"
+                    android:text="Sigue completando actividades para subir de nivel"
+                    android:textColor="@color/collab_prog_text_secondary"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/collab_bg_progress_stat_card"
+                    android:orientation="vertical"
+                    android:padding="14dp">
+
+                    <HorizontalScrollView
+                        android:id="@+id/collab_prog_levels_scroll"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:fillViewport="true"
+                        android:overScrollMode="never"
+                        android:scrollbars="none"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:id="@+id/collab_prog_levels_container"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center"
+                            android:orientation="horizontal" />
+                    </HorizontalScrollView>
+
+                    <!-- Estado informativo honesto cuando el servidor aún no define catálogo de niveles -->
+                    <LinearLayout
+                        android:id="@+id/collab_prog_levels_empty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:background="@drawable/collab_bg_level_node_locked">
+
+                            <ImageView
+                                android:layout_width="17dp"
+                                android:layout_height="17dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="@null"
+                                android:src="@drawable/collab_ic_lock"
+                                app:tint="@color/collab_purple_accent" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:includeFontPadding="false"
+                                android:text="Catálogo de niveles pendiente"
+                                android:textColor="@color/collab_text_primary"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/collab_prog_levels_empty_desc"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:text="Tu organización aún no ha configurado los niveles de progresión. Tus puntos acumulados se registran normalmente."
+                                android:textColor="@color/collab_prog_text_secondary"
+                                android:textSize="11.5sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ========================================================= -->
+            <!-- SECCIÓN 5 & 6: EVALUACIÓN DE PUNTOS + GRÁFICO CIRCULAR    -->
+            <!-- ========================================================= -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="Evaluación de puntos"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="16.5sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/collab_prog_tv_eval_period"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:includeFontPadding="false"
+                            android:text="Últimos 31 días"
+                            android:textColor="@color/collab_prog_text_secondary"
+                            android:textSize="11.5sp" />
+                    </LinearLayout>
+
+                    <!-- Selector compacto Semana / Mes -->
+                    <LinearLayout
+                        android:layout_width="wrap_content"
+                        android:layout_height="34dp"
+                        android:background="@drawable/collab_bg_progress_stat_card"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal"
+                        android:padding="3dp">
+
+                        <TextView
+                            android:id="@+id/collab_prog_btn_week"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:text="Semana"
+                            android:textColor="@color/collab_prog_text_secondary"
+                            android:textSize="11.5sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/collab_prog_btn_month"
+                            android:layout_width="wrap_content"
+                            android:layout_height="match_parent"
+                            android:background="@drawable/collab_bg_chip_selected"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center"
+                            android:paddingStart="12dp"
+                            android:paddingEnd="12dp"
+                            android:text="Mes"
+                            android:textColor="@android:color/white"
+                            android:textSize="11.5sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Tarjeta de Evaluación con gráfico circular y métricas reales -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/collab_bg_progress_stat_card"
+                    android:orientation="vertical"
+                    android:padding="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <!-- Columna izquierda: Gráfico circular violeta -->
+                        <LinearLayout
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_horizontal"
+                            android:orientation="vertical">
+
+                            <FrameLayout
+                                android:layout_width="92dp"
+                                android:layout_height="92dp">
+
+                                <com.google.android.material.progressindicator.CircularProgressIndicator
+                                    android:id="@+id/collab_prog_circular_eval"
+                                    android:layout_width="match_parent"
+                                    android:layout_height="match_parent"
+                                    android:progress="0"
+                                    app:indicatorColor="@color/collab_prog_violet_glow"
+                                    app:indicatorSize="92dp"
+                                    app:trackColor="@color/collab_prog_surface_secondary"
+                                    app:trackCornerRadius="5dp"
+                                    app:trackThickness="8dp" />
+
+                                <LinearLayout
+                                    android:layout_width="wrap_content"
+                                    android:layout_height="wrap_content"
+                                    android:layout_gravity="center"
+                                    android:gravity="center"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:id="@+id/collab_prog_tv_eval_pct"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:includeFontPadding="false"
+                                        android:text="—"
+                                        android:textColor="@color/collab_text_primary"
+                                        android:textSize="20sp"
+                                        android:textStyle="bold" />
+
+                                    <TextView
+                                        android:id="@+id/collab_prog_tv_eval_ring_sub"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="2dp"
+                                        android:includeFontPadding="false"
+                                        android:text="Sin datos"
+                                        android:textColor="@color/collab_prog_text_secondary"
+                                        android:textSize="9.5sp" />
+                                </LinearLayout>
+                            </FrameLayout>
+
+                            <TextView
+                                android:id="@+id/collab_prog_tv_eval_caption"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="6dp"
+                                android:includeFontPadding="false"
+                                android:text="Progreso mensual"
+                                android:textColor="@color/collab_prog_text_secondary"
+                                android:textSize="11sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <!-- Separador vertical sutil -->
+                        <View
+                            android:layout_width="1dp"
+                            android:layout_height="96dp"
+                            android:layout_marginStart="14dp"
+                            android:layout_marginEnd="14dp"
+                            android:background="@color/collab_prog_border_subtle" />
+
+                        <!-- Columna derecha: 3 métricas reales -->
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <!-- Actividades completadas -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/collab_ic_activity_check"
+                                    app:tint="@color/collab_status_completed" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:includeFontPadding="false"
+                                        android:text="Actividades completadas"
+                                        android:textColor="@color/collab_prog_text_secondary"
+                                        android:textSize="10.5sp" />
+
+                                    <TextView
+                                        android:id="@+id/collab_prog_tv_eval_activities"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="2dp"
+                                        android:includeFontPadding="false"
+                                        android:text="0"
+                                        android:textColor="@color/collab_text_primary"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <!-- Puntos obtenidos -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/collab_ic_coins"
+                                    app:tint="@color/collab_prog_gold" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:includeFontPadding="false"
+                                        android:text="Puntos obtenidos"
+                                        android:textColor="@color/collab_prog_text_secondary"
+                                        android:textSize="10.5sp" />
+
+                                    <TextView
+                                        android:id="@+id/collab_prog_tv_eval_points"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="2dp"
+                                        android:includeFontPadding="false"
+                                        android:text="0 pts"
+                                        android:textColor="@color/collab_purple_accent"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </LinearLayout>
+
+                            <!-- Promedio del equipo -->
+                            <LinearLayout
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="10dp"
+                                android:gravity="center_vertical"
+                                android:orientation="horizontal">
+
+                                <ImageView
+                                    android:layout_width="16dp"
+                                    android:layout_height="16dp"
+                                    android:contentDescription="@null"
+                                    android:src="@drawable/collab_ic_nav_kpi"
+                                    app:tint="@color/collab_cyan_accent" />
+
+                                <LinearLayout
+                                    android:layout_width="0dp"
+                                    android:layout_height="wrap_content"
+                                    android:layout_marginStart="8dp"
+                                    android:layout_weight="1"
+                                    android:orientation="vertical">
+
+                                    <TextView
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:includeFontPadding="false"
+                                        android:text="Promedio del equipo"
+                                        android:textColor="@color/collab_prog_text_secondary"
+                                        android:textSize="10.5sp" />
+
+                                    <TextView
+                                        android:id="@+id/collab_prog_tv_eval_team_avg"
+                                        android:layout_width="wrap_content"
+                                        android:layout_height="wrap_content"
+                                        android:layout_marginTop="2dp"
+                                        android:includeFontPadding="false"
+                                        android:text="Sin datos"
+                                        android:textColor="@color/collab_text_primary"
+                                        android:textSize="14sp"
+                                        android:textStyle="bold" />
+                                </LinearLayout>
+                            </LinearLayout>
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/collab_prog_tv_eval_empty"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/collab_bg_card_secondary"
+                        android:padding="10dp"
+                        android:text="Sin evaluaciones ni movimientos registrados en este período."
+                        android:textColor="@color/collab_prog_text_secondary"
+                        android:textSize="11.5sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ========================================================= -->
+            <!-- SECCIÓN 7: RANKING GENERAL                                -->
+            <!-- ========================================================= -->
+            <LinearLayout
+                android:id="@+id/collab_prog_section_ranking"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                android:orientation="vertical">
+
+                <!-- Encabezado de Ranking general -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/collab_bg_icon_badge_amber">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/collaborator_ic_trophy"
+                            app:tint="@color/collab_prog_gold" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:includeFontPadding="false"
+                            android:text="Ranking general"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="16.5sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/collab_prog_tv_ranking_period"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
+                            android:text="Tu puesto en el ranking general"
+                            android:textColor="@color/collab_prog_text_secondary"
+                            android:textSize="11.5sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/collab_prog_btn_view_ranking"
+                        android:layout_width="wrap_content"
+                        android:layout_height="32dp"
+                        android:background="@drawable/collab_bg_pill_purple"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingStart="12dp"
+                        android:paddingEnd="12dp"
+                        android:text="Ver ranking"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="11.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Listado de filas del ranking -->
+                <LinearLayout
+                    android:id="@+id/collab_prog_ranking_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical" />
+
+                <!-- Estado vacío del ranking -->
+                <LinearLayout
+                    android:id="@+id/collab_prog_ranking_empty"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/collab_bg_progress_stat_card"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="18dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/collaborator_ic_trophy"
+                        app:tint="@color/collab_prog_text_secondary" />
+
+                    <TextView
+                        android:id="@+id/collab_prog_tv_ranking_empty_msg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="Aún no hay una clasificación mensual cerrada."
+                        android:textColor="@color/collab_prog_text_secondary"
+                        android:textSize="12.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- 8. BARRA DE NAVEGACIÓN INFERIOR (MISMO COMPONENTE DEL COLABORADOR) -->
+    <include layout="@layout/collaborator_layout_bottom_nav" />
+
+</LinearLayout>

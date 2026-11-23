@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="0dp"
+    android:layout_height="wrap_content"
+    android:layout_weight="1"
+    android:background="?attr/selectableItemBackgroundBorderless"
+    android:gravity="center"
+    android:minHeight="48dp"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/schDayText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textColor="@color/sch_text_soft"
+        android:textSize="13.5sp"
+        android:textStyle="bold" />
+
+    <View
+        android:id="@+id/schDayDot"
+        android:layout_width="5dp"
+        android:layout_height="5dp"
+        android:layout_marginTop="3dp"
+        android:background="@drawable/sch_bg_dot_small"
+        android:visibility="invisible" />
+</LinearLayout>

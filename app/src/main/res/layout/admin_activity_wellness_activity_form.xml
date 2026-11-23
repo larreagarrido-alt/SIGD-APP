@@ -1,0 +1,676 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/admin_bg_main"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- ENCABEZADO PREMIUM -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/admin_bg_header_gradient"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp">
+
+        <FrameLayout
+            android:id="@+id/wellness_act_btn_back"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:background="@drawable/admin_bg_circle_icon_button"
+            android:clickable="true"
+            android:contentDescription="Volver"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/admin_ic_chevron_left"
+                app:tint="@color/admin_text_primary" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:layout_marginStart="10dp"
+            android:background="@drawable/admin_bg_icon_badge_purple">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/collab_ic_notif_heart_handshake"
+                app:tint="@color/admin_purple_accent" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/wellness_act_header_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="Nueva actividad de bienestar"
+                android:textColor="@color/admin_text_primary"
+                android:textSize="18sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:includeFontPadding="false"
+                android:maxLines="1"
+                android:text="Planifica acciones para mejorar el bienestar laboral"
+                android:textColor="@color/admin_text_secondary"
+                android:textSize="11.5sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/wellness_act_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="24dp">
+
+            <!-- TARJETA INFORMATIVA COMPACTA -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/admin_bg_wellness_surface"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="13dp"
+                android:paddingTop="11dp"
+                android:paddingEnd="13dp"
+                android:paddingBottom="11dp">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/collab_ic_notif_heart_handshake"
+                    app:tint="@color/admin_purple_accent" />
+
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_weight="1"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="¿Para qué sirve esta actividad?"
+                        android:textColor="@color/admin_text_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:lineSpacingExtra="1.5dp"
+                        android:text="Permite organizar acciones de mejora para promover el bienestar, la comunicación y un entorno laboral saludable."
+                        android:textColor="@color/admin_text_secondary"
+                        android:textSize="11.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- BANNER DE ERROR INLINE -->
+            <TextView
+                android:id="@+id/wellness_act_error_banner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/admin_bg_wellness_stat_card"
+                android:padding="10dp"
+                android:textColor="@color/admin_status_overdue"
+                android:textSize="12sp"
+                android:visibility="gone" />
+
+            <!-- SECCIÓN A: INFORMACIÓN GENERAL -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.07"
+                android:text="A. INFORMACIÓN GENERAL"
+                android:textColor="@color/admin_purple_accent"
+                android:textSize="11.5sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/admin_bg_wellness_surface"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre de la actividad"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/wellness_act_input_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/admin_bg_wellness_input"
+                    android:hint="Taller de manejo del estrés"
+                    android:inputType="textCapSentences"
+                    android:maxLines="1"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:textColor="@color/admin_text_primary"
+                    android:textColorHint="@color/admin_text_muted"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Objetivo"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/wellness_act_input_objective"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/admin_bg_wellness_input"
+                    android:gravity="top|start"
+                    android:hint="Describe qué se busca mejorar o promover en el equipo"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:minHeight="76dp"
+                    android:padding="12dp"
+                    android:textColor="@color/admin_text_primary"
+                    android:textColorHint="@color/admin_text_muted"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Dimensión o área relacionada"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/wellness_act_pick_category"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/admin_bg_wellness_stat_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <TextView
+                        android:id="@+id/wellness_act_tv_category"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Bienestar general"
+                        android:textColor="@color/admin_text_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_chevron_down"
+                        app:tint="@color/admin_text_secondary" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- SECCIÓN B: PLANIFICACIÓN -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.07"
+                android:text="B. PLANIFICACIÓN"
+                android:textColor="@color/admin_purple_accent"
+                android:textSize="11.5sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/admin_bg_wellness_surface"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Responsable"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/wellness_act_pick_responsible"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/admin_bg_wellness_stat_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_users_round"
+                        app:tint="@color/admin_purple_accent" />
+
+                    <TextView
+                        android:id="@+id/wellness_act_tv_responsible"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_weight="1"
+                        android:ellipsize="end"
+                        android:maxLines="1"
+                        android:text="Seleccionar responsable del directorio"
+                        android:textColor="@color/admin_text_secondary"
+                        android:textSize="13sp" />
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_chevron_down"
+                        app:tint="@color/admin_text_secondary" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Fecha de la actividad"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/wellness_act_pick_date"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/admin_bg_wellness_stat_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_calendar_range"
+                        app:tint="@color/admin_purple_accent" />
+
+                    <TextView
+                        android:id="@+id/wellness_act_tv_date"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="9dp"
+                        android:layout_weight="1"
+                        android:text="Seleccionar fecha"
+                        android:textColor="@color/admin_text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:baselineAligned="false"
+                    android:orientation="horizontal">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hora de inicio"
+                            android:textColor="@color/admin_text_primary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/wellness_act_pick_start_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/admin_bg_wellness_stat_card"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:contentDescription="@null"
+                                android:src="@drawable/collaborator_ic_clock"
+                                app:tint="@color/admin_status_delivered" />
+
+                            <TextView
+                                android:id="@+id/wellness_act_tv_start_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="7dp"
+                                android:text="Opcional"
+                                android:textColor="@color/admin_text_secondary"
+                                android:textSize="12.5sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Hora de fin"
+                            android:textColor="@color/admin_text_primary"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:id="@+id/wellness_act_pick_end_time"
+                            android:layout_width="match_parent"
+                            android:layout_height="44dp"
+                            android:layout_marginTop="5dp"
+                            android:background="@drawable/admin_bg_wellness_stat_card"
+                            android:clickable="true"
+                            android:focusable="true"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal"
+                            android:paddingStart="10dp"
+                            android:paddingEnd="10dp">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:contentDescription="@null"
+                                android:src="@drawable/collaborator_ic_clock"
+                                app:tint="@color/admin_status_delivered" />
+
+                            <TextView
+                                android:id="@+id/wellness_act_tv_end_time"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="7dp"
+                                android:text="Opcional"
+                                android:textColor="@color/admin_text_secondary"
+                                android:textSize="12.5sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:text="Observaciones"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/wellness_act_input_notes"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/admin_bg_wellness_input"
+                    android:gravity="top|start"
+                    android:hint="Lugar, modalidad, materiales o indicaciones generales (opcional)"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:minHeight="68dp"
+                    android:padding="12dp"
+                    android:textColor="@color/admin_text_primary"
+                    android:textColorHint="@color/admin_text_muted"
+                    android:textSize="12.5sp" />
+            </LinearLayout>
+
+            <!-- SECCIÓN C: DESTINATARIOS Y VISIBILIDAD -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.07"
+                android:text="C. DESTINATARIOS Y VISIBILIDAD"
+                android:textColor="@color/admin_purple_accent"
+                android:textSize="11.5sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/admin_bg_wellness_surface"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="¿Quién podrá ver esta actividad?"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="13.5sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/wellness_act_visibility_options"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="vertical" />
+
+                <!-- Contenedor contextual para elegir Agencias/Campañas o Colaboradores reales -->
+                <LinearLayout
+                    android:id="@+id/wellness_act_audience_picker_box"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/admin_bg_wellness_stat_card"
+                    android:orientation="vertical"
+                    android:padding="12dp"
+                    android:visibility="gone">
+
+                    <TextView
+                        android:id="@+id/wellness_act_audience_summary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Ningún destinatario seleccionado"
+                        android:textColor="@color/admin_status_delivered"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/wellness_act_btn_select_audience"
+                        android:layout_width="match_parent"
+                        android:layout_height="40dp"
+                        android:layout_marginTop="8dp"
+                        android:background="@drawable/admin_bg_wellness_secondary_btn"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="Seleccionar destinatarios"
+                        android:textColor="@color/admin_text_primary"
+                        android:textSize="12.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- SECCIÓN D: ESTADO DE EJECUCIÓN -->
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:layout_marginBottom="8dp"
+                android:letterSpacing="0.07"
+                android:text="D. ESTADO DE LA ACTIVIDAD"
+                android:textColor="@color/admin_purple_accent"
+                android:textSize="11.5sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/admin_bg_wellness_surface"
+                android:orientation="vertical"
+                android:padding="14dp">
+
+                <LinearLayout
+                    android:id="@+id/wellness_act_status_selector"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="horizontal" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="El estado de ejecución (pendiente, en proceso o completada) es independiente de si la actividad está en borrador o publicada."
+                    android:textColor="@color/admin_text_muted"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+            <!-- NOTA DE PRIVACIDAD -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/admin_bg_wellness_stat_card"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:padding="11dp">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/admin_ic_shield_check"
+                    app:tint="@color/admin_status_delivered" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="9dp"
+                    android:layout_weight="1"
+                    android:text="Esta actividad no expone respuestas psicológicas individuales ni modifica puntuaciones de bienestar o KPI."
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- BARRA INFERIOR DE ACCIONES: GUARDAR BORRADOR vs PUBLICAR -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/admin_card_bg"
+        android:baselineAligned="false"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="12dp">
+
+        <TextView
+            android:id="@+id/wellness_act_btn_draft"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/admin_bg_wellness_secondary_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="Guardar borrador"
+            android:textColor="@color/admin_text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/wellness_act_btn_publish"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1"
+            android:background="@drawable/admin_bg_wellness_primary_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="Publicar actividad"
+            android:textColor="@android:color/white"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

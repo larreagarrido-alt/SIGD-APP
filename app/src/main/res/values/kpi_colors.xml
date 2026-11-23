@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- ========================================================= -->
+    <!-- MODO CLARO: VARIANTES DE MORADO ENCENDIDO / MEDIO FUCSIA   -->
+    <!-- ========================================================= -->
+
+    <!-- Identidad Corporativa Morado-Fucsia Encendido -->
+    <color name="kpi_primary">#A21CAF</color>
+    <color name="kpi_primary_hover">#86198F</color>
+    <color name="kpi_secondary">#C026D3</color>
+    <color name="kpi_danger">#E11D48</color>
+    <color name="kpi_warning">#D97706</color>
+    <color name="kpi_dark">#1E102B</color>
+
+    <!-- Superficies y Fondos con sutil matiz lavanda-fucsia -->
+    <color name="kpi_light_bg">#FAF5FF</color>
+    <color name="kpi_card_bg">#FFFFFF</color>
+    <color name="kpi_input_bg">#FFFFFF</color>
+    <color name="kpi_border">#E9D5FF</color>
+
+    <!-- Tipografía y Textos de Alto Contraste -->
+    <color name="kpi_text_primary">#1E102B</color>
+    <color name="kpi_text_secondary">#4A355B</color>
+    <color name="kpi_gray">#4A355B</color>
+    <color name="kpi_gray_light">#6B4E80</color>
+    <color name="kpi_surface_variant">#F5D0FE</color>
+    <color name="kpi_on_primary">#FFFFFF</color>
+    <color name="kpi_success_text">#14532D</color>
+    <color name="kpi_warning_text">#701A75</color>
+    <color name="kpi_info_text">#86198F</color>
+
+    <!-- Variantes Moradas para Practicantes (Fucsia Eléctrico) y Colaboradores (Violeta Encendido) -->
+    <color name="kpi_practicante_start">#A21CAF</color>
+    <color name="kpi_practicante_end">#DB2777</color>
+    <color name="kpi_practicante_card_bg">#FDF4FF</color>
+    <color name="kpi_practicante_stroke">#E879F9</color>
+
+    <color name="kpi_colaborador_start">#6D28D9</color>
+    <color name="kpi_colaborador_end">#A21CAF</color>
+    <color name="kpi_colaborador_card_bg">#FAF5FF</color>
+    <color name="kpi_colaborador_stroke">#C084FC</color>
+
+    <!-- Acentos de Sección y Badges -->
+    <color name="kpi_badge_purple">#A21CAF</color>
+    <color name="kpi_badge_purple_bg">#FAE8FF</color>
+    <color name="kpi_header_gradient_start">#7E22CE</color>
+    <color name="kpi_header_gradient_end">#C026D3</color>
+
+    <!-- Categorías de Actividades en Familia Morada/Fucsia -->
+    <color name="kpi_cat_desarrollo">#9333EA</color>
+    <color name="kpi_cat_desarrollo_bg">#F3E8FF</color>
+    <color name="kpi_cat_correccion">#E11D48</color>
+    <color name="kpi_cat_correccion_bg">#FFE4E6</color>
+    <color name="kpi_cat_mejora">#C026D3</color>
+    <color name="kpi_cat_mejora_bg">#FAE8FF</color>
+    <color name="kpi_cat_maquetacion">#DB2777</color>
+    <color name="kpi_cat_maquetacion_bg">#FCE7F3</color>
+    <color name="kpi_cat_api">#7C3AED</color>
+    <color name="kpi_cat_api_bg">#EDE9FE</color>
+    <color name="kpi_cat_mantenimiento">#10B981</color>
+    <color name="kpi_cat_mantenimiento_bg">#D1FAE5</color>
+
+    <!-- Estados SIGD -->
+    <color name="kpi_status_entregado">#10B981</color>
+    <color name="kpi_status_entregado_bg">#DCFCE7</color>
+    <color name="kpi_status_pendiente">#D97706</color>
+    <color name="kpi_status_pendiente_bg">#FEF3C7</color>
+    <color name="kpi_status_justificado">#9333EA</color>
+    <color name="kpi_status_justificado_bg">#F3E8FF</color>
+
+    <!-- Barra de progreso en vivo (Violeta -> Morado -> Fucsia) -->
+    <color name="kpi_progress_start">#7E22CE</color>
+    <color name="kpi_progress_mid">#A21CAF</color>
+    <color name="kpi_progress_end">#DB2777</color>
+
+    <!-- Botón guardar degradado (Morado encendido medio fucsia) -->
+    <color name="kpi_btn_save_start">#86198F</color>
+    <color name="kpi_btn_save_end">#C026D3</color>
+</resources>

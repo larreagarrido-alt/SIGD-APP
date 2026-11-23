@@ -1,0 +1,6 @@
+Roboto font (RobotoStatic-Regular.ttf, packaged as res/font/admin_roboto.ttf)
+Copyright 2011 Google Inc. All Rights Reserved.
+The Roboto font family is licensed under the Apache License, Version 2.0.
+The accompanying license text is LICENSE.Roboto-Apache-2.0.txt.
+Source: Android system font /system/fonts/RobotoStatic-Regular.ttf.
+Project: https://github.com/googlefonts/roboto-2

@@ -1,0 +1,457 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@color/admin_card_bg"
+    android:orientation="vertical">
+
+    <!-- ENCABEZADO DEL ASISTENTE EN 3 PASOS -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="14dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="10dp">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nueva aplicación de Ryff"
+                android:textColor="@color/admin_text_primary"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/wizard_step_subtitle"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Paso 1 de 3 · Seleccionar colaboradores"
+                android:textColor="@color/admin_status_delivered"
+                android:textSize="11.5sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:id="@+id/wizard_btn_close"
+            android:layout_width="34dp"
+            android:layout_height="34dp"
+            android:background="@drawable/admin_bg_circle_icon_button"
+            android:clickable="true"
+            android:contentDescription="Cerrar"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/admin_ic_close"
+                app:tint="@color/admin_text_primary" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- INDICADOR VISUAL DE 3 PASOS -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="4dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="10dp"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/wizard_bar_1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:background="@color/admin_purple_primary" />
+
+        <View
+            android:id="@+id/wizard_bar_2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_marginEnd="4dp"
+            android:layout_weight="1"
+            android:background="@color/admin_border" />
+
+        <View
+            android:id="@+id/wizard_bar_3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_marginStart="4dp"
+            android:layout_weight="1"
+            android:background="@color/admin_border" />
+    </LinearLayout>
+
+    <!-- ERROR INLINE DEL WIZARD -->
+    <TextView
+        android:id="@+id/wizard_error_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="8dp"
+        android:background="@drawable/admin_bg_wellness_stat_card"
+        android:padding="10dp"
+        android:textColor="@color/admin_status_overdue"
+        android:textSize="11.5sp"
+        android:visibility="gone" />
+
+    <ScrollView
+        android:id="@+id/wizard_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:fillViewport="false"
+        android:overScrollMode="never">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="16dp"
+            android:paddingTop="4dp"
+            android:paddingEnd="16dp"
+            android:paddingBottom="12dp">
+
+            <!-- PASO 1: SELECCIONAR COLABORADORES -->
+            <LinearLayout
+                android:id="@+id/wizard_step_1"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Nombre de la aplicación"
+                    android:textColor="@color/admin_purple_accent"
+                    android:textSize="11.5sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/wizard_input_title"
+                    android:layout_width="match_parent"
+                    android:layout_height="42dp"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/admin_bg_wellness_input"
+                    android:hint="Ej. Evaluación Ryff · Noviembre"
+                    android:inputType="textCapSentences"
+                    android:maxLines="1"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp"
+                    android:textColor="@color/admin_text_primary"
+                    android:textColorHint="@color/admin_text_muted"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Descripción informativa"
+                    android:textColor="@color/admin_purple_accent"
+                    android:textSize="11.5sp"
+                    android:textStyle="bold" />
+
+                <EditText
+                    android:id="@+id/wizard_input_desc"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="5dp"
+                    android:background="@drawable/admin_bg_wellness_input"
+                    android:hint="Propósito voluntario y confidencial de esta aplicación"
+                    android:inputType="textCapSentences|textMultiLine"
+                    android:maxLines="3"
+                    android:minHeight="42dp"
+                    android:padding="10dp"
+                    android:textColor="@color/admin_text_primary"
+                    android:textColorHint="@color/admin_text_muted"
+                    android:textSize="12.5sp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_weight="1"
+                        android:text="Destinatarios elegibles"
+                        android:textColor="@color/admin_text_primary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/wizard_selected_count"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="0 seleccionados"
+                        android:textColor="@color/admin_status_delivered"
+                        android:textSize="11.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="40dp"
+                    android:layout_marginTop="8dp"
+                    android:background="@drawable/admin_bg_wellness_input"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="10dp">
+
+                    <ImageView
+                        android:layout_width="15dp"
+                        android:layout_height="15dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_search"
+                        app:tint="@color/admin_text_muted" />
+
+                    <EditText
+                        android:id="@+id/wizard_search_collaborators"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_marginStart="8dp"
+                        android:layout_weight="1"
+                        android:background="@null"
+                        android:hint="Buscar por nombre, cargo o agencia..."
+                        android:inputType="text"
+                        android:maxLines="1"
+                        android:textColor="@color/admin_text_primary"
+                        android:textColorHint="@color/admin_text_muted"
+                        android:textSize="12.5sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/wizard_collaborators_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Cargando colaboradores elegibles..."
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="11.5sp" />
+
+                <LinearLayout
+                    android:id="@+id/wizard_collaborators_list"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:orientation="vertical" />
+            </LinearLayout>
+
+            <!-- PASO 2: CONFIGURAR VIGENCIA -->
+            <LinearLayout
+                android:id="@+id/wizard_step_2"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Define el período en el que la evaluación Ryff estará disponible para los destinatarios."
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Fecha y hora de inicio"
+                    android:textColor="@color/admin_purple_accent"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/wizard_pick_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/admin_bg_wellness_stat_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_calendar_range"
+                        app:tint="@color/admin_purple_accent" />
+
+                    <TextView
+                        android:id="@+id/wizard_tv_start"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:text="Seleccionar inicio"
+                        android:textColor="@color/admin_text_primary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:text="Fecha y hora de vencimiento"
+                    android:textColor="@color/admin_purple_accent"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:id="@+id/wizard_pick_end"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/admin_bg_wellness_stat_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="12dp">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_calendar_range"
+                        app:tint="@color/admin_status_delivered" />
+
+                    <TextView
+                        android:id="@+id/wizard_tv_end"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:text="Seleccionar vencimiento"
+                        android:textColor="@color/admin_text_primary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/wizard_tv_timezone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/admin_bg_wellness_input"
+                    android:padding="10dp"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="11.5sp" />
+            </LinearLayout>
+
+            <!-- PASO 3: REVISAR Y CONFIRMAR -->
+            <LinearLayout
+                android:id="@+id/wizard_step_3"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:id="@+id/wizard_summary_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/admin_bg_wellness_surface"
+                    android:orientation="vertical"
+                    android:padding="14dp" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/admin_bg_wellness_stat_card"
+                    android:orientation="vertical"
+                    android:padding="12dp">
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Alcance actual del servidor y privacidad"
+                        android:textColor="@color/admin_status_delivered"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:lineSpacingExtra="1.5dp"
+                        android:text="Al confirmar, se enviará la solicitud real al servidor (POST bienestar/admin/campanas) con la vigencia configurada. Si el backend aún no habilita invitaciones individuales por lista de IDs, la campaña se guardará como borrador para vincular el instrumento Ryff validado. Las respuestas individuales permanecen protegidas."
+                        android:textColor="@color/admin_text_secondary"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- PIE DE NAVEGACIÓN DEL WIZARD -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="14dp">
+
+        <TextView
+            android:id="@+id/wizard_btn_prev"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:background="@drawable/admin_bg_wellness_secondary_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:minWidth="92dp"
+            android:paddingStart="16dp"
+            android:paddingEnd="16dp"
+            android:text="Cancelar"
+            android:textColor="@color/admin_text_primary"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/wizard_btn_next"
+            android:layout_width="wrap_content"
+            android:layout_height="42dp"
+            android:background="@drawable/admin_bg_wellness_primary_btn"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:minWidth="124dp"
+            android:paddingStart="18dp"
+            android:paddingEnd="18dp"
+            android:text="Continuar"
+            android:textColor="@android:color/white"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>

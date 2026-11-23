@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="78dp"
+    android:layout_height="wrap_content"
+    android:gravity="center_horizontal"
+    android:orientation="vertical">
+
+    <!-- Fila de línea horizontal + nodo circular -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="44dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <View
+            android:id="@+id/collab_level_line_left"
+            android:layout_width="0dp"
+            android:layout_height="2.5dp"
+            android:layout_weight="1"
+            android:background="@color/collab_prog_border_subtle" />
+
+        <FrameLayout
+            android:id="@+id/collab_level_node_circle"
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/collab_bg_level_node_locked">
+
+            <ImageView
+                android:id="@+id/collab_level_node_icon"
+                android:layout_width="16dp"
+                android:layout_height="16dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/collab_ic_lock" />
+        </FrameLayout>
+
+        <View
+            android:id="@+id/collab_level_line_right"
+            android:layout_width="0dp"
+            android:layout_height="2.5dp"
+            android:layout_weight="1"
+            android:background="@color/collab_prog_border_subtle" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/collab_level_tv_name"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="5dp"
+        android:ellipsize="end"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:paddingStart="2dp"
+        android:paddingEnd="2dp"
+        android:text="Nivel"
+        android:textColor="@color/collab_text_primary"
+        android:textSize="11sp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/collab_level_tv_number"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="2dp"
+        android:gravity="center"
+        android:includeFontPadding="false"
+        android:maxLines="1"
+        android:text="Nivel 1"
+        android:textColor="@color/collab_prog_text_secondary"
+        android:textSize="10sp" />
+
+</LinearLayout>

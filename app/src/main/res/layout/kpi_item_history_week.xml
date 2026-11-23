@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llHistoryItemRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/kpi_bg_card_white"
+    android:clickable="true"
+    android:elevation="1dp"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:padding="12dp"
+    tools:ignore="HardcodedText,SmallSp,TouchTargetSizeCheck">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <!-- BADGE DEL CARGO -->
+        <TextView
+            android:id="@+id/tvHistoryCargoBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kpi_bg_pill_role"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="3dp"
+            android:text="DISEÑADOR GRÁFICO SENIOR"
+            android:textColor="@color/kpi_primary"
+            android:textSize="9sp"
+            android:textStyle="bold" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tvHistoryStatusBadge"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/kpi_bg_status_delivered"
+            android:paddingHorizontal="8dp"
+            android:paddingVertical="2dp"
+            android:text="Enviado al Licenciado ✓"
+            android:textColor="#16A34A"
+            android:textSize="8.5sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tvHistoryWeekTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Semana N.º 37 (Del 07/09/2026 al 12/09/2026)"
+                android:textColor="@color/kpi_text_primary"
+                android:textSize="12.5sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvHistoryCollabName"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Colaborador: — · Evaluador: Lic. Manuel Castillo"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnHistoryOpenSheet"
+            android:layout_width="wrap_content"
+            android:layout_height="32dp"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/kpi_bg_btn_elegant"
+            android:gravity="center"
+            android:paddingHorizontal="10dp"
+            android:text="Ver Ficha →"
+            android:textColor="#FFFFFF"
+            android:textSize="10.5sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+</LinearLayout>
+

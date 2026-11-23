@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Settings Screen (English) -->
+    <string name="settings_screen_title">Settings</string>
+    <string name="settings_screen_sub">WEBSITE preferences and customization</string>
+
+    <string name="settings_section_appearance">APPEARANCE</string>
+    <string name="settings_section_notifications">NOTIFICATIONS</string>
+    <string name="settings_section_language">LANGUAGE</string>
+    <string name="settings_section_accessibility">ACCESSIBILITY</string>
+    <string name="settings_section_security">SECURITY AND ACCESS</string>
+    <string name="settings_security_devices">Security and devices</string>
+    <string name="settings_security_devices_desc">Manage biometrics, access methods, and linked devices</string>
+    <string name="settings_section_privacy">PRIVACY AND PERMISSIONS</string>
+    <string name="settings_section_help">HELP AND SUPPORT</string>
+    <string name="settings_section_about">ABOUT SIGD</string>
+
+    <string name="settings_theme_dark_title">Dark mode</string>
+    <string name="settings_theme_dark_desc">Official WEBSITE dark premium design (Recommended)</string>
+    <string name="settings_theme_light_title">Light mode</string>
+    <string name="settings_theme_light_desc">High brightness interface</string>
+    <string name="settings_theme_system_title">Follow system</string>
+    <string name="settings_theme_system_desc">Automatically synchronize with Android theme</string>
+
+    <string name="settings_notif_master_title">General notifications</string>
+    <string name="settings_notif_master_desc">Enable or mute device notifications</string>
+    <string name="settings_notif_reminders_title">Activity reminders</string>
+    <string name="settings_notif_reminders_desc">Scheduled tasks and commitment alerts</string>
+    <string name="settings_notif_kpi_title">KPI-related alerts</string>
+    <string name="settings_notif_kpi_desc">Updates on goals, achievements, and performance</string>
+    <string name="settings_notif_news_title">WEBSITE news</string>
+    <string name="settings_notif_news_desc">Institutional announcements and new features</string>
+    <string name="settings_notif_alerts_title">Important alerts</string>
+    <string name="settings_notif_alerts_desc">Critical security and system notices</string>
+
+    <string name="settings_lang_title">App language</string>
+    <string name="settings_lang_current">English</string>
+    <string name="settings_lang_desc">Select your language preference</string>
+
+    <string name="settings_access_text_scale_title">Text size</string>
+    <string name="settings_access_text_scale_desc">Adjust interface typography scaling</string>
+    <string name="settings_access_animations_title">Reduce animations</string>
+    <string name="settings_access_animations_desc">Minimize transitions for enhanced smoothness</string>
+    <string name="settings_access_contrast_title">High contrast</string>
+    <string name="settings_access_contrast_desc">Enhance element visibility and contrast</string>
+
+    <!-- Collaborator Navigation & Modules -->
+    <string name="collab_nav_home">Home</string>
+    <string name="collab_nav_wellness">Wellness</string>
+    <string name="collab_nav_kpi">KPI</string>
+    <string name="collab_nav_notifications">Notifications</string>
+    <string name="collab_nav_menu">Menu</string>
+
+    <string name="collab_role_badge">Collaborator</string>
+    <string name="collab_greeting_prefix">Hello, %1$s</string>
+    <string name="collab_switch_profile_hint">Switch profile</string>
+    <string name="collab_hero_badge_title">MY PERFORMANCE</string>
+</resources>
+

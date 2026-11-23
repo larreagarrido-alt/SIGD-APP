@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <application>
+        <!-- Módulo Mi Cuenta (WEBSITE) exclusivo para variante debug -->
+        <activity
+            android:name=".features.account.AccountActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".features.account.EditProfileActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".features.account.ChangePasswordActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Módulo Configuración General (WEBSITE) -->
+        <activity
+            android:name=".features.settings.SettingsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Módulo Independiente Ayuda y Soporte (WEBSITE) -->
+        <activity
+            android:name=".features.help.HelpActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Módulo Personal (Administrador) -->
+        <activity
+            android:name=".features.admin.personal.AdminPersonalActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".features.admin.personal.AdminEmployeeDetailActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <!-- Módulos de la Experiencia del Colaborador (WEBSITE) -->
+        <activity
+            android:name=".features.collaborator.notifications.CollaboratorNotificationsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".features.collaborator.privacy.CollaboratorPrivacyActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".features.collaborator.about.CollaboratorAboutActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".features.collaborator.rewards.CollaboratorRewardsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".features.collaborator.ranking.CollaboratorRankingPointsActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".features.collaborator.wellness.CollaboratorWellnessActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+
+        <activity
+            android:name=".features.collaborator.attendance.CollaboratorAttendanceActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+    </application>
+
+</manifest>

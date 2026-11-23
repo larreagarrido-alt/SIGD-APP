@@ -1,0 +1,301 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="#F8FAFC"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText,Overdraw,UseCompoundDrawables,ContentDescription,DisableBaselineAlignment,SmallSp,TextContrastCheck,TouchTargetSizeCheck">
+
+    <!-- CABECERA SUPERIOR OFICIAL WEBSITE+ -->
+    <LinearLayout
+        android:id="@+id/llSalesHeader"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kpi_header_gradient"
+        android:elevation="6dp"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="28dp"
+        android:paddingBottom="14dp">
+
+        <!-- Barra superior: Volver al Panel, Logo, Avatar -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:id="@+id/btnContainerBack"
+                android:visibility="gone"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:background="@drawable/kpi_bg_translucent_pill"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingHorizontal="12dp">
+
+                <ImageView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:src="@drawable/kpi_ic_arrow_back"
+                    app:tint="#FFFFFF" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Regresar al panel"
+                    tools:text="Regresar al panel"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center"
+                android:orientation="vertical">
+
+                <ImageView
+                    android:layout_width="110dp"
+                    android:layout_height="22dp"
+                    android:adjustViewBounds="true"
+                    android:src="@drawable/auth_sigd_logo_transparent" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.2"
+                    android:text="SISTEMA DE DESEMPEÑO"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8sp" />
+            </LinearLayout>
+
+            <!-- Botón Reporte directo (a la misma altura que Senior y Diseñador) -->
+            <TextView
+                android:id="@+id/btnSalesGoToReport"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:minWidth="48dp"
+                android:minHeight="48dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/kpi_bg_translucent_pill"
+                android:clickable="true"
+                android:focusable="true"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:paddingStart="14dp"
+                android:paddingEnd="14dp"
+                android:text="Reporte"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <!-- Avatar Asesor -->
+            <TextView
+                android:id="@+id/tvHeaderAvatar"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:background="@drawable/kpi_bg_circle_icon_light"
+                android:fontFamily="sans-serif-medium"
+                android:gravity="center"
+                android:text="WS"
+                android:textColor="#5B46D6"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Saludo y Estado -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvHeaderGreeting"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                    android:text="¡Hola!"
+                    android:textColor="#FFFFFF"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvHeaderSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:text="Asesor de Ventas · Semana del 12 al 17 de oct"
+                    android:textColor="#EDE9FE"
+                    android:textSize="11.5sp" />
+            </LinearLayout>
+
+            <!-- Badge estado semanal -->
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/kpi_bg_translucent_pill"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="9dp"
+                android:paddingVertical="4dp">
+
+                <View
+                    android:layout_width="6dp"
+                    android:layout_height="6dp"
+                    android:background="@drawable/kpi_bg_badge_number"
+                    android:backgroundTint="#10B981" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Activo"
+                    android:textColor="#FFFFFF"
+                    android:textSize="10.5sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- BARRA DE PESTAÑAS SUPERIORES (3 PESTAÑAS) -->
+        <LinearLayout
+            android:id="@+id/llTopTabsContainer"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:minHeight="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/sales_bg_top_tab_container"
+            android:baselineAligned="false"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="3dp">
+
+            <!-- Tab 1: Actividades Diarias -->
+            <LinearLayout
+                android:id="@+id/tabTopDailyKpi"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:background="@drawable/sales_bg_top_tab_active"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <ImageView
+                    android:id="@+id/ivTabTopDailyKpi"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/kpi_ic_target"
+                    app:tint="#5B46D6" />
+
+                <TextView
+                    android:id="@+id/tvTabTopDailyKpi"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="sans-serif"
+                    android:text="Actividades"
+                    tools:text="Actividades"
+                    android:textColor="#5B46D6"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- Tab 2: Hoja de Ruta -->
+            <LinearLayout
+                android:id="@+id/tabTopRoute"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:minHeight="48dp"
+                android:layout_weight="1"
+                android:background="@android:color/transparent"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <ImageView
+                    android:id="@+id/ivTabTopRoute"
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:src="@drawable/kpi_ic_document"
+                    app:tint="#EDE9FE" />
+
+                <TextView
+                    android:id="@+id/tvTabTopRoute"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:fontFamily="sans-serif-medium"
+                    android:text="Hoja de Ruta"
+                    android:textColor="#EDE9FE"
+                    android:textSize="11sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- FLOATING TOAST BANNER NOTIFICATION -->
+    <LinearLayout
+        android:id="@+id/llFloatingToast"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:layout_marginTop="8dp"
+        android:background="@drawable/kpi_bg_role_card"
+        android:backgroundTint="#1E1346"
+        android:elevation="14dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingHorizontal="16dp"
+        android:paddingVertical="9dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="16dp"
+            android:layout_height="16dp"
+            android:layout_marginEnd="6dp"
+            android:src="@drawable/kpi_ic_check"
+            app:tint="#10B981" />
+
+        <TextView
+            android:id="@+id/tvToastMessage"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+            android:text="Registro guardado correctamente"
+            android:textColor="#FFFFFF"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- CONTENEDOR DE VISTAS (Actividades Diarias, Hoja de Ruta, Reportes) -->
+    <FrameLayout
+        android:id="@+id/flSalesContent"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        tools:layout="@layout/sales_view_daily_kpi" />
+
+</LinearLayout>

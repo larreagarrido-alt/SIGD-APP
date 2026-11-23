@@ -1,0 +1,161 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="108dp"
+    android:height="108dp"
+    android:viewportWidth="140"
+    android:viewportHeight="140">
+
+    <!-- Halo luminoso violeta y dorado emergiendo de la caja -->
+    <path android:pathData="M70,64m-56,0a56,56 0,1 1,112 0a56,56 0,1 1,-112 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="70"
+                android:centerY="64"
+                android:gradientRadius="56"
+                android:type="radial">
+                <item android:color="#4DF6C35D" android:offset="0.0" />
+                <item android:color="#3AB54CFF" android:offset="0.45" />
+                <item android:color="#00251630" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sombra base suave -->
+    <path
+        android:fillColor="#66090412"
+        android:pathData="M30,117C30,112 48,108 70,108C92,108 110,112 110,117C110,122 92,126 70,126C48,126 30,122 30,117Z" />
+
+    <!-- Haz de luz saliendo de la caja abierta -->
+    <path android:pathData="M42,67L98,67L112,26L28,26Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="70"
+                android:endY="26"
+                android:startX="70"
+                android:startY="68"
+                android:type="linear">
+                <item android:color="#4AF6C35D" android:offset="0.0" />
+                <item android:color="#00B54CFF" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Interior profundo de la caja abierta -->
+    <path
+        android:fillColor="#271240"
+        android:pathData="M35,66L70,54L105,66L70,79Z" />
+
+    <!-- Cara frontal izquierda de la caja violeta 3D -->
+    <path android:pathData="M35,66L70,79L70,117L38.2,105.5C36.3,104.8 35,103 35,101Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="70"
+                android:endY="117"
+                android:startX="35"
+                android:startY="66"
+                android:type="linear">
+                <item android:color="#B965FF" android:offset="0.0" />
+                <item android:color="#8B30E0" android:offset="0.58" />
+                <item android:color="#5D1AA6" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Cara frontal derecha de la caja violeta 3D -->
+    <path android:pathData="M70,79L105,66L105,101C105,103 103.7,104.8 101.8,105.5L70,117Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="105"
+                android:endY="112"
+                android:startX="70"
+                android:startY="72"
+                android:type="linear">
+                <item android:color="#8E34E2" android:offset="0.0" />
+                <item android:color="#5B199E" android:offset="0.62" />
+                <item android:color="#3D0F70" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Cintas verticales doradas/lavanda -->
+    <path android:pathData="M48,70.8L57,74.1L57,112.2L48,108.9Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="57"
+                android:endY="112"
+                android:startX="48"
+                android:startY="71"
+                android:type="linear">
+                <item android:color="#F4D7FF" android:offset="0.0" />
+                <item android:color="#C37EFF" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#A15AE6"
+        android:pathData="M83,74.1L92,70.8L92,108.9L83,112.2Z" />
+
+    <!-- Solapa izquierda abierta inclinada -->
+    <path android:pathData="M35,66L70,79L58,92L22,78Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="70"
+                android:endY="85"
+                android:startX="22"
+                android:startY="72"
+                android:type="linear">
+                <item android:color="#D99EFF" android:offset="0.0" />
+                <item android:color="#9C42F0" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Solapa derecha abierta inclinada -->
+    <path android:pathData="M70,79L105,66L118,78L82,92Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="118"
+                android:endY="78"
+                android:startX="70"
+                android:startY="78"
+                android:type="linear">
+                <item android:color="#AE5BFF" android:offset="0.0" />
+                <item android:color="#6D21BD" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Estrella dorada 3D flotando sobre la caja abierta -->
+    <path
+        android:fillColor="#B7700E"
+        android:pathData="M70,21L75.4,32L87.5,33.7L78.8,42.3L80.8,54.4L70,48.7L59.2,54.4L61.2,42.3L52.5,33.7L64.6,32Z" />
+    <path android:pathData="M70,19L75.4,30L87.5,31.7L78.8,40.3L80.8,52.4L70,46.7L59.2,52.4L61.2,40.3L52.5,31.7L64.6,30Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="84"
+                android:endY="50"
+                android:startX="56"
+                android:startY="22"
+                android:type="linear">
+                <item android:color="#FFF5BD" android:offset="0.0" />
+                <item android:color="#F6C35D" android:offset="0.52" />
+                <item android:color="#D48819" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Pequeños destellos -->
+    <path
+        android:fillColor="#FFF3C2"
+        android:pathData="M34,34L35.8,38.8L40.6,40.6L35.8,42.4L34,47.2L32.2,42.4L27.4,40.6L32.2,38.8Z" />
+    <path
+        android:fillColor="#E9C8FF"
+        android:pathData="M107,32L108.5,36L112.5,37.5L108.5,39L107,43L105.5,39L101.5,37.5L105.5,36Z" />
+    <path
+        android:fillColor="#99F6C35D"
+        android:pathData="M98,20m-2.5,0a2.5,2.5 0,1 1,5 0a2.5,2.5 0,1 1,-5 0" />
+    <path
+        android:fillColor="#88FFFFFF"
+        android:pathData="M44,20m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+</vector>

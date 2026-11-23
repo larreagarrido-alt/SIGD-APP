@@ -1,0 +1,148 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent" android:layout_height="wrap_content" android:fillViewport="false">
+<LinearLayout
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:background="@drawable/auth_form_header"
+    android:padding="20dp"
+    android:gravity="center_horizontal">
+
+    <!-- Header with corporate mark -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        android:gravity="center_vertical"
+        android:layout_marginBottom="16dp">
+
+        <ImageView
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:src="@drawable/auth_company_mark"
+            android:contentDescription="@string/auth_logo_description" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:layout_marginStart="12dp"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/auth_face_recognition"
+                android:textColor="@android:color/white"
+                android:textSize="18sp"
+                android:fontFamily="sans-serif-medium" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/auth_logo_description"
+                android:textColor="@color/auth_light_text"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Camera Preview and HUD Overlay Viewport -->
+    <com.google.android.material.card.MaterialCardView
+        android:layout_width="match_parent"
+        android:layout_height="300dp"
+        app:cardCornerRadius="20dp"
+        app:cardElevation="0dp"
+        app:strokeWidth="1dp"
+        app:strokeColor="#407E22CE"
+        app:cardBackgroundColor="#0D021D">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <TextureView
+                android:id="@+id/face_camera_texture"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <WebView
+                android:id="@+id/face_extractor_webview"
+                android:layout_width="1dp"
+                android:layout_height="1dp"
+                android:alpha="0.01"
+                android:importantForAccessibility="noHideDescendants" />
+            <!-- Biometric HUD Scan Overlay -->
+            <pe.net.ws.kpiweb.features.auth.FaceOverlayView
+                android:id="@+id/face_overlay_view"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent" />
+
+            <!-- Progress Spinner inside Camera Frame -->
+            <ProgressBar
+                android:id="@+id/pb_face_progress"
+                android:layout_width="48dp"
+                android:layout_height="48dp"
+                android:layout_gravity="center"
+                android:indeterminateTint="@color/auth_brand_fuchsia"
+                android:visibility="gone" />
+        </FrameLayout>
+    </com.google.android.material.card.MaterialCardView>
+
+    <!-- Guidance and Liveness instructions -->
+    <TextView
+        android:id="@+id/tv_face_status"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:gravity="center"
+        android:text="@string/auth_face_position_guide"
+        android:textColor="@android:color/white"
+        android:textSize="14sp"
+        android:fontFamily="sans-serif-medium" />
+
+    <TextView
+        android:id="@+id/tv_face_liveness_prompt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:gravity="center"
+        android:text="@string/auth_face_identity_notice"
+        android:textColor="@color/auth_light_text"
+        android:textSize="13sp" />
+
+    <!-- Action Buttons -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="18dp"
+        android:orientation="horizontal">
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_face_cancel"
+            style="@style/Widget.Material3.Button.OutlinedButton"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_marginEnd="6dp"
+            android:text="@string/auth_cancel"
+            android:textColor="@color/auth_light_text"
+            app:strokeColor="#507E22CE"
+            app:cornerRadius="12dp"
+            android:textAllCaps="false" />
+
+        <com.google.android.material.button.MaterialButton
+            android:id="@+id/btn_face_capture"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:layout_weight="1"
+            android:layout_marginStart="6dp"
+            android:text="@string/auth_face_recognition"
+            android:textColor="@android:color/white"
+            android:backgroundTint="@color/auth_brand_purple"
+            app:cornerRadius="12dp"
+            android:textAllCaps="false" />
+    </LinearLayout>
+</LinearLayout>
+</ScrollView>

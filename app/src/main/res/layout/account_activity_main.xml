@@ -1,0 +1,813 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/collab_bg_main"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- Encabezado Superior -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/admin_space_lg"
+        android:paddingTop="@dimen/admin_space_md"
+        android:paddingEnd="@dimen/admin_space_lg"
+        android:paddingBottom="@dimen/admin_space_md">
+
+        <!-- Botón Volver -->
+        <FrameLayout
+            android:id="@+id/account_btn_back"
+            android:layout_width="@dimen/admin_icon_btn_size"
+            android:layout_height="@dimen/admin_icon_btn_size"
+            android:background="@drawable/collab_bg_circle_button"
+            android:clickable="true"
+            android:contentDescription="Volver"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/admin_ic_chevron_left"
+                app:tint="@color/collab_text_primary" />
+        </FrameLayout>
+
+        <!-- Título y Subtítulo -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/admin_space_md"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Mi cuenta"
+                android:textColor="@color/collab_text_primary"
+                android:textSize="@dimen/admin_text_xl"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="Identidad y seguridad de tu perfil"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs" />
+        </LinearLayout>
+
+        <!-- Acceso directo a Configuración (Engranaje) -->
+        <FrameLayout
+            android:id="@+id/account_btn_settings"
+            android:layout_width="@dimen/admin_icon_btn_size"
+            android:layout_height="@dimen/admin_icon_btn_size"
+            android:background="@drawable/collab_bg_circle_button"
+            android:clickable="true"
+            android:contentDescription="Configuración"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/admin_ic_gear"
+                app:tint="@color/collab_purple_accent" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/collab_divider" />
+
+    <!-- Contenido Scrollable -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="48dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/admin_space_lg">
+
+            <!-- Tarjeta Hero del Perfil -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_card_hero"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="24dp">
+
+                <!-- Avatar con botón de cambiar foto -->
+                <FrameLayout
+                    android:layout_width="86dp"
+                    android:layout_height="86dp">
+
+                    <FrameLayout
+                        android:layout_width="82dp"
+                        android:layout_height="82dp"
+                        android:layout_gravity="center"
+                        android:background="@drawable/admin_bg_avatar_purple"
+                        android:clipToOutline="true">
+
+                        <ImageView
+                            android:id="@+id/account_iv_photo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Foto de perfil"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+
+                        <TextView
+                            android:id="@+id/account_tv_avatar"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_gravity="center"
+                            android:text="WS"
+                            android:textColor="@android:color/white"
+                            android:textSize="30sp"
+                            android:textStyle="bold" />
+                    </FrameLayout>
+
+                    <!-- Icono Cámara de cambiar foto -->
+                    <FrameLayout
+                        android:id="@+id/account_btn_change_photo"
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:layout_gravity="bottom|end"
+                        android:background="@drawable/admin_bg_bottom_nav_center"
+                        android:clickable="true"
+                        android:contentDescription="Cambiar fotografía"
+                        android:focusable="true">
+
+                        <ImageView
+                            android:layout_width="14dp"
+                            android:layout_height="14dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/account_ic_camera"
+                            app:tint="@android:color/white" />
+                    </FrameLayout>
+                </FrameLayout>
+
+                <!-- Nombre Completo -->
+                <TextView
+                    android:id="@+id/account_tv_full_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:text="Usuario WEBSITE"
+                    android:textColor="@color/collab_text_primary"
+                    android:textSize="22sp"
+                    android:textStyle="bold" />
+
+                <!-- Cargo y Departamento -->
+                <TextView
+                    android:id="@+id/account_tv_job_title"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Cargo profesional"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="@dimen/admin_text_sm" />
+
+                <!-- Badges de Rol y Estado -->
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <TextView
+                        android:id="@+id/account_tv_role_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/admin_bg_badge_admin"
+                        android:paddingStart="14dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="14dp"
+                        android:paddingBottom="5dp"
+                        android:text="Colaborador"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/account_tv_status_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:background="@drawable/admin_bg_badge_green_pill"
+                        android:paddingStart="12dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="5dp"
+                        android:text="● Activo"
+                        android:textColor="@color/admin_status_delivered"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/account_tv_data_state"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="Datos de la última sesión"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="12sp"
+                    android:visibility="gone" />
+
+                <!-- Botón Principal: Editar Perfil -->
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/account_btn_edit_profile"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="20dp"
+                    android:backgroundTint="@color/admin_purple_primary"
+                    android:letterSpacing="0.04"
+                    android:text="Editar perfil"
+                    android:textAllCaps="false"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold"
+                    app:cornerRadius="12dp"
+                    app:icon="@drawable/account_ic_edit"
+                    app:iconGravity="textStart"
+                    app:iconTint="@android:color/white" />
+            </LinearLayout>
+
+            <!-- Título de Sección: Información Personal -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:layout_marginBottom="@dimen/admin_space_md"
+                android:letterSpacing="0.08"
+                android:text="INFORMACIÓN PERSONAL"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <!-- Card: Información Personal -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- 1. Nombre para mostrar -->
+                <LinearLayout
+                    android:id="@+id/account_row_name"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/admin_ic_users"
+                            app:tint="@color/collab_purple_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/account_tv_name_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Nombre para mostrar"
+                            android:textColor="@color/collab_text_muted"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/account_tv_personal_name"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Nombre del Usuario"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/account_iv_name_edit"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/account_ic_edit"
+                        app:tint="@color/collab_purple_accent" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- 2. Correo Electrónico -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_cyan">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/account_ic_mail"
+                            app:tint="@color/admin_cyan_brain" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Correo registrado"
+                            android:textColor="@color/collab_text_muted"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/account_tv_email"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="No registrado"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- 3. Teléfono de contacto -->
+                <LinearLayout
+                    android:id="@+id/account_row_phone"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_green">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/account_ic_phone"
+                            app:tint="@color/admin_status_delivered" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Teléfono móvil"
+                            android:textColor="@color/collab_text_muted"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/account_tv_phone"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="No registrado"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/account_iv_phone_edit"
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:src="@drawable/account_ic_edit"
+                        app:tint="@color/collab_purple_accent" />
+                </LinearLayout>
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/account_btn_face_security"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:minHeight="48dp"
+                    android:text="Seguridad facial"
+                    android:contentDescription="Abrir seguridad facial para autorizar este celular"
+                    android:textColor="@android:color/white"
+                    app:backgroundTint="@color/collab_purple_accent" />
+
+            </LinearLayout>
+
+            <!-- Título de Sección: Información Laboral -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:layout_marginBottom="@dimen/admin_space_md"
+                android:letterSpacing="0.08"
+                android:text="INFORMACIÓN LABORAL"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <!-- Card: Información Laboral -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Cargo -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/account_ic_badge_id"
+                            app:tint="@color/collab_purple_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cargo oficial"
+                            android:textColor="@color/collab_text_muted"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/account_tv_labor_job"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Cargo institucional"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Departamento -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_amber">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/admin_ic_team"
+                            app:tint="@color/admin_status_pending" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/account_tv_department_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Departamento / Área"
+                            android:textColor="@color/collab_text_muted"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/account_tv_department"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Área corporativa"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Código de colaborador -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/account_ic_badge_id"
+                            app:tint="@color/collab_purple_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/account_tv_employee_id_label"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Código de colaborador"
+                            android:textColor="@color/collab_text_muted"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/account_tv_employee_id"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Por consultar"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Fecha de Ingreso -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_cyan">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/admin_ic_calendar"
+                            app:tint="@color/admin_cyan_brain" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Fecha de ingreso"
+                            android:textColor="@color/collab_text_muted"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:id="@+id/account_tv_hire_date"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Fecha no registrada"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- Título de Sección: Seguridad de la Cuenta -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:layout_marginBottom="@dimen/admin_space_md"
+                android:letterSpacing="0.08"
+                android:text="SEGURIDAD DE LA CUENTA"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <!-- Card: Seguridad y Contraseña -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Fila Interactiva: Cambiar contraseña -->
+                <LinearLayout
+                    android:id="@+id/account_row_change_password"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/account_ic_lock"
+                            app:tint="@color/collab_purple_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Cambiar contraseña"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Actualizar credenciales de acceso seguro"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Estado de sesión -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_green">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/collaborator_ic_check_circle"
+                            app:tint="@color/admin_status_delivered" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Estado de seguridad"
+                            android:textColor="@color/collab_text_muted"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Sesión corporativa protegida"
+                            android:textColor="@color/admin_status_delivered"
+                            android:textSize="@dimen/admin_text_sm"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+                </LinearLayout>
+
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

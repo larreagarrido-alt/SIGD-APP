@@ -1,0 +1,209 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/collab_item_notif_day_header"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingTop="10dp"
+        android:paddingBottom="8dp"
+        android:textColor="@color/collab_notif_text_secondary"
+        android:textSize="12sp"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/collab_item_notif_root"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/collab_bg_notif_card_unread"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="top"
+        android:orientation="horizontal"
+        android:padding="14dp">
+
+        <!-- Icono redondeado por tipo real de notificación -->
+        <FrameLayout
+            android:id="@+id/collab_item_notif_icon_box"
+            android:layout_width="44dp"
+            android:layout_height="44dp"
+            android:background="@drawable/collab_bg_icon_badge_purple">
+
+            <ImageView
+                android:id="@+id/collab_item_notif_icon"
+                android:layout_width="22dp"
+                android:layout_height="22dp"
+                android:layout_gravity="center"
+                android:contentDescription="Tipo de notificación"
+                android:src="@drawable/collab_ic_notif_clipboard_check"
+                app:tint="@color/collab_notif_violet_soft" />
+        </FrameLayout>
+
+        <!-- Contenido central -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <!-- Fila superior: tipo + fecha + indicadores derecha -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/collab_item_notif_type_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collab_bg_pill_purple"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:paddingStart="8dp"
+                    android:paddingTop="2dp"
+                    android:paddingEnd="8dp"
+                    android:paddingBottom="2dp"
+                    android:text="Entrega próxima"
+                    android:textColor="@color/collab_notif_violet_soft"
+                    android:textSize="10.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/collab_item_notif_date"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="8dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:gravity="end"
+                    android:maxLines="1"
+                    android:text="Hoy • 09:40 AM"
+                    android:textColor="@color/collab_notif_text_secondary"
+                    android:textSize="11sp" />
+
+                <View
+                    android:id="@+id/collab_item_notif_unread_dot"
+                    android:layout_width="8dp"
+                    android:layout_height="8dp"
+                    android:layout_marginStart="7dp"
+                    android:background="@drawable/collab_bg_notif_chip_selected" />
+            </LinearLayout>
+
+            <!-- Título + chevron discreto de navegación -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="7dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/collab_item_notif_title"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:lineSpacingExtra="1dp"
+                    android:maxLines="2"
+                    android:text="KPI próximo a vencer"
+                    android:textColor="@color/collab_text_primary"
+                    android:textSize="14.5sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/collab_item_notif_chevron"
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:layout_marginStart="6dp"
+                    android:contentDescription="Abrir detalle"
+                    android:src="@drawable/admin_ic_chevron_right"
+                    app:tint="@color/collab_notif_text_secondary" />
+            </LinearLayout>
+
+            <!-- Descripción -->
+            <TextView
+                android:id="@+id/collab_item_notif_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:ellipsize="end"
+                android:lineSpacingExtra="2dp"
+                android:maxLines="3"
+                android:text="Tu indicador tiene entrega programada pronto."
+                android:textColor="@color/collab_notif_text_secondary"
+                android:textSize="12.5sp" />
+
+            <!-- Fila inferior de acciones reales -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <TextView
+                    android:id="@+id/collab_item_notif_btn_action"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingTop="3dp"
+                    android:paddingBottom="3dp"
+                    android:text="Ir a Mis KPI →"
+                    android:textColor="@color/collab_notif_violet_soft"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <View
+                    android:layout_width="0dp"
+                    android:layout_height="1dp"
+                    android:layout_weight="1" />
+
+                <TextView
+                    android:id="@+id/collab_item_notif_btn_mark_read"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingStart="6dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="4dp"
+                    android:paddingBottom="3dp"
+                    android:text="Marcar leída"
+                    android:textColor="@color/collab_notif_text_secondary"
+                    android:textSize="11.5sp" />
+
+                <TextView
+                    android:id="@+id/collab_item_notif_delete_sep"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_marginEnd="4dp"
+                    android:text="•"
+                    android:textColor="@color/collab_notif_border"
+                    android:textSize="11.5sp" />
+
+                <TextView
+                    android:id="@+id/collab_item_notif_btn_delete"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:paddingStart="4dp"
+                    android:paddingTop="3dp"
+                    android:paddingEnd="2dp"
+                    android:paddingBottom="3dp"
+                    android:text="Descartar"
+                    android:textColor="@color/collab_status_overdue"
+                    android:textSize="11.5sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+    </LinearLayout>
+</LinearLayout>

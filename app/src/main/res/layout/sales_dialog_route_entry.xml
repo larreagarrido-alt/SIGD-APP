@@ -1,0 +1,378 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/kpi_bg_dialog_celebration"
+    android:overScrollMode="never"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- Cabecera del Diálogo -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="36dp"
+                android:layout_height="36dp"
+                android:background="@drawable/kpi_bg_badge_number"
+                android:backgroundTint="#EEF2FF"
+                android:gravity="center">
+
+                <ImageView
+                    android:id="@+id/ivDialogIcon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:src="@drawable/kpi_ic_document"
+                    app:tint="#4F46E5" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:id="@+id/tvDialogTitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif-black"
+                    android:text="Registrar Actividad"
+                    android:textColor="#1E293B"
+                    android:textSize="17sp" />
+
+                <TextView
+                    android:id="@+id/tvDialogSubtitle"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Hoja de Ruta Comercial · Registro manual"
+                    android:textColor="#64748B"
+                    android:textSize="11.5sp" />
+            </LinearLayout>
+
+            <ImageButton
+                android:id="@+id/btnDialogClose"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:background="@drawable/kpi_bg_stepper_btn_light"
+                android:contentDescription="Cerrar"
+                android:padding="7dp"
+                android:scaleType="fitCenter"
+                android:src="@drawable/kpi_ic_minus"
+                app:tint="#64748B" />
+        </LinearLayout>
+
+        <View
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:layout_marginVertical="14dp"
+            android:background="#E2E8F0" />
+
+        <!-- Tipo de Actividad -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+            android:text="TIPO DE ACTIVIDAD *"
+            android:textColor="#475569"
+            android:textSize="11sp" />
+
+        <Spinner
+            android:id="@+id/spActivityType"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/kpi_bg_input"
+            android:paddingHorizontal="12dp" />
+
+        <!-- Día Asignado -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+            android:text="DÍA DE LA SEMANA *"
+            android:textColor="#475569"
+            android:textSize="11sp" />
+
+        <Spinner
+            android:id="@+id/spDayName"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/kpi_bg_input"
+            android:paddingHorizontal="12dp" />
+
+        <!-- Nombre del Negocio / Empresa -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+            android:text="NOMBRE DEL NEGOCIO O EMPRESA *"
+            android:textColor="#475569"
+            android:textSize="11sp" />
+
+        <EditText
+            android:id="@+id/etBusinessName"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/kpi_bg_input"
+            android:hint="Ej. Botica Central, Ferretería El Sol"
+            android:inputType="textCapWords"
+            android:paddingHorizontal="12dp"
+            android:textColor="#1E293B"
+            android:textSize="13sp" />
+
+        <!-- Contacto y Teléfono en dos columnas -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                    android:text="CONTACTO"
+                    android:textColor="#475569"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/etContactPerson"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/kpi_bg_input"
+                    android:hint="Ej. Ing. Juan Pérez"
+                    android:inputType="textPersonName"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="#1E293B"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                    android:text="TELÉFONO"
+                    android:textColor="#475569"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/etPhone"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/kpi_bg_input"
+                    android:hint="987 654 321"
+                    android:inputType="phone"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="#1E293B"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Dirección manual (Opcional según requerimiento) -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+            android:text="DIRECCIÓN MANUAL (OPCIONAL)"
+            android:textColor="#475569"
+            android:textSize="11sp" />
+
+        <EditText
+            android:id="@+id/etManualAddress"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/kpi_bg_input"
+            android:hint="Ej. Av. Larco 1024, Miraflores"
+            android:inputType="textCapSentences"
+            android:paddingHorizontal="12dp"
+            android:textColor="#1E293B"
+            android:textSize="13sp" />
+
+        <!-- Horario: Inicio y Fin -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:orientation="horizontal">
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                    android:text="HORA INICIO"
+                    android:textColor="#475569"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/etStartTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/kpi_bg_input"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:hint="08:00 AM"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="#1E293B"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                    android:text="HORA FIN"
+                    android:textColor="#475569"
+                    android:textSize="11sp" />
+
+                <EditText
+                    android:id="@+id/etEndTime"
+                    android:layout_width="match_parent"
+                    android:layout_height="44dp"
+                    android:layout_marginTop="6dp"
+                    android:background="@drawable/kpi_bg_input"
+                    android:focusable="false"
+                    android:clickable="true"
+                    android:hint="08:45 AM"
+                    android:paddingHorizontal="12dp"
+                    android:textColor="#1E293B"
+                    android:textSize="13sp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- Resultado Comercial -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+            android:text="RESULTADO COMERCIAL *"
+            android:textColor="#475569"
+            android:textSize="11sp" />
+
+        <Spinner
+            android:id="@+id/spCommercialResult"
+            android:layout_width="match_parent"
+            android:layout_height="44dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/kpi_bg_input"
+            android:paddingHorizontal="12dp" />
+
+        <!-- Observaciones -->
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:fontFamily="sans-serif"
+                android:textStyle="bold"
+            android:text="OBSERVACIONES"
+            android:textColor="#475569"
+            android:textSize="11sp" />
+
+        <EditText
+            android:id="@+id/etRouteObservations"
+            android:layout_width="match_parent"
+            android:layout_height="70dp"
+            android:layout_marginTop="6dp"
+            android:background="@drawable/kpi_bg_input"
+            android:gravity="top|start"
+            android:hint="Notas relevantes, acuerdos, objeciones o próximos pasos..."
+            android:inputType="textMultiLine|textCapSentences"
+            android:lines="3"
+            android:padding="10dp"
+            android:textColor="#1E293B"
+            android:textSize="12.5sp" />
+
+        <!-- Botones de Acción -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/btnCancelDialog"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/kpi_bg_ghost_btn"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:text="Cancelar"
+                android:textAllCaps="false"
+                android:textColor="#64748B"
+                android:textSize="13.5sp" />
+
+            <Button
+                android:id="@+id/btnSaveRouteDialog"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1.4"
+                android:background="@drawable/kpi_bg_gradient_btn"
+                android:fontFamily="sans-serif"
+                android:textStyle="bold"
+                android:text="Guardar Actividad"
+                android:textAllCaps="false"
+                android:textColor="#FFFFFF"
+                android:textSize="13.5sp" />
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>

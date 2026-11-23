@@ -1,0 +1,1597 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/llOfficialJuniorDesignerSheetRoot"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="#FFFFFF"
+    android:orientation="vertical"
+    android:padding="8dp"
+    tools:ignore="HardcodedText,SmallSp,TooManyViews">
+
+    <!-- SELECTOR DE DÍA DE LA SEMANA (LUNES A SÁBADO) -->
+    <LinearLayout
+        android:id="@+id/llDesDaySelectorBar"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:background="#F1F5F9"
+        android:orientation="vertical"
+        android:padding="8dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="📅 REPORTE DIARIO OFICIAL SIGD (DISEÑO GRÁFICO - DOBLE TURNO)"
+                android:textColor="#1E1B4B"
+                android:textSize="10sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tvDesSelectedDayLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Lunes 24/05/2026"
+                android:textColor="#4F46E5"
+                android:textSize="10.5sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:layout_marginTop="6dp"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btnDesDay0"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/kpi_bg_btn_electric"
+                android:gravity="center"
+                android:text="LUN"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnDesDay1"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/kpi_designer_bg_day_unselected"
+                android:gravity="center"
+                android:text="MAR"
+                android:textColor="#1E1B4B"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnDesDay2"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/kpi_designer_bg_day_unselected"
+                android:gravity="center"
+                android:text="MIÉ"
+                android:textColor="#1E1B4B"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnDesDay3"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/kpi_designer_bg_day_unselected"
+                android:gravity="center"
+                android:text="JUE"
+                android:textColor="#1E1B4B"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnDesDay4"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginEnd="3dp"
+                android:layout_weight="1"
+                android:background="@drawable/kpi_designer_bg_day_unselected"
+                android:gravity="center"
+                android:text="VIE"
+                android:textColor="#1E1B4B"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnDesDay5"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/kpi_designer_bg_day_unselected"
+                android:gravity="center"
+                android:text="SÁB"
+                android:textColor="#1E1B4B"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- PARTE SUPERIOR: TURNO MAÑANA                                              -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:id="@+id/llDesShiftMorningContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <!-- CABECERA SUPERIOR OFICIAL: website+ | REGISTRO DIARIO | SIGD -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#220D45"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="SIGD"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.08"
+                    android:text="Agencia Creativa"
+                    android:textColor="#CBD5E1"
+                    android:textSize="8sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingHorizontal="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="REGISTRO DIARIO DE ACTIVIDADES"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/kpi_sigd_pill_purple"
+                    android:textStyle="bold"
+                    android:text="PRACTICANTE DE DISEÑO GRÁFICO"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8.5sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="SIGD"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SISTEMA INTEGRAL DE\nGESTIÓN DEL DESEMPEÑO"
+                        android:textColor="#CBD5E1"
+                        android:textSize="6.5sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/kpi_ic_history"
+                    app:tint="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 1. DATOS GENERALES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#220D45"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="#4A2380"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="DATOS GENERALES"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*">
+
+                <TableRow android:background="#F1F5F9">
+                    <TextView android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="3dp" android:text="FECHA" android:textColor="#1E1B4B" android:textSize="7sp" android:textStyle="bold" />
+                    <TextView android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="3dp" android:text="PRACTICANTE" android:textColor="#1E1B4B" android:textSize="7sp" android:textStyle="bold" />
+                    <TextView android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="3dp" android:text="SUPERVISOR" android:textColor="#1E1B4B" android:textSize="7sp" android:textStyle="bold" />
+                    <TextView android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="3dp" android:text="TURNO" android:textColor="#1E1B4B" android:textSize="7sp" android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:id="@+id/tvDesM_Fecha" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="4dp" android:text="—" android:textColor="#0F172A" android:textSize="7.5sp" />
+                    <TextView android:id="@+id/tvDesM_Practicante" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="4dp" android:text="—" android:textColor="#0F172A" android:textSize="7.5sp" android:textStyle="bold" />
+                    <TextView android:id="@+id/tvDesM_Supervisor" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="4dp" android:text="Dirección Creativa" android:textColor="#0F172A" android:textSize="7.5sp" />
+                    <TextView android:id="@+id/tvDesM_Turno" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="4dp" android:text="Mañana (8:00 - 1:30)" android:textColor="#0F172A" android:textSize="7sp" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <!-- 2. META DIARIA DE PRODUCCIÓN (3 COMBINACIONES) -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#220D45"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="#4A2380"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="META DIARIA (COMBINACIONES PERMITIDAS)"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/kpi_sigd_cell_data"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+                <LinearLayout
+                    android:id="@+id/llDesM_Goal1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_sigd_cell_meta_badge"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎨" android:textSize="9sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:text="DISEÑO GRÁFICO\n4 POSTS" android:textColor="#0F172A" android:textSize="6sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4 piezas RRSS" android:textColor="#64748B" android:textSize="5.5sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDesM_Goal2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_sigd_cell_meta_badge"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎬" android:textSize="9sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:text="AUDIOVISUAL\n2 VIDEOS" android:textColor="#0F172A" android:textSize="6sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2 videos cortos" android:textColor="#64748B" android:textSize="5.5sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDesM_Goal3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_sigd_cell_meta_badge"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚡" android:textSize="9sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:text="MIXTA\n1 VID + 2 POSTS" android:textColor="#0F172A" android:textSize="6sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3 piezas totales" android:textColor="#64748B" android:textSize="5.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 3. ACTIVIDADES - SOLO A ANCHO COMPLETO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#220D45"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="#4A2380"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="REGISTRO DE ACTIVIDADES (4 PIEZAS MÁX)"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llDesM_ActivitiesTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    android:background="#F8FAFC"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="6" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="N°" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="24" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="CLIENTE / PROYECTO" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="14" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="TIPO" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="24" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="ACTIVIDAD / PIEZA" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="8" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="INICIO" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="8" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="FIN" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="10" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="ESTADO" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="6" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="CORR." android:textColor="#1E1B4B" android:textSize="5.5sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDesM_ActsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- SECCIÓN 4 Y 5 ANIVELADAS EN HORIZONTAL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <!-- 4. RESUMEN DE PRODUCCIÓN (50%) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="50"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#220D45"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <TextView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="#4A2380"
+                        android:gravity="center"
+                        android:text="4"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="RESUMEN DEL DÍA"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="0">
+
+                    <TableRow android:background="#F8FAFC">
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="INDICADOR" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="VALOR" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="Posts realizados" android:textColor="#334155" android:textSize="6.5sp" />
+                        <TextView android:id="@+id/tvDesM_ResPosts" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="0" android:textColor="#0F172A" android:textSize="6.5sp" android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="Videos realizados" android:textColor="#334155" android:textSize="6.5sp" />
+                        <TextView android:id="@+id/tvDesM_ResVideos" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="0" android:textColor="#0F172A" android:textSize="6.5sp" android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="Total de piezas" android:textColor="#334155" android:textSize="6.5sp" />
+                        <TextView android:id="@+id/tvDesM_ResTotalPiezas" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="0" android:textColor="#0F172A" android:textSize="6.5sp" android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="Meta asignada" android:textColor="#334155" android:textSize="6.5sp" />
+                        <TextView android:id="@+id/tvDesM_ResMeta" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="4" android:textColor="#0F172A" android:textSize="6.5sp" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="Piezas entregadas" android:textColor="#334155" android:textSize="6.5sp" />
+                        <TextView android:id="@+id/tvDesM_ResEntregadas" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="0" android:textColor="#16A34A" android:textSize="6.5sp" android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="Correcciones realizadas" android:textColor="#334155" android:textSize="6.5sp" />
+                        <TextView android:id="@+id/tvDesM_ResCorrecciones" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="0" android:textColor="#0F172A" android:textSize="6.5sp" />
+                    </TableRow>
+
+                    <TableRow android:background="#EFF6FF">
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="3dp" android:text="Cumplimiento Meta" android:textColor="#1E1B4B" android:textSize="7sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvDesM_ResCumplimiento" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="3dp" android:text="0 %" android:textColor="#4F46E5" android:textSize="7.5sp" android:textStyle="bold" />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+
+            <!-- 5. EVALUACIÓN (50%) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_weight="50"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#220D45"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <TextView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="#4A2380"
+                        android:gravity="center"
+                        android:text="5"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="EVALUACIÓN RÁPIDA (5 CRITERIOS)"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDesM_EvalCriteriaContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/kpi_sigd_cell_data"
+                    android:orientation="vertical"
+                    android:padding="3dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- SECCIÓN 6 Y 7 ANIVELADAS EN HORIZONTAL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <!-- 6. INCIDENCIAS DEL DÍA (50%) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="50"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#220D45"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <TextView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="#4A2380"
+                        android:gravity="center"
+                        android:text="6"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="INCIDENCIAS DEL DÍA"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/kpi_sigd_cell_data"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="¿Dificultad con la meta?"
+                            android:textColor="#1E1B4B"
+                            android:textSize="7sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDesM_IncidenciaCheck"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="[✓] No   [ ] Sí"
+                            android:textColor="#334155"
+                            android:textSize="7sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvDesM_IncidenciaDetalle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Detalle: Sin dificultades reportadas."
+                        android:textColor="#64748B"
+                        android:textSize="6.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 7. OBSERVACIÓN DEL SUPERVISOR Y FIRMAS (50%) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_weight="50"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#220D45"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <TextView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="#4A2380"
+                        android:gravity="center"
+                        android:text="7"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="OBSERVACIÓN Y FIRMAS"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/kpi_sigd_cell_data"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="3dp"
+                        android:layout_weight="1"
+                        android:background="#F8FAFC"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvDesM_FirmaPracticante"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="italic"
+                            android:text="Firma Registrada"
+                            android:textColor="#1E1B4B"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Firma del practicante"
+                            android:textColor="#64748B"
+                            android:textSize="6sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="#F8FAFC"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvDesM_FirmaSupervisor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="italic"
+                            android:text="Dirección Creativa"
+                            android:textColor="#1E1B4B"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Firma del supervisor"
+                            android:textColor="#64748B"
+                            android:textSize="6sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- SECCIÓN 8: NIVEL DE PRODUCTIVIDAD (NOTA SOBRE 20) - ESCALA OFICIAL COLABORADORES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="#F8FAFC"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#220D45"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="#4A2380"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="NIVEL DE PRODUCTIVIDAD DEL DÍA"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDesM_ScorePill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/kpi_sigd_pill_purple"
+                    android:text="PUNTAJE: 100% · NOTA: 20 / 20"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/kpi_sigd_cell_data"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+                <TextView android:id="@+id/tvDesM_NivelExc" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="#F1F5F9" android:gravity="center" android:padding="2dp" android:text="EXCELENTE\n90%-100% (18-20)" android:textColor="#166534" android:textSize="6sp" android:textStyle="bold" />
+                <TextView android:id="@+id/tvDesM_NivelMuy" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="#F1F5F9" android:gravity="center" android:padding="2dp" android:text="MUY BUENO\n80%-89% (15-17)" android:textColor="#334155" android:textSize="6sp" />
+                <TextView android:id="@+id/tvDesM_NivelBue" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="#F1F5F9" android:gravity="center" android:padding="2dp" android:text="BUENO\n60%-79% (13-14)" android:textColor="#334155" android:textSize="6sp" />
+                <TextView android:id="@+id/tvDesM_NivelReg" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="#F1F5F9" android:gravity="center" android:padding="2dp" android:text="REGULAR\n40%-59% (11-12)" android:textColor="#334155" android:textSize="6sp" />
+                <TextView android:id="@+id/tvDesM_NivelDef" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="#F1F5F9" android:gravity="center" android:padding="2dp" android:text="DEFICIENTE\n&lt; 40% (00-10)" android:textColor="#991B1B" android:textSize="6sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- LÍNEA DIVISORIA DE TURNO CON CORTE ✂ -->
+    <LinearLayout
+        android:id="@+id/llDesDividerScissor"
+        android:layout_width="match_parent"
+        android:layout_height="28dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:visibility="gone">
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="#94A3B8" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingHorizontal="8dp"
+            android:text="✂ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ✂"
+            android:textColor="#64748B"
+            android:textSize="9sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1"
+            android:background="#94A3B8" />
+    </LinearLayout>
+
+    <!-- ========================================================================= -->
+    <!-- PARTE INFERIOR: TURNO TARDE                                               -->
+    <!-- ========================================================================= -->
+    <LinearLayout
+        android:id="@+id/llDesShiftAfternoonContainer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone">
+
+        <!-- CABECERA TARDE -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="#220D45"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingHorizontal="10dp"
+            android:paddingVertical="8dp">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="SIGD"
+                    android:textColor="#FFFFFF"
+                    android:textSize="16sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.08"
+                    android:text="Agencia Creativa"
+                    android:textColor="#CBD5E1"
+                    android:textSize="8sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:paddingHorizontal="6dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                    android:text="REGISTRO DIARIO DE ACTIVIDADES"
+                    android:textColor="#FFFFFF"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:background="@drawable/kpi_sigd_pill_purple"
+                    android:textStyle="bold"
+                    android:text="PRACTICANTE DE DISEÑO GRÁFICO"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8.5sp" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:gravity="center"
+                android:orientation="horizontal">
+
+                <LinearLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:gravity="end"
+                    android:orientation="vertical">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:textStyle="bold"
+                        android:text="SIGD"
+                        android:textColor="#FFFFFF"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="SISTEMA INTEGRAL DE\nGESTIÓN DEL DESEMPEÑO"
+                        android:textColor="#CBD5E1"
+                        android:textSize="6.5sp" />
+                </LinearLayout>
+
+                <ImageView
+                    android:layout_width="22dp"
+                    android:layout_height="22dp"
+                    android:layout_marginStart="4dp"
+                    android:src="@drawable/kpi_ic_history"
+                    app:tint="#FFFFFF" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 1. DATOS GENERALES TARDE -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#220D45"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="#4A2380"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="DATOS GENERALES"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <TableLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:stretchColumns="*">
+
+                <TableRow android:background="#F1F5F9">
+                    <TextView android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="3dp" android:text="FECHA" android:textColor="#1E1B4B" android:textSize="7sp" android:textStyle="bold" />
+                    <TextView android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="3dp" android:text="PRACTICANTE" android:textColor="#1E1B4B" android:textSize="7sp" android:textStyle="bold" />
+                    <TextView android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="3dp" android:text="SUPERVISOR" android:textColor="#1E1B4B" android:textSize="7sp" android:textStyle="bold" />
+                    <TextView android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="3dp" android:text="TURNO" android:textColor="#1E1B4B" android:textSize="7sp" android:textStyle="bold" />
+                </TableRow>
+
+                <TableRow>
+                    <TextView android:id="@+id/tvDesT_Fecha" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="4dp" android:text="—" android:textColor="#0F172A" android:textSize="7.5sp" />
+                    <TextView android:id="@+id/tvDesT_Practicante" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="4dp" android:text="—" android:textColor="#0F172A" android:textSize="7.5sp" android:textStyle="bold" />
+                    <TextView android:id="@+id/tvDesT_Supervisor" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="4dp" android:text="Dirección Creativa" android:textColor="#0F172A" android:textSize="7.5sp" />
+                    <TextView android:id="@+id/tvDesT_Turno" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="4dp" android:text="Tarde (3:30 - 6:30)" android:textColor="#0F172A" android:textSize="7sp" />
+                </TableRow>
+            </TableLayout>
+        </LinearLayout>
+
+        <!-- 2. METAS TARDE -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#220D45"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="#4A2380"
+                    android:gravity="center"
+                    android:text="2"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="META DIARIA (COMBINACIONES PERMITIDAS)"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/kpi_sigd_cell_data"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+                <LinearLayout
+                    android:id="@+id/llDesT_Goal1"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_sigd_cell_meta_badge"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎨" android:textSize="9sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:text="DISEÑO GRÁFICO\n4 POSTS" android:textColor="#0F172A" android:textSize="6sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="4 piezas RRSS" android:textColor="#64748B" android:textSize="5.5sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDesT_Goal2"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_sigd_cell_meta_badge"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="🎬" android:textSize="9sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:text="AUDIOVISUAL\n2 VIDEOS" android:textColor="#0F172A" android:textSize="6sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="2 videos cortos" android:textColor="#64748B" android:textSize="5.5sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDesT_Goal3"
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="2dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/kpi_sigd_cell_meta_badge"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="3dp">
+
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="⚡" android:textSize="9sp" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:gravity="center" android:text="MIXTA\n1 VID + 2 POSTS" android:textColor="#0F172A" android:textSize="6sp" android:textStyle="bold" />
+                    <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:text="3 piezas totales" android:textColor="#64748B" android:textSize="5.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 3. ACTIVIDADES TARDE - SOLO A ANCHO COMPLETO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#220D45"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="#4A2380"
+                    android:gravity="center"
+                    android:text="3"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:text="REGISTRO DE ACTIVIDADES (4 PIEZAS MÁX)"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/llDesT_ActivitiesTable"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="22dp"
+                    android:background="#F8FAFC"
+                    android:orientation="horizontal"
+                    android:weightSum="100">
+
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="6" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="N°" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="24" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="CLIENTE / PROYECTO" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="14" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="TIPO" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="24" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="ACTIVIDAD / PIEZA" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="8" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="INICIO" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="8" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="FIN" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="10" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="ESTADO" android:textColor="#1E1B4B" android:textSize="6sp" android:textStyle="bold" />
+                    <TextView android:layout_width="0dp" android:layout_height="match_parent" android:layout_weight="6" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:text="CORR." android:textColor="#1E1B4B" android:textSize="5.5sp" android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDesT_ActsContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- SECCIÓN 4 Y 5 TARDE ANIVELADAS EN HORIZONTAL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <!-- 4. RESUMEN TARDE (50%) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="50"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#220D45"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <TextView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="#4A2380"
+                        android:gravity="center"
+                        android:text="4"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="RESUMEN DEL DÍA"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TableLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:stretchColumns="0">
+
+                    <TableRow android:background="#F8FAFC">
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="INDICADOR" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="VALOR" android:textColor="#1E1B4B" android:textSize="6.5sp" android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="Posts realizados" android:textColor="#334155" android:textSize="6.5sp" />
+                        <TextView android:id="@+id/tvDesT_ResPosts" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="0" android:textColor="#0F172A" android:textSize="6.5sp" android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="Videos realizados" android:textColor="#334155" android:textSize="6.5sp" />
+                        <TextView android:id="@+id/tvDesT_ResVideos" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="0" android:textColor="#0F172A" android:textSize="6.5sp" android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="Total de piezas" android:textColor="#334155" android:textSize="6.5sp" />
+                        <TextView android:id="@+id/tvDesT_ResTotalPiezas" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="0" android:textColor="#0F172A" android:textSize="6.5sp" android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="Meta asignada" android:textColor="#334155" android:textSize="6.5sp" />
+                        <TextView android:id="@+id/tvDesT_ResMeta" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="4" android:textColor="#0F172A" android:textSize="6.5sp" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="Piezas entregadas" android:textColor="#334155" android:textSize="6.5sp" />
+                        <TextView android:id="@+id/tvDesT_ResEntregadas" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="0" android:textColor="#16A34A" android:textSize="6.5sp" android:textStyle="bold" />
+                    </TableRow>
+
+                    <TableRow>
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="2dp" android:text="Correcciones realizadas" android:textColor="#334155" android:textSize="6.5sp" />
+                        <TextView android:id="@+id/tvDesT_ResCorrecciones" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="2dp" android:text="0" android:textColor="#0F172A" android:textSize="6.5sp" />
+                    </TableRow>
+
+                    <TableRow android:background="#EFF6FF">
+                        <TextView android:background="@drawable/kpi_sigd_cell_data" android:padding="3dp" android:text="Cumplimiento Meta" android:textColor="#1E1B4B" android:textSize="7sp" android:textStyle="bold" />
+                        <TextView android:id="@+id/tvDesT_ResCumplimiento" android:background="@drawable/kpi_sigd_cell_data" android:gravity="center" android:padding="3dp" android:text="0 %" android:textColor="#4F46E5" android:textSize="7.5sp" android:textStyle="bold" />
+                    </TableRow>
+                </TableLayout>
+            </LinearLayout>
+
+            <!-- 5. EVALUACIÓN TARDE (50%) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_weight="50"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#220D45"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <TextView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="#4A2380"
+                        android:gravity="center"
+                        android:text="5"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="EVALUACIÓN RÁPIDA (5 CRITERIOS)"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/llDesT_EvalCriteriaContainer"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/kpi_sigd_cell_data"
+                    android:orientation="vertical"
+                    android:padding="3dp" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- SECCIÓN 6 Y 7 TARDE ANIVELADAS EN HORIZONTAL -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:orientation="horizontal"
+            android:weightSum="100">
+
+            <!-- 6. INCIDENCIAS TARDE (50%) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="2dp"
+                android:layout_weight="50"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#220D45"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <TextView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="#4A2380"
+                        android:gravity="center"
+                        android:text="6"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="INCIDENCIAS DEL DÍA"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/kpi_sigd_cell_data"
+                    android:orientation="vertical"
+                    android:padding="4dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="¿Dificultad con la meta?"
+                            android:textColor="#1E1B4B"
+                            android:textSize="7sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/tvDesT_IncidenciaCheck"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="[✓] No   [ ] Sí"
+                            android:textColor="#334155"
+                            android:textSize="7sp" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/tvDesT_IncidenciaDetalle"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="2dp"
+                        android:text="Detalle: Sin dificultades reportadas."
+                        android:textColor="#64748B"
+                        android:textSize="6.5sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- 7. OBSERVACIÓN Y FIRMAS TARDE (50%) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="2dp"
+                android:layout_weight="50"
+                android:orientation="vertical">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="20dp"
+                    android:background="#220D45"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingHorizontal="4dp">
+
+                    <TextView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:background="#4A2380"
+                        android:gravity="center"
+                        android:text="7"
+                        android:textColor="#FFFFFF"
+                        android:textSize="9sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="4dp"
+                        android:text="OBSERVACIÓN Y FIRMAS"
+                        android:textColor="#FFFFFF"
+                        android:textSize="8.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/kpi_sigd_cell_data"
+                    android:orientation="horizontal"
+                    android:padding="4dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_marginEnd="3dp"
+                        android:layout_weight="1"
+                        android:background="#F8FAFC"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvDesT_FirmaPracticante"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="italic"
+                            android:text="Firma Registrada"
+                            android:textColor="#1E1B4B"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Firma del practicante"
+                            android:textColor="#64748B"
+                            android:textSize="6sp" />
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="40dp"
+                        android:layout_weight="1"
+                        android:background="#F8FAFC"
+                        android:gravity="center"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/tvDesT_FirmaSupervisor"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:textStyle="italic"
+                            android:text="Dirección Creativa"
+                            android:textColor="#1E1B4B"
+                            android:textSize="11sp" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="Firma del supervisor"
+                            android:textColor="#64748B"
+                            android:textSize="6sp" />
+                    </LinearLayout>
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- SECCIÓN 8: NIVEL DE PRODUCTIVIDAD TARDE - ESCALA OFICIAL COLABORADORES -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:background="#F8FAFC"
+            android:orientation="vertical">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="20dp"
+                android:background="#220D45"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingHorizontal="4dp">
+
+                <TextView
+                    android:layout_width="16dp"
+                    android:layout_height="16dp"
+                    android:background="#4A2380"
+                    android:gravity="center"
+                    android:text="8"
+                    android:textColor="#FFFFFF"
+                    android:textSize="9sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="4dp"
+                    android:layout_weight="1"
+                    android:text="NIVEL DE PRODUCTIVIDAD DEL DÍA"
+                    android:textColor="#FFFFFF"
+                    android:textSize="8.5sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/tvDesT_ScorePill"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/kpi_sigd_pill_purple"
+                    android:text="PUNTAJE: 100% · NOTA: 20 / 20"
+                    android:textColor="#FFFFFF"
+                    android:textSize="7.5sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="@drawable/kpi_sigd_cell_data"
+                android:orientation="horizontal"
+                android:padding="2dp">
+
+                <TextView android:id="@+id/tvDesT_NivelExc" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="#F1F5F9" android:gravity="center" android:padding="2dp" android:text="EXCELENTE\n90%-100% (18-20)" android:textColor="#166534" android:textSize="6sp" android:textStyle="bold" />
+                <TextView android:id="@+id/tvDesT_NivelMuy" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="#F1F5F9" android:gravity="center" android:padding="2dp" android:text="MUY BUENO\n80%-89% (15-17)" android:textColor="#334155" android:textSize="6sp" />
+                <TextView android:id="@+id/tvDesT_NivelBue" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="#F1F5F9" android:gravity="center" android:padding="2dp" android:text="BUENO\n60%-79% (13-14)" android:textColor="#334155" android:textSize="6sp" />
+                <TextView android:id="@+id/tvDesT_NivelReg" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="#F1F5F9" android:gravity="center" android:padding="2dp" android:text="REGULAR\n40%-59% (11-12)" android:textColor="#334155" android:textSize="6sp" />
+                <TextView android:id="@+id/tvDesT_NivelDef" android:layout_width="0dp" android:layout_height="wrap_content" android:layout_weight="1" android:background="#F1F5F9" android:gravity="center" android:padding="2dp" android:text="DEFICIENTE\n&lt; 40% (00-10)" android:textColor="#991B1B" android:textSize="6sp" />
+            </LinearLayout>
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- FOOTER OFICIAL DE LA AGENCIA -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingVertical="4dp">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="🌐 www.website.pe"
+            android:textColor="#64748B"
+            android:textSize="8sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="✉ hola@website.pe"
+            android:textColor="#64748B"
+            android:textSize="8sp" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:text="📸 @website.creativo"
+            android:textColor="#64748B"
+            android:textSize="8sp" />
+    </LinearLayout>
+</LinearLayout>
+

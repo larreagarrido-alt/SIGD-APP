@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/reward_card_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/collab_bg_rewards_card"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical"
+    android:padding="12dp">
+
+    <!-- Marco visual del premio: imagen real del servidor o ilustración 3D de respaldo -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="112dp"
+        android:background="@drawable/collab_bg_rewards_image_frame"
+        android:clipToOutline="true">
+
+        <!-- Ilustración vectorial 3D de respaldo (oculta cuando carga imagen real del servidor) -->
+        <ImageView
+            android:id="@+id/reward_card_iv_fallback"
+            android:layout_width="86dp"
+            android:layout_height="86dp"
+            android:layout_gravity="center"
+            android:contentDescription="Ilustración de premio"
+            android:scaleType="fitCenter"
+            android:src="@drawable/collab_ill_reward_generic_gift" />
+
+        <!-- Imagen real del servidor cargada por RewardImageLoader -->
+        <ImageView
+            android:id="@+id/reward_card_iv_photo"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:contentDescription="Imagen del premio"
+            android:scaleType="centerInside" />
+
+        <!-- Badge de costo en puntos (visible únicamente cuando el servidor envía puntos_requeridos > 0) -->
+        <LinearLayout
+            android:id="@+id/reward_card_points_pill"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="top|end"
+            android:layout_margin="7dp"
+            android:background="@drawable/collab_bg_rewards_points_pill"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="8dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="8dp"
+            android:paddingBottom="3dp"
+            android:visibility="gone">
+
+            <ImageView
+                android:layout_width="11dp"
+                android:layout_height="11dp"
+                android:contentDescription="Puntos"
+                android:src="@drawable/collaborator_ic_star"
+                app:tint="@color/collab_prog_gold" />
+
+            <TextView
+                android:id="@+id/reward_card_tv_points"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:maxLines="1"
+                android:textColor="@color/collab_prog_gold"
+                android:textSize="10.5sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Etiqueta discreta de vigencia/estado en esquina inferior izquierda -->
+        <TextView
+            android:id="@+id/reward_card_tv_status_tag"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="bottom|start"
+            android:layout_margin="7dp"
+            android:background="@drawable/collab_bg_rewards_points_pill"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:paddingStart="7dp"
+            android:paddingTop="2dp"
+            android:paddingEnd="7dp"
+            android:paddingBottom="2dp"
+            android:textColor="@color/collab_status_completed"
+            android:textSize="9.5sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+    </FrameLayout>
+
+    <!-- Nombre real del premio -->
+    <TextView
+        android:id="@+id/reward_card_tv_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="1dp"
+        android:maxLines="2"
+        android:textColor="@color/collab_text_primary"
+        android:textSize="13.5sp"
+        android:textStyle="bold" />
+
+    <!-- Descripción breve real -->
+    <TextView
+        android:id="@+id/reward_card_tv_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="4dp"
+        android:ellipsize="end"
+        android:lineSpacingExtra="1dp"
+        android:maxLines="2"
+        android:textColor="@color/collab_prog_text_secondary"
+        android:textSize="11.5sp" />
+
+    <!-- Vigencia / categoría real opcional -->
+    <TextView
+        android:id="@+id/reward_card_tv_meta"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:ellipsize="end"
+        android:maxLines="1"
+        android:textColor="@color/collab_text_muted"
+        android:textSize="10.5sp"
+        android:visibility="gone" />
+
+    <!-- Espaciador flexible para alinear botones en filas de 2 columnas -->
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1" />
+
+    <!-- Botón de acción (Ver detalle / Canjear cuando esté soportado por servidor) -->
+    <LinearLayout
+        android:id="@+id/reward_card_btn_action"
+        android:layout_width="match_parent"
+        android:layout_height="36dp"
+        android:layout_marginTop="10dp"
+        android:background="@drawable/collab_bg_rewards_cta_btn"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:orientation="horizontal"
+        android:paddingStart="10dp"
+        android:paddingEnd="10dp">
+
+        <ImageView
+            android:id="@+id/reward_card_iv_action_icon"
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:contentDescription="Acción"
+            android:src="@drawable/collab_ic_gift"
+            app:tint="@android:color/white" />
+
+        <TextView
+            android:id="@+id/reward_card_tv_action_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Ver detalle"
+            android:textColor="@android:color/white"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+</LinearLayout>

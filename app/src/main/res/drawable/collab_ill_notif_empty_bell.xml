@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="92dp"
+    android:height="92dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Halo violeta suave de fondo -->
+    <path android:pathData="M60,60m-52,0a52,52 0,1 1,104 0a52,52 0,1 1,-104 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="60"
+                android:centerY="60"
+                android:gradientRadius="52"
+                android:type="radial">
+                <item android:color="#42B54CFF" android:offset="0.0" />
+                <item android:color="#1C8B30E0" android:offset="0.6" />
+                <item android:color="#0011091F" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Círculo contenedor violeta translúcido -->
+    <path android:pathData="M60,60m-38,0a38,38 0,1 1,76 0a38,38 0,1 1,-76 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="88"
+                android:endY="90"
+                android:startX="32"
+                android:startY="28"
+                android:type="linear">
+                <item android:color="#3D225C" android:offset="0.0" />
+                <item android:color="#26143D" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M60,60m-37.4,0a37.4,37.4 0,1 1,74.8 0a37.4,37.4 0,1 1,-74.8 0"
+        android:strokeWidth="1.2"
+        android:strokeColor="#66C69BF5" />
+
+    <!-- Sombra suave debajo de la campana -->
+    <path
+        android:fillColor="#4D0A0414"
+        android:pathData="M42,84.5C42,82.5 50,81 60,81C70,81 78,82.5 78,84.5C78,86.5 70,88 60,88C50,88 42,86.5 42,84.5Z" />
+
+    <!-- Aro superior de la campana -->
+    <path
+        android:fillColor="#D9B8FF"
+        android:pathData="M60,33.5m-4,0a4,4 0,1 1,8 0a4,4 0,1 1,-8 0" />
+
+    <!-- Badajo inferior -->
+    <path
+        android:fillColor="#B57CF2"
+        android:pathData="M54.2,76.5C54.9,79.6 57.2,81.5 60,81.5C62.8,81.5 65.1,79.6 65.8,76.5Z" />
+
+    <!-- Cuerpo redondeado de la campana con volumen violeta-lila -->
+    <path android:pathData="M60,35.5C49.5,35.5 42.5,43 42.5,53.5L42.5,63.2C42.5,66.6 40.9,69.8 38.2,71.8C36.9,72.8 37.6,75 39.3,75L80.7,75C82.4,75 83.1,72.8 81.8,71.8C79.1,69.8 77.5,66.6 77.5,63.2L77.5,53.5C77.5,43 70.5,35.5 60,35.5Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="80"
+                android:endY="75"
+                android:startX="41"
+                android:startY="37"
+                android:type="linear">
+                <item android:color="#EFE1FF" android:offset="0.0" />
+                <item android:color="#C69BF5" android:offset="0.5" />
+                <item android:color="#8B30E0" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Brillo especular suave sobre el lado izquierdo de la campana -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M48.5,58C48.5,49.5 51.8,43.5 57.5,41.2"
+        android:strokeWidth="2.6"
+        android:strokeColor="#77FFFFFF"
+        android:strokeLineCap="round" />
+
+    <!-- Insignia circular verde suave con check (todo al día) -->
+    <path
+        android:fillColor="#1A0E2A"
+        android:pathData="M78,73m-13,0a13,13 0,1 1,26 0a13,13 0,1 1,-26 0" />
+    <path android:pathData="M78,73m-10.5,0a10.5,10.5 0,1 1,21 0a10.5,10.5 0,1 1,-21 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="87"
+                android:endY="82"
+                android:startX="69"
+                android:startY="64"
+                android:type="linear">
+                <item android:color="#A5EBC7" android:offset="0.0" />
+                <item android:color="#80D6AB" android:offset="0.6" />
+                <item android:color="#49A87B" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M73.5,73.2L76.6,76.3L82.8,70.1"
+        android:strokeWidth="2.4"
+        android:strokeColor="#11091F"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+
+    <!-- Pequeños destellos decorativos discretos -->
+    <path
+        android:fillColor="#E9D2FF"
+        android:pathData="M26,33L27.5,37L31.5,38.5L27.5,40L26,44L24.5,40L20.5,38.5L24.5,37Z" />
+    <path
+        android:fillColor="#C69BF5"
+        android:pathData="M94,30L95.2,33L98.2,34.2L95.2,35.4L94,38.4L92.8,35.4L89.8,34.2L92.8,33Z" />
+    <path
+        android:fillColor="#8880D6AB"
+        android:pathData="M96,52m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    <path
+        android:fillColor="#88FFFFFF"
+        android:pathData="M24,66m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+</vector>

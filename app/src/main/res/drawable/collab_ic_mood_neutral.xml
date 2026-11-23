@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="56dp"
+    android:height="56dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Sombra suave debajo de la esfera -->
+    <path android:pathData="M32,59m-19,0a19,3.5 0,1 1,38 0a19,3.5 0,1 1,-38 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="32"
+                android:centerY="59"
+                android:gradientRadius="19"
+                android:type="radial">
+                <item android:color="#441A0B33" android:offset="0.0" />
+                <item android:color="#001A0B33" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Esfera 3D lavanda equilibrada -->
+    <path android:pathData="M32,56A23,23 0,1 1,32 10A23,23 0,1 1,32 56Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="24"
+                android:centerY="21"
+                android:gradientRadius="36"
+                android:type="radial">
+                <item android:color="#EFE0FF" android:offset="0.0" />
+                <item android:color="#C69BFF" android:offset="0.50" />
+                <item android:color="#9562DB" android:offset="0.86" />
+                <item android:color="#7442B8" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Brillo especular superior izquierdo -->
+    <path android:pathData="M23.5,19.5m-9.5,0a9.5,5.5 -24,1 1,19 0a9.5,5.5 -24,1 1,-19 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="23.5"
+                android:centerY="18.5"
+                android:gradientRadius="10"
+                android:type="radial">
+                <item android:color="#72FFFFFF" android:offset="0.0" />
+                <item android:color="#00FFFFFF" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Luz de rebote inferior -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,49.5C25.5,54.5 38.5,54.5 45,49.5"
+        android:strokeAlpha="0.34"
+        android:strokeColor="#F0DCFF"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.2" />
+
+    <!-- Ojos abiertos tranquilos con brillo -->
+    <path
+        android:fillColor="#341D52"
+        android:pathData="M23.5,30.2m-2.7,0a2.7,2.9 0,1 1,5.4 0a2.7,2.9 0,1 1,-5.4 0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M22.6,29.0m-0.95,0a0.95,0.95 0,1 1,1.9 0a0.95,0.95 0,1 1,-1.9 0" />
+    <path
+        android:fillColor="#341D52"
+        android:pathData="M40.5,30.2m-2.7,0a2.7,2.9 0,1 1,5.4 0a2.7,2.9 0,1 1,-5.4 0" />
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M39.6,29.0m-0.95,0a0.95,0.95 0,1 1,1.9 0a0.95,0.95 0,1 1,-1.9 0" />
+
+    <!-- Cejas relajadas planas sutiles -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M20.2,24.4H26.8M37.2,24.4H43.8"
+        android:strokeAlpha="0.55"
+        android:strokeColor="#341D52"
+        android:strokeLineCap="round"
+        android:strokeWidth="1.9" />
+
+    <!-- Boca pequeña, centrada y neutra -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M26.5,40.4H37.5"
+        android:strokeColor="#341D52"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.8" />
+
+    <!-- Pequeñas formas violetas decorativas -->
+    <path
+        android:fillColor="#DFBEFF"
+        android:pathData="M53.5,11L56.5,14L53.5,17L50.5,14Z" />
+    <path
+        android:fillColor="#B983FF"
+        android:pathData="M11.5,16.5m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    <path
+        android:fillColor="#E9D4FF"
+        android:pathData="M55.5,24m-1.4,0a1.4,1.4 0,1 1,2.8 0a1.4,1.4 0,1 1,-2.8 0" />
+</vector>

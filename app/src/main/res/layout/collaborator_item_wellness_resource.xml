@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/wellness_resource_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/collab_bg_notif_card_read"
+    android:clickable="true"
+    android:focusable="true"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:padding="13dp">
+
+    <FrameLayout
+        android:id="@+id/wellness_resource_icon_box"
+        android:layout_width="40dp"
+        android:layout_height="40dp"
+        android:background="@drawable/collab_bg_icon_badge_purple">
+
+        <ImageView
+            android:id="@+id/wellness_resource_icon"
+            android:layout_width="20dp"
+            android:layout_height="20dp"
+            android:layout_gravity="center"
+            android:contentDescription="Recurso de apoyo"
+            android:src="@drawable/collab_ic_notif_heart_handshake"
+            app:tint="@color/collab_notif_violet_soft" />
+    </FrameLayout>
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="12dp"
+        android:layout_marginEnd="8dp"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/wellness_resource_topic"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ellipsize="end"
+            android:maxLines="1"
+            android:text="Manejo del estrés"
+            android:textColor="@color/collab_text_primary"
+            android:textSize="13.5sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/wellness_resource_source"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="2dp"
+            android:ellipsize="end"
+            android:maxLines="2"
+            android:text="OPS · En tiempos de estrés, haz lo que importa"
+            android:textColor="@color/collab_prog_text_secondary"
+            android:textSize="11.5sp" />
+    </LinearLayout>
+
+    <ImageView
+        android:layout_width="16dp"
+        android:layout_height="16dp"
+        android:contentDescription="Abrir recurso"
+        android:src="@drawable/admin_ic_arrow_up_right"
+        app:tint="@color/collab_notif_violet_soft" />
+</LinearLayout>

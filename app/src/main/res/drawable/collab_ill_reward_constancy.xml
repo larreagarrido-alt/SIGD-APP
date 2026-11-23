@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="72dp"
+    android:height="72dp"
+    android:viewportWidth="72"
+    android:viewportHeight="72">
+    <!-- Fondo ilustrativo de constancia -->
+    <path
+        android:fillColor="#268738F5"
+        android:pathData="M14,4 L58,4 C63.52,4 68,8.48 68,14 L68,58 C68,63.52 63.52,68 58,68 L14,68 C8.48,68 4,63.52 4,58 L4,14 C4,8.48 8.48,4 14,4 Z" />
+    <!-- Barras ascendentes de constancia -->
+    <path
+        android:fillColor="#A855F7"
+        android:pathData="M17,44 L25,44 L25,55 L17,55 Z" />
+    <path
+        android:fillColor="#8738F5"
+        android:pathData="M29,35 L37,35 L37,55 L29,55 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M41,25 L49,25 L49,55 L41,55 Z" />
+    <!-- Línea de ascenso con insignia estelar -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M18,37 L32,27 L46,17"
+        android:strokeWidth="3.0"
+        android:strokeColor="#FBBF24"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+    <path
+        android:fillColor="#FBBF24"
+        android:pathData="M51,15 L52.6,18.5 L56.4,19 L53.6,21.6 L54.3,25.4 L51,23.5 L47.7,25.4 L48.4,21.6 L45.6,19 L49.4,18.5 Z" />
+</vector>
+

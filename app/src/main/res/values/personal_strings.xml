@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Encabezado Principal y Lista -->
+    <string name="personal_title">Personal</string>
+    <string name="personal_subtitle">Gestión y seguimiento del equipo</string>
+    <string name="personal_metric_total">Total personal</string>
+    <string name="personal_metric_active">Activos</string>
+    <string name="personal_metric_vacation">Vacaciones</string>
+    <string name="personal_metric_training">Permiso</string>
+    <string name="personal_search_hint">Buscar por nombre, cargo o código…</string>
+    <string name="personal_total_showing">%1$d de %2$d colaboradores</string>
+    <string name="personal_empty_title">Sin colaboradores encontrados</string>
+    <string name="personal_empty_message">Intenta ajustar los filtros de agencia, estado o tu término de búsqueda.</string>
+    <string name="personal_btn_reset_filters">Limpiar filtros</string>
+
+    <!-- Detalle del Colaborador -->
+    <string name="personal_detail_title">Detalle del colaborador</string>
+    <string name="personal_tab_summary">Resumen</string>
+    <string name="personal_tab_kpi">Indicadores</string>
+    <string name="personal_tab_activities">Actividades</string>
+
+    <!-- Pestaña Resumen -->
+    <string name="personal_hero_period_default">OCTUBRE 2026</string>
+    <string name="personal_hero_title">Rendimiento general</string>
+    <string name="personal_hero_advance_label">de avance</string>
+    <string name="personal_stat_kpi_assigned">KPI asignados</string>
+    <string name="personal_stat_kpi_completed">KPI cumplidos</string>
+    <string name="personal_stat_kpi_pending">KPI pendientes</string>
+    <string name="personal_evolution_title">Evolución del rendimiento</string>
+    <string name="personal_evolution_subtitle">Historial de los últimos períodos</string>
+    <string name="personal_evolution_empty">Aún no hay evaluaciones registradas</string>
+    <string name="personal_labor_title">Información laboral</string>
+    <string name="personal_labor_hire_date">Fecha de ingreso</string>
+    <string name="personal_labor_schedule">Horario</string>
+    <string name="personal_labor_contract">Tipo de contrato</string>
+    <string name="personal_labor_modality">Modalidad laboral</string>
+    <string name="personal_labor_department">Agencia</string>
+    <string name="personal_labor_role">Cargo</string>
+    <string name="personal_labor_location">Sede asignada</string>
+
+    <!-- Pestaña Indicadores -->
+    <string name="personal_kpi_header_title">Indicadores KPI</string>
+    <string name="personal_period_this_week">Esta semana</string>
+    <string name="personal_period_this_month">Este mes</string>
+    <string name="personal_period_prev_month">Mes anterior</string>
+    <string name="personal_period_custom">Personalizado</string>
+    <string name="personal_kpi_history_title">Historial de evaluaciones</string>
+    <string name="personal_kpi_history_subtitle">Resultados mensuales comparativos</string>
+    <string name="personal_kpi_empty">Aún no hay evaluaciones disponibles</string>
+
+    <!-- Pestaña Actividades -->
+    <string name="personal_activities_header_title">Actividades asignadas</string>
+    <string name="personal_upcoming_section_title">Próxima actividad</string>
+    <string name="personal_activities_empty">No hay actividades con este filtro</string>
+
+    <!-- Filtros y Resumen de Tarjeta -->
+    <string name="personal_filter_all_statuses">Todos</string>
+    <string name="personal_card_activities_summary">%1$d/%2$d actividades</string>
+
+    <!-- Strings adicionales para admin_activity_personal.xml -->
+    <string name="personal_empty_desc">Intenta ajustar los filtros de agencia, estado o tu término de búsqueda.</string>
+    <string name="personal_btn_clear_filters">Limpiar filtros</string>
+</resources>

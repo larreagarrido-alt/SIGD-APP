@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools">
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.USE_BIOMETRIC" />
+    <uses-permission android:name="android.permission.USE_FINGERPRINT" />
+    <uses-permission android:name="android.permission.CAMERA" />
+    <uses-permission android:name="android.permission.POST_NOTIFICATIONS" />
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
+    <uses-permission android:name="android.permission.MODIFY_AUDIO_SETTINGS" />
+    <uses-feature android:name="android.hardware.fingerprint" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.any" android:required="false" />
+    <uses-feature android:name="android.hardware.camera" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.front" android:required="false" />
+    <uses-feature android:name="android.hardware.camera.autofocus" android:required="false" />
+
+    <queries>
+        <intent>
+            <action android:name="android.media.action.IMAGE_CAPTURE" />
+        </intent>
+    </queries>
+
+    <application
+        android:usesCleartextTraffic="false"
+        android:allowBackup="true"
+        android:dataExtractionRules="@xml/data_extraction_rules"
+        android:fullBackupContent="@xml/backup_rules"
+        android:icon="@mipmap/auth_ic_launcher"
+        android:label="@string/app_name"
+        android:roundIcon="@mipmap/auth_ic_launcher"
+        android:supportsRtl="true"
+        android:theme="@style/Theme.KPIWeb">
+        <activity
+            android:name=".features.auth.LoginActivity"
+            android:theme="@style/Theme.KPIWeb.Login"
+            android:exported="true"
+            android:windowSoftInputMode="adjustResize">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name=".MainActivity"
+            android:exported="false"
+            android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.auth.FaceEnrollmentActivity"
+            android:exported="false" android:theme="@style/Theme.KPIWeb.SecurityDark" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".AccountActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.Login" />
+        <activity android:name=".features.admin.dashboard.AdminDashboardActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.admin.dashboard.AdminModulesMenuActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.admin.dashboard.AdminManagementCenterActivity" android:exported="false" />
+        <activity android:name=".features.admin.dashboard.AdminMyEvaluationsActivity" android:exported="false" />
+        <activity android:name=".features.schedule.ui.ScheduleActivity" android:exported="false" android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name=".features.kpi.ui.KpiReportsEditorActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.admin.dashboard.AdminWellnessActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.admin.dashboard.AdminMonthlyWellnessActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.admin.dashboard.AdminWellnessActivityFormActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.admin.dashboard.AdminWellnessAssistantActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.admin.dashboard.AdminRyffActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.admin.dashboard.AdminNotificationsActivity" android:exported="false" />
+        <activity android:name=".features.admin.dashboard.AdminRankingActivity" android:exported="false" />
+        <activity android:name=".features.admin.dashboard.AdminRewardsActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.admin.dashboard.AdminKpiOfficialActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.admin.dashboard.AdminKpiConfigureActivity" android:exported="false" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.admin.personal.AdminPersonalActivity" android:exported="false" />
+        <activity android:name=".features.admin.personal.AdminEmployeeDetailActivity" android:exported="false" />
+        <activity android:name=".features.collaborator.dashboard.CollaboratorDashboardActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.Collaborator" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.collaborator.dashboard.CollaboratorModulesMenuActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.Collaborator" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.collaborator.kpi.CollaboratorKpiIntegrationActivity" android:exported="false"
+            android:configChanges="orientation|screenSize|keyboardHidden" />
+        <activity android:name=".features.collaborator.notifications.CollaboratorNotificationsActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.Collaborator" />
+        <activity android:name=".features.collaborator.privacy.CollaboratorPrivacyActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.Collaborator" />
+        <activity android:name=".features.collaborator.about.CollaboratorAboutActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.Collaborator" />
+        <activity android:name=".features.collaborator.rewards.CollaboratorRewardsActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.Collaborator" />
+        <activity android:name=".features.collaborator.ranking.CollaboratorRankingPointsActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.Collaborator" />
+        <activity android:name=".features.collaborator.wellness.CollaboratorWellnessActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.Collaborator" />
+        <activity android:name=".features.collaborator.wellness.CollaboratorWellnessActivitiesActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.Collaborator" />
+        <activity android:name=".features.collaborator.wellness.CollaboratorWellnessAssistantActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.Collaborator" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.collaborator.attendance.CollaboratorAttendanceActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.Collaborator" />
+        <activity android:name=".features.account.AccountActivity" android:exported="false" />
+        <activity android:name=".features.account.EditProfileActivity" android:exported="false" />
+        <activity android:name=".features.account.ChangePasswordActivity" android:exported="false" />
+        <activity android:name=".features.settings.SettingsActivity" android:exported="false" />
+        <activity android:name=".features.settings.SecurityDevicesActivity" android:exported="false" android:theme="@style/Theme.KPIWeb.SecurityDark" android:windowSoftInputMode="adjustResize" />
+        <activity android:name=".features.help.HelpActivity" android:exported="false" />
+        <receiver android:name=".features.kpi.notification.KpiDailyReminderReceiver" android:exported="false" />
+        <receiver android:name=".features.kpi.notification.KpiReminderBootReceiver" android:exported="true">
+            <intent-filter>
+                <action android:name="android.intent.action.BOOT_COMPLETED" />
+                <action android:name="android.intent.action.MY_PACKAGE_REPLACED" />
+            </intent-filter>
+        </receiver>
+        <provider android:name="androidx.core.content.FileProvider"
+            android:authorities="${applicationId}.fileprovider"
+            android:exported="false" android:grantUriPermissions="true">
+            <meta-data android:name="android.support.FILE_PROVIDER_PATHS" android:resource="@xml/file_paths" />
+        </provider>
+    </application>
+
+
+</manifest>

@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Identidad y Cabecera Colaborador -->
+    <string name="collab_role_badge">Colaborador</string>
+    <string name="collab_greeting_prefix">Hola, %1$s</string>
+    <string name="collab_switch_profile_hint">Cambiar perfil</string>
+
+    <!-- Tarjeta Hero de Rendimiento Personal -->
+    <string name="collab_hero_badge_title">MI RENDIMIENTO</string>
+    <string name="collab_hero_pending_eval">Pendiente de evaluación</string>
+    <string name="collab_hero_pending_eval_sub">Tus indicadores están en revisión del período actual</string>
+    <string name="collab_hero_btn_view_kpis">Consultar Mis KPI</string>
+
+    <!-- Resumen de Indicadores del Colaborador (Sección 4) -->
+    <string name="collab_section_kpi_overview">RESUMEN DE MIS INDICADORES</string>
+    <string name="collab_kpi_assigned_label">KPI asignados</string>
+    <string name="collab_kpi_completed_label">KPI completados</string>
+    <string name="collab_kpi_pending_label">KPI pendientes</string>
+    <string name="collab_kpi_next_due_label">Próxima entrega</string>
+
+    <!-- 4 Tarjetas de Estadísticas Personales -->
+    <string name="collab_stat_points_label">Mis puntos</string>
+    <string name="collab_stat_ranking_label">Mi ranking</string>
+    <string name="collab_stat_kpi_delivered_label">KPI entregados</string>
+    <string name="collab_stat_attendance_label">Mis asistencias</string>
+
+    <!-- Tarjeta Destacada: Próxima Entrega / Actividad -->
+    <string name="collab_next_delivery_tag">PRÓXIMA FECHA DE ENTREGA</string>
+    <string name="collab_next_delivery_empty_title">Todo al día</string>
+    <string name="collab_next_delivery_empty_sub">No tienes entregas urgentes pendientes por ahora.</string>
+
+    <!-- Acciones Rápidas (4 Accesos) -->
+    <string name="collab_section_quick_actions">ACCESOS RÁPIDOS</string>
+    <string name="collab_qa_deliver_kpi">Mis KPI</string>
+    <string name="collab_qa_notifications">Notificaciones</string>
+    <string name="collab_qa_attendance">Mi cuenta</string>
+
+    <!-- Actividad Reciente -->
+    <string name="collab_section_recent_activity">ACTIVIDADES RECIENTES</string>
+    <string name="collab_recent_view_all">Ver mis KPI</string>
+    <string name="collab_recent_empty">Aún no hay actividad registrada en este período.</string>
+
+    <!-- Barra de navegación inferior: Inicio, Bienestar, KPI, Notificaciones y Menú -->
+    <string name="collab_nav_home">Inicio</string>
+    <string name="collab_nav_wellness">Bienestar</string>
+    <string name="collab_nav_kpi">KPI</string>
+    <string name="collab_nav_notifications">Notificaciones</string>
+    <string name="collab_nav_menu">Menú</string>
+
+    <!-- Menú del Colaborador -->
+    <string name="collab_menu_title">Menú</string>
+    <string name="collab_menu_subtitle">Espacio personal y configuración del colaborador</string>
+    <string name="collab_menu_logo_title">WEBSITE</string>
+    <string name="collab_menu_logo_subtitle">Plataforma de Gestión de Rendimiento y KPI</string>
+    <string name="collab_menu_logo_slot_note">Espacio preparado para el logo oficial de WEBSITE</string>
+    <string name="collab_menu_account_title">Mi cuenta</string>
+    <string name="collab_menu_account_subtitle">Ver mi perfil, cargo y datos personales</string>
+    <string name="collab_menu_section_modules">ACCESOS DEL COLABORADOR</string>
+    <string name="collab_menu_mod_home_title">Mi inicio</string>
+    <string name="collab_menu_mod_home_desc">Resumen diario y progreso</string>
+    <string name="collab_menu_mod_schedule_title">Mi horario</string>
+    <string name="collab_menu_mod_schedule_desc">Jornada y actividades</string>
+    <string name="collab_menu_mod_kpi_title">Mis KPI</string>
+    <string name="collab_menu_mod_kpi_desc">Indicadores y entregas</string>
+    <string name="collab_menu_mod_notifs_title">Notificaciones</string>
+    <string name="collab_menu_mod_notifs_desc">Avisos y recordatorios</string>
+    <string name="collab_menu_mod_attendance_title">Mi asistencia</string>
+    <string name="collab_menu_mod_attendance_desc">Registro y seguimiento</string>
+
+    <string name="collab_menu_section_options">OPCIONES Y SISTEMA</string>
+    <string name="collab_menu_opt_account">Mi cuenta</string>
+    <string name="collab_menu_opt_settings">Configuración</string>
+    <string name="collab_menu_opt_privacy">Privacidad y permisos</string>
+    <string name="collab_menu_opt_help">Ayuda y soporte</string>
+    <string name="collab_menu_opt_about">Acerca de SIGD</string>
+    <string name="collab_menu_opt_logout">Cerrar sesión</string>
+
+    <!-- Diálogo de Cierre de Sesión -->
+    <string name="collab_logout_dialog_title">Cerrar sesión</string>
+    <string name="collab_logout_dialog_msg">¿Estás seguro de que deseas cerrar tu sesión de colaborador en WEBSITE?</string>
+    <string name="collab_logout_dialog_confirm">Cerrar sesión</string>
+    <string name="collab_logout_dialog_cancel">Cancelar</string>
+</resources>

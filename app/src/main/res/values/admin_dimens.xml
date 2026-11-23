@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Espaciados y Márgenes -->
+    <dimen name="admin_space_xs">4dp</dimen>
+    <dimen name="admin_space_sm">8dp</dimen>
+    <dimen name="admin_space_md">12dp</dimen>
+    <dimen name="admin_space_lg">16dp</dimen>
+    <dimen name="admin_space_xl">20dp</dimen>
+    <dimen name="admin_space_xxl">24dp</dimen>
+
+    <!-- Radios de Esquinas -->
+    <dimen name="admin_corner_card">18dp</dimen>
+    <dimen name="admin_corner_pill">24dp</dimen>
+    <dimen name="admin_corner_badge">12dp</dimen>
+    <dimen name="admin_corner_chip">14dp</dimen>
+
+    <!-- Tamaños de Texto -->
+    <dimen name="admin_text_xs">12.5sp</dimen>
+    <dimen name="admin_text_sm">13.5sp</dimen>
+    <dimen name="admin_text_base">14.5sp</dimen>
+    <dimen name="admin_text_md">16sp</dimen>
+    <dimen name="admin_text_lg">18sp</dimen>
+    <dimen name="admin_text_xl">22sp</dimen>
+    <dimen name="admin_text_xxl">26sp</dimen>
+    <dimen name="admin_text_stat_val">28sp</dimen>
+
+    <!-- Dimensiones de Componentes -->
+    <dimen name="admin_header_avatar_size">40dp</dimen>
+    <dimen name="admin_icon_btn_size">40dp</dimen>
+    <dimen name="admin_badge_icon_size">36dp</dimen>
+    <dimen name="admin_nav_width">300dp</dimen>
+    <dimen name="admin_chart_bar_width">26dp</dimen>
+    <dimen name="admin_chart_height">140dp</dimen>
+</resources>

@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="12dp"
+    android:background="@drawable/personal_bg_card_surface"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <!-- Fila 1: Icono, Título y Badge de Estado -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:id="@+id/iv_activity_icon"
+            android:layout_width="32dp"
+            android:layout_height="32dp"
+            android:background="@drawable/personal_bg_chevron_circle"
+            android:padding="6dp"
+            android:src="@drawable/personal_ic_task" />
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/tv_activity_title"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Revisión arquitectónica de Microservicios"
+                android:textColor="@color/personal_text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/tv_activity_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:ellipsize="end"
+                android:maxLines="1"
+                android:text="Arquitectura • Sprint 14"
+                android:textColor="@color/personal_text_muted"
+                android:textSize="11sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/tv_activity_status"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="8dp"
+            android:background="@drawable/personal_bg_status_active"
+            android:paddingStart="10dp"
+            android:paddingTop="3dp"
+            android:paddingEnd="10dp"
+            android:paddingBottom="3dp"
+            android:text="En progreso"
+            android:textColor="@color/personal_semantic_amber"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Fila 2: Descripción detallada -->
+    <TextView
+        android:id="@+id/tv_activity_desc"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:ellipsize="end"
+        android:maxLines="2"
+        android:text="Auditoría de estabilidad y escalabilidad en Kubernetes"
+        android:textColor="@color/personal_text_secondary"
+        android:textSize="12sp" />
+
+    <!-- Fila 3: Fecha límite y Progreso numérico -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <ImageView
+            android:layout_width="14dp"
+            android:layout_height="14dp"
+            android:src="@drawable/personal_ic_calendar" />
+
+        <TextView
+            android:id="@+id/tv_activity_deadline"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="6dp"
+            android:text="Límite: 24/10/2026"
+            android:textColor="@color/personal_text_muted"
+            android:textSize="12sp" />
+
+        <View
+            android:layout_width="0dp"
+            android:layout_height="1dp"
+            android:layout_weight="1" />
+
+        <TextView
+            android:id="@+id/tv_activity_progress_val"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="70%"
+            android:textColor="@color/personal_purple_accent"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <!-- Barra de progreso -->
+    <ProgressBar
+        android:id="@+id/pb_activity_progress"
+        style="?android:attr/progressBarStyleHorizontal"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:layout_marginTop="6dp"
+        android:max="100"
+        android:progress="70"
+        android:progressDrawable="@drawable/personal_progress_horizontal" />
+</LinearLayout>

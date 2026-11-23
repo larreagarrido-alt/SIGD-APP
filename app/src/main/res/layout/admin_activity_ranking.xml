@@ -1,0 +1,840 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/admin_bg_main"
+    android:fillViewport="true"
+    android:fitsSystemWindows="true"
+    android:overScrollMode="never"
+    android:scrollbars="none">
+
+    <LinearLayout
+        android:id="@+id/ranking_root_content"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="12dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="28dp">
+
+        <!-- 1. ENCABEZADO PREMIUM: RANKING DE DESEMPEÑO -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <FrameLayout
+                android:id="@+id/ranking_back"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/collab_bg_circle_button"
+                android:clickable="true"
+                android:contentDescription="Volver"
+                android:focusable="true">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/admin_ic_chevron_left"
+                    app:tint="@color/admin_purple_accent" />
+            </FrameLayout>
+
+            <FrameLayout
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:layout_marginStart="10dp"
+                android:background="@drawable/collab_bg_rewards_image_frame">
+
+                <ImageView
+                    android:layout_width="19dp"
+                    android:layout_height="19dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="Trofeo de ranking"
+                    android:src="@drawable/collaborator_ic_trophy"
+                    app:tint="@color/admin_status_pending" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Ranking de desempeño"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="19sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Resultados y progreso del equipo"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="12sp" />
+            </LinearLayout>
+
+            <FrameLayout
+                android:id="@+id/ranking_refresh"
+                android:layout_width="40dp"
+                android:layout_height="40dp"
+                android:background="@drawable/collab_bg_circle_button"
+                android:clickable="true"
+                android:contentDescription="Actualizar resultados"
+                android:focusable="true">
+
+                <ImageView
+                    android:id="@+id/ranking_refresh_icon"
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/admin_ic_refresh"
+                    app:tint="@color/admin_purple_accent" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- 2. TARJETA PREMIUM: RESUMEN DE DESEMPEÑO -->
+        <LinearLayout
+            android:id="@+id/ranking_summary_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/admin_bg_ranking_surface_card"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <!-- Cabecera: trofeo dorado + título + badge de período -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_vertical"
+                android:orientation="horizontal">
+
+                <FrameLayout
+                    android:layout_width="34dp"
+                    android:layout_height="34dp"
+                    android:background="@drawable/collab_bg_icon_badge_amber">
+
+                    <ImageView
+                        android:layout_width="17dp"
+                        android:layout_height="17dp"
+                        android:layout_gravity="center"
+                        android:contentDescription="@null"
+                        android:src="@drawable/collaborator_ic_trophy"
+                        app:tint="#F2C36D" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="10dp"
+                    android:layout_marginEnd="8dp"
+                    android:layout_weight="1"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Resumen de desempeño"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/ranking_summary_period_badge"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collab_bg_pill_purple"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:maxWidth="136dp"
+                    android:paddingStart="9dp"
+                    android:paddingTop="4dp"
+                    android:paddingEnd="9dp"
+                    android:paddingBottom="4dp"
+                    android:text="Sin cierre"
+                    android:textColor="@color/admin_purple_accent"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <!-- 3 Mini tarjetas reales: Colaboradores · Evaluados · Clasificados -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:baselineAligned="false"
+                android:orientation="horizontal"
+                android:weightSum="3">
+
+                <!-- Colaboradores -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginEnd="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/admin_bg_ranking_stat_mini"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingStart="6dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="6dp"
+                    android:paddingBottom="11dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/collab_ic_rec_users_round"
+                        app:tint="@color/admin_purple_accent" />
+
+                    <TextView
+                        android:id="@+id/ranking_stat_collaborators"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:includeFontPadding="false"
+                        android:text="—"
+                        android:textColor="@color/admin_text_primary"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="Colaboradores"
+                        android:textColor="@color/admin_text_secondary"
+                        android:textSize="11sp"
+                        app:autoSizeMaxTextSize="11sp"
+                        app:autoSizeMinTextSize="9sp"
+                        app:autoSizeStepGranularity="0.5sp"
+                        app:autoSizeTextType="uniform" />
+                </LinearLayout>
+
+                <!-- Evaluados -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="3dp"
+                    android:layout_marginEnd="3dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/admin_bg_ranking_stat_mini"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingStart="6dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="6dp"
+                    android:paddingBottom="11dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/collab_ic_notif_clipboard_check"
+                        app:tint="@color/admin_status_delivered" />
+
+                    <TextView
+                        android:id="@+id/ranking_stat_evaluated"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:includeFontPadding="false"
+                        android:text="—"
+                        android:textColor="@color/admin_status_delivered"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="Evaluados"
+                        android:textColor="@color/admin_text_secondary"
+                        android:textSize="11sp"
+                        app:autoSizeMaxTextSize="11sp"
+                        app:autoSizeMinTextSize="9sp"
+                        app:autoSizeStepGranularity="0.5sp"
+                        app:autoSizeTextType="uniform" />
+                </LinearLayout>
+
+                <!-- Clasificados -->
+                <LinearLayout
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="5dp"
+                    android:layout_weight="1"
+                    android:background="@drawable/admin_bg_ranking_stat_mini"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:paddingStart="6dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="6dp"
+                    android:paddingBottom="11dp">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_medal"
+                        app:tint="@color/admin_status_pending" />
+
+                    <TextView
+                        android:id="@+id/ranking_stat_classified"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:includeFontPadding="false"
+                        android:text="—"
+                        android:textColor="@color/admin_status_pending"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="3dp"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:text="Clasificados"
+                        android:textColor="@color/admin_text_secondary"
+                        android:textSize="11sp"
+                        app:autoSizeMaxTextSize="11sp"
+                        app:autoSizeMinTextSize="9sp"
+                        app:autoSizeStepGranularity="0.5sp"
+                        app:autoSizeTextType="uniform" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Nota resumen adicional (visible solo cuando hay datos reales) -->
+            <TextView
+                android:id="@+id/ranking_summary_footer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="11dp"
+                android:gravity="center"
+                android:textColor="@color/admin_text_secondary"
+                android:textSize="11.5sp"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- 3. SECCIÓN: EXPLORAR RANKING -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Explorar ranking"
+                android:textColor="@color/admin_text_primary"
+                android:textSize="16sp"
+                android:textStyle="bold" />
+
+            <!-- Botón discreto de frecuencia/filtros avanzados -->
+            <LinearLayout
+                android:id="@+id/ranking_filter_toggle"
+                android:layout_width="wrap_content"
+                android:layout_height="34dp"
+                android:background="@drawable/admin_bg_rewards_chip_inactive"
+                android:clickable="true"
+                android:contentDescription="Más filtros de ranking"
+                android:focusable="true"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:paddingStart="11dp"
+                android:paddingEnd="10dp">
+
+                <ImageView
+                    android:layout_width="14dp"
+                    android:layout_height="14dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/admin_ic_sliders"
+                    app:tint="@color/admin_purple_accent" />
+
+                <TextView
+                    android:id="@+id/ranking_filter_toggle_label"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginStart="6dp"
+                    android:text="Frecuencia"
+                    android:textColor="@color/admin_purple_accent"
+                    android:textSize="11.5sp"
+                    android:textStyle="bold" />
+
+                <ImageView
+                    android:id="@+id/ranking_filter_chevron"
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_marginStart="4dp"
+                    android:contentDescription="@null"
+                    android:src="@drawable/admin_ic_chevron_down"
+                    app:tint="@color/admin_text_secondary" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 4. BUSCADOR -->
+        <LinearLayout
+            android:id="@+id/ranking_search_container"
+            android:layout_width="match_parent"
+            android:layout_height="48dp"
+            android:layout_marginTop="12dp"
+            android:background="@drawable/admin_bg_rewards_search"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:paddingStart="14dp"
+            android:paddingEnd="8dp">
+
+            <ImageView
+                android:id="@+id/ranking_search_icon"
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:contentDescription="@null"
+                android:src="@drawable/admin_ic_search"
+                app:tint="@color/admin_text_secondary" />
+
+            <EditText
+                android:id="@+id/ranking_search"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_marginStart="10dp"
+                android:layout_weight="1"
+                android:background="@null"
+                android:hint="Buscar colaborador..."
+                android:imeOptions="actionSearch"
+                android:importantForAutofill="no"
+                android:inputType="textPersonName"
+                android:maxLines="1"
+                android:singleLine="true"
+                android:textColor="@color/admin_text_primary"
+                android:textColorHint="@color/admin_text_muted"
+                android:textSize="13.5sp" />
+
+            <FrameLayout
+                android:id="@+id/ranking_search_clear"
+                android:layout_width="32dp"
+                android:layout_height="32dp"
+                android:clickable="true"
+                android:contentDescription="Limpiar búsqueda"
+                android:focusable="true"
+                android:visibility="gone">
+
+                <ImageView
+                    android:layout_width="15dp"
+                    android:layout_height="15dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/collab_ic_close"
+                    app:tint="@color/admin_text_secondary" />
+            </FrameLayout>
+        </LinearLayout>
+
+        <!-- 5. SELECTOR MODERNO DE PERÍODO DE EVALUACIÓN -->
+        <LinearLayout
+            android:id="@+id/ranking_period_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/admin_bg_ranking_card_interactive"
+            android:clickable="true"
+            android:contentDescription="Período de evaluación. Toca para cambiar"
+            android:focusable="true"
+            android:gravity="center_vertical"
+            android:minHeight="60dp"
+            android:orientation="horizontal"
+            android:paddingStart="13dp"
+            android:paddingTop="10dp"
+            android:paddingEnd="14dp"
+            android:paddingBottom="10dp">
+
+            <FrameLayout
+                android:layout_width="38dp"
+                android:layout_height="38dp"
+                android:background="@drawable/collab_bg_rewards_image_frame">
+
+                <ImageView
+                    android:layout_width="18dp"
+                    android:layout_height="18dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/admin_ic_calendar"
+                    app:tint="@color/admin_purple_accent" />
+            </FrameLayout>
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="12dp"
+                android:layout_marginEnd="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Período de evaluación"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="11.5sp" />
+
+                <TextView
+                    android:id="@+id/ranking_period_label"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="1dp"
+                    android:ellipsize="end"
+                    android:maxLines="1"
+                    android:text="Consultando período…"
+                    android:textColor="@color/admin_text_primary"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:id="@+id/ranking_period_chevron"
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:contentDescription="@null"
+                android:src="@drawable/admin_ic_chevron_down"
+                app:tint="@color/admin_text_secondary" />
+        </LinearLayout>
+
+        <!-- 6. FILTROS COMPACTOS DIRECTOS (PERSONAL) + PANEL DESPLEGABLE DE FRECUENCIA/AGENCIA -->
+        <HorizontalScrollView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="11dp"
+            android:overScrollMode="never"
+            android:scrollbars="none">
+
+            <com.google.android.material.chip.ChipGroup
+                android:id="@+id/ranking_type_filters"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:chipSpacingHorizontal="8dp"
+                app:singleLine="true" />
+        </HorizontalScrollView>
+
+        <!-- Panel desplegable para Frecuencia y Agencia (evita saturar ni repetir "Mensual") -->
+        <LinearLayout
+            android:id="@+id/ranking_filter_content"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/admin_bg_ranking_surface_card"
+            android:orientation="vertical"
+            android:padding="14dp"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Frecuencia de cierre"
+                android:textColor="@color/admin_text_secondary"
+                android:textSize="11.5sp"
+                android:textStyle="bold" />
+
+            <FrameLayout
+                android:id="@+id/ranking_frequency_segmented"
+                android:layout_width="match_parent"
+                android:layout_height="40dp"
+                android:layout_marginTop="8dp"
+                android:background="@drawable/admin_bg_ranking_segmented_track"
+                android:padding="3dp">
+
+                <View
+                    android:id="@+id/ranking_frequency_indicator"
+                    android:layout_width="0dp"
+                    android:layout_height="match_parent"
+                    android:background="@drawable/admin_bg_segment_active" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/ranking_freq_semanal"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:alpha="0.55"
+                        android:clickable="true"
+                        android:contentDescription="Semanal, no disponible"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:text="Semanal"
+                        android:textColor="@color/admin_text_secondary"
+                        android:textSize="12.5sp"
+                        app:autoSizeMaxTextSize="12.5sp"
+                        app:autoSizeMinTextSize="10sp"
+                        app:autoSizeStepGranularity="0.5sp"
+                        app:autoSizeTextType="uniform" />
+
+                    <androidx.appcompat.widget.AppCompatTextView
+                        android:id="@+id/ranking_freq_mensual"
+                        android:layout_width="0dp"
+                        android:layout_height="match_parent"
+                        android:layout_weight="1"
+                        android:clickable="true"
+                        android:contentDescription="Frecuencia Mensual"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:maxLines="1"
+                        android:paddingStart="6dp"
+                        android:paddingEnd="6dp"
+                        android:text="Mensual"
+                        android:textColor="@android:color/white"
+                        android:textSize="12.5sp"
+                        android:textStyle="bold"
+                        app:autoSizeMaxTextSize="12.5sp"
+                        app:autoSizeMinTextSize="10sp"
+                        app:autoSizeStepGranularity="0.5sp"
+                        app:autoSizeTextType="uniform" />
+                </LinearLayout>
+            </FrameLayout>
+
+            <LinearLayout
+                android:id="@+id/ranking_agency_section"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:text="Agencia"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="11.5sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.chip.ChipGroup
+                    android:id="@+id/ranking_agency_filters"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    app:chipSpacingHorizontal="8dp"
+                    app:chipSpacingVertical="8dp"
+                    app:singleLine="false" />
+            </LinearLayout>
+
+            <LinearLayout
+                android:id="@+id/ranking_clear_filters_bar"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="12dp"
+                android:gravity="center_vertical"
+                android:orientation="horizontal"
+                android:visibility="gone">
+
+                <TextView
+                    android:layout_width="0dp"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="Filtros aplicados"
+                    android:textColor="@color/admin_text_secondary"
+                    android:textSize="11.5sp" />
+
+                <LinearLayout
+                    android:id="@+id/ranking_clear_filters_btn"
+                    android:layout_width="wrap_content"
+                    android:layout_height="32dp"
+                    android:background="@drawable/admin_bg_rewards_secondary_btn"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="10dp"
+                    android:paddingEnd="11dp">
+
+                    <ImageView
+                        android:layout_width="13dp"
+                        android:layout_height="13dp"
+                        android:layout_marginEnd="5dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_filter_reset"
+                        app:tint="@color/admin_text_primary" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Limpiar filtros"
+                        android:textColor="@color/admin_text_primary"
+                        android:textSize="11.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- 7. RANKING REAL O ESTADO SIN RESULTADOS -->
+        <LinearLayout
+            android:id="@+id/ranking_status_card"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/admin_bg_ranking_surface_card"
+            android:gravity="center_horizontal"
+            android:orientation="vertical"
+            android:paddingStart="24dp"
+            android:paddingTop="28dp"
+            android:paddingEnd="24dp"
+            android:paddingBottom="28dp">
+
+            <ProgressBar
+                android:id="@+id/ranking_status_loading"
+                android:layout_width="34dp"
+                android:layout_height="34dp"
+                android:indeterminate="true"
+                android:indeterminateTint="#8B30E0"
+                android:visibility="gone" />
+
+            <ImageView
+                android:id="@+id/ranking_status_trophy"
+                android:layout_width="96dp"
+                android:layout_height="96dp"
+                android:contentDescription="Sin resultados en el ranking"
+                android:scaleType="fitCenter"
+                android:src="@drawable/admin_ill_ranking_empty_trophy"
+                android:visibility="gone" />
+
+            <FrameLayout
+                android:id="@+id/ranking_status_icon_badge"
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:background="@drawable/collab_bg_rewards_image_frame"
+                android:visibility="gone">
+
+                <ImageView
+                    android:id="@+id/ranking_status_icon"
+                    android:layout_width="24dp"
+                    android:layout_height="24dp"
+                    android:layout_gravity="center"
+                    android:contentDescription="@null"
+                    android:src="@drawable/admin_ic_info_circle"
+                    app:tint="@color/admin_purple_accent" />
+            </FrameLayout>
+
+            <TextView
+                android:id="@+id/ranking_status_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:gravity="center"
+                android:text="Consultando resultados"
+                android:textColor="@color/admin_text_primary"
+                android:textSize="17sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/ranking_status_message"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:gravity="center"
+                android:lineSpacingExtra="2dp"
+                android:text="Consultando el último ranking cerrado…"
+                android:textColor="@color/admin_text_secondary"
+                android:textSize="13sp" />
+
+            <TextView
+                android:id="@+id/ranking_status_pill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="14dp"
+                android:background="@drawable/collab_bg_pill_purple"
+                android:paddingStart="12dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="5dp"
+                android:text="Esperando evaluaciones"
+                android:textColor="@color/admin_purple_accent"
+                android:textSize="11.5sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+
+            <TextView
+                android:id="@+id/ranking_status_action"
+                android:layout_width="wrap_content"
+                android:layout_height="40dp"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/admin_bg_rewards_secondary_btn"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:paddingStart="22dp"
+                android:paddingEnd="22dp"
+                android:text="Reintentar"
+                android:textColor="@color/admin_text_primary"
+                android:textSize="13sp"
+                android:textStyle="bold"
+                android:visibility="gone" />
+        </LinearLayout>
+
+        <!-- Podio de los tres primeros puestos -->
+        <TextView
+            android:id="@+id/ranking_podium_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Podio del período"
+            android:textColor="@color/admin_text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/ranking_podium"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:baselineAligned="false"
+            android:gravity="bottom"
+            android:orientation="horizontal" />
+
+        <!-- Clasificación general -->
+        <TextView
+            android:id="@+id/ranking_list_title"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="18dp"
+            android:text="Clasificación general"
+            android:textColor="@color/admin_text_primary"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            android:visibility="gone" />
+
+        <LinearLayout
+            android:id="@+id/ranking_list"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp"
+            android:orientation="vertical" />
+    </LinearLayout>
+</ScrollView>

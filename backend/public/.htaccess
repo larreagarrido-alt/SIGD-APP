@@ -1,0 +1,22 @@
+RewriteEngine On
+
+# cPanel (PHP-FPM / CGI) descarta la cabecera Authorization antes de llegar a PHP.
+# Sin estas lineas todas las rutas con "Bearer" responden 401 UNAUTHORIZED,
+# incluido /auth/biometria/registro. Se copia a HTTP_AUTHORIZATION sin modificarla.
+RewriteCond %{HTTP:Authorization} .
+RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]
+<IfModule mod_setenvif.c>
+    SetEnvIf Authorization "(.+)" HTTP_AUTHORIZATION=$1
+</IfModule>
+
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^ index.php [QSA,L]
+
+# Evitar listar los archivos de las carpetas
+Options -Indexes
+
+# Bloquear el acceso a archivos ocultos
+<FilesMatch "^\.">
+    Require all denied
+</FilesMatch>

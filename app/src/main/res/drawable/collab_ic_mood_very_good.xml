@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="56dp"
+    android:height="56dp"
+    android:viewportWidth="64"
+    android:viewportHeight="64">
+
+    <!-- Sombra suave debajo de la esfera -->
+    <path android:pathData="M32,59m-19,0a19,3.5 0,1 1,38 0a19,3.5 0,1 1,-38 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="32"
+                android:centerY="59"
+                android:gradientRadius="19"
+                android:type="radial">
+                <item android:color="#440A2920" android:offset="0.0" />
+                <item android:color="#000A2920" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Esfera 3D principal verde menta con volumen suave -->
+    <path android:pathData="M32,56A23,23 0,1 1,32 10A23,23 0,1 1,32 56Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="24"
+                android:centerY="21"
+                android:gradientRadius="36"
+                android:type="radial">
+                <item android:color="#C2FAE5" android:offset="0.0" />
+                <item android:color="#72DFB4" android:offset="0.48" />
+                <item android:color="#39B488" android:offset="0.86" />
+                <item android:color="#268F6B" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Brillo especular superior izquierdo -->
+    <path android:pathData="M23.5,19.5m-9.5,0a9.5,5.5 -24,1 1,19 0a9.5,5.5 -24,1 1,-19 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="23.5"
+                android:centerY="18.5"
+                android:gradientRadius="10"
+                android:type="radial">
+                <item android:color="#78FFFFFF" android:offset="0.0" />
+                <item android:color="#00FFFFFF" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Luz de rebote inferior sutil -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19,49.5C25.5,54.5 38.5,54.5 45,49.5"
+        android:strokeAlpha="0.35"
+        android:strokeColor="#C6FFEE"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.2" />
+
+    <!-- Mejillas rosadas suaves -->
+    <path android:pathData="M18.5,35.5m-4.8,0a4.8,3.2 0,1 1,9.6 0a4.8,3.2 0,1 1,-9.6 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="18.5"
+                android:centerY="35.5"
+                android:gradientRadius="4.8"
+                android:type="radial">
+                <item android:color="#85FF8CB8" android:offset="0.0" />
+                <item android:color="#00FF8CB8" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path android:pathData="M45.5,35.5m-4.8,0a4.8,3.2 0,1 1,9.6 0a4.8,3.2 0,1 1,-9.6 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="45.5"
+                android:centerY="35.5"
+                android:gradientRadius="4.8"
+                android:type="radial">
+                <item android:color="#85FF8CB8" android:offset="0.0" />
+                <item android:color="#00FF8CB8" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Ojos cerrados alegres en arco -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M19.5,29.5C21.2,25.5 25.8,25.5 27.5,29.5"
+        android:strokeColor="#1A493A"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.8" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M36.5,29.5C38.2,25.5 42.8,25.5 44.5,29.5"
+        android:strokeColor="#1A493A"
+        android:strokeLineCap="round"
+        android:strokeWidth="2.8" />
+
+    <!-- Sonrisa grande y alegre -->
+    <path
+        android:fillColor="#1A493A"
+        android:pathData="M21,36.2C21,35.2 21.8,34.8 22.8,34.8H41.2C42.2,34.8 43,35.2 43,36.2C42.2,43.8 37.6,47.2 32,47.2C26.4,47.2 21.8,43.8 21,36.2Z" />
+    <!-- Lengüita coral suave -->
+    <path
+        android:fillColor="#FF8CA8"
+        android:pathData="M26.5,44.4C28.2,42.3 35.8,42.3 37.5,44.4C35.9,46.1 34,46.9 32,46.9C30,46.9 28.1,46.1 26.5,44.4Z" />
+    <!-- Destello dental limpio superior -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M23.8,36.1H40.2C39.8,37.9 38.6,38.7 36.8,38.7H27.2C25.4,38.7 24.2,37.9 23.8,36.1Z" />
+
+    <!-- Destellos decorativos de alegría -->
+    <path
+        android:fillColor="#FFF3B0"
+        android:pathData="M53.5,8.5L54.8,12.2L58.5,13.5L54.8,14.8L53.5,18.5L52.2,14.8L48.5,13.5L52.2,12.2Z" />
+    <path
+        android:fillColor="#B8FFE5"
+        android:pathData="M11.5,14.5m-2,0a2,2 0,1 1,4 0a2,2 0,1 1,-4 0" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M55.5,24.5L58.5,23.5"
+        android:strokeColor="#A7F5D8"
+        android:strokeLineCap="round"
+        android:strokeWidth="1.8" />
+</vector>

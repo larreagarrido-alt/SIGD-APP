@@ -1,0 +1,105 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    android:width="120dp"
+    android:height="120dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Halo de energía / alivio detrás del pandita -->
+    <path
+        android:fillColor="#DCFCE7"
+        android:pathData="M60,8 A52,52 0 1,1 59.9,8 Z" />
+    <path
+        android:fillColor="#BBF7D0"
+        android:pathData="M60,16 A44,44 0 1,1 59.9,16 Z" />
+
+    <!-- Orejita Izquierda -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M32,22 A13,13 0 1,1 31.9,22 Z" />
+    <path
+        android:fillColor="#475569"
+        android:pathData="M32,26 A7,7 0 1,1 31.9,26 Z" />
+
+    <!-- Orejita Derecha -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M88,22 A13,13 0 1,1 87.9,22 Z" />
+    <path
+        android:fillColor="#475569"
+        android:pathData="M88,26 A7,7 0 1,1 87.9,26 Z" />
+
+    <!-- Cuerpo / Hombros del Pandita -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M28,96 C28,78 92,78 92,96 L92,106 C92,110 28,110 28,106 Z" />
+    <!-- Pancita blanca -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:pathData="M42,96 C42,84 78,84 78,96 L78,108 L42,108 Z" />
+
+    <!-- Cabeza Redonda Blanca del Pandita -->
+    <path
+        android:fillColor="#FFFFFF"
+        android:strokeColor="#1E293B"
+        android:strokeWidth="3"
+        android:pathData="M60,26 C82,26 96,40 96,60 C96,80 82,92 60,92 C38,92 24,80 24,60 C24,40 38,26 60,26 Z" />
+
+    <!-- Parches Negros de los Ojos -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M43,46 C49,46 53,51 52,58 C51,65 45,68 39,67 C33,66 31,60 33,53 C35,48 38,46 43,46 Z" />
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M77,46 C82,46 85,48 87,53 C89,60 87,66 81,67 C75,68 69,65 68,58 C67,51 71,46 77,46 Z" />
+
+    <!-- Ojitos Felices (Arcos blancos brillantes de alivio y alegría ^ ^) -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:pathData="M37,57 Q43,50 48,57" />
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#FFFFFF"
+        android:strokeWidth="3.2"
+        android:strokeLineCap="round"
+        android:pathData="M72,57 Q77,50 83,57" />
+
+    <!-- Mejillas Sonrojadas Rosadas -->
+    <path
+        android:fillColor="#FDA4AF"
+        android:pathData="M34,69 A6,4 0 1,1 33.9,69 Z" />
+    <path
+        android:fillColor="#FDA4AF"
+        android:pathData="M86,69 A6,4 0 1,1 85.9,69 Z" />
+
+    <!-- Naricita Tierna -->
+    <path
+        android:fillColor="#1E293B"
+        android:pathData="M55,63 Q60,60 65,63 Q60,69 55,63 Z" />
+
+    <!-- Gran Sonrisa Feliz y Aliviada -->
+    <path
+        android:fillColor="#00000000"
+        android:strokeColor="#1E293B"
+        android:strokeWidth="3"
+        android:strokeLineCap="round"
+        android:pathData="M50,70 Q60,80 70,70" />
+    <path
+        android:fillColor="#FB7185"
+        android:pathData="M54,73 Q60,82 66,73 Z" />
+
+    <!-- Gotita de Alivio / Brillo Estrella -->
+    <path
+        android:fillColor="#38BDF8"
+        android:pathData="M95,34 Q99,42 95,46 Q91,42 95,34 Z" />
+    <path
+        android:fillColor="#FACC15"
+        android:pathData="M18,36 L21,42 L27,45 L21,48 L18,54 L15,48 L9,45 L15,42 Z" />
+    <path
+        android:fillColor="#10B981"
+        android:pathData="M102,68 L104,72 L108,74 L104,76 L102,80 L100,76 L96,74 L100,72 Z" />
+</vector>
+

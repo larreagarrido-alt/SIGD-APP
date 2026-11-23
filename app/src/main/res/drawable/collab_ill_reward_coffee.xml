@@ -1,0 +1,116 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Halo suave -->
+    <path android:pathData="M60,62m-46,0a46,46 0,1 1,92 0a46,46 0,1 1,-92 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="60"
+                android:centerY="62"
+                android:gradientRadius="46"
+                android:type="radial">
+                <item android:color="#40F6C35D" android:offset="0.0" />
+                <item android:color="#228B30E0" android:offset="0.55" />
+                <item android:color="#001D102C" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sombra base -->
+    <path
+        android:fillColor="#66090412"
+        android:pathData="M28,99C28,95 42,92 60,92C78,92 92,95 92,99C92,103 78,106 60,106C42,106 28,103 28,99Z" />
+
+    <!-- Vapor estilizado -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M48,32C46,27 52,24 50,18"
+        android:strokeWidth="2.4"
+        android:strokeColor="#88E9C8FF"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M60,30C58,24 65,21 63,14"
+        android:strokeWidth="2.6"
+        android:strokeColor="#AAF6C35D"
+        android:strokeLineCap="round" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M72,33C70,28 76,25 74,20"
+        android:strokeWidth="2.2"
+        android:strokeColor="#77E9C8FF"
+        android:strokeLineCap="round" />
+
+    <!-- Vaso 3D cuerpo blanco-crema -->
+    <path android:pathData="M36,44L84,44L78,94C77.7,96.4 75.7,98 73.3,98L46.7,98C44.3,98 42.3,96.4 42,94Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="84"
+                android:endY="75"
+                android:startX="36"
+                android:startY="70"
+                android:type="linear">
+                <item android:color="#FFFFFF" android:offset="0.0" />
+                <item android:color="#F1E6FA" android:offset="0.58" />
+                <item android:color="#C3A6E3" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Manga protectora violeta con brillo -->
+    <path android:pathData="M38.2,61L81.8,61L79.8,81L40.2,81Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="82"
+                android:endY="72"
+                android:startX="38"
+                android:startY="72"
+                android:type="linear">
+                <item android:color="#B54CFF" android:offset="0.0" />
+                <item android:color="#8B30E0" android:offset="0.55" />
+                <item android:color="#531491" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Emblema circular dorado en la manga -->
+    <path
+        android:fillColor="#F6C35D"
+        android:pathData="M60,71m-6.5,0a6.5,6.5 0,1 1,13 0a6.5,6.5 0,1 1,-13 0" />
+    <path
+        android:fillColor="#3A1A5E"
+        android:pathData="M60,67.2L61.2,69.8L64,70.2L62,72.1L62.5,74.9L60,73.5L57.5,74.9L58,72.1L56,70.2L58.8,69.8Z" />
+
+    <!-- Tapa 3D -->
+    <path android:pathData="M32,42C32,39.8 33.8,38 36,38L84,38C86.2,38 88,39.8 88,42L88,46L32,46Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="88"
+                android:endY="44"
+                android:startX="32"
+                android:startY="40"
+                android:type="linear">
+                <item android:color="#FFFFFF" android:offset="0.0" />
+                <item android:color="#D6BFF2" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#E9DCFA"
+        android:pathData="M37,38L41,32L79,32L83,38Z" />
+
+    <!-- Granos de café en la base derecha -->
+    <path
+        android:fillColor="#6A3A28"
+        android:pathData="M85,95m-7,0a7,5 0,1 1,14 0a7,5 0,1 1,-14 0" />
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M80,95C83,93.5 87,96.5 90,95"
+        android:strokeWidth="1.2"
+        android:strokeColor="#3A1C12" />
+</vector>

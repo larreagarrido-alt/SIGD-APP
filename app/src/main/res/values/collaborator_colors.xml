@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <!-- Paleta Modo Claro (Day) SIGD Premium -->
+    <color name="collab_bg_main">#F8F5FC</color>
+    <color name="collab_bg_header_start">#EBDDFA</color>
+    <color name="collab_bg_header_end">#F8F5FC</color>
+    <color name="collab_bg_surface">#FFFFFF</color>
+    <color name="collab_bg_surface_secondary">#F1EAF8</color>
+    <color name="collab_bg_hero_start">#EFE2FC</color>
+    <color name="collab_bg_hero_end">#FFFFFF</color>
+    <color name="collab_bg_bottom_nav">#FFFFFF</color>
+    <color name="collab_bg_input">#F1EAF8</color>
+
+    <!-- Bordes y divisores suaves -->
+    <color name="collab_border">#E4D7EE</color>
+    <color name="collab_border_highlight">#B589F7</color>
+    <color name="collab_divider">#E4D7EE</color>
+
+    <!-- Acentos morados y lilas institucionales -->
+    <color name="collab_purple_primary">#8428D8</color>
+    <color name="collab_purple_dark">#5B21B6</color>
+    <color name="collab_purple_accent">#7620C4</color>
+    <color name="collab_lilac_accent">#8428D8</color>
+    <color name="collab_icon_on_badge">#7620C4</color>
+    <color name="collab_nav_inactive">#7E6B92</color>
+    <color name="collab_nav_active">#8428D8</color>
+
+    <!-- Textos de alto contraste para Modo Claro -->
+    <color name="collab_text_primary">#241532</color>
+    <color name="collab_text_secondary">#665575</color>
+    <color name="collab_text_muted">#7E6B92</color>
+    <color name="collab_text_on_purple">#FFFFFF</color>
+
+    <!-- Estados semánticos con contraste óptimo sobre fondo claro -->
+    <color name="collab_status_completed">#059669</color>
+    <color name="collab_status_pending">#D97706</color>
+    <color name="collab_status_overdue">#DC2626</color>
+    <color name="collab_cyan_accent">#0284C7</color>
+
+    <!-- Fondos translúcidos para insignias e iconos -->
+    <color name="collab_badge_purple_bg">#1F8428D8</color>
+    <color name="collab_badge_lilac_bg">#248428D8</color>
+    <color name="collab_badge_green_bg">#1E059669</color>
+    <color name="collab_badge_amber_bg">#22D97706</color>
+    <color name="collab_badge_red_bg">#1EDC2626</color>
+    <color name="collab_badge_cyan_bg">#1E0284C7</color>
+
+    <color name="collab_unread_card_bg">#F1EAF8</color>
+
+    <!-- Bienestar Psicológico: tarjetas de respuesta y paleta emocional suave -->
+    <color name="collab_wellness_bg_main">#F8F5FC</color>
+    <color name="collab_wellness_card_bg">#FFFFFF</color>
+    <color name="collab_wellness_card_selected_bg">#F1EAF8</color>
+    <color name="collab_wellness_card_border">#E4D7EE</color>
+    <color name="collab_wellness_selected_border">#8428D8</color>
+    <color name="collab_wellness_selected_glow">#338428D8</color>
+    <color name="collab_wellness_violet_primary">#8428D8</color>
+    <color name="collab_wellness_check_icon_tint">#FFFFFF</color>
+    <color name="collab_wellness_radio_ring">#B69FD6</color>
+    <color name="collab_wellness_footer_bg">#FFFFFF</color>
+    <color name="collab_wellness_btn_disabled_bg">#E4D7EE</color>
+    <color name="collab_wellness_btn_disabled_text">#7E6B92</color>
+    <color name="collab_mood_very_good">#1FA977</color>
+    <color name="collab_mood_good">#52A65D</color>
+    <color name="collab_mood_neutral">#8428D8</color>
+    <color name="collab_mood_bad">#D9822B</color>
+    <color name="collab_mood_very_bad">#D95C75</color>
+
+    <!-- Mi Progreso y Reconocimientos (Light Mode SIGD) -->
+    <color name="collab_prog_bg_main">#F8F5FC</color>
+    <color name="collab_prog_card_bg">#FFFFFF</color>
+    <color name="collab_prog_surface_secondary">#F1EAF8</color>
+    <color name="collab_prog_violet_primary">#8428D8</color>
+    <color name="collab_prog_violet_glow">#8428D8</color>
+    <color name="collab_prog_violet_glow_soft">#298428D8</color>
+    <color name="collab_prog_border">#E4D7EE</color>
+    <color name="collab_prog_border_subtle">#EBDDFA</color>
+    <color name="collab_prog_text_secondary">#665575</color>
+    <color name="collab_prog_gold">#B45309</color>
+    <color name="collab_prog_gold_bg">#24F59E0B</color>
+    <color name="collab_prog_row_self_bg">#EBDDFA</color>
+
+    <!-- Centro de Notificaciones SIGD (Light Mode adaptado) -->
+    <color name="collab_notif_violet_soft">#8428D8</color>
+    <color name="collab_notif_border">#E4D7EE</color>
+    <color name="collab_notif_text_secondary">#665575</color>
+    <color name="collab_notif_positive">#059669</color>
+    <color name="collab_notif_positive_bg">#1C059669</color>
+    <color name="collab_notif_unread_bg">#F1EAF8</color>
+    <color name="collab_notif_unread_border">#B589F7</color>
+</resources>

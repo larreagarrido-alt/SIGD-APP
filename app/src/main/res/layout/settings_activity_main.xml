@@ -1,0 +1,1229 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/collab_bg_main"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- Encabezado Limpio y Profesional -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/admin_space_lg"
+        android:paddingTop="@dimen/admin_space_md"
+        android:paddingEnd="@dimen/admin_space_lg"
+        android:paddingBottom="@dimen/admin_space_md">
+
+        <!-- Botón Regresar -->
+        <FrameLayout
+            android:id="@+id/settings_btn_back"
+            android:layout_width="@dimen/admin_icon_btn_size"
+            android:layout_height="@dimen/admin_icon_btn_size"
+            android:background="@drawable/collab_bg_circle_button"
+            android:clickable="true"
+            android:contentDescription="Regresar"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="20dp"
+                android:layout_height="20dp"
+                android:layout_gravity="center"
+                android:src="@drawable/admin_ic_chevron_left"
+                app:tint="@color/collab_text_primary" />
+        </FrameLayout>
+
+        <!-- Título y Subtítulo -->
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="@dimen/admin_space_md"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/settings_screen_title"
+                android:textColor="@color/collab_text_primary"
+                android:textSize="@dimen/admin_text_xl"
+                android:textStyle="bold" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:text="@string/settings_screen_sub"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/collab_divider" />
+
+    <!-- Contenido con Scroll -->
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:paddingBottom="40dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:padding="@dimen/admin_space_lg">
+
+            <!-- ============================================== -->
+            <!-- SECCIÓN 1: APARIENCIA                          -->
+            <!-- ============================================== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:letterSpacing="0.08"
+                android:text="@string/settings_section_appearance"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_sm"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Opción: Modo Oscuro (Predeterminado) -->
+                <LinearLayout
+                    android:id="@+id/settings_opt_theme_dark"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/admin_ic_sliders"
+                            app:tint="@color/collab_purple_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_theme_dark_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_theme_dark_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/settings_ic_check_dark"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/account_ic_check"
+                        app:tint="@color/collab_purple_accent" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Opción: Modo Claro -->
+                <LinearLayout
+                    android:id="@+id/settings_opt_theme_light"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_amber">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/admin_ic_sparkle"
+                            app:tint="@color/admin_status_pending" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_theme_light_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_theme_light_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/settings_ic_check_light"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/account_ic_check"
+                        android:visibility="gone"
+                        app:tint="@color/collab_purple_accent" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Opción: Seguir Sistema -->
+                <LinearLayout
+                    android:id="@+id/settings_opt_theme_system"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_cyan">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/admin_ic_switch_role"
+                            app:tint="@color/admin_cyan_brain" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_theme_system_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_theme_system_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/settings_ic_check_system"
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/account_ic_check"
+                        android:visibility="gone"
+                        app:tint="@color/collab_purple_accent" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ============================================== -->
+            <!-- SECCIÓN 2: NOTIFICACIONES                      -->
+            <!-- ============================================== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:letterSpacing="0.08"
+                android:text="@string/settings_section_notifications"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_sm"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- 1. Notificaciones generales (Master) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <!-- Icono moderno bell-ring de notificaciones generales -->
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/collab_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="22dp"
+                            android:layout_height="22dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/collab_ic_bell_ring"
+                            app:tint="@color/collab_purple_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_notif_master_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_notif_master_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/settings_switch_notif_master"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        app:useMaterialThemeColors="true" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- 2. Recordatorios de actividades -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_cyan">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/collaborator_ic_clock"
+                            app:tint="@color/admin_cyan_brain" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_notif_reminders_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_notif_reminders_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/settings_switch_notif_reminders"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        app:useMaterialThemeColors="true" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- 3. Avisos relacionados con KPI -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_green">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/admin_ic_chart"
+                            app:tint="@color/admin_status_delivered" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_notif_kpi_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_notif_kpi_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/settings_switch_notif_kpi"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        app:useMaterialThemeColors="true" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- 4. Novedades de WEBSITE -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/collaborator_ic_star"
+                            app:tint="@color/collab_purple_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_notif_news_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_notif_news_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/settings_switch_notif_news"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        app:useMaterialThemeColors="true" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- 5. Alertas importantes -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_amber">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/admin_ic_alert_triangle"
+                            app:tint="@color/admin_status_pending" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_notif_alerts_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_notif_alerts_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/settings_switch_notif_alerts"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="true"
+                        app:useMaterialThemeColors="true" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ============================================== -->
+            <!-- SECCIÓN 3: IDIOMA                              -->
+            <!-- ============================================== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:letterSpacing="0.08"
+                android:text="@string/settings_section_language"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_sm"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:id="@+id/settings_row_language"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/admin_ic_globe"
+                            app:tint="@color/collab_purple_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_lang_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/settings_tv_current_language"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_lang_current"
+                            android:textColor="@color/collab_purple_accent"
+                            android:textSize="@dimen/admin_text_xs"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ============================================== -->
+            <!-- SECCIÓN 4: ACCESIBILIDAD                       -->
+            <!-- ============================================== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:letterSpacing="0.08"
+                android:text="@string/settings_section_accessibility"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_sm"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- 1. Escala de texto -->
+                <LinearLayout
+                    android:id="@+id/settings_row_text_scale"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/account_ic_edit"
+                            app:tint="@color/collab_purple_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_access_text_scale_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/settings_tv_text_scale_value"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Normal (Predeterminado)"
+                            android:textColor="@color/collab_purple_accent"
+                            android:textSize="@dimen/admin_text_xs"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- 2. Reducir animaciones -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_cyan">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/collaborator_ic_robot_ia"
+                            app:tint="@color/admin_cyan_brain" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_access_animations_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_access_animations_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/settings_switch_reduce_anim"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        app:useMaterialThemeColors="true" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- 3. Alto Contraste -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_green">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/collaborator_ic_check_circle"
+                            app:tint="@color/admin_status_delivered" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_access_contrast_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_access_contrast_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <com.google.android.material.switchmaterial.SwitchMaterial
+                        android:id="@+id/settings_switch_high_contrast"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:checked="false"
+                        app:useMaterialThemeColors="true" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ============================================== -->
+            <!-- SECCIÓN 4.5: SEGURIDAD Y ACCESO                -->
+            <!-- ============================================== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:letterSpacing="0.08"
+                android:text="@string/settings_section_security"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_sm"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <LinearLayout
+                    android:id="@+id/settings_security_devices"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="8dp">
+
+                    <FrameLayout
+                        android:layout_width="40dp"
+                        android:layout_height="40dp"
+                        android:background="@drawable/admin_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/security_ic_shield_check"
+                            app:tint="@color/collab_purple_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_marginEnd="10dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_security_devices"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_security_devices_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- SECCIÓN 5: PRIVACIDAD Y PERMISOS               -->
+            <!-- ============================================== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:letterSpacing="0.08"
+                android:text="@string/settings_section_privacy"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_sm"
+                android:background="@drawable/collab_bg_card"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <!-- Información de datos -->
+                <LinearLayout
+                    android:id="@+id/settings_row_privacy_data"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/admin_ic_shield"
+                            app:tint="@color/collab_purple_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_privacy_data_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_privacy_data_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Permisos de la aplicación (Ajustes de Android) -->
+                <LinearLayout
+                    android:id="@+id/settings_row_permissions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_cyan">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/admin_ic_gear"
+                            app:tint="@color/admin_cyan_brain" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_privacy_permissions_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_privacy_permissions_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+
+                <View
+                    android:layout_width="match_parent"
+                    android:layout_height="1dp"
+                    android:background="@color/collab_divider" />
+
+                <!-- Política de Privacidad -->
+                <LinearLayout
+                    android:id="@+id/settings_row_privacy_policy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingVertical="10dp">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/admin_bg_icon_badge_green">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/collaborator_ic_document"
+                            app:tint="@color/admin_status_delivered" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="14dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="@string/settings_privacy_policy_title"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="@dimen/admin_text_base"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="@string/settings_privacy_policy_desc"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="@dimen/admin_text_xs" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+
+            </LinearLayout>
+
+            <!-- ============================================== -->
+            <!-- SECCIÓN 6: ACERCA DE SIGD                      -->
+            <!-- ============================================== -->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_xl"
+                android:letterSpacing="0.08"
+                android:text="@string/settings_section_about"
+                android:textColor="@color/collab_text_muted"
+                android:textSize="@dimen/admin_text_xs"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="@dimen/admin_space_sm"
+                android:background="@drawable/collab_bg_card"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="20dp">
+
+                <FrameLayout
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/sigd_bg_brand_logo_contrast"
+                    android:paddingStart="12dp"
+                    android:paddingTop="8dp"
+                    android:paddingEnd="12dp"
+                    android:paddingBottom="8dp">
+
+                    <ImageView
+                        android:layout_width="72dp"
+                        android:layout_height="76dp"
+                        android:adjustViewBounds="true"
+                        android:contentDescription="Logo oficial de SIGD"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/auth_sigd_logo_transparent" />
+                </FrameLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:text="@string/settings_about_app_name"
+                    android:textColor="@color/collab_text_primary"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/settings_tv_version"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="2dp"
+                    android:text=""
+                    android:textColor="@color/collab_purple_accent"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:gravity="center"
+                    android:text="@string/settings_about_app_desc"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="12sp" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:gravity="center"
+                    android:text="@string/settings_about_rights"
+                    android:textColor="@color/collab_text_muted"
+                    android:textSize="11sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>

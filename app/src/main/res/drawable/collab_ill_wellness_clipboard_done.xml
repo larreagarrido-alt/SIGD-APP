@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="56dp"
+    android:height="56dp"
+    android:viewportWidth="80"
+    android:viewportHeight="80">
+
+    <!-- Halo suave -->
+    <path android:pathData="M40,40m-36,0a36,36 0,1 1,72 0a36,36 0,1 1,-72 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="40"
+                android:centerY="40"
+                android:gradientRadius="36"
+                android:type="radial">
+                <item android:color="#3DB54CFF" android:offset="0.0" />
+                <item android:color="#00251630" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Tablero del portapapeles -->
+    <path android:pathData="M18,17C18,13.7 20.7,11 24,11L52,11C55.3,11 58,13.7 58,17L58,63C58,66.3 55.3,69 52,69L24,69C20.7,69 18,66.3 18,63Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="58"
+                android:endY="69"
+                android:startX="18"
+                android:startY="11"
+                android:type="linear">
+                <item android:color="#693CA1" android:offset="0.0" />
+                <item android:color="#401E69" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Hoja interior -->
+    <path android:pathData="M23,19C23,17.3 24.3,16 26,16L50,16C51.7,16 53,17.3 53,19L53,61C53,62.7 51.7,64 50,64L26,64C24.3,64 23,62.7 23,61Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="53"
+                android:endY="64"
+                android:startX="23"
+                android:startY="16"
+                android:type="linear">
+                <item android:color="#FAF4FF" android:offset="0.0" />
+                <item android:color="#E1CCF8" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Clip superior metálico-violeta -->
+    <path android:pathData="M30,8C30,6.3 31.3,5 33,5L43,5C44.7,5 46,6.3 46,8L46,16C46,17.7 44.7,19 43,19L33,19C31.3,19 30,17.7 30,16Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="46"
+                android:endY="19"
+                android:startX="30"
+                android:startY="5"
+                android:type="linear">
+                <item android:color="#D68FFF" android:offset="0.0" />
+                <item android:color="#8B30E0" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Líneas del formulario -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M29,29L47,29M29,38L44,38M29,47L40,47"
+        android:strokeWidth="2.8"
+        android:strokeColor="#8F63C4"
+        android:strokeLineCap="round" />
+
+    <!-- Emblema circular verde completado -->
+    <path
+        android:fillColor="#251630"
+        android:pathData="M56,57m-14.5,0a14.5,14.5 0,1 1,29 0a14.5,14.5 0,1 1,-29 0" />
+    <path android:pathData="M56,57m-12,0a12,12 0,1 1,24 0a12,12 0,1 1,-24 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="66"
+                android:endY="67"
+                android:startX="46"
+                android:startY="47"
+                android:type="linear">
+                <item android:color="#8AF0C2" android:offset="0.0" />
+                <item android:color="#57D6A0" android:offset="0.55" />
+                <item android:color="#2EA372" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M50.5,57.2L54.2,60.9L61.8,53.3"
+        android:strokeWidth="2.8"
+        android:strokeColor="#11091F"
+        android:strokeLineCap="round"
+        android:strokeLineJoin="round" />
+</vector>

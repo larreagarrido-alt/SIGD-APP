@@ -1,0 +1,2238 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/collab_wellness_bg_main"
+    android:fitsSystemWindows="true"
+    android:orientation="vertical">
+
+    <!-- 1. ENCABEZADO DE BIENESTAR Y EVALUACIÓN EMOCIONAL -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/collab_bg_header_gradient"
+        android:gravity="center_vertical"
+        android:orientation="horizontal"
+        android:paddingStart="@dimen/admin_space_lg"
+        android:paddingTop="10dp"
+        android:paddingEnd="@dimen/admin_space_lg"
+        android:paddingBottom="10dp">
+
+        <FrameLayout
+            android:id="@+id/collab_wellness_btn_back"
+            android:layout_width="38dp"
+            android:layout_height="38dp"
+            android:background="@drawable/collab_bg_circle_button"
+            android:clickable="true"
+            android:contentDescription="Volver"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:layout_gravity="center"
+                android:src="@drawable/admin_ic_chevron_left"
+                app:tint="@color/collab_purple_accent" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:includeFontPadding="false"
+                android:text="Bienestar Psicológico"
+                android:textColor="@color/collab_text_primary"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/collab_wellness_tv_subtitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="2dp"
+                android:includeFontPadding="false"
+                android:text="Tu bienestar, nuestra prioridad"
+                android:textColor="@color/collab_text_secondary"
+                android:textSize="12.5sp" />
+        </LinearLayout>
+
+        <FrameLayout
+            android:layout_width="36dp"
+            android:layout_height="36dp"
+            android:background="@drawable/collab_bg_icon_badge_purple">
+
+            <ImageView
+                android:layout_width="19dp"
+                android:layout_height="19dp"
+                android:layout_gravity="center"
+                android:src="@drawable/collab_ic_heart_pulse"
+                app:tint="@color/collab_purple_accent" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- 2. CONTENIDO DESPLAZABLE MULTIFASE -->
+    <ScrollView
+        android:id="@+id/collab_wellness_scroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:scrollbars="none">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="@dimen/admin_space_lg"
+            android:paddingTop="10dp"
+            android:paddingEnd="@dimen/admin_space_lg"
+            android:paddingBottom="28dp">
+
+            <!-- ================================================================= -->
+            <!-- FASE 1: VISTA DE RESUMEN Y SELECCIÓN DE EVALUACIÓN (SEMANAL/MENS) -->
+            <!-- ================================================================= -->
+            <LinearLayout
+                android:id="@+id/collab_wellness_view_overview"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical">
+
+                <!-- Presentación y acceso directo al resultado local -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collab_bg_card_hero"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:letterSpacing="0.08"
+                                android:text="BIENESTAR PSICOLÓGICO"
+                                android:textColor="@color/collab_purple_accent"
+                                android:textSize="10.5sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/collab_wellness_tv_status_title"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Un espacio para ti"
+                                android:textColor="@color/collab_text_primary"
+                                android:textSize="20sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/collab_wellness_tv_status_desc"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="4dp"
+                                android:text="Reflexiona sobre tu experiencia laboral, a tu ritmo."
+                                android:textColor="@color/collab_text_secondary"
+                                android:textSize="14sp" />
+                        </LinearLayout>
+
+                        <FrameLayout
+                            android:layout_width="88dp"
+                            android:layout_height="88dp"
+                            android:layout_marginStart="10dp"
+                            android:background="@drawable/collab_bg_card">
+
+                            <ImageView
+                                android:id="@+id/collab_wellness_iv_status_mood"
+                                android:layout_width="match_parent"
+                                android:layout_height="match_parent"
+                                android:layout_gravity="center"
+                                android:contentDescription="Websito, robot oficial de WEBSITE"
+                                android:scaleType="fitCenter"
+                                android:src="@drawable/collab_avatar_webi_robot_transparent" />
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="12dp"
+                        android:layout_marginBottom="10dp"
+                        android:background="@color/collab_divider" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="TU RESUMEN PERSONAL"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="11sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_tv_recommendations"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:lineSpacingExtra="3dp"
+                        android:text="Completa una evaluación mensual para ver una orientación basada en tus respuestas."
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_btn_hero_result"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="16dp"
+                        android:background="@drawable/collab_bg_chip_selected"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="Ver mi resultado y recomendaciones"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                </LinearLayout>
+
+                <!-- Garantía de confidencialidad y privacidad -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/collab_bg_card"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="12dp">
+
+                    <ImageView
+                        android:layout_width="20dp"
+                        android:layout_height="20dp"
+                        android:src="@drawable/collaborator_ic_check_circle"
+                        app:tint="@color/collab_status_completed" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_privacy_notice"
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="10dp"
+                        android:layout_weight="1"
+                        android:text="Demostración privada · Las respuestas se guardan solo en este dispositivo. No se envían al servidor ni afectan tus KPI."
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="12sp" />
+                </LinearLayout>
+
+                <!-- Accesos complementarios sin duplicar la pestaña activa Mis evaluaciones -->
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:layout_marginBottom="10dp"
+                    android:letterSpacing="0.08"
+                    android:text="ESPACIOS DE BIENESTAR"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <!-- 1. Mis sugerencias (abre la pantalla existente Sugerencias para ti intacta) -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_hub_suggestions"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="9dp"
+                    android:background="@drawable/admin_bg_wellness_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="12dp">
+
+                    <FrameLayout
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:background="@drawable/collab_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/collab_ic_rec_sparkles"
+                            app:tint="#FFC75A" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Mis sugerencias"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="14.5sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Recomendaciones para tu bienestar"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="11.5sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+
+                <!-- 3. Actividades y eventos (publicadas por el Administrador) -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_hub_activities"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginBottom="9dp"
+                    android:background="@drawable/admin_bg_wellness_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="12dp">
+
+                    <FrameLayout
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:background="@drawable/collab_bg_icon_badge_green">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/admin_ic_calendar_heart"
+                            app:tint="@color/collab_status_completed" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Actividades y eventos"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="14.5sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Talleres, charlas y actividades para ti"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="11.5sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+
+                <!-- 4. Asistente de bienestar (Orientación Website) -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_hub_assistant"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/admin_bg_wellness_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="14dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="14dp"
+                    android:paddingBottom="12dp">
+
+                    <FrameLayout
+                        android:layout_width="42dp"
+                        android:layout_height="42dp"
+                        android:background="@drawable/collab_bg_icon_badge_cyan">
+
+                        <ImageView
+                            android:layout_width="20dp"
+                            android:layout_height="20dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/collab_ic_notif_heart_handshake"
+                            app:tint="@color/collab_cyan_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Asistente de bienestar"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="14.5sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Consultas y consejos de bienestar"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="11.5sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="16dp"
+                        android:layout_height="16dp"
+                        android:contentDescription="@null"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        app:tint="@color/collab_text_muted" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/collab_wellness_eval_anchor"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:layout_marginBottom="10dp"
+                    android:letterSpacing="0.08"
+                    android:text="ELIGE UNA EVALUACIÓN"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <!-- Tarjeta 1: Evaluación mensual -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collab_bg_card"
+                    android:orientation="vertical"
+                    android:padding="@dimen/admin_space_lg">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:background="@drawable/collab_bg_icon_badge_purple">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/admin_ic_calendar"
+                                app:tint="@color/collab_purple_accent" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Evaluación mensual"
+                                android:textColor="@color/collab_text_primary"
+                                android:textSize="15.5sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/collab_wellness_tv_month_period"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Mes actual • 3 a 5 minutos"
+                                android:textColor="@color/collab_purple_accent"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/collab_wellness_badge_monthly_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/collab_bg_pill_green"
+                            android:paddingStart="9dp"
+                            android:paddingTop="4dp"
+                            android:paddingEnd="9dp"
+                            android:paddingBottom="4dp"
+                            android:text="Disponible"
+                            android:textColor="@color/collab_status_completed"
+                            android:textSize="10.5sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Cuéntanos cómo te sentiste durante este mes de trabajo. Tus respuestas se guardan en tu historial privado."
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_btn_start_monthly"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/collab_bg_chip_selected"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="Comenzar evaluación"
+                        android:textColor="@android:color/white"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Tarjeta única de Evaluación semanal (visible solo si existe en el servidor) -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_weekly_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/collab_bg_card"
+                    android:orientation="vertical"
+                    android:padding="@dimen/admin_space_lg"
+                    android:visibility="gone">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:background="@drawable/collab_bg_icon_badge_purple">
+
+                            <ImageView
+                                android:layout_width="22dp"
+                                android:layout_height="22dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="@null"
+                                android:src="@drawable/collab_ic_notif_clipboard_check"
+                                app:tint="@color/collab_purple_accent" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Evaluación semanal"
+                                android:textColor="@color/collab_text_primary"
+                                android:textSize="15.5sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/collab_wellness_tv_weekly_period"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Seguimiento breve de la semana"
+                                android:textColor="@color/collab_purple_accent"
+                                android:textSize="12.5sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/collab_wellness_badge_weekly_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/collab_bg_pill_green"
+                            android:paddingStart="9dp"
+                            android:paddingTop="4dp"
+                            android:paddingEnd="9dp"
+                            android:paddingBottom="4dp"
+                            android:text="Disponible"
+                            android:textColor="@color/collab_status_completed"
+                            android:textSize="10.5sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/collab_wellness_btn_start_weekly"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/collab_bg_pill_purple"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="Comenzar evaluación semanal"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Tarjeta 2: Ryff, habilitada solo por invitación -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/collab_bg_card"
+                    android:orientation="vertical"
+                    android:padding="@dimen/admin_space_lg">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="42dp"
+                            android:layout_height="42dp"
+                            android:background="@drawable/collab_bg_icon_badge_cyan">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:src="@drawable/collab_ic_heart_pulse" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Evaluación de bienestar — Ryff"
+                                android:textColor="@color/collab_text_primary"
+                                android:textSize="15.5sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="Voluntaria • Solo por invitación"
+                                android:textColor="@color/collab_cyan_accent"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/collab_wellness_badge_ryff_state"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/collab_bg_pill_purple"
+                            android:paddingStart="9dp"
+                            android:paddingTop="4dp"
+                            android:paddingEnd="9dp"
+                            android:paddingBottom="4dp"
+                        android:text="Solo por invitación"
+                            android:textColor="@color/collab_purple_accent"
+                            android:textSize="10.5sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Una reflexión personal sobre seis dimensiones del bienestar. Esta evaluación se habilita únicamente cuando corresponde; no decide contrataciones, sanciones ni permanencia."
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_tv_ryff_deadline"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_btn_open_ryff"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/collab_bg_pill_purple"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="Esta evaluación requiere invitación"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/collab_bg_card"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <ImageView
+                            android:layout_width="38dp"
+                            android:layout_height="38dp"
+                            android:contentDescription="Websito, robot oficial"
+                            android:scaleType="fitCenter"
+                            android:src="@drawable/collab_avatar_webi_robot_transparent" />
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="10dp"
+                            android:text="Cómo te acompaña Websito"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Después de tu evaluación, verás recomendaciones relacionadas con tus respuestas, directamente aquí en Bienestar."
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="14sp" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Las sugerencias son orientativas y no constituyen un diagnóstico. Websito no abre conversaciones."
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="13sp" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Introducción reutilizada por ambos recorridos. -->
+            <LinearLayout
+                android:id="@+id/collab_wellness_view_intro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collab_bg_card_hero"
+                    android:orientation="vertical"
+                    android:padding="22dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="44dp"
+                            android:layout_height="44dp"
+                            android:background="@drawable/collab_bg_icon_badge_purple">
+
+                            <ImageView
+                                android:layout_width="24dp"
+                                android:layout_height="24dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Bienestar"
+                                android:src="@drawable/collab_ic_heart_pulse"
+                                app:tint="@color/collab_purple_accent" />
+                        </FrameLayout>
+
+                        <TextView
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="12dp"
+                            android:letterSpacing="0.06"
+                            android:text="UN MOMENTO PARA TI"
+                            android:textColor="@color/collab_purple_accent"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/collab_wellness_intro_title"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:text="Evaluación mensual"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="22sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_intro_desc"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_intro_meta"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:letterSpacing="0.06"
+                    android:text="CÓMO FUNCIONA"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/collab_bg_card"
+                    android:padding="16dp"
+                    android:text="01  Responde a tu ritmo, una pregunta a la vez.\n02  Revisa y cambia tus respuestas antes de finalizar.\n03  Consulta el estado local en Mi evolución."
+                    android:textColor="@color/collab_text_primary"
+                    android:lineSpacingExtra="7dp"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="18dp"
+                    android:letterSpacing="0.06"
+                    android:text="TU PRIVACIDAD"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="12sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/collab_wellness_intro_privacy"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/collab_bg_card"
+                    android:padding="18dp"
+                    android:text="Participar es voluntario. En esta demostración las respuestas se asocian a tu cuenta y se guardan solo en este dispositivo; puedes revisar el estado en Mi evolución. No se envían a Recursos Humanos ni al administrador. Para información o apoyo, comunícate con el equipo de bienestar de tu organización."
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="14sp" />
+
+                <TextView
+                    android:id="@+id/collab_wellness_intro_start"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="18dp"
+                    android:background="@drawable/collab_bg_chip_selected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="Comenzar evaluación"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/collab_wellness_intro_decline"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="Ahora no"
+                    android:textColor="@color/collab_purple_accent"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+            <!-- ================================================================= -->
+            <!-- FASE EVOLUCIÓN: MI EVOLUCIÓN DE BIENESTAR (REDISEÑO PREMIUM SIGD) -->
+            <!-- ================================================================= -->
+            <LinearLayout
+                android:id="@+id/collab_wellness_view_evolution"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- Botón compacto de retorno a Mis evaluaciones -->
+                <TextView
+                    android:id="@+id/collab_wellness_btn_back_evaluations"
+                    android:layout_width="wrap_content"
+                    android:layout_height="36dp"
+                    android:background="@drawable/collab_bg_notif_chip_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:paddingStart="12dp"
+                    android:paddingEnd="14dp"
+                    android:text="‹  Mis evaluaciones"
+                    android:textColor="@color/collab_notif_violet_soft"
+                    android:textSize="12.5sp"
+                    android:textStyle="bold" />
+
+                <!-- 1. BANNER PRINCIPAL DE BIENESTAR EMOCIONAL -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/collab_bg_wellness_evo_banner"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:paddingStart="18dp"
+                    android:paddingTop="16dp"
+                    android:paddingEnd="10dp"
+                    android:paddingBottom="16dp">
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:lineSpacingExtra="2dp"
+                            android:text="Cuida tu bienestar emocional"
+                            android:textColor="@android:color/white"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="6dp"
+                            android:lineSpacingExtra="2dp"
+                            android:text="Evalúa tu estado, conoce tu evolución y accede a recursos de apoyo"
+                            android:textColor="#E4D5F6"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:layout_width="102dp"
+                        android:layout_height="102dp"
+                        android:contentDescription="Ilustración de bienestar emocional"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/collab_ill_wellness_hero_brain" />
+                </LinearLayout>
+
+                <!-- 2. ENCABEZADO DE SECCIÓN: MI EVOLUCIÓN DE BIENESTAR -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="38dp"
+                        android:layout_height="38dp"
+                        android:background="@drawable/collab_bg_rewards_image_frame">
+
+                        <ImageView
+                            android:layout_width="19dp"
+                            android:layout_height="19dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="Evolución de bienestar"
+                            android:src="@drawable/collab_ic_wellness_evolution"
+                            app:tint="@color/collab_prog_violet_glow" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Mi evolución de bienestar"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="16.5sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Historial de tus evaluaciones en el servicio"
+                            android:textColor="@color/collab_prog_text_secondary"
+                            android:textSize="11.5sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- ESTADO DE CARGA DEL HISTORIAL -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_evo_loading"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/collab_bg_wellness_evo_card"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:padding="18dp"
+                    android:visibility="gone">
+
+                    <ProgressBar
+                        android:layout_width="24dp"
+                        android:layout_height="24dp"
+                        android:indeterminate="true"
+                        android:indeterminateTint="@color/collab_prog_violet_glow" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="12dp"
+                        android:text="Consultando tus evaluaciones guardadas…"
+                        android:textColor="@color/collab_prog_text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <!-- ESTADO DE ERROR DEL HISTORIAL (CON REINTENTO) -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_evo_error"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/collab_bg_wellness_evo_card"
+                    android:gravity="center"
+                    android:orientation="vertical"
+                    android:padding="20dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="28dp"
+                        android:layout_height="28dp"
+                        android:contentDescription="Error al cargar"
+                        android:src="@drawable/admin_ic_alert_triangle"
+                        app:tint="@color/collab_status_overdue" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_evo_error_msg"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="No se pudo consultar tu historial en este momento."
+                        android:textColor="@color/collab_prog_text_secondary"
+                        android:textSize="13sp" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_evo_btn_retry"
+                        android:layout_width="wrap_content"
+                        android:layout_height="38dp"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/collab_bg_rewards_cta_btn"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:paddingStart="20dp"
+                        android:paddingEnd="20dp"
+                        android:text="Reintentar"
+                        android:textColor="@android:color/white"
+                        android:textSize="12.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- 3. TARJETA DESTACADA DE EVALUACIÓN MENSUAL -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_evo_featured_card"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/collab_bg_wellness_evo_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal"
+                    android:padding="15dp">
+
+                    <ImageView
+                        android:id="@+id/collab_wellness_evo_featured_icon"
+                        android:layout_width="54dp"
+                        android:layout_height="54dp"
+                        android:contentDescription="Estado de evaluación"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/collab_ill_wellness_clipboard_pending" />
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="13dp"
+                        android:layout_marginEnd="8dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:id="@+id/collab_wellness_evo_featured_title"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:text="Evaluación mensual"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="15sp"
+                            android:textStyle="bold" />
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="5dp"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:id="@+id/collab_wellness_evo_featured_period"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:ellipsize="end"
+                                android:maxLines="1"
+                                android:text="Sin registros aún"
+                                android:textColor="@color/collab_prog_text_secondary"
+                                android:textSize="12sp" />
+
+                            <TextView
+                                android:id="@+id/collab_wellness_evo_featured_badge"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:layout_marginStart="8dp"
+                                android:background="@drawable/collab_bg_notif_chip_unselected"
+                                android:paddingStart="8dp"
+                                android:paddingTop="2dp"
+                                android:paddingEnd="8dp"
+                                android:paddingBottom="2dp"
+                                android:text="Disponible"
+                                android:textColor="@color/collab_notif_violet_soft"
+                                android:textSize="10.5sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <TextView
+                            android:id="@+id/collab_wellness_evo_featured_date"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="4dp"
+                            android:ellipsize="end"
+                            android:maxLines="1"
+                            android:textColor="@color/collab_text_muted"
+                            android:textSize="11.5sp"
+                            android:visibility="gone" />
+                    </LinearLayout>
+
+                    <ImageView
+                        android:id="@+id/collab_wellness_evo_featured_chevron"
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="Ver detalle"
+                        android:src="@drawable/admin_ic_chevron_right"
+                        android:visibility="gone"
+                        app:tint="@color/collab_prog_text_secondary" />
+                </LinearLayout>
+
+                <!-- 4. TARJETAS DE PRIVACIDAD Y AUTORIZACIÓN (SIEMPRE VISIBLES) -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical">
+
+                    <!-- Tarjeta 1: Evaluación autorizada -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:background="@drawable/collab_bg_notif_card_read"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="14dp">
+
+                        <FrameLayout
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/collab_bg_icon_badge_green">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Evaluación autorizada"
+                                android:src="@drawable/admin_ic_shield_check"
+                                app:tint="@color/collab_notif_positive" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="11dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Evaluación autorizada"
+                                android:textColor="@color/collab_text_primary"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/collab_wellness_evolution_ryff"
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="Ryff: esta evaluación solo aparece cuando existe una invitación autorizada."
+                                android:textColor="@color/collab_prog_text_secondary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <!-- Tarjeta 2: Información importante -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/collab_bg_notif_card_read"
+                        android:gravity="top"
+                        android:orientation="horizontal"
+                        android:padding="14dp">
+
+                        <FrameLayout
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/collab_bg_icon_badge_purple">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Información importante"
+                                android:src="@drawable/collab_ic_info_circle"
+                                app:tint="@color/collab_notif_violet_soft" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="11dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Información importante"
+                                android:textColor="@color/collab_text_primary"
+                                android:textSize="13sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="3dp"
+                                android:lineSpacingExtra="2dp"
+                                android:text="Las sugerencias se muestran únicamente después de consultar tus respuestas guardadas."
+                                android:textColor="@color/collab_prog_text_secondary"
+                                android:textSize="12sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Placeholder Ryff preservado para compatibilidad -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_ryff_chart_placeholder"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/collab_bg_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="gone" />
+
+                <!-- 5. BOTÓN PRINCIPAL DE EVALUACIÓN (solo si no existe tarjeta destacada clicable) -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_evo_primary_cta"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/collab_bg_rewards_cta_btn"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:orientation="horizontal"
+                    android:paddingStart="16dp"
+                    android:paddingEnd="16dp"
+                    android:visibility="gone">
+
+                    <ImageView
+                        android:layout_width="18dp"
+                        android:layout_height="18dp"
+                        android:contentDescription="Evaluación"
+                        android:src="@drawable/collab_ic_notif_clipboard_check"
+                        app:tint="@android:color/white" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_evo_primary_cta_label"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="8dp"
+                        android:text="Evaluación mensual"
+                        android:textColor="@android:color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+
+                <!-- Botón secundario de Evaluación semanal (visible solo si weeklyTest existe) -->
+                <TextView
+                    android:id="@+id/collab_wellness_btn_legacy_weekly"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/collab_bg_notif_chip_unselected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="Evaluación semanal"
+                    android:textColor="@color/collab_notif_violet_soft"
+                    android:textSize="13.5sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <!-- 6. SECCIÓN EVOLUCIÓN MENSUAL / HISTORIAL CRONOLÓGICO REAL -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/collab_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="Historial cronológico"
+                            android:src="@drawable/admin_ic_calendar"
+                            app:tint="@color/collab_notif_violet_soft" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Evolución mensual"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="16sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Registro cronológico de tus evaluaciones por período"
+                            android:textColor="@color/collab_prog_text_secondary"
+                            android:textSize="11.5sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <!-- Línea de tiempo de evaluaciones reales -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_evolution_months"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="vertical" />
+
+                <!-- Nota respetuosa sobre ausencia de puntuaciones clínicas -->
+                <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:lineSpacingExtra="2dp"
+                    android:text="Tu historial muestra registros completados por período sin asignar porcentajes ni puntuaciones clínicas."
+                    android:textColor="@color/collab_text_muted"
+                    android:textSize="11.5sp" />
+
+                <!-- Detalle de respuestas guardadas (evaluaciones no mensuales) -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_evolution_record"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:background="@drawable/collab_bg_wellness_evo_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="gone" />
+
+                <!-- 7. RECURSOS DE APOYO REALES (CATÁLOGO VERIFICADO DEL PROYECTO) -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_evo_resources_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/collab_bg_icon_badge_purple">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Recursos de apoyo"
+                                android:src="@drawable/collab_ic_notif_heart_handshake"
+                                app:tint="@color/collab_notif_violet_soft" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="11dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Recursos de apoyo"
+                                android:textColor="@color/collab_text_primary"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Guías verificadas para tu bienestar emocional y laboral"
+                                android:textColor="@color/collab_prog_text_secondary"
+                                android:textSize="11.5sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/collab_wellness_evo_resources_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="vertical" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ================================================================= -->
+            <!-- FASE 2: FLUJO PROGRESIVO PASO A PASO (WIZARD DE PREGUNTAS)        -->
+            <!-- ================================================================= -->
+            <LinearLayout
+                android:id="@+id/collab_wellness_view_step"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <!-- 1. Tarjeta compacta de progreso -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collab_bg_card"
+                    android:orientation="vertical"
+                    android:paddingStart="15dp"
+                    android:paddingTop="12dp"
+                    android:paddingEnd="15dp"
+                    android:paddingBottom="13dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/collab_wellness_step_tv_type"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginEnd="8dp"
+                            android:layout_weight="1"
+                            android:ellipsize="end"
+                            android:includeFontPadding="false"
+                            android:maxLines="1"
+                            android:text="Evaluación semanal"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="13sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/collab_wellness_step_tv_counter"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:background="@drawable/collab_bg_pill_purple"
+                            android:includeFontPadding="false"
+                            android:paddingStart="10dp"
+                            android:paddingTop="4dp"
+                            android:paddingEnd="10dp"
+                            android:paddingBottom="4dp"
+                            android:text="Pregunta 1 de 6"
+                            android:textColor="@color/collab_purple_accent"
+                            android:textSize="11.5sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/collab_wellness_step_pb"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="7dp"
+                        android:layout_marginTop="10dp"
+                        android:max="100"
+                        android:progress="17"
+                        android:progressDrawable="@drawable/collab_bg_wellness_progress" />
+                </LinearLayout>
+
+                <!-- 2. Tarjeta diferenciada de presentación de la pregunta -->
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:background="@drawable/collab_bg_wellness_question_card"
+                    android:orientation="vertical"
+                    android:paddingStart="16dp"
+                    android:paddingTop="14dp"
+                    android:paddingEnd="16dp"
+                    android:paddingBottom="15dp">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:id="@+id/collab_wellness_step_tv_dimension"
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:includeFontPadding="false"
+                            android:letterSpacing="0.05"
+                            android:text="PREGUNTA 1"
+                            android:textColor="@color/collab_purple_accent"
+                            android:textSize="11.5sp"
+                            android:textStyle="bold" />
+
+                        <FrameLayout
+                            android:layout_width="28dp"
+                            android:layout_height="28dp"
+                            android:background="@drawable/collab_bg_icon_badge_purple"
+                            android:importantForAccessibility="noHideDescendants">
+
+                            <ImageView
+                                android:layout_width="15dp"
+                                android:layout_height="15dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="@null"
+                                android:src="@drawable/collab_ic_heart_pulse"
+                                app:tint="@color/collab_purple_accent" />
+                        </FrameLayout>
+                    </LinearLayout>
+
+                    <TextView
+                        android:id="@+id/collab_wellness_step_tv_question"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:lineSpacingExtra="3dp"
+                        android:text="¿Cómo te sentiste con tu experiencia de trabajo este mes?"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="19sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="7dp"
+                        android:text="Selecciona la opción que mejor refleje cómo te sentiste."
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="12.5sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:layout_marginBottom="8dp"
+                    android:letterSpacing="0.06"
+                    android:text="ELIGE UNA RESPUESTA"
+                    android:textColor="@color/collab_text_secondary"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <!-- Contenedor de tarjetas horizontales con caritas vectoriales 3D -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_options_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:orientation="vertical" />
+
+            </LinearLayout>
+
+            <!-- ================================================================= -->
+            <!-- FASE 3: PANTALLA DE REVISIÓN ANTES DE CONFIRMAR                   -->
+            <!-- ================================================================= -->
+            <LinearLayout
+                android:id="@+id/collab_wellness_view_review"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collab_bg_card_hero"
+                    android:orientation="vertical"
+                    android:padding="@dimen/admin_space_lg">
+
+                    <TextView
+                        android:id="@+id/collab_wellness_review_tv_badge"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:letterSpacing="0.08"
+                        android:text="PASO FINAL • REVISIÓN DE RESPUESTAS"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="10.5sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_review_tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Verifica tu evaluación antes de confirmar"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:text="Revisa tus respuestas o toca una tarjeta para editarlas. Al confirmar, se guardarán en el servidor para tu cuenta y podrás consultarlas en Mi evolución."
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="14sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/collab_wellness_review_list_container"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="14dp"
+                    android:orientation="vertical" />
+
+                <!-- Botones de acción en pantalla de revisión -->
+                <TextView
+                    android:id="@+id/collab_wellness_btn_confirm_send"
+                    android:layout_width="match_parent"
+                    android:layout_height="46dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/collab_bg_chip_selected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="Finalizar evaluación"
+                    android:textColor="@android:color/white"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:orientation="horizontal"
+                    android:weightSum="2">
+
+                    <TextView
+                        android:id="@+id/collab_wellness_btn_back_to_edit"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_marginEnd="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/collab_bg_pill_purple"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="Volver a editar"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_btn_cancel_review"
+                        android:layout_width="0dp"
+                        android:layout_height="44dp"
+                        android:layout_marginStart="6dp"
+                        android:layout_weight="1"
+                        android:background="@drawable/collab_bg_card"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="Cancelar"
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="13sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- ================================================================= -->
+            <!-- FASE 4: CONFIRMACIÓN HONESTA EN MODO DEMOSTRACIÓN                 -->
+            <!-- ================================================================= -->
+            <LinearLayout
+                android:id="@+id/collab_wellness_view_completed"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collab_bg_card_hero"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="24dp">
+
+                    <FrameLayout
+                        android:layout_width="72dp"
+                        android:layout_height="72dp"
+                        android:background="@drawable/collab_bg_circle_button">
+
+                        <ImageView
+                            android:id="@+id/collab_wellness_completed_iv_mood"
+                            android:layout_width="46dp"
+                            android:layout_height="46dp"
+                            android:layout_gravity="center"
+                            android:src="@drawable/collaborator_ic_check_circle" />
+                    </FrameLayout>
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/collab_bg_pill_green"
+                        android:paddingStart="12dp"
+                        android:paddingTop="5dp"
+                        android:paddingEnd="12dp"
+                        android:paddingBottom="5dp"
+                        android:text="Evaluación guardada en modo demostración"
+                        android:textColor="@color/collab_status_completed"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_completed_tv_title"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center"
+                        android:text="¡Gracias por compartir tu experiencia!"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="18sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:lineSpacingExtra="3dp"
+                        android:text="Tu participación puede ayudar a promover un ambiente laboral más saludable cuando exista una integración autorizada. Por ahora, tu registro permanece solo en este dispositivo."
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="13sp" />
+
+                    <View
+                        android:layout_width="match_parent"
+                        android:layout_height="1dp"
+                        android:layout_marginTop="16dp"
+                        android:layout_marginBottom="14dp"
+                        android:background="@color/collab_divider" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_completed_tv_summary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center"
+                        android:text="Modalidad registrada: Evaluación semanal (6/6 respuestas)"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_btn_open_result"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="18dp"
+                        android:background="@drawable/collab_bg_chip_selected"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="Ver mi resultado"
+                        android:textColor="@android:color/white"
+                        android:textSize="13.5sp"
+                        android:textStyle="bold"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_btn_finish_close"
+                        android:layout_width="match_parent"
+                        android:layout_height="46dp"
+                        android:layout_marginTop="10dp"
+                        android:background="@drawable/collab_bg_card"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:gravity="center"
+                        android:text="Volver al resumen de Bienestar"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="13.5sp"
+                        android:textStyle="bold" />
+                </LinearLayout>
+            </LinearLayout>
+
+            <!-- Resultado local: Websito es solo imagen, sin enlaces al chat. -->
+            <LinearLayout
+                android:id="@+id/collab_wellness_view_result"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:orientation="vertical"
+                android:visibility="gone">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/collab_bg_card_hero"
+                    android:gravity="center_horizontal"
+                    android:orientation="vertical"
+                    android:padding="20dp">
+
+                    <ImageView
+                        android:layout_width="132dp"
+                        android:layout_height="132dp"
+                        android:contentDescription="Websito, robot oficial de WEBSITE"
+                        android:scaleType="fitCenter"
+                        android:src="@drawable/collab_avatar_webi_robot_transparent" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:gravity="center"
+                        android:text="Sugerencias para ti"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="21sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:text="Resumen orientativo de bienestar laboral"
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_result_greeting"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:gravity="center"
+                        android:text="Hola"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="15sp" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_result_month"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="4dp"
+                        android:gravity="center"
+                        android:textColor="@color/collab_text_muted"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_result_summary"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="18dp"
+                        android:lineSpacingExtra="3dp"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="15sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:id="@+id/collab_wellness_result_professional_help"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:text="Si el malestar que has señalado en meses consecutivos continúa, considera conversar con un profesional de salud o un servicio de apoyo de tu confianza. Este resumen no es un diagnóstico."
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="13sp"
+                        android:visibility="gone" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:text="Orientación local de demostración basada en tus respuestas. No es un diagnóstico clínico ni se envía a una IA."
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="12sp"
+                        android:visibility="gone" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/collab_wellness_result_analysis"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/collab_bg_card"
+                    android:orientation="vertical"
+                    android:padding="18dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Lo que te resultó favorable"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/collab_wellness_result_positive"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="13sp" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="16dp"
+                        android:text="Aspectos para cuidar"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:id="@+id/collab_wellness_result_attention"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/collab_wellness_result_areas"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/collab_wellness_btn_show_recommendations"
+                    android:layout_width="match_parent"
+                    android:layout_height="52dp"
+                    android:layout_marginTop="16dp"
+                    android:background="@drawable/collab_bg_chip_selected"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="Ver mis recomendaciones"
+                    android:textColor="@android:color/white"
+                    android:textSize="15sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+
+                <!-- Encabezado de sección: Recomendaciones para ti -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_result_rec_header"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:gravity="center_vertical"
+                    android:orientation="horizontal">
+
+                    <FrameLayout
+                        android:layout_width="36dp"
+                        android:layout_height="36dp"
+                        android:background="@drawable/collab_bg_icon_badge_purple">
+
+                        <ImageView
+                            android:layout_width="18dp"
+                            android:layout_height="18dp"
+                            android:layout_gravity="center"
+                            android:contentDescription="@null"
+                            android:src="@drawable/collab_ic_rec_sparkles"
+                            app:tint="@color/collab_purple_accent" />
+                    </FrameLayout>
+
+                    <LinearLayout
+                        android:layout_width="0dp"
+                        android:layout_height="wrap_content"
+                        android:layout_marginStart="11dp"
+                        android:layout_weight="1"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:text="Recomendaciones para ti"
+                            android:textColor="@color/collab_text_primary"
+                            android:textSize="17sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="2dp"
+                            android:text="Pequeñas acciones para cuidar tu bienestar"
+                            android:textColor="@color/collab_text_secondary"
+                            android:textSize="12sp" />
+                    </LinearLayout>
+                </LinearLayout>
+
+                <LinearLayout
+                    android:id="@+id/collab_wellness_result_recommendations"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:orientation="vertical" />
+
+                <TextView
+                    android:id="@+id/collab_wellness_preferences_toggle"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:padding="12dp"
+                    android:text="Ajustes de sugerencias"
+                    android:textColor="@color/collab_purple_accent"
+                    android:textSize="12sp" />
+
+                <LinearLayout
+                    android:id="@+id/collab_wellness_preferences_panel"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/collab_bg_card"
+                    android:orientation="vertical"
+                    android:padding="16dp"
+                    android:visibility="gone">
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:text="Personalización opcional"
+                        android:textColor="@color/collab_text_primary"
+                        android:textSize="15sp"
+                        android:textStyle="bold" />
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="6dp"
+                        android:text="Si la activas, tus valoraciones de temas ajustan futuras sugerencias solo en este dispositivo y para tu cuenta. Puedes desactivarla o borrar lo aprendido."
+                        android:textColor="@color/collab_text_secondary"
+                        android:textSize="12sp" />
+                    <Switch
+                        android:id="@+id/collab_wellness_personalization_switch"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:text="Usar mis valoraciones"
+                        android:textColor="@color/collab_text_primary" />
+                    <TextView
+                        android:id="@+id/collab_wellness_clear_preferences"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="8dp"
+                        android:clickable="true"
+                        android:focusable="true"
+                        android:padding="8dp"
+                        android:text="Borrar preferencias aprendidas"
+                        android:textColor="@color/collab_purple_accent"
+                        android:textSize="13sp" />
+                </LinearLayout>
+
+                <TextView
+                    android:id="@+id/collab_wellness_btn_result_finish"
+                    android:layout_width="match_parent"
+                    android:layout_height="48dp"
+                    android:layout_marginTop="12dp"
+                    android:background="@drawable/collab_bg_card"
+                    android:clickable="true"
+                    android:focusable="true"
+                    android:gravity="center"
+                    android:text="Finalizar"
+                    android:textColor="@color/collab_text_primary"
+                    android:textSize="14sp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </ScrollView>
+
+    <!-- Controles siempre visibles mientras se responde el test. -->
+    <LinearLayout
+        android:id="@+id/collab_wellness_step_footer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/collab_bg_wellness_footer"
+        android:orientation="vertical"
+        android:paddingStart="16dp"
+        android:paddingTop="10dp"
+        android:paddingEnd="16dp"
+        android:paddingBottom="10dp"
+        android:visibility="gone">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/collab_wellness_btn_prev"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_marginEnd="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/collab_bg_wellness_btn_prev"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="Anterior"
+                android:textColor="@color/collab_text_primary"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/collab_wellness_btn_next"
+                android:layout_width="0dp"
+                android:layout_height="46dp"
+                android:layout_marginStart="6dp"
+                android:layout_weight="1"
+                android:background="@drawable/collab_bg_wellness_btn_next"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="Siguiente"
+                android:textColor="@android:color/white"
+                android:textSize="14sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/collab_wellness_btn_save_draft"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_marginTop="4dp"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:text="Guardar y continuar después"
+            android:textColor="@color/collab_purple_accent"
+            android:textSize="13sp" />
+    </LinearLayout>
+
+    <!-- 3. BARRA DE NAVEGACIÓN INFERIOR -->
+    <include layout="@layout/collaborator_layout_bottom_nav" />
+
+</LinearLayout>

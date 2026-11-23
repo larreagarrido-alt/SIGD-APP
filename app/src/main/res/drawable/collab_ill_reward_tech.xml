@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<vector xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:aapt="http://schemas.android.com/aapt"
+    android:width="96dp"
+    android:height="96dp"
+    android:viewportWidth="120"
+    android:viewportHeight="120">
+
+    <!-- Halo violeta -->
+    <path android:pathData="M60,62m-48,0a48,48 0,1 1,96 0a48,48 0,1 1,-96 0">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:centerX="60"
+                android:centerY="62"
+                android:gradientRadius="48"
+                android:type="radial">
+                <item android:color="#4EB54CFF" android:offset="0.0" />
+                <item android:color="#001D102C" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Sombra base -->
+    <path
+        android:fillColor="#66090412"
+        android:pathData="M28,99C28,95 42,92 60,92C78,92 92,95 92,99C92,103 78,106 60,106C42,106 28,103 28,99Z" />
+
+    <!-- Diadema externa 3D -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M28,66C28,44 42,28 60,28C78,28 92,44 92,66"
+        android:strokeWidth="10"
+        android:strokeColor="#8B30E0"
+        android:strokeLineCap="round" />
+    <!-- Brillo superior diadema -->
+    <path
+        android:fillColor="#00000000"
+        android:pathData="M34,54C38,39 48,30 60,30C70,30 79,36 84,48"
+        android:strokeWidth="3.5"
+        android:strokeColor="#D8A4FF"
+        android:strokeLineCap="round" />
+
+    <!-- Almohadilla izquierda -->
+    <path
+        android:fillColor="#2D1645"
+        android:pathData="M32,59C37,59 41,63 41,68L41,82C41,87 37,91 32,91L30,91C26.5,91 24,87 24,82L24,68C24,63 26.5,59 30,59Z" />
+    <!-- Carcasa auricular izquierda -->
+    <path android:pathData="M22,63C22,59.7 24.7,57 28,57L31,57C33.8,57 36,59.2 36,62L36,88C36,90.8 33.8,93 31,93L28,93C24.7,93 22,90.3 22,87Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="36"
+                android:endY="90"
+                android:startX="22"
+                android:startY="58"
+                android:type="linear">
+                <item android:color="#D27CFF" android:offset="0.0" />
+                <item android:color="#8B30E0" android:offset="0.55" />
+                <item android:color="#4D138A" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Almohadilla derecha -->
+    <path
+        android:fillColor="#2D1645"
+        android:pathData="M88,59C83,59 79,63 79,68L79,82C79,87 83,91 88,91L90,91C93.5,91 96,87 96,82L96,68C96,63 93.5,59 90,59Z" />
+    <!-- Carcasa auricular derecha -->
+    <path android:pathData="M84,62C84,59.2 86.2,57 89,57L92,57C95.3,57 98,59.7 98,63L98,87C98,90.3 95.3,93 92,93L89,93C86.2,93 84,90.8 84,88Z">
+        <aapt:attr name="android:fillColor">
+            <gradient
+                android:endX="98"
+                android:endY="90"
+                android:startX="84"
+                android:startY="58"
+                android:type="linear">
+                <item android:color="#C364FF" android:offset="0.0" />
+                <item android:color="#7B22CC" android:offset="0.6" />
+                <item android:color="#410E78" android:offset="1.0" />
+            </gradient>
+        </aapt:attr>
+    </path>
+
+    <!-- Detalles metálicos dorados -->
+    <path
+        android:fillColor="#F6C35D"
+        android:pathData="M27,72L31,72L31,79L27,79Z" />
+    <path
+        android:fillColor="#F6C35D"
+        android:pathData="M89,72L93,72L93,79L89,79Z" />
+
+    <!-- Destello -->
+    <path
+        android:fillColor="#FFF3C2"
+        android:pathData="M94,25L95.5,29L99.5,30.5L95.5,32L94,36L92.5,32L88.5,30.5L92.5,29Z" />
+</vector>

@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/wellness_rec_card_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="11dp"
+    android:background="@drawable/collab_bg_wellness_rec_card"
+    android:orientation="vertical"
+    android:padding="15dp">
+
+    <!-- Encabezado de la tarjeta: ícono individual a la izquierda + título y categoría a la derecha -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_vertical"
+        android:orientation="horizontal">
+
+        <FrameLayout
+            android:id="@+id/wellness_rec_icon_box"
+            android:layout_width="44dp"
+            android:layout_height="44dp">
+
+            <ImageView
+                android:id="@+id/wellness_rec_icon"
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:layout_gravity="center"
+                android:contentDescription="@null"
+                android:src="@drawable/collab_ic_rec_sparkles" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="12dp"
+            android:layout_weight="1"
+            android:orientation="vertical">
+
+            <TextView
+                android:id="@+id/wellness_rec_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:lineSpacingExtra="2dp"
+                android:text="Protege momentos de descanso"
+                android:textColor="@color/collab_text_primary"
+                android:textSize="15sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/wellness_rec_category"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:paddingStart="8dp"
+                android:paddingTop="2dp"
+                android:paddingEnd="8dp"
+                android:paddingBottom="2dp"
+                android:text="Autocuidado"
+                android:textColor="@color/collab_purple_accent"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- Descripción completa a todo el ancho, sin cursiva -->
+    <TextView
+        android:id="@+id/wellness_rec_description"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="11dp"
+        android:lineSpacingExtra="3dp"
+        android:text="Las pausas y el respeto al descanso son medidas de autocuidado laboral."
+        android:textColor="@color/collab_text_secondary"
+        android:textSize="13.5sp" />
+
+    <!-- Contenedor opcional para extras existentes en modo demostración local -->
+    <LinearLayout
+        android:id="@+id/wellness_rec_extra_slot"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:visibility="gone" />
+
+</LinearLayout>

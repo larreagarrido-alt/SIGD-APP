@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Componente compartido de créditos Website + firma 2026-jadiel para los menús de Administrador y Colaborador -->
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:id="@+id/sigd_credits_footer_root"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="24dp"
+    android:layout_marginBottom="4dp"
+    android:background="@android:color/transparent"
+    android:clickable="false"
+    android:focusable="false"
+    android:gravity="center_horizontal"
+    android:orientation="vertical"
+    android:paddingTop="6dp"
+    android:paddingBottom="6dp">
+
+    <ImageView
+        android:id="@+id/sigd_credits_footer_logo"
+        android:layout_width="96dp"
+        android:layout_height="28dp"
+        android:adjustViewBounds="true"
+        android:alpha="0.88"
+        android:clickable="false"
+        android:contentDescription="Website"
+        android:focusable="false"
+        android:scaleType="fitCenter"
+        android:src="@drawable/collab_img_website_logo" />
+
+    <TextView
+        android:id="@+id/sigd_credits_footer_dev"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp"
+        android:includeFontPadding="false"
+        android:text="Desarrollado por Website"
+        android:textColor="@color/admin_text_secondary"
+        android:textSize="11.5sp" />
+
+    <TextView
+        android:id="@+id/sigd_credits_footer_meta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="3dp"
+        android:includeFontPadding="false"
+        android:letterSpacing="0.04"
+        android:text="2026-jadiel"
+        android:textColor="@color/admin_text_muted"
+        android:textSize="10.5sp" />
+</LinearLayout>

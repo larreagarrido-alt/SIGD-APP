@@ -1,0 +1,360 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/kpi_light_bg"
+    android:orientation="vertical"
+    tools:ignore="HardcodedText,Overdraw">
+
+    <!-- CABECERA PRINCIPAL ELEGANTE DEL MÓDULO DE REPORTES -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@drawable/kpi_bg_header_elegant"
+        android:orientation="vertical"
+        android:paddingHorizontal="16dp"
+        android:paddingTop="20dp"
+        android:paddingBottom="14dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/btnReportsBack"
+                android:layout_width="44dp"
+                android:layout_height="44dp"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="←"
+                android:textColor="#FFFFFF"
+                android:textSize="20sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:letterSpacing="0.06"
+                    android:text="SISTEMA INTEGRAL DE GESTIÓN (SIGD)"
+                    android:textColor="#C7D2FE"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Centro de Reportes Semanales"
+                    android:textColor="#FFFFFF"
+                    android:textSize="18sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/kpi_ic_document"
+                app:tint="#FFFFFF" />
+        </LinearLayout>
+
+        <!-- SUBTÍTULO INFORMATIVO -->
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="6dp"
+            android:text="Consolidados oficiales por cargo, colaborador y semana. Los datos diarios se calculan automáticamente."
+            android:textColor="#E0E7FF"
+            android:textSize="11.5sp" />
+
+        <!-- BOTÓN ACCESO DIRECTO AL HISTORIAL DE REPORTES -->
+        <LinearLayout
+            android:id="@+id/btnHubOpenHistory"
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/kpi_bg_translucent_pill"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/kpi_ic_calendar"
+                app:tint="#FFFFFF" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="8dp"
+                android:textStyle="bold"
+                android:text="Historial de Reportes Archivados"
+                android:textColor="#FFFFFF"
+                android:textSize="12sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- PANEL DE FILTROS Y ADAPTABILIDAD MULTIPERSONA / BD (ADAPTABLE MODO CLARO / OSCURO) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="@color/kpi_card_bg"
+        android:elevation="3dp"
+        android:orientation="vertical"
+        android:padding="12dp">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:baselineAligned="false"
+            android:orientation="horizontal"
+            android:weightSum="3">
+
+            <!-- SELECTOR DE CARGO -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="4dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="CARGO"
+                    android:textColor="@color/kpi_primary"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spnReportCargo"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/kpi_junior_bg_spinner"
+                    android:popupBackground="@color/kpi_card_bg"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <!-- SELECTOR DE COLABORADOR (MULTIPERSONA / BD) -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginHorizontal="2dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="COLABORADOR"
+                    android:textColor="@color/kpi_primary"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spnReportCollaborator"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/kpi_junior_bg_spinner"
+                    android:popupBackground="@color/kpi_card_bg"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+
+            <!-- SELECTOR DE SEMANA -->
+            <LinearLayout
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="4dp"
+                android:layout_weight="1"
+                android:orientation="vertical">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="SEMANA"
+                    android:textColor="@color/kpi_primary"
+                    android:textSize="10sp"
+                    android:textStyle="bold" />
+
+                <Spinner
+                    android:id="@+id/spnReportWeek"
+                    android:layout_width="match_parent"
+                    android:layout_height="38dp"
+                    android:layout_marginTop="3dp"
+                    android:background="@drawable/kpi_junior_bg_spinner"
+                    android:popupBackground="@color/kpi_card_bg"
+                    android:spinnerMode="dropdown" />
+            </LinearLayout>
+        </LinearLayout>
+
+        <!-- SELECTOR DE MODO: CON DATOS vs PLANTILLA VACÍA -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="38dp"
+            android:layout_marginTop="10dp"
+            android:background="@drawable/kpi_bg_card_white"
+            android:gravity="center_vertical"
+            android:orientation="horizontal"
+            android:padding="2dp">
+
+            <TextView
+                android:id="@+id/btnViewModeFilled"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/kpi_bg_btn_elegant"
+                android:clickable="true"
+                android:focusable="true"
+                android:gravity="center"
+                android:text="Turno Mañana"
+                android:textColor="#FFFFFF"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/btnViewModeBlank"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:alpha="0.45"
+                android:background="@android:color/transparent"
+                android:clickable="false"
+                android:enabled="false"
+                android:focusable="false"
+                android:gravity="center"
+                android:text="Turno Tarde"
+                android:textColor="@color/kpi_text_secondary"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+    </LinearLayout>
+
+    <!-- ÁREA DE CONTENIDO DESPLAZABLE DEL REPORTE (A4 PREVIEW) -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="40dp"
+        android:background="@color/kpi_card_bg"
+        android:gravity="center"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/btnReportZoomOut"
+            android:layout_width="52dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="−"
+            android:textColor="@color/kpi_primary"
+            android:textSize="24sp" />
+
+        <TextView
+            android:id="@+id/tvReportZoomPercent"
+            android:layout_width="72dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="100%"
+            android:textColor="@color/kpi_primary"
+            android:textSize="14sp" />
+
+        <TextView
+            android:id="@+id/btnReportZoomIn"
+            android:layout_width="52dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:text="+"
+            android:textColor="@color/kpi_primary"
+            android:textSize="24sp" />
+    </LinearLayout>
+
+    <ScrollView
+        android:id="@+id/svReportsContentScroll"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1"
+        android:clipToPadding="false"
+        android:fillViewport="true"
+        android:overScrollMode="never"
+        android:paddingHorizontal="4dp"
+        android:paddingVertical="8dp">
+
+        <pe.net.ws.kpiweb.features.kpi.ui.view.KpiZoomableSheetLayout
+            android:id="@+id/zoomReportSheetLayout"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+            <FrameLayout
+                android:id="@+id/flReportSheetContainer"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" />
+        </pe.net.ws.kpiweb.features.kpi.ui.view.KpiZoomableSheetLayout>
+    </ScrollView>
+
+    <!-- BARRA INFERIOR DE ACCIONES: IMPRIMIR (DETECTA IMPRESORAS) + ENVIAR REPORTE -->
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFF"
+        android:elevation="8dp"
+        android:orientation="horizontal"
+        android:paddingHorizontal="14dp"
+        android:paddingVertical="10dp"
+        android:weightSum="2">
+
+        <LinearLayout
+            android:id="@+id/btnHubPrint"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginEnd="6dp"
+            android:layout_weight="0.8"
+            android:background="@drawable/kpi_bg_card_elegant_accent"
+            android:clickable="true"
+            android:focusable="true"
+            android:gravity="center"
+            android:orientation="horizontal"
+            android:paddingHorizontal="8dp">
+
+            <ImageView
+                android:layout_width="18dp"
+                android:layout_height="18dp"
+                android:src="@drawable/kpi_ic_printer"
+                app:tint="@color/kpi_primary" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="6dp"
+                android:textStyle="bold"
+                android:text="Imprimir"
+                android:textColor="@color/kpi_primary"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <TextView
+            android:id="@+id/btnHubSendReport"
+            android:layout_width="0dp"
+            android:layout_height="46dp"
+            android:layout_marginStart="6dp"
+            android:layout_weight="1.2"
+            android:background="@drawable/kpi_bg_btn_elegant"
+            android:clickable="true"
+            android:focusable="true"
+            android:textStyle="bold"
+            android:gravity="center"
+            android:paddingHorizontal="12dp"
+            android:text="Enviar Reporte"
+            android:textColor="#FFFFFF"
+            android:textSize="13.5sp" />
+    </LinearLayout>
+</LinearLayout>

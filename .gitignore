@@ -1,0 +1,100 @@
+*.iml
+.gradle
+/local.properties
+/.idea/caches
+/.idea/libraries
+/.idea/modules.xml
+/.idea/workspace.xml
+/.idea/navEditor.xml
+/.idea/assetWizardSettings.xml
+.DS_Store
+/build
+/captures
+.externalNativeBuild
+.cxx
+local.properties
+
+# ===== WebSite+ : DATOS REALES Y SECRETOS (NUNCA SUBIR A GITHUB) =====
+# Dumps reales de produccion (contienen DNI, hashes, biometria).
+wsnet_bd_asistencia.sql
+*_produccion*.sql
+*.sql.gz
+respaldos/
+# Configuracion real del backend (credenciales MariaDB, secretos).
+backend/config/config.php
+backend/config/*.local.php
+.env
+.env.*
+# Archivos generados en tiempo de ejecucion.
+backend/storage/
+backend/storage/face-avd/
+backend/storage/mysql-*/
+backend/storage/face-evaluation/
+backend/storage/tests-*/
+backend/tests/.tmp/
+*.img
+*.img.qcow2
+*.qcow2
+*.avd/
+*.nvram
+*.lock
+build/
+**/build/
+app/build/
+
+# Share reviewed SQL sources only; accidental dumps stay local.
+*.sql
+!database/migrations/*.up.sql
+!database/migrations/V015__kpi_registros_android.down.sql
+!database/referencia/esquema_asistencia_sin_datos.sql
+!database/websiteplus_completo_para_cpanel.sql
+!database/actualizacion_wsnet_websiteplus_V012.sql
+!database/actualizacion_wsnet_websiteplus_V013.sql
+!database/actualizacion_wsnet_websiteplus_V014.sql
+!database/actualizacion_wsnet_websiteplus_V011_a_V014.sql
+!database/instalacion_wsnet_websiteplus_V013.sql
+!database/instalacion_wsnet_websiteplus_V014.sql
+!database/seeds/30_APLICAR_METAS_KPI_OFICIALES_20261122.sql
+!database/seeds/31_VERIFICAR_METAS_KPI_OFICIALES_20261122.sql
+!database/seeds/32_ASIGNAR_KPI_ACTIVOS_20261122.sql
+!database/seeds/S025__horarios_cargos_confirmados.sql
+
+# Reproducible deliveries are local artifacts, not source files.
+entregables/
+
+# Private signing keys, local databases, logs and archives.
+*.jks
+*.keystore
+*.p12
+*.pfx
+*.pem
+*.key
+keystore.properties
+key.properties
+*.db
+*.sqlite
+*.sqlite3
+*.log
+*.bak
+*.sql.zip
+*.sql.7z
+*.apk
+*.aab
+.idea/.name
+
+# Authorized face fixtures stay local and are never packaged in the production APK.
+app/src/androidTest/assets/private_face/
+# Archivos locales de Android Studio
+/.idea/deviceManager.xml
+
+# Archivos temporales
+/tmp/
+# Respaldos ZIP del backend: no subir a GitHub
+/backend/*.zip
+/.vscode/
+
+# Local IDE state, Python cache and duplicate migration archive.
+/.idea/
+__pycache__/
+*.pyc
+/database/migrations.zip
