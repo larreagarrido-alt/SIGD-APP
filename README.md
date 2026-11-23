@@ -43,7 +43,7 @@ La app no crea otra cuenta. El backend lee el estado laboral actual de Asistenci
 4. El administrador revisa la ficha y aprueba o rechaza su validez; no inventa un porcentaje manual.
 5. Solo una evaluación aprobada acredita puntos y entra al ranking. El mes nuevo se consulta desde cero.
 
-**Limitación actual:** el editor de la lámina KPI guarda metas visuales, pero cambiar una de ellas no garantiza que cambie la meta numérica usada por el servidor. No se deben anunciar esas ediciones como metas oficiales hasta unificar las dos fuentes. Véase la [revisión funcional](docs/REVISION_PRE_GITHUB_2026-11-22.md).
+El menú **Metas del cálculo oficial** permite cambiar las cantidades que usa el servidor para las fichas nuevas. Los textos de la lámina siguen siendo editables por separado; el administrador debe mantener ambos valores coherentes. Cada ficha recibida conserva la revisión numérica con la que será evaluada. Véase la [guía de publicación de esta corrección](docs/PUBLICAR_CORRECCIONES_METAS_Y_ALTAS_2026-11-22.md).
 
 ## Carpetas principales
 
@@ -103,7 +103,7 @@ No subas `backend/config/config.php`, respaldos SQL reales, fotos de trabajadore
 
 - Ryff contiene solo una demostración de tres preguntas; no hay un cuestionario validado para puntuar personas.
 - El archivado del ranking anterior se activa al consultar el ranking, no exactamente a medianoche.
-- El código de alta de Asistencias conserva una clave inicial compartida. Debe corregirse antes de nuevas altas reales.
+- Las altas nuevas requieren una clave inicial única y un cambio obligatorio en la web de Asistencias; esta corrección debe publicarse también allí.
 - La limpieza de los datos de prueba identificados por el equipo sigue pendiente.
 
 Consulta la [revisión previa a GitHub](docs/REVISION_PRE_GITHUB_2026-11-22.md) para el alcance y la evidencia de cada punto.

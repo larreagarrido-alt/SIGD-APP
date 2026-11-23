@@ -73,6 +73,10 @@ final class AuthController
             Response::error('Acceso suspendido: Su cuenta o estado laboral se encuentra inactivo. Comuniquese con Administracion.', 403, 'ACCOUNT_INACTIVE');
         }
 
+        if ((int)($user['debe_cambiar_password'] ?? 0) === 1) {
+            Response::error('Cambia tu clave inicial en la web de Asistencias antes de entrar a SIGD.', 403, 'PASSWORD_CHANGE_REQUIRED');
+        }
+
         // 5. Verificar si tiene dispositivo registrado activo
         $deviceId = null;
         if (!empty($deviceUid)) {

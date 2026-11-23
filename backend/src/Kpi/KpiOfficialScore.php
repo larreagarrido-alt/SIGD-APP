@@ -2,24 +2,13 @@
 declare(strict_types=1);
 namespace WebSitePlus\Kpi;
 
-/** Recomputes the percentage from raw form counts and the goals shipped with each role. */
+/** Recomputes the percentage from raw form counts and the report's official goal revision. */
 final class KpiOfficialScore
 {
-    private const DAILY_TOTALS = [
-        'ADMINISTRACION'=>[4,4,4,4,4,2],
-        'ASISTENCIA_ADMIN'=>[23,11,11,9,14,4],
-        'CONTABILIDAD'=>[45,17,24,12,8,12],
-        'COMMUNITY'=>[11,14,13,12,9,6],
-        'FOTOGRAFIA'=>[3,3,3,3,3,2],
-        'TRAFFICKER'=>[1,1,1,1,1,1],
-        'VIDEO'=>[1,1,1,1,1,1],
-    ];
-    private const WEEKLY_TOTALS = ['DISENADOR'=>25,'DISENADOR_SENIOR'=>24,'VIDEO'=>10];
-    private const SALES_GOALS = ['LLAMADAS'=>100,'VISITAS'=>60,'COTIZACIONES'=>30,
-        'SEGUIMIENTOS'=>50,'PROSPECTOS'=>15,'CLIENTES'=>3];
-    private const PROGRAM_GOALS = [
-        1=>['Desarrollo',1],2=>['Corrección',2],3=>['Mejora',2],
-        4=>['Maquetación',1],5=>['Integración / API',1],6=>['Mantenimiento Web',2],
+    private const SALES_UNITS = ['LLAMADAS','VISITAS','COTIZACIONES','SEGUIMIENTOS','PROSPECTOS','CLIENTES'];
+    private const PROGRAM_KINDS = [
+        1=>'Desarrollo',2=>'Corrección',3=>'Mejora',
+        4=>'Maquetación',5=>'Integración / API',6=>'Mantenimiento Web',
     ];
 
     public static function period(string $type): ?string
@@ -32,24 +21,27 @@ final class KpiOfficialScore
         };
     }
 
-    public static function percentage(string $type, array $payload, string $day, array $coverage): ?float
+    public static function percentage(string $type, array $payload, string $day, array $coverage, array $goals=[]): ?float
     {
         $period=self::period($type);
         if ($period===null || empty($coverage['dias'])) return null;
+        if (!$goals) $goals=KpiOfficialGoals::defaults($type);
         $scheduled=(int)($coverage['turnos_programados']??0);
         $eligible=(int)($coverage['turnos_exigibles']??0);
         if ($scheduled<=0 || $eligible<=0) return null;
-        if ($type==='PROGRAMACION') return self::programmer($payload,$day,$coverage);
-        if ($type==='DISENADOR_JUNIOR') return self::junior($payload,$coverage);
+        if ($type==='PROGRAMACION') return self::programmer($payload,$day,$coverage,$goals);
+        if ($type==='DISENADOR_JUNIOR') return self::junior($payload,$coverage,$goals);
         if ($type==='VENTAS') {
             $total=0.0;
-            foreach (self::SALES_GOALS as $unit=>$goal) {
+            foreach (self::SALES_UNITS as $index=>$unit) {
+                $goal=$goals[$index]??0;
+                if ($goal<=0) return null;
                 $actual=KpiFormMeasurement::value($type,$payload,$unit,$day,$period);
                 if ($actual===null) return null;
                 $effective=$goal*$eligible/$scheduled;
                 $total+=min(100.0,$actual/$effective*100.0);
             }
-            return round($total/count(self::SALES_GOALS),2);
+            return round($total/count(self::SALES_UNITS),2);
         }
         if ($type==='GERENCIA') {
             $done=0;
@@ -60,15 +52,15 @@ final class KpiOfficialScore
                 if (is_array($row) && !empty($row['isRegistered'])
                     && isset($eligibleDays[(string)($row['date']??'')])
                     && trim((string)($row['trackingPerformed']??''))!=='') $done++;
-            return round(min(150.0,$done/max(1,count($eligibleDays))*100.0),2);
+            $target=count($eligibleDays)*(($goals[0]??6)/6);
+            return $target>0 ? round(min(150.0,$done/$target*100.0),2) : null;
         }
         $actual=KpiFormMeasurement::value($type,$payload,'ACTIVIDADES',$day,$period);
         if ($actual===null) return null;
-        if (isset(self::WEEKLY_TOTALS[$type])) {
-            $target=self::WEEKLY_TOTALS[$type]*$eligible/$scheduled;
+        if (in_array($type,['DISENADOR','DISENADOR_SENIOR','VIDEO'],true)) {
+            $target=($goals[0]??0)*$eligible/$scheduled;
         } else {
-            $goals=self::DAILY_TOTALS[$type]??null;
-            if ($goals===null) return null;
+            if (count($goals)!==6) return null;
             $target=0.0;
             foreach ($coverage['dias'] as $calendarDay) {
                 $index=(int)date('N',strtotime((string)$calendarDay['fecha']))-1;
@@ -79,10 +71,11 @@ final class KpiOfficialScore
         return $target>0 ? round(min(150.0,$actual/$target*100.0),2) : null;
     }
 
-    private static function programmer(array $payload, string $day, array $coverage): ?float
+    private static function programmer(array $payload, string $day, array $coverage, array $goals): ?float
     {
         $index=(int)date('N',strtotime($day));
-        [$type,$goal]=self::PROGRAM_GOALS[$index]??[null,null];
+        $type=self::PROGRAM_KINDS[$index]??null;
+        $goal=$goals[$index-1]??0;
         if ($type===null || !isset($payload['actividades']) || !is_array($payload['actividades'])) return null;
         $done=0;
         foreach ($payload['actividades'] as $item) {
@@ -97,12 +90,12 @@ final class KpiOfficialScore
         return round(min(150.0,$done/$target*100.0),2);
     }
 
-    private static function junior(array $payload, array $coverage): ?float
+    private static function junior(array $payload, array $coverage, array $goals): ?float
     {
         $goals=match((string)($payload['goal']??'')) {
-            'DISENO_GRAFICO'=>['POST'=>4],
-            'PRODUCCION_AUDIOVISUAL'=>['VIDEO'=>2],
-            'PRODUCCION_MIXTA'=>['POST'=>2,'VIDEO'=>1],
+            'DISENO_GRAFICO'=>['POST'=>$goals[0]??0],
+            'PRODUCCION_AUDIOVISUAL'=>['VIDEO'=>$goals[1]??0],
+            'PRODUCCION_MIXTA'=>['POST'=>$goals[2]??0,'VIDEO'=>$goals[3]??0],
             default=>null,
         };
         if ($goals===null || !isset($payload['activities']) || !is_array($payload['activities'])) return null;

@@ -12,11 +12,11 @@ Fecha: 22 de noviembre de 2026. Esta revisión cubre el código local y pruebas 
 
 ## Pendiente de resolver o verificar
 
-1. **Edición de metas y puntuación oficial.** El editor de reportes guarda cambios visuales en `wp_kpi_plantillas_estado`, mientras `KpiOfficialScore` usa metas numéricas definidas en PHP. Cambiar una meta en la lámina no garantiza que cambie el porcentaje oficial ni los puntos. Se necesita una única fuente de metas versionada, con validación y prueba para los 13 formularios, antes de presentar esa edición como operativa.
+1. **Edición de metas y puntuación oficial.** La corrección posterior a esta revisión añade metas numéricas versionadas para los 13 cargos. El menú «Metas del cálculo oficial» cambia el cálculo de fichas nuevas; editar solo el texto de la lámina sigue siendo un cambio visual. Se debe publicar V031, los PHP y el APK del mismo commit, y comprobar un caso real antes de anunciar el flujo como operativo.
 2. **Publicación real.** Esta revisión no puede confirmar que los PHP, migraciones y APK más recientes estén desplegados en cPanel y en cada móvil. Las pruebas locales no sustituyen una prueba de envío, revisión y ranking en producción con una cuenta autorizada.
 3. **Ryff.** El material recibido contiene una muestra de tres preguntas. Falta el cuestionario autorizado completo para habilitar puntuación o interpretación real.
 4. **Datos de prueba.** La última auditoría aportada por el equipo mostró 10 reportes KPI, 3 evaluaciones de Bienestar con 26 respuestas y un premio de prueba. La limpieza estaba prevista para el final; no se ejecutó aquí ni se incluye una base real en GitHub.
 5. **Cierre mensual.** El ranking del nuevo mes empieza en cero por su consulta. El archivado del mes anterior se ejecuta cuando se consulta el ranking; no hay un proceso programado que lo cierre exactamente a medianoche.
-6. **Alta de cuentas en Asistencias.** El controlador de integración web todavía crea cuentas nuevas con la misma clave inicial `123456` y `debe_cambiar_password=0`. Hay que cambiar ese flujo por una clave única y un cambio obligatorio antes de usarlo para nuevas altas reales. No se probó aquí un cambio en la web de producción.
+6. **Alta de cuentas en Asistencias.** La corrección posterior a esta revisión exige una clave inicial única al crear el trabajador y obliga a cambiarla en la web antes de entrar a SIGD. Falta publicar ambos PHP de la web y comprobar el flujo en el servidor real; no se modifican claves existentes.
 
 Por estos puntos, el proyecto se puede compartir como código y compilar, pero no sería honesto llamarlo «100 % verificado en producción» todavía.

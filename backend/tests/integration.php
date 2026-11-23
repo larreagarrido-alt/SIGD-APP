@@ -111,6 +111,13 @@ $admin->exec("USE `$source`");
 $cfg['database']['username']=$runtime; $cfg['database']['password']=$password;
 file_put_contents($path,'<?php return '.var_export($cfg,true).';');
 Config::load($path); $db=Database::getConnection();
+check((int)$db->query("SELECT COUNT(*) FROM wp_kpi_metas_versiones WHERE revision=0")->fetchColumn()===1,
+    'numeric KPI goals start with a versioned baseline');
+$db->exec("INSERT INTO wp_kpi_metas_versiones (revision,metas_json) VALUES (999,'{\"VENTAS\":[200,60,30,50,15,3]}')");
+check(WebSitePlus\Kpi\KpiOfficialGoals::forReport($db,'VENTAS',999)===[200,60,30,50,15,3]
+    && WebSitePlus\Kpi\KpiOfficialGoals::forReport($db,'VENTAS',0)===[100,60,30,50,15,3],
+    'a report retains its scoring revision');
+$db->exec('DELETE FROM wp_kpi_metas_versiones WHERE revision=999');
 check((int)$db->query("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema=DATABASE() AND table_type='BASE TABLE'")->fetchColumn() >= ($withoutV012?51:52)
     && (int)$db->query("SELECT COUNT(*) FROM information_schema.tables WHERE table_schema=DATABASE() AND table_name IN ('wp_bienestar_campanas','wp_bienestar_planes','wp_kpi_plantillas_estado','wp_kpi_plantillas_alertas')")->fetchColumn()===4,
     'expected isolated application tables including wellness and shared KPI templates');

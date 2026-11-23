@@ -2,8 +2,11 @@
 declare(strict_types=1);
 require dirname(__DIR__).'/src/Kpi/KpiFormCompletion.php';
 require dirname(__DIR__).'/src/Kpi/KpiFormMeasurement.php';
+require dirname(__DIR__).'/src/Core/HttpException.php';
+require dirname(__DIR__).'/src/Kpi/KpiOfficialGoals.php';
 require dirname(__DIR__).'/src/Kpi/KpiOfficialScore.php';
 use WebSitePlus\Kpi\KpiOfficialScore as Score;
+use WebSitePlus\Kpi\KpiOfficialGoals as Goals;
 
 function checkScore(bool $ok, string $case): void {
     if (!$ok) throw new RuntimeException($case);
@@ -17,6 +20,8 @@ $program=['fecha'=>'2026-11-23','turno'=>'Mañana','actividades'=>[
     ['tipo'=>'Desarrollo','estado'=>'Entregado'],['tipo'=>'Corrección','estado'=>'Entregado']]];
 checkScore(Score::percentage('PROGRAMACION',$program,'2026-11-23',$daily)===100.0,
     'Programmer Monday uses one delivered functionality, not all tasks');
+checkScore(Score::percentage('PROGRAMACION',$program,'2026-11-23',$daily,[2,2,2,1,1,2])===50.0,
+    'A published numeric goal changes programmer scoring');
 $junior=['date'=>'2026-11-23','shift'=>'Mañana','biometricVerified'=>true,
     'goal'=>'PRODUCCION_AUDIOVISUAL','activities'=>[
         ['type'=>'VIDEO','status'=>'ENTREGADO'],['type'=>'VIDEO','status'=>'PENDIENTE']]];
@@ -36,6 +41,8 @@ $sales=['days'=>[['fullDateFormatted'=>'Lunes, 23 de noviembre de 2026','saved'=
     'llamadas'=>100,'visitas'=>60,'cotizaciones'=>30,'seguimiento'=>50,'prospectos'=>15,'clientes'=>3]]];
 checkScore(Score::percentage('VENTAS',$sales,'2026-11-28',$week)===100.0,
     'Sales uses six weekly goals, not sum of unrelated units');
+checkScore(Score::percentage('VENTAS',$sales,'2026-11-28',$week,[200,60,30,50,15,3])===91.67,
+    'Sales goal override changes only its own measured unit');
 $weeklyCases=[
     'ADMINISTRACION'=>[[4,4,4,4,4,2],['gestionesCount','seguimientosCount','reunionesCount']],
     'ASISTENCIA_ADMIN'=>[[23,11,11,9,14,4],['gestionesCount','documentosCount','coordinacionesCount']],
@@ -65,4 +72,13 @@ checkScore(Score::percentage('GERENCIA',$manager,'2026-11-28',$week)===100.0,
     'Manager own KPI remains measurable without joining ranking');
 checkScore(Score::period('GERENCIA')==='SEMANAL' && Score::period('DISENADOR_JUNIOR')==='DIARIO',
     'Distinct periods preserved');
+checkScore(Goals::extract(['sem_PROGRAMADOR_JUNIOR_official_goals_json'=>'[2,2,2,1,1,2]'])
+    ===['PROGRAMACION'=>[2,2,2,1,1,2]],'Valid edited goals are mapped to the official form');
+try {
+    Goals::extract(['sem_PROGRAMADOR_JUNIOR_official_goals_json'=>'[0,2,2,1,1,2]']);
+    throw new RuntimeException('Zero official goal was accepted');
+} catch (WebSitePlus\Core\HttpException $expected) {
+    checkScore($expected->status===422,
+        'Invalid goal is rejected before publishing');
+}
 echo "Official KPI score cases passed\n";

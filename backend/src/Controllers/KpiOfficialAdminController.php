@@ -12,6 +12,7 @@ use WebSitePlus\Core\Response;
 use WebSitePlus\Kpi\KpiFormMeasurement;
 use WebSitePlus\Kpi\KpiFormCompletion;
 use WebSitePlus\Kpi\KpiOfficialScore;
+use WebSitePlus\Kpi\KpiOfficialGoals;
 use WebSitePlus\Kpi\KpiPointsPolicy;
 
 /** Uses the existing definition, assignment, evaluation, review and ranking tables. */
@@ -118,7 +119,7 @@ final class KpiOfficialAdminController
         if (!isset(Authorization::permissions($session)['kpi.revisar']))
             Response::error('No autorizado para revisar reportes',403,'FORBIDDEN');
         $db=Database::getConnection();
-        $rows=$db->query('SELECT f.id_detalle,f.id_trabajador,f.id_cargo,f.tipo_formulario,f.revision,
+        $rows=$db->query('SELECT f.id_detalle,f.id_trabajador,f.id_cargo,f.tipo_formulario,f.revision,f.meta_revision,
             f.payload_json,
             f.actualizado_en,COUNT(l.id_evaluacion) AS evaluaciones_vinculadas,
             MAX(e.id_evaluacion) AS id_evaluacion,MAX(e.estado) AS estado_evaluacion,
@@ -154,7 +155,8 @@ final class KpiOfficialAdminController
                 $coverageCache[$key]??=KpiLaborCalendar::periodCoverage((int)$row['id_trabajador'],$from,$to);
                 $scorePayload=$payload;
                 if ($type==='VENTAS') [$scorePayload]=self::salesWeek($db,$row+['payload_json'=>json_encode($payload)],$day);
-                $score=KpiOfficialScore::percentage($type,$scorePayload,$day,$coverageCache[$key]);
+                $goals=KpiOfficialGoals::forReport($db,$type,$row['meta_revision']===null ? null : (int)$row['meta_revision']);
+                $score=KpiOfficialScore::percentage($type,$scorePayload,$day,$coverageCache[$key],$goals);
                 if ($score!==null) $row['porcentaje_estimado']=$score;
             } catch (\Throwable $ignored) {
                 // A report can still be inspected when Asistencias has not settled its calendar.
@@ -235,8 +237,10 @@ final class KpiOfficialAdminController
             self::denied('Asistencias aun no confirma turnos KPI exigibles para este periodo',409);
         if ($row['tipo_metrica']==='PORCENTAJE' && $period==='SEMANAL' && $range[1]>=date('Y-m-d'))
             self::denied('La semana aun no ha terminado; no se puede cerrar su resultado',409);
+        $goals=KpiOfficialGoals::forReport($db,(string)$row['tipo_formulario'],
+            $row['meta_revision']===null ? null : (int)$row['meta_revision']);
         $value=$row['tipo_metrica']==='PORCENTAJE'
-            ? KpiOfficialScore::percentage((string)$row['tipo_formulario'],$payload,$day,$coverage)
+            ? KpiOfficialScore::percentage((string)$row['tipo_formulario'],$payload,$day,$coverage,$goals)
             : KpiFormMeasurement::value((string)$row['tipo_formulario'],$payload,
                 (string)$row['unidad_medida'],$day,(string)$period);
         if ($value===null) self::denied('El formulario no contiene una medicion confirmada para este indicador y periodo');

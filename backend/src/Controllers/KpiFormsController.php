@@ -112,10 +112,11 @@ final class KpiFormsController
             $rows[$key] = compact('type','uid','revision','json') + ['hash' => hash('sha256', $json)];
         }
         $accepted = Database::transaction(function (PDO $db) use ($rows, $worker, $cargo, $session): array {
+            $metaRevision=(int)$db->query('SELECT revision FROM wp_kpi_plantillas_estado WHERE id=1 FOR UPDATE')->fetchColumn();
             $mapping = $db->prepare('SELECT 1 FROM wp_kpi_formulario_cargos WHERE id_cargo=? AND tipo_formulario=? AND aprobado_en IS NOT NULL');
             $select = $db->prepare('SELECT id_detalle,id_cargo,revision,payload_sha256,payload_json FROM wp_kpi_formularios_detalle WHERE id_trabajador=? AND tipo_formulario=? AND registro_uid=? FOR UPDATE');
-            $insert = $db->prepare('INSERT INTO wp_kpi_formularios_detalle (id_trabajador,id_usuario,id_cargo,tipo_formulario,registro_uid,revision,payload_json,payload_sha256) VALUES (?,?,?,?,?,?,?,?)');
-            $update = $db->prepare('UPDATE wp_kpi_formularios_detalle SET id_usuario=?,id_cargo=?,revision=?,payload_json=?,payload_sha256=? WHERE id_trabajador=? AND tipo_formulario=? AND registro_uid=? AND revision<?');
+            $insert = $db->prepare('INSERT INTO wp_kpi_formularios_detalle (id_trabajador,id_usuario,id_cargo,tipo_formulario,registro_uid,revision,meta_revision,payload_json,payload_sha256) VALUES (?,?,?,?,?,?,?,?,?)');
+            $update = $db->prepare('UPDATE wp_kpi_formularios_detalle SET id_usuario=?,id_cargo=?,revision=?,meta_revision=?,payload_json=?,payload_sha256=? WHERE id_trabajador=? AND tipo_formulario=? AND registro_uid=? AND revision<?');
             $admins = $db->prepare('SELECT DISTINCT id_trabajador FROM usuarios WHERE id_rol=1 AND id_trabajador IS NOT NULL AND id_trabajador>0');
             $admins->execute();
             $adminWorkers = array_map('intval', $admins->fetchAll(PDO::FETCH_COLUMN));
@@ -134,12 +135,12 @@ final class KpiFormsController
                     if ((int) $old['revision'] === $row['revision']) {
                         if (!hash_equals((string) $old['payload_sha256'], $row['hash'])) throw new HttpException('Revisión con distinto contenido', 409, 'REPORT_CONFLICT');
                     } else {
-                        $update->execute([(int)$session['id_usuario'],$cargo,$row['revision'],$row['json'],$row['hash'],$worker,$row['type'],$row['uid'],$row['revision']]);
+                        $update->execute([(int)$session['id_usuario'],$cargo,$row['revision'],$metaRevision,$row['json'],$row['hash'],$worker,$row['type'],$row['uid'],$row['revision']]);
                         if ($update->rowCount() !== 1) throw new HttpException('Revisión concurrente', 409, 'REPORT_CONFLICT');
                         $changed = true;
                     }
                 } else {
-                    $insert->execute([$worker,(int)$session['id_usuario'],$cargo,$row['type'],$row['uid'],$row['revision'],$row['json'],$row['hash']]);
+                    $insert->execute([$worker,(int)$session['id_usuario'],$cargo,$row['type'],$row['uid'],$row['revision'],$metaRevision,$row['json'],$row['hash']]);
                     $changed = true;
                 }
                 $oldPayload=$old?json_decode((string)$old['payload_json'],true):[];

@@ -71,6 +71,11 @@ class TrabajadorController {
             if (!empty($errores_backend)) {
                 die("Error de validación de seguridad: " . implode(" | ", $errores_backend));
             }
+            $initialPassword = (string)($_POST['password_inicial'] ?? '');
+            if (strlen($initialPassword) < 12 || strlen($initialPassword) > 128
+                || hash_equals((string)($_POST['dni'] ?? ''), $initialPassword)) {
+                die('La clave inicial debe tener de 12 a 128 caracteres y ser distinta del DNI.');
+            }
             if (!in_array($_POST['tipo'] ?? null, ['Practicante','Colaborador'], true)) {
                 die('Tipo de trabajador inválido.');
             }
@@ -163,12 +168,12 @@ class TrabajadorController {
                 if($nuevo_id) {
                     // Crear el usuario automáticamente
                     $username = $_POST['dni'];
-                    // Hashear '123456' para la clave por defecto
-                    $password = password_hash('123456', PASSWORD_DEFAULT);
+                    // Clave única entregada por Administración; cambio obligatorio en el primer ingreso web.
+                    $password = password_hash($initialPassword, PASSWORD_DEFAULT);
                     $id_rol = ($_POST['tipo'] === 'Practicante') ? 6 : 5; // Rol 6 para Practicantes, 5 para Trabajadores
                     
                     $nuevoUsuario=$connNuevo->prepare('INSERT INTO usuarios (username,password,id_rol,id_trabajador,debe_cambiar_password)
-                        VALUES (?,?,?,?,0)');
+                        VALUES (?,?,?,?,1)');
                     $nuevoUsuario->execute([$username,$password,$id_rol,(int)$nuevo_id]);
 
                     $fechaLima=(new DateTimeImmutable('now',new DateTimeZone('America/Lima')))->format('Y-m-d');

@@ -2,6 +2,7 @@ package pe.net.ws.kpiweb.features.kpi.ui;
 
 import android.app.AlertDialog;
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.Color;
@@ -46,6 +47,7 @@ import pe.net.ws.kpiweb.features.kpi.data.KpiCollaboratorsRepository;
 import pe.net.ws.kpiweb.features.kpi.data.KpiEditorStorageManager;
 import pe.net.ws.kpiweb.features.kpi.data.KpiOfficialTemplateEngine;
 import pe.net.ws.kpiweb.features.kpi.data.KpiTemplateSync;
+import pe.net.ws.kpiweb.features.kpi.data.KpiScoreGoalConfig;
 import pe.net.ws.kpiweb.features.kpi.model.KpiCollaboratorProfile;
 import pe.net.ws.kpiweb.features.kpi.notification.KpiSoundHelper;
 import pe.net.ws.kpiweb.features.kpi.ui.view.KpiZoomableSheetLayout;
@@ -584,6 +586,15 @@ public class KpiReportsEditorFragment extends Fragment {
 
         menuCard.addView(createMenuDivider());
 
+        menuCard.addView(createMenuOptionRow(
+                R.drawable.kpi_ic_menu_new_kpi,
+                "Metas del cálculo oficial",
+                Color.parseColor("#4F46E5"),
+                v -> { popupWindow.dismiss(); showOfficialGoalsDialog(); }
+        ));
+
+        menuCard.addView(createMenuDivider());
+
         // 2: Eliminar KPI (con ícono de basurita)
         menuCard.addView(createMenuOptionRow(
                 R.drawable.kpi_ic_trash,
@@ -609,6 +620,61 @@ public class KpiReportsEditorFragment extends Fragment {
         ));
 
         popupWindow.showAsDropDown(anchor, -dp(165), dp(6));
+    }
+
+    private void showOfficialGoalsDialog() {
+        int[] current = KpiScoreGoalConfig.read(requireContext(), currentCargo);
+        if (current.length == 0) {
+            Toast.makeText(requireContext(), "Este cargo aún no tiene una fórmula oficial", Toast.LENGTH_LONG).show();
+            return;
+        }
+        String[] labels = KpiScoreGoalConfig.labels(currentCargo);
+        ScrollView scroll = new ScrollView(requireContext());
+        LinearLayout body = new LinearLayout(requireContext());
+        body.setOrientation(LinearLayout.VERTICAL);
+        body.setPadding(dp(20), dp(8), dp(20), dp(8));
+        scroll.addView(body);
+        EditText[] fields = new EditText[current.length];
+        for (int i = 0; i < current.length; i++) {
+            TextView label = new TextView(requireContext());
+            label.setText(labels[i]);
+            label.setTextColor(Color.BLACK);
+            body.addView(label);
+            EditText input = new EditText(requireContext());
+            input.setInputType(InputType.TYPE_CLASS_NUMBER);
+            input.setText(String.valueOf(current[i]));
+            body.addView(input);
+            fields[i] = input;
+        }
+        new AlertDialog.Builder(requireContext())
+                .setTitle("Metas numéricas de " + currentCargo)
+                .setMessage("Estas cantidades determinan el porcentaje oficial de los reportes nuevos. Ajusta también los textos de la lámina si corresponde.")
+                .setView(scroll)
+                .setNegativeButton("Cancelar", null)
+                .setPositiveButton("Guardar en servidor", (dialog, which) -> {
+                    int[] next = new int[fields.length];
+                    try {
+                        for (int i = 0; i < fields.length; i++) {
+                            next[i] = Integer.parseInt(fields[i].getText().toString().trim());
+                            if (next[i] < 1 || next[i] > 100000) throw new NumberFormatException();
+                        }
+                    } catch (NumberFormatException error) {
+                        Toast.makeText(requireContext(), "Cada meta debe estar entre 1 y 100000", Toast.LENGTH_LONG).show();
+                        return;
+                    }
+                    SharedPreferences prefs = KpiScoreGoalConfig.preferences(requireContext());
+                    String key = KpiScoreGoalConfig.key(currentCargo);
+                    String previous = prefs.getString(key, null);
+                    prefs.edit().putString(key, KpiScoreGoalConfig.encode(next)).apply();
+                    KpiTemplateSync.get(requireContext()).save(currentCargo, (ok, message) -> {
+                        if (!ok) {
+                            SharedPreferences.Editor restore = prefs.edit();
+                            if (previous == null) restore.remove(key); else restore.putString(key, previous);
+                            restore.apply();
+                        }
+                        if (isAdded()) Toast.makeText(requireContext(), message, Toast.LENGTH_LONG).show();
+                    });
+                }).show();
     }
 
     private View createMenuOptionRow(int iconResId, String label, int textColor, View.OnClickListener listener) {

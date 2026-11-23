@@ -28,6 +28,7 @@ Empieza por el [README principal](../README.md) para conocer el sistema, abrirlo
 | --- | --- |
 | [Guía de cPanel](GUIA_PUBLICACION_INTEGRAL_KPI_2026-11-14.md) | Orden de respaldo, migraciones y PHP; cotejarla con cambios posteriores. |
 | [Metas oficiales](PUBLICAR_METAS_OFICIALES_2026-11-22.md) | SQL y requisitos de metas. |
+| [Corrección de metas y altas](PUBLICAR_CORRECCIONES_METAS_Y_ALTAS_2026-11-22.md) | V031, PHP, APK y primera clave de cuentas nuevas. |
 | [Asistencias](PUBLICACION_CICLO_ASISTENCIAS_2026-11-22.md) | Archivos de la web que requieren revisión separada. |
 | [Limpieza final](PLAN_LIMPIEZA_FINAL_2026-11-22.md) | Identificación y retiro controlado de datos de prueba. |
 

@@ -8,6 +8,7 @@ use WebSitePlus\Core\Database;
 use WebSitePlus\Core\HttpException;
 use WebSitePlus\Core\Request;
 use WebSitePlus\Core\Response;
+use WebSitePlus\Kpi\KpiOfficialGoals;
 
 /** Shared visual templates. Official KPI definitions and submitted reports stay separate. */
 final class KpiTemplateController
@@ -57,7 +58,9 @@ final class KpiTemplateController
         }
         $json = json_encode((object)$state, JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
         if ($json === false || strlen($json) > 900000) Response::error('Plantilla demasiado grande', 413, 'TEMPLATE_TOO_LARGE');
-        $next = Database::transaction(static function(PDO $db) use ($revision,$cargoKey,$json,$session): int {
+        $goalsJson=json_encode((object)KpiOfficialGoals::extract($state), JSON_UNESCAPED_UNICODE | JSON_UNESCAPED_SLASHES);
+        if ($goalsJson===false) Response::error('Metas KPI invalidas',422,'VALIDATION_FAILED');
+        $next = Database::transaction(static function(PDO $db) use ($revision,$cargoKey,$json,$goalsJson,$session): int {
             $st = $db->query('SELECT revision FROM wp_kpi_plantillas_estado WHERE id=1 FOR UPDATE');
             $current = $st->fetchColumn();
             if ($current === false || (int)$current !== $revision) {
@@ -66,6 +69,8 @@ final class KpiTemplateController
             $next = $revision + 1;
             $st = $db->prepare('UPDATE wp_kpi_plantillas_estado SET revision=?,estado_json=?,actualizado_por=? WHERE id=1');
             $st->execute([$next,$json,(int)$session['id_usuario']]);
+            $st = $db->prepare('INSERT INTO wp_kpi_metas_versiones (revision,metas_json,creado_por) VALUES (?,?,?)');
+            $st->execute([$next,$goalsJson,(int)$session['id_usuario']]);
             $st = $db->prepare('INSERT INTO wp_kpi_plantillas_alertas (cargo_key,revision) VALUES (?,?)');
             $st->execute([$cargoKey,$next]);
             return $next;

@@ -58,6 +58,10 @@ app/build/
 !database/seeds/31_VERIFICAR_METAS_KPI_OFICIALES_20261122.sql
 !database/seeds/32_ASIGNAR_KPI_ACTIVOS_20261122.sql
 !database/seeds/S025__horarios_cargos_confirmados.sql
+!backend/tests/fixtures/attendance_schema.sql
+!backend/tests/fixtures/auth_perfil_usuario12_propuesto.sql
+!backend/tests/fixtures/auth_perfil_usuario12_reversion.sql
+!database/proposals/bienestar_responder_roles_1_5_6.sql
 
 # Reproducible deliveries are local artifacts, not source files.
 entregables/
