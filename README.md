@@ -1,64 +1,109 @@
-# SIGD
+# SIGD · Sistema Integral de Gestión del Desempeño
 
-Aplicación Android para registrar actividades, consultar KPI y responder cuestionarios de Bienestar. El personal administrativo consulta trabajadores, reportes y resultados según los permisos de su cuenta. La app se comunica con una API PHP y usa MariaDB.
+Aplicación Android para registrar actividades, consultar reportes KPI y acompañar el bienestar del equipo. Comparte las cuentas, cargos y estados laborales del sistema web de Asistencias mediante una API PHP. El administrador revisa los reportes recibidos y decide si son válidos para el ranking.
 
-## Cómo se conectan los sistemas
+> **Estado:** el proyecto compila y pasó pruebas locales con datos sintéticos. La [revisión funcional](docs/REVISION_PRE_GITHUB_2026-11-22.md) documenta pendientes antes de considerarlo listo en producción. Subir el código a GitHub no publica la API en cPanel ni instala el APK.
+
+## Qué resuelve
+
+SIGD reúne formularios por cargo, resultados, cronogramas y bienestar en una sola app. No exige crear una segunda cuenta por trabajador. Consulta Asistencias para saber su cargo, estado laboral y jornadas exigibles; así una vacación, un cambio de cargo o un día sin turno pueden reflejarse en la obligación KPI.
+
+| Módulo | Trabajador | Administrador |
+| --- | --- | --- |
+| Cuenta y personal | Entra con su cuenta de Asistencias y consulta su perfil. | Consulta trabajadores según sus permisos. |
+| KPI y reportes | Completa el formulario de su cargo y envía actividades. | Ve la ficha y el porcentaje calculado; aprueba o rechaza su validez. |
+| Horarios | Consulta el cronograma de actividades de su cargo. | Edita y publica los cronogramas. |
+| Bienestar | Responde cuestionarios habilitados y consulta su historial. | Gestiona campañas y consultas permitidas. |
+| Ranking y premios | Consulta resultados y premios disponibles. | Consulta evaluaciones aprobadas y administra premios. |
+| Avisos | Recibe recordatorios de jornadas KPI pendientes. | Consulta avisos administrativos. |
+
+El **cronograma de actividades de SIGD** y las **marcaciones del sistema de Asistencias** son cosas distintas.
+
+## Arquitectura
 
 ```text
-Android SIGD → API SIGD → wsnet_websiteplus
-                            ↘ wsnet_bd_asistencia (cuentas y trabajadores)
+App Android SIGD
+       │ HTTPS + sesión
+       ▼
+API PHP de SIGD ─────► wsnet_websiteplus
+       │                Formularios, evaluaciones, horarios,
+       │                bienestar, puntos y premios
+       ▼
+wsnet_bd_asistencia
+Cuentas, trabajadores, cargos, estado laboral y jornadas exigibles
 ```
 
-Las cuentas, los cargos y el estado laboral vienen del sistema web de Asistencias. KPIWeb no crea una segunda cuenta para cada trabajador. En una prueba local, una cuenta nueva de Asistencias pudo ingresar a la app; al pasarla a **Inactivo**, se bloqueó el acceso, y al volver a **Activo**, pudo ingresar con la misma cuenta. Para ver un formulario KPI, el cargo también debe tener una correspondencia aprobada.
+La app no crea otra cuenta. El backend lee el estado laboral actual de Asistencias. Si el cargo o el estado cambia, la app debe consultar el servidor de nuevo. Las bases tienen funciones distintas y se configuran por separado.
 
-La URL configurada en Android está en [`ApiClient.java`](app/src/main/java/pe/net/ws/kpiweb/core/network/ApiClient.java). La API recibe las rutas en [`backend/public/index.php`](backend/public/index.php). Una respuesta correcta de `/health` solo confirma que la API responde; por sí sola no comprueba el acceso a las bases de datos.
+### Flujo de un KPI
 
-## Partes principales
+1. El trabajador abre el formulario permitido para su cargo y registra sus resultados.
+2. La API recibe y conserva la ficha. **Recibido** no significa **aprobado**.
+3. El servidor calcula el porcentaje desde cantidades registradas, metas por cargo y turnos exigibles. Los niveles porcentuales son comunes a todos los cargos.
+4. El administrador revisa la ficha y aprueba o rechaza su validez; no inventa un porcentaje manual.
+5. Solo una evaluación aprobada acredita puntos y entra al ranking. El mes nuevo se consulta desde cero.
 
-| Parte | Qué permite hacer |
-| --- | --- |
-| Acceso y cuenta | Iniciar sesión, consultar el perfil y administrar los métodos de acceso disponibles. |
-| Mis KPI | Abrir el formulario correspondiente al cargo y enviar una ficha completa al servidor. |
-| Reportes administrativos | Ver las fichas confirmadas por trabajador y abrirlas con su formato visual. |
-| Bienestar | Responder las evaluaciones semanal y mensual, consultar el historial propio y ver las sugerencias disponibles. |
-| Personal y avisos | Consultar trabajadores y resúmenes permitidos por el servidor. |
-| Ranking y premios | Mostrar el resultado del mes actual a partir de KPI aprobados, consultar meses anteriores y ver premios disponibles. |
+**Limitación actual:** el editor de la lámina KPI guarda metas visuales, pero cambiar una de ellas no garantiza que cambie la meta numérica usada por el servidor. No se deben anunciar esas ediciones como metas oficiales hasta unificar las dos fuentes. Véase la [revisión funcional](docs/REVISION_PRE_GITHUB_2026-11-22.md).
 
-Un formulario **enviado** no equivale a una evaluación KPI **aprobada**. La API calcula el porcentaje frente a la meta oficial del cargo; el administrador decide si el reporte es válido. Solo las evaluaciones aprobadas aportan puntos y ranking. El mes actual comienza en cero y los meses anteriores se conservan como historial cuando están listos para el cierre.
-
-La sección Ryff del ZIP de Dani contiene tres preguntas de muestra. No es un cuestionario completo para aplicar o puntuar. El panel de Bienestar organizacional y el flujo de campañas están preparados en el código local; su publicación y uso requieren las preguntas completas, los permisos y las decisiones de privacidad correspondientes.
-
-## Estructura del proyecto
+## Carpetas principales
 
 | Ruta | Contenido |
 | --- | --- |
-| `app/` | Aplicación Android en Java y XML. |
-| `backend/public/` | Entrada pública y rutas de la API. |
-| `backend/src/` | Autenticación, permisos y controladores PHP. |
-| `backend/config/config.example.php` | Ejemplo de configuración sin credenciales. |
-| `database/migrations/` | Cambios de estructura de la base de datos, por versión. |
-| `docs/` | Revisiones, contratos y guías de publicación. |
+| [`app/`](app/) | App Android en Java y XML. |
+| [`backend/public/index.php`](backend/public/index.php) | Entrada y rutas de la API PHP. |
+| [`backend/src/`](backend/src/) | Autenticación, permisos y lógica del sistema. |
+| [`backend/config/config.example.php`](backend/config/config.example.php) | Configuración de ejemplo sin secretos. |
+| [`database/migrations/`](database/migrations/) | Cambios versionados de la base SIGD. |
+| [`database/seeds/`](database/seeds/) | Plantillas y metas para publicación controlada. |
+| [`integration/asistencia/`](integration/asistencia/) | Cambios de integración para la web de Asistencias. |
+| [`docs/`](docs/) | Contratos, guías y auditorías. |
 
-## Abrir y probar en local
+## Abrir y compilar
 
-1. Abre la carpeta raíz en Android Studio y sincroniza Gradle. El proyecto usa Java 11, Android SDK 37 y Gradle Wrapper.
-2. Compila y ejecuta las pruebas de Android:
+Requisitos: Android Studio, JDK 11 o compatible con el proyecto, Android SDK 37 y conexión para obtener dependencias Gradle la primera vez.
+
+1. Clona el repositorio y abre **la carpeta raíz** en Android Studio, donde está `settings.gradle.kts`. No abras solo `app/`.
+2. Espera Gradle Sync. Android Studio creará `local.properties` con la ruta del SDK de tu equipo.
+3. Compila y ejecuta las pruebas unitarias en PowerShell:
 
    ```powershell
    .\gradlew.bat :app:assembleDebug :app:testDebugUnitTest
    ```
 
-3. Para la API local, copia `backend/config/config.example.php` como `backend/config/config.php` y completa únicamente los datos de tu entorno. Ese archivo privado no se debe subir al repositorio.
-4. Prueba los cambios de base y PHP con datos inventados en un MariaDB aislado. La guía de pruebas está en [`docs/EMPLEADOS_PRUEBAS.md`](docs/EMPLEADOS_PRUEBAS.md).
+4. Ejecuta la configuración `app` en un emulador o teléfono. El APK de `app/build/outputs/apk/debug/` sirve para desarrollo, no es una entrega firmada.
 
-El APK de `app/build/outputs/apk/debug/` es para desarrollo; no es una entrega firmada para distribución.
+La URL de la API está en [`ApiClient.java`](app/src/main/java/pe/net/ws/kpiweb/core/network/ApiClient.java). Si pruebas contra un servidor local, cambia esa dirección para tu entorno. No uses datos reales de producción en las pruebas.
 
-## Publicación y estado conocido
+## API y pruebas
 
-La publicación requiere comprobar primero un respaldo restaurable, revisar qué migraciones ya existen, aplicar solo las que faltan, subir los PHP que correspondan y probar el recorrido en un teléfono con cuentas autorizadas. No se deben volver a importar migraciones ya aplicadas ni copiar `config.php` local a cPanel. La guía detallada está en [`docs/GUIA_PUBLICACION_INTEGRAL_KPI_2026-11-14.md`](docs/GUIA_PUBLICACION_INTEGRAL_KPI_2026-11-14.md).
+Para un entorno PHP local, copia [`config.example.php`](backend/config/config.example.php) a `backend/config/config.php` y completa las conexiones y secretos locales. `config.php` está excluido de Git. La base SIGD y la base de Asistencias deben apuntar a sus esquemas respectivos.
 
-Según las capturas compartidas hasta el 22/11/2026, el acceso, los formularios por cargo, la consulta de reportes y las evaluaciones de Bienestar funcionaron en el teléfono. Las pruebas locales de Android y de la API con base sintética pasan; esto no verifica el estado actual de cPanel ni la navegación visual en cada dispositivo. El ranking puede estar vacío si no hay evaluaciones aprobadas. Antes de presentar puntos o premios como operativos, comprueba la publicación del servidor, el APK instalado y el recorrido con cuentas autorizadas.
+La suite de integración usa una instancia MariaDB **sintética y aislada**. Ejemplo en Windows con XAMPP instalado en `C:\xampp`:
 
-Para el estado y los límites de cada parte, consulta [`docs/RANKING_PREMIOS_INTEGRACION_2026-11-18.md`](docs/RANKING_PREMIOS_INTEGRACION_2026-11-18.md), [`docs/BIENESTAR_RYFF_IMPLEMENTACION_2026-11-18.md`](docs/BIENESTAR_RYFF_IMPLEMENTACION_2026-11-18.md) y [`docs/AUDITORIA_METAS_KPI_ZIPS_2026-11-18.md`](docs/AUDITORIA_METAS_KPI_ZIPS_2026-11-18.md).
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File backend/tests/run_employees.ps1 `
+  -PhpExe C:/xampp/php/php.exe -MariaDbBin C:/xampp/mysql/bin
+```
 
-La revisión previa a GitHub, con lo comprobado y lo que sigue pendiente, está en [`docs/REVISION_PRE_GITHUB_2026-11-22.md`](docs/REVISION_PRE_GITHUB_2026-11-22.md).
+La última revisión local obtuvo compilación y pruebas Android correctas, más **828 comprobaciones de integración** correctas. La suite no accedió a producción. Consulta [requisitos y cobertura](docs/EMPLEADOS_PRUEBAS.md) antes de ejecutarla.
+
+## Publicación y seguridad
+
+GitHub almacena el **código fuente**. Publicar una versión funcional también requiere migraciones pendientes, PHP actualizados en cPanel, configuración privada del servidor y un APK de esa misma versión. Haz primero un respaldo actual y comprueba al final acceso, envío, revisión y ranking con cuentas autorizadas.
+
+- [Revisión funcional y pendientes](docs/REVISION_PRE_GITHUB_2026-11-22.md)
+- [Guía de publicación en cPanel](docs/GUIA_PUBLICACION_INTEGRAL_KPI_2026-11-14.md)
+- [Integración con Asistencias](docs/INTEGRACION_ASISTENCIAS_CICLO_LABORAL_2026-11-22.md)
+- [Limpieza controlada de pruebas](docs/PLAN_LIMPIEZA_FINAL_2026-11-22.md)
+- [Índice completo de documentación](docs/INDICE.md)
+
+No subas `backend/config/config.php`, respaldos SQL reales, fotos de trabajadores, `storage/`, APK generados, claves privadas ni archivos de configuración local de Android Studio.
+
+## Límites conocidos
+
+- Ryff contiene solo una demostración de tres preguntas; no hay un cuestionario validado para puntuar personas.
+- El archivado del ranking anterior se activa al consultar el ranking, no exactamente a medianoche.
+- El código de alta de Asistencias conserva una clave inicial compartida. Debe corregirse antes de nuevas altas reales.
+- La limpieza de los datos de prueba identificados por el equipo sigue pendiente.
+
+Consulta la [revisión previa a GitHub](docs/REVISION_PRE_GITHUB_2026-11-22.md) para el alcance y la evidencia de cada punto.
