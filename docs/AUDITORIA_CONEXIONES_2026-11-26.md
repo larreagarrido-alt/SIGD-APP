@@ -22,7 +22,7 @@
 ## Publicación y verificación pendientes
 
 1. El usuario confirmó la subida de `websiteplus_backend/src/Controllers/KpiFormsController.php`, `websiteplus_backend/src/Kpi/KpiFormCompletion.php` y `websiteplus_backend/src/Kpi/KpiFormMeasurement.php` a cPanel. Falta comprobar sus resultados con una cuenta real. No se requirió SQL nuevo.
-2. El APK se instaló con `adb install -r` en el teléfono conectado. Falta abrir el inicio con una cuenta de colaborador y comprobar KPI entregados y días de asistencia de este mes. En Bienestar, confirmar que la semana actual figura disponible si solo se contestó la semana anterior.
+2. El APK se instaló con `adb install -r` en el teléfono conectado. El usuario confirmó en su cuenta que el KPI entregado se cuenta, Mis asistencias muestra el dato y la evaluación semanal anterior figura disponible en la semana actual.
 3. Con una entrega KPI real y autorizada, comprobar que aparece en la bandeja del administrador y que su teléfono vibra mientras mantiene abierta la pantalla principal y tiene habilitadas las notificaciones del sistema.
 
 ## Límite conocido de las notificaciones
