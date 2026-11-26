@@ -83,6 +83,8 @@ public class KpiDailyReminderReceiver extends BroadcastReceiver {
                                         && data.get("calendario_laboral").isJsonObject()
                                         && data.has("turnos_kpi_pendientes")
                                         && data.get("turnos_kpi_pendientes").isJsonPrimitive()
+                                        && data.has("turnos_kpi_pendientes_hoy")
+                                        && data.get("turnos_kpi_pendientes_hoy").isJsonObject()
                                         && current.isLoggedIn() && current.getWorkerId() == worker
                                         && token.equals(current.getAccessToken())
                                         && pe.net.ws.kpiweb.features.kpi.data.KpiAttendanceRepository.getInstance(context)
@@ -90,7 +92,12 @@ public class KpiDailyReminderReceiver extends BroadcastReceiver {
                                                 data.getAsJsonObject("calendario_laboral").toString()), worker)) {
                                     int pendingCount=data.get("turnos_kpi_pendientes").getAsInt();
                                     if (pendingCount<0) throw new IllegalArgumentException("KPI pending count");
-                                    dispatchConfirmedReminder(context, intent, pendingCount);
+                                    com.google.gson.JsonObject todayPending=data.getAsJsonObject("turnos_kpi_pendientes_hoy");
+                                    if (!todayPending.has("manana") || !todayPending.has("tarde"))
+                                        throw new IllegalArgumentException("KPI pending shifts");
+                                    dispatchConfirmedReminder(context, intent, pendingCount,
+                                            todayPending.get("manana").getAsBoolean(),
+                                            todayPending.get("tarde").getAsBoolean());
                                     return;
                                 }
                                 reschedule(context, intent == null ? null : intent.getAction(),
@@ -109,10 +116,11 @@ public class KpiDailyReminderReceiver extends BroadcastReceiver {
                     });
             return;
         }
-        dispatchConfirmedReminder(context, intent, 0);
+        dispatchConfirmedReminder(context, intent, 0, true, true);
     }
 
-    private void dispatchConfirmedReminder(Context context, Intent intent, int serverPendingCount) {
+    private void dispatchConfirmedReminder(Context context, Intent intent, int serverPendingCount,
+                                           boolean morningPending, boolean afternoonPending) {
 
         KpiDesignerMemoryRepository.init(context);
         KpiJuniorMemoryRepository.init(context);
@@ -138,13 +146,13 @@ public class KpiDailyReminderReceiver extends BroadcastReceiver {
         }
 
         if (ACTION_REMINDER_2PM.equals(action) || "2PM".equals(alarmType)) {
-            if (today.morningAttended) show2PmMorningNotification(context, activeRole);
+            if (today.morningAttended && morningPending) show2PmMorningNotification(context, activeRole);
             KpiReminderScheduler.schedule2PmReminder(context);
             return;
         }
 
         if (ACTION_REMINDER_640PM.equals(action) || "640PM".equals(alarmType)) {
-            if (today.afternoonAttended) show640PmAfternoonNotification(context, activeRole);
+            if (today.afternoonAttended && afternoonPending) show640PmAfternoonNotification(context, activeRole);
             KpiReminderScheduler.schedule640PmReminder(context);
             return;
         }

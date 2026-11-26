@@ -114,7 +114,6 @@ public class AdminDashboardActivity extends AppCompatActivity {
     private AdminDateFilterState dateFilterState;
     private Call<ApiResponse<JsonObject>> dashboardRequest;
     private Call<ApiResponse<LoginResponseData>> profileRequest;
-    private AdminKpiNoticeWatcher kpiNoticeWatcher;
     private final Locale localeEs = new Locale("es", "ES");
 
     @Override
@@ -143,18 +142,6 @@ public class AdminDashboardActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
-        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU
-                && ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
-                != android.content.pm.PackageManager.PERMISSION_GRANTED) {
-            android.content.SharedPreferences prefs = getSharedPreferences("admin_notice_cursor", MODE_PRIVATE);
-            if (!prefs.getBoolean("permission_asked", false)) {
-                prefs.edit().putBoolean("permission_asked", true).apply();
-                androidx.core.app.ActivityCompat.requestPermissions(this,
-                        new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 4103);
-            }
-        }
-        if (kpiNoticeWatcher == null) kpiNoticeWatcher = new AdminKpiNoticeWatcher(this);
-        kpiNoticeWatcher.start();
         setupWindowAppearance();
         bindAccountHeader();
         updateDashboardData();
@@ -162,7 +149,6 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
-        if (kpiNoticeWatcher != null) kpiNoticeWatcher.stop();
         if (dashboardRequest != null) dashboardRequest.cancel();
         if (profileRequest != null) profileRequest.cancel();
         super.onStop();
@@ -579,7 +565,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
         tvHeroBadgePeriod.setText(readableWeek);
         tvStatCollaboratorsVal.setText(numberOrDash(personal, "total_empleados"));
         Integer rawReports = integerOrNull(data, "formularios_recibidos_total");
-        ((TextView) findViewById(R.id.admin_tv_stat_reports_label)).setText("Formularios recibidos");
+        ((TextView) findViewById(R.id.admin_tv_stat_reports_label)).setText("Formularios recibidos en total");
         tvStatReportsVal.setText(rawReports == null ? "—" : String.valueOf(rawReports));
         tvStatReportsSub.setText("Guardados en el servidor; sin evaluación");
         Integer pendingCount = integerOrNull(kpi, "kpis_pendientes");
@@ -591,7 +577,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
         Integer total = integerOrNull(kpi, "kpis_totales");
         Integer delivered = integerOrNull(kpi, "kpis_entregados");
         Integer approved = integerOrNull(kpi, "kpis_aprobados");
-        String rawReportLabel = rawReports == null ? "" : " · " + rawReports + " formularios recibidos";
+        String rawReportLabel = rawReports == null ? "" : " · " + rawReports + " formularios recibidos en total";
         if (total == null || delivered == null || approved == null || total <= 0) {
             ((TextView) findViewById(R.id.admin_tv_hero_headline)).setText("Resumen semanal");
             findViewById(R.id.admin_hero_progress_ring).setVisibility(View.GONE);

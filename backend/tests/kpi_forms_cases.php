@@ -64,20 +64,49 @@ check((int)$db->query("SELECT COUNT(*) FROM wp_notificaciones WHERE id_trabajado
     'administrator receives a notice for a completed daily KPI, not unfinished weekly drafts');
 $currentWeekReport=['tipo_formulario'=>'GERENCIA','registro_uid'=>'fixture-current-week-dashboard',
     'revision'=>1,'payload'=>['days'=>[['date'=>date('Y-m-d'),'isRegistered'=>true]]]];
+$db->exec("INSERT INTO wp_usuario_permisos (id_usuario,id_permiso,alcance,efecto,motivo)
+    SELECT 2,id_permiso,'TODOS','DENEGAR','Synthetic reviewer notice check'
+    FROM wp_permisos WHERE codigo='kpi.revisar'");
+$noticeBefore=(int)$db->query("SELECT COUNT(*) FROM wp_notificaciones WHERE id_trabajador=2 AND referencia_tipo='kpi_formulario'")->fetchColumn();
 check(array_key_exists('2026-11-25:MANANA',\WebSitePlus\Kpi\KpiFormCompletion::units(
     'PROGRAMACION',['fecha'=>'25 / 11 / 2026','turno'=>'Mañana'])),
     'programmer date with spaces, as emitted by Android, counts as a completed shift');
 check(api('/kpi/formularios/sync',['records'=>[$currentWeekReport]],$token)['code']===200,
     'current-week completed report reaches the server');
+check((int)$db->query("SELECT COUNT(*) FROM wp_notificaciones WHERE id_trabajador=2 AND referencia_tipo='kpi_formulario'")->fetchColumn()===$noticeBefore,
+    'a denied reviewer does not receive a KPI notification merely because their role is administrator');
+$db->exec("DELETE FROM wp_usuario_permisos WHERE id_usuario=2 AND motivo='Synthetic reviewer notice check'");
 $currentWeekAllowed=api('/kpi/formularios/permitidos',null,$token);
 check(in_array('GERENCIA',$currentWeekAllowed['data']['tipos_con_entrega_semana']??[],true),
     'dashboard can distinguish a delivered KPI this week from an older report');
 check(is_int($currentWeekAllowed['data']['turnos_kpi_pendientes']??null)
     && array_key_exists('proxima_entrega_kpi',$currentWeekAllowed['data']??[]),
     'dashboard receives the labor-calendar pending count and next due date');
+check(($currentWeekAllowed['data']['turnos_kpi_pendientes_hoy']??null)
+    ===['manana'=>false,'tarde'=>false],
+    'daily reminder does not alert for a shift already covered by a confirmed report');
 $currentWeekId=(int)$db->query("SELECT id_detalle FROM wp_kpi_formularios_detalle WHERE registro_uid='fixture-current-week-dashboard'")->fetchColumn();
 $db->exec("DELETE FROM wp_notificaciones WHERE referencia_tipo='kpi_formulario' AND referencia_id=".$currentWeekId);
 $db->exec("DELETE FROM wp_kpi_formularios_detalle WHERE id_detalle=".$currentWeekId);
+$admin->exec("INSERT INTO `$source`.trabajadores (id_trabajador,dni,nombres,apellidos,fecha_nacimiento,id_cargo,id_agencia,tipo,fecha_inicio,estado)
+    VALUES (3,'00000003','Fixture','Reviewer','2000-01-01',1,1,'Colaborador','2026-01-01','Activo')");
+$addReviewer=$admin->prepare("INSERT INTO `$source`.usuarios (id_usuario,username,password,id_rol,id_trabajador,debe_cambiar_password)
+    VALUES (3,'fixture-reviewer',?,5,3,0)");
+$addReviewer->execute([$hash]);
+$db->exec("INSERT INTO wp_usuario_permisos (id_usuario,id_permiso,alcance,efecto,motivo)
+    SELECT 3,id_permiso,'TODOS','PERMITIR','Synthetic reviewer notice check'
+    FROM wp_permisos WHERE codigo='kpi.revisar'");
+$reviewerReport=['tipo_formulario'=>'GERENCIA','registro_uid'=>'fixture-reviewer-notice',
+    'revision'=>1,'payload'=>['days'=>[['date'=>date('Y-m-d'),'isRegistered'=>true]]]];
+check(api('/kpi/formularios/sync',['records'=>[$reviewerReport]],$token)['code']===200
+    && (int)$db->query("SELECT COUNT(*) FROM wp_notificaciones WHERE id_trabajador=3 AND referencia_tipo='kpi_formulario'")->fetchColumn()===1,
+    'non-admin account with effective review permission receives its KPI notice');
+$reviewerReportId=(int)$db->query("SELECT id_detalle FROM wp_kpi_formularios_detalle WHERE registro_uid='fixture-reviewer-notice'")->fetchColumn();
+$db->exec("DELETE FROM wp_notificaciones WHERE referencia_tipo='kpi_formulario' AND referencia_id=".$reviewerReportId);
+$db->exec("DELETE FROM wp_kpi_formularios_detalle WHERE id_detalle=".$reviewerReportId);
+$db->exec("DELETE FROM wp_usuario_permisos WHERE id_usuario=3 AND motivo='Synthetic reviewer notice check'");
+$admin->exec("DELETE FROM `$source`.usuarios WHERE id_usuario=3");
+$admin->exec("DELETE FROM `$source`.trabajadores WHERE id_trabajador=3");
 $page1=api('/kpi/formularios?limit=5&after_id=0',null,$token);
 $cursor=(int)($page1['data']['next_after_id']??0);
 $page2=api('/kpi/formularios?limit=5&after_id='.$cursor,null,$token);

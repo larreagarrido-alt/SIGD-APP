@@ -62,14 +62,20 @@ final class KpiFormsController
             }
         }
         $nextDue=null;
+        $today=date('Y-m-d');
+        $pendingToday=['manana'=>false,'tarde'=>false];
         foreach ($calendar['dias'] as $day) {
             $date=(string)$day['fecha'];
             if (!empty($day['permiso_aprobado'])
                 || !empty($completed[$date.':DIA'])) continue;
-            if ((!empty($day['manana']) && empty($completed[$date.':MANANA']))
-                || (!empty($day['tarde']) && empty($completed[$date.':TARDE']))) {
+            if ($date===$today) {
+                $pendingToday['manana']=!empty($day['manana']) && empty($completed[$date.':MANANA']);
+                $pendingToday['tarde']=!empty($day['tarde']) && empty($completed[$date.':TARDE']);
+            }
+            $missingMorning=!empty($day['manana']) && empty($completed[$date.':MANANA']);
+            $missingAfternoon=!empty($day['tarde']) && empty($completed[$date.':TARDE']);
+            if ($nextDue===null && ($missingMorning || $missingAfternoon)) {
                 $nextDue=$date;
-                break;
             }
         }
         Response::success(['id_trabajador'=>$worker,'id_cargo'=>$cargo,
@@ -77,6 +83,7 @@ final class KpiFormsController
             'tipos_formulario'=>$types,
             'tipos_con_entrega_semana'=>array_keys($completedTypes),
             'proxima_entrega_kpi'=>$types ? $nextDue : null,
+            'turnos_kpi_pendientes_hoy'=>$types ? $pendingToday : ['manana'=>false,'tarde'=>false],
             'calendario_laboral'=>$calendar,
             'turnos_kpi_pendientes'=>$types ? KpiFormCompletion::pending($calendar,$completed,date('Y-m-d')) : 0,
             'ausencia_aprobada'=>$leave ? [
@@ -143,9 +150,16 @@ final class KpiFormsController
             $select = $db->prepare('SELECT id_detalle,id_cargo,revision,payload_sha256,payload_json FROM wp_kpi_formularios_detalle WHERE id_trabajador=? AND tipo_formulario=? AND registro_uid=? FOR UPDATE');
             $insert = $db->prepare('INSERT INTO wp_kpi_formularios_detalle (id_trabajador,id_usuario,id_cargo,tipo_formulario,registro_uid,revision,meta_revision,payload_json,payload_sha256) VALUES (?,?,?,?,?,?,?,?,?)');
             $update = $db->prepare('UPDATE wp_kpi_formularios_detalle SET id_usuario=?,id_cargo=?,revision=?,meta_revision=?,payload_json=?,payload_sha256=? WHERE id_trabajador=? AND tipo_formulario=? AND registro_uid=? AND revision<?');
-            $admins = $db->prepare('SELECT DISTINCT id_trabajador FROM usuarios WHERE id_rol=1 AND id_trabajador IS NOT NULL AND id_trabajador>0');
-            $admins->execute();
-            $adminWorkers = array_map('intval', $admins->fetchAll(PDO::FETCH_COLUMN));
+            $reviewers = Database::getAttendanceConnection()->query('SELECT u.id_usuario,u.id_rol,u.id_trabajador,t.id_agencia
+                FROM usuarios u JOIN trabajadores t ON t.id_trabajador=u.id_trabajador
+                WHERE t.estado="Activo" AND u.id_trabajador IS NOT NULL AND u.id_trabajador>0');
+            $reviewerWorkers = [];
+            foreach ($reviewers->fetchAll(PDO::FETCH_ASSOC) as $reviewer) {
+                if ((int)$reviewer['id_trabajador'] !== $worker
+                    && Authorization::allows($reviewer,'kpi.revisar',$worker)) {
+                    $reviewerWorkers[(int)$reviewer['id_trabajador']] = true;
+                }
+            }
             $notify = $db->prepare('INSERT INTO wp_notificaciones (id_trabajador,tipo,titulo,mensaje,referencia_tipo,referencia_id) VALUES (?,\'AVISO_GENERAL\',\'Formulario KPI recibido\',?,\'kpi_formulario\',?)');
             $ids = [];
             foreach ($rows as $key => $row) {
@@ -176,7 +190,7 @@ final class KpiFormsController
                 $newUnits=array_diff_key($after,$before);
                 if ($changed && $newUnits) {
                     $reportId = $old ? (int)$old['id_detalle'] : (int)$db->lastInsertId();
-                    foreach ($adminWorkers as $adminWorker) {
+                    foreach (array_keys($reviewerWorkers) as $adminWorker) {
                         foreach (array_keys($newUnits) as $unit) {
                             $notify->execute([$adminWorker, 'El trabajador #'.$worker.' completó '.$row['type'].' del '.$unit.'.', $reportId]);
                         }

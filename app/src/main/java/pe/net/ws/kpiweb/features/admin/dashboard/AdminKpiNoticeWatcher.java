@@ -1,7 +1,6 @@
 package pe.net.ws.kpiweb.features.admin.dashboard;
 
 import android.Manifest;
-import android.app.Activity;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
 import android.app.PendingIntent;
@@ -24,29 +23,30 @@ import pe.net.ws.kpiweb.R;
 import pe.net.ws.kpiweb.core.network.ApiClient;
 import pe.net.ws.kpiweb.core.network.ApiResponse;
 import pe.net.ws.kpiweb.core.session.SessionManager;
+import pe.net.ws.kpiweb.features.collaborator.notifications.CollaboratorNotificationsActivity;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
 
 /** Shows new server notices while the administrator dashboard is active. */
-final class AdminKpiNoticeWatcher {
+public final class AdminKpiNoticeWatcher {
     private static final String CHANNEL = "sigd_admin_kpi_submissions";
     private static final long INTERVAL_MS = 30_000L;
-    private final Activity activity;
+    private final Context context;
     private final Handler handler = new Handler(Looper.getMainLooper());
     private final Runnable repeat = this::poll;
     private Call<ApiResponse<JsonObject>> request;
     private boolean running;
 
-    AdminKpiNoticeWatcher(Activity activity) { this.activity = activity; }
+    public AdminKpiNoticeWatcher(Context context) { this.context = context.getApplicationContext(); }
 
-    void start() {
+    public void start() {
         if (running) return;
         running = true;
         poll();
     }
 
-    void stop() {
+    public void stop() {
         running = false;
         handler.removeCallbacks(repeat);
         if (request != null) request.cancel();
@@ -59,7 +59,7 @@ final class AdminKpiNoticeWatcher {
 
     private void poll() {
         if (!running) return;
-        SessionManager session = new SessionManager(activity);
+        SessionManager session = new SessionManager(context);
         if (!session.isLoggedIn() || session.getWorkerId() <= 0 || session.getUserId() <= 0) {
             next();
             return;
@@ -75,7 +75,7 @@ final class AdminKpiNoticeWatcher {
                 JsonObject data = envelope == null ? null : envelope.getData();
                 if (response.isSuccessful() && envelope != null && envelope.isSuccessful()
                         && data != null && data.has("id_trabajador")
-                        && data.get("id_trabajador").getAsInt() == new SessionManager(activity).getWorkerId()
+                        && data.get("id_trabajador").getAsInt() == new SessionManager(context).getWorkerId()
                         && data.has("notificaciones") && data.get("notificaciones").isJsonArray()) {
                     consume(userId, data.getAsJsonArray("notificaciones"));
                 }
@@ -88,13 +88,13 @@ final class AdminKpiNoticeWatcher {
     }
 
     private boolean current(Call<?> call, int userId, String token) {
-        SessionManager session = new SessionManager(activity);
+        SessionManager session = new SessionManager(context);
         return running && !call.isCanceled() && session.getUserId() == userId
                 && token.equals(session.getAccessToken());
     }
 
     private void consume(int userId, JsonArray rows) {
-        android.content.SharedPreferences prefs = activity.getSharedPreferences("admin_notice_cursor", Context.MODE_PRIVATE);
+        android.content.SharedPreferences prefs = context.getSharedPreferences("admin_notice_cursor", Context.MODE_PRIVATE);
         String key = "user_" + userId;
         long previous = prefs.getLong(key, -1L);
         long newest = previous;
@@ -117,29 +117,35 @@ final class AdminKpiNoticeWatcher {
                     && !row.get("referencia_tipo").isJsonNull()
                     && "kpi_formulario".equals(row.get("referencia_tipo").getAsString())) newKpi++;
         }
+        if (newKpi > 0 && !canNotify()) return;
         if (newest > previous) prefs.edit().putLong(key, newest).apply();
         if (newKpi > 0) notifyKpi(newKpi);
     }
 
-    private void notifyKpi(int count) {
+    private boolean canNotify() {
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.TIRAMISU
-                && ContextCompat.checkSelfPermission(activity, Manifest.permission.POST_NOTIFICATIONS)
-                != PackageManager.PERMISSION_GRANTED) return;
-        NotificationManagerCompat manager = NotificationManagerCompat.from(activity);
-        if (!manager.areNotificationsEnabled()) return;
+                && ContextCompat.checkSelfPermission(context, Manifest.permission.POST_NOTIFICATIONS)
+                != PackageManager.PERMISSION_GRANTED) return false;
+        return NotificationManagerCompat.from(context).areNotificationsEnabled();
+    }
+
+    private void notifyKpi(int count) {
+        NotificationManagerCompat manager = NotificationManagerCompat.from(context);
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             NotificationChannel channel = new NotificationChannel(CHANNEL, "KPI recibidos",
                     NotificationManager.IMPORTANCE_HIGH);
             channel.enableVibration(true);
-            NotificationManager system = activity.getSystemService(NotificationManager.class);
+            NotificationManager system = context.getSystemService(NotificationManager.class);
             if (system != null) system.createNotificationChannel(channel);
         }
-        Intent target = new Intent(activity, AdminNotificationsActivity.class);
-        PendingIntent pending = PendingIntent.getActivity(activity, 2026, target,
+        Class<?> destination = new SessionManager(context).getRoleId() == 1
+                ? AdminNotificationsActivity.class : CollaboratorNotificationsActivity.class;
+        Intent target = new Intent(context, destination);
+        PendingIntent pending = PendingIntent.getActivity(context, 2026, target,
                 PendingIntent.FLAG_UPDATE_CURRENT | PendingIntent.FLAG_IMMUTABLE);
         String message = count == 1 ? "Se recibió un reporte KPI para revisión."
                 : "Se recibieron " + count + " reportes KPI para revisión.";
-        NotificationCompat.Builder notice = new NotificationCompat.Builder(activity, CHANNEL)
+        NotificationCompat.Builder notice = new NotificationCompat.Builder(context, CHANNEL)
                 .setSmallIcon(R.drawable.collab_ic_nav_bell)
                 .setContentTitle("Nuevo KPI recibido")
                 .setContentText(message)

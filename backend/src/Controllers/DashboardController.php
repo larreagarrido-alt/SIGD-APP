@@ -65,7 +65,7 @@ final class DashboardController
         $stAct->execute([$hoy, $inicioSemana]);
         $actividades = $stAct->fetch();
 
-        // 4. Ranking Top 5 (por puntos de KPI aprobados en el mes)
+        // 4. Ranking Top 5: use the same month and score as RankingController.
         $periodoMes = date('Y-m');
         $stRank = $db->prepare('
             SELECT
@@ -73,14 +73,25 @@ final class DashboardController
                 CONCAT(t.nombres, " ", t.apellidos) AS nombre_completo,
                 t.foto_perfil,
                 c.nombre AS cargo_nombre,
-                COALESCE(SUM(e.puntos_otorgados), 0) AS puntos_mes,
-                ROUND(AVG(COALESCE(e.porcentaje_cumplimiento, 0)), 1) AS cumplimiento_promedio
+                SUM(e.puntos_otorgados) AS puntos_mes,
+                ROUND(SUM(e.porcentaje_cumplimiento*e.peso_snapshot)/SUM(e.peso_snapshot), 2) AS cumplimiento_promedio
             FROM trabajadores t
             JOIN cargos c ON t.id_cargo = c.id_cargo
-            LEFT JOIN wp_kpi_evaluaciones e ON t.id_trabajador = e.id_trabajador AND e.estado = "Aprobado" AND e.fecha_calificacion >= ? AND e.fecha_calificacion < ?
-            WHERE t.estado = "Activo"
+            JOIN wp_kpi_evaluaciones e ON t.id_trabajador = e.id_trabajador
+                AND e.estado = "Aprobado" AND e.fecha_calificacion IS NOT NULL
+                AND e.porcentaje_cumplimiento IS NOT NULL AND e.puntos_otorgados IS NOT NULL
+                AND e.peso_snapshot>0 AND e.fecha_limite >= ? AND e.fecha_limite < ?
+            WHERE t.estado = "Activo" AND EXISTS (
+                SELECT 1 FROM wp_kpi_reporte_evaluaciones l
+                JOIN wp_kpi_formularios_detalle f ON f.id_detalle=l.id_detalle
+                WHERE l.id_evaluacion=e.id_evaluacion AND f.id_cargo<>1
+                    AND l.payload_sha256=f.payload_sha256
+            )
+            AND NOT EXISTS (SELECT 1 FROM wp_kpi_reporte_evaluaciones l
+                JOIN wp_kpi_formularios_detalle f ON f.id_detalle=l.id_detalle
+                WHERE l.id_evaluacion=e.id_evaluacion AND l.payload_sha256<>f.payload_sha256)
             GROUP BY t.id_trabajador, t.nombres, t.apellidos, t.foto_perfil, c.nombre
-            ORDER BY puntos_mes DESC, cumplimiento_promedio DESC
+            ORDER BY cumplimiento_promedio DESC, puntos_mes DESC, t.id_trabajador ASC
             LIMIT 5
         ');
         $stRank->execute([$periodoMes . '-01', date('Y-m-01', strtotime('first day of next month'))]);
