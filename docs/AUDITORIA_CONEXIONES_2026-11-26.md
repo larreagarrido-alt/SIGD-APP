@@ -9,17 +9,19 @@
 | Próxima entrega y turnos pendientes | Se tomaban únicamente asignaciones oficiales, sin la jornada exigible | El servidor calcula turnos pendientes y la próxima fecha a partir del horario vigente, permisos y entregas de Asistencias |
 | Bienestar semanal | La última respuesta guardada aparecía como completada aunque perteneciera a una semana anterior | La tarjeta compara la clave de período ISO de la evaluación con la semana actual de Lima; la respuesta anterior sigue en el historial |
 | Aviso KPI al administrador | El servidor guardaba la notificación, pero la app no generaba aviso del sistema | La pantalla principal de Administrador consulta avisos nuevos cada 30 segundos mientras está abierta y muestra notificación con vibración si Android lo permite |
+| KPI de Programador Junior enviado sin aparecer en Inicio | Android guarda fechas con espacios, por ejemplo `25 / 11 / 2026`, y el servidor solo aceptaba `25/11/2026` | Ambos lectores del servidor aceptan el formato real: conteo de entregas y medición oficial. Las entregas previas de la semana se vuelven a contar al consultar. Los avisos antiguos no se generan retroactivamente |
 
 ## Comprobaciones realizadas
 
 - Compilación de Android y pruebas unitarias: `:app:assembleDebug :app:testDebugUnitTest`, correctas.
-- Pruebas del backend con base aislada y datos sintéticos: 833 comprobaciones correctas. No se conectaron a producción.
+- Pruebas del backend con base aislada y datos sintéticos: 834 comprobaciones correctas. No se conectaron a producción.
+- Caso específico del KPI de Programador Junior con fecha `25 / 11 / 2026`: la medición devuelve las dos tareas y el lector reconoce el turno completado.
 - Sintaxis PHP de `KpiFormsController.php`: correcta.
 - La API pública respondió en `/api/v1/health` y las rutas protegidas comprobadas rechazaron solicitudes sin sesión con HTTP 401. Esto confirma que las rutas están disponibles, pero no verifica datos de una cuenta real ni que cPanel tenga la versión nueva.
 
 ## Publicación y verificación pendientes
 
-1. El usuario confirmó la subida de `websiteplus_backend/src/Controllers/KpiFormsController.php` a cPanel. La versión del archivo en el servidor todavía no se ha comparado con la local mediante una petición autenticada.
+1. El usuario confirmó la subida de `websiteplus_backend/src/Controllers/KpiFormsController.php` a cPanel. **Aún falta reemplazar** `websiteplus_backend/src/Kpi/KpiFormCompletion.php` y `websiteplus_backend/src/Kpi/KpiFormMeasurement.php` para reconocer las fechas que envía Android. No se requiere SQL nuevo.
 2. El APK se instaló con `adb install -r` en el teléfono conectado. Falta abrir el inicio con una cuenta de colaborador y comprobar KPI entregados y días de asistencia de este mes. En Bienestar, confirmar que la semana actual figura disponible si solo se contestó la semana anterior.
 3. Con una entrega KPI real y autorizada, comprobar que aparece en la bandeja del administrador y que su teléfono vibra mientras mantiene abierta la pantalla principal y tiene habilitadas las notificaciones del sistema.
 

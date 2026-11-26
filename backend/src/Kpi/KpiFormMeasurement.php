@@ -74,7 +74,7 @@ final class KpiFormMeasurement
     private static function date(string $raw): ?string
     {
         if (preg_match('/^\d{4}-\d{2}-\d{2}$/D',$raw)) $date=$raw;
-        elseif (preg_match('/^(\d{2})\/(\d{2})\/(\d{4})$/D',$raw,$m)) $date=$m[3].'-'.$m[2].'-'.$m[1];
+        elseif (preg_match('/^(\d{2})\s*\/\s*(\d{2})\s*\/\s*(\d{4})$/D',$raw,$m)) $date=$m[3].'-'.$m[2].'-'.$m[1];
         elseif (preg_match('/^[^,]+,\s*(\d{1,2}) de ([[:alpha:]áéíóúñ]+) de (\d{4})$/iuD',$raw,$m)) {
             $months=['enero'=>1,'febrero'=>2,'marzo'=>3,'abril'=>4,'mayo'=>5,'junio'=>6,
                 'julio'=>7,'agosto'=>8,'septiembre'=>9,'setiembre'=>9,'octubre'=>10,'noviembre'=>11,'diciembre'=>12];

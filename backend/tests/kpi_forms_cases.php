@@ -64,6 +64,9 @@ check((int)$db->query("SELECT COUNT(*) FROM wp_notificaciones WHERE id_trabajado
     'administrator receives a notice for a completed daily KPI, not unfinished weekly drafts');
 $currentWeekReport=['tipo_formulario'=>'GERENCIA','registro_uid'=>'fixture-current-week-dashboard',
     'revision'=>1,'payload'=>['days'=>[['date'=>date('Y-m-d'),'isRegistered'=>true]]]];
+check(array_key_exists('2026-11-25:MANANA',\WebSitePlus\Kpi\KpiFormCompletion::units(
+    'PROGRAMACION',['fecha'=>'25 / 11 / 2026','turno'=>'Mañana'])),
+    'programmer date with spaces, as emitted by Android, counts as a completed shift');
 check(api('/kpi/formularios/sync',['records'=>[$currentWeekReport]],$token)['code']===200,
     'current-week completed report reaches the server');
 $currentWeekAllowed=api('/kpi/formularios/permitidos',null,$token);

@@ -28,6 +28,10 @@ checkMeasure(Measure::value('VIDEO',['days'=>[['date'=>'2026-11-23','registered'
 checkMeasure(Measure::value('VENTAS',['fullDateFormatted'=>'Lunes, 23 de noviembre de 2026','saved'=>true,
     'llamadas'=>2,'visitas'=>0,'cotizaciones'=>0,'seguimiento'=>0,'prospectos'=>0,'clientes'=>0],
     'LLAMADAS','2026-11-23','DIARIO')===2.0,'sales date and count');
+checkMeasure(Measure::value('PROGRAMACION',
+    ['fecha'=>'25 / 11 / 2026','turno'=>'Mañana','tareasCompletadas'=>2],
+    'TAREAS','2026-11-23','SEMANAL')===2.0,
+    'Android programmer date with spaces contributes to official KPI measurement');
 $cases=[
     ['PROGRAMACION',['fecha'=>'2026-11-23','turno'=>'Mañana','tareasCompletadas'=>2,'cumplimientoMeta'=>100],'TAREAS'],
     ['DISENADOR_JUNIOR',['date'=>'2026-11-23','shift'=>'Mañana','biometricVerified'=>true,'deliveredPieces'=>2,'goalCompliancePercentage'=>100],'PIEZAS'],
