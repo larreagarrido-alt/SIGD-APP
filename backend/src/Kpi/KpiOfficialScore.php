@@ -73,11 +73,22 @@ final class KpiOfficialScore
 
     private static function programmer(array $payload, string $day, array $coverage, array $goals): ?float
     {
+        $breakdown=self::programmerBreakdown($payload,$day,$coverage,$goals);
+        if ($breakdown===null) return null;
+        return round(min(150.0,$breakdown['entregadas_tipo']/$breakdown['meta_tareas']*100.0),2);
+    }
+
+    /** Makes a zero from a wrong task category distinguishable from an empty report. */
+    public static function programmerBreakdown(array $payload, string $day, array $coverage, array $goals): ?array
+    {
         $index=(int)date('N',strtotime($day));
         $type=self::PROGRAM_KINDS[$index]??null;
         $goal=$goals[$index-1]??0;
-        if ($type===null || !isset($payload['actividades']) || !is_array($payload['actividades'])) return null;
-        $done=0;
+        $scheduled=(int)($coverage['turnos_programados']??0);
+        $eligible=(int)($coverage['turnos_exigibles']??0);
+        if ($type===null || $goal<=0 || $scheduled<=0 || $eligible<=0
+            || !isset($payload['actividades']) || !is_array($payload['actividades'])) return null;
+        $done=0; $other=0;
         foreach ($payload['actividades'] as $item) {
             if (!is_array($item) || mb_strtolower(trim((string)($item['estado']??'')))!=='entregado') continue;
             $kind=mb_strtolower(trim((string)($item['tipo']??'')));
@@ -85,9 +96,10 @@ final class KpiOfficialScore
             if ($kind===$wanted || ($index===4 && str_contains($kind,'maquetaci'))
                 || ($index===5 && str_contains($kind,'api'))
                 || ($index===6 && str_contains($kind,'mantenim'))) $done++;
+            else $other++;
         }
-        $target=$goal*(int)$coverage['turnos_exigibles']/(int)$coverage['turnos_programados'];
-        return round(min(150.0,$done/$target*100.0),2);
+        return ['tipo_esperado'=>$type,'entregadas_tipo'=>$done,'entregadas_otras'=>$other,
+            'meta_tareas'=>$goal*$eligible/$scheduled];
     }
 
     private static function junior(array $payload, array $coverage, array $goals): ?float

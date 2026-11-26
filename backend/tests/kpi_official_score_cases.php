@@ -22,6 +22,11 @@ checkScore(Score::percentage('PROGRAMACION',$program,'2026-11-23',$daily)===100.
     'Programmer Monday uses one delivered functionality, not all tasks');
 checkScore(Score::percentage('PROGRAMACION',$program,'2026-11-23',$daily,[2,2,2,1,1,2])===50.0,
     'A published numeric goal changes programmer scoring');
+$otherOnly=['fecha'=>'2026-11-23','turno'=>'Mañana','actividades'=>[
+    ['tipo'=>'Corrección','estado'=>'Entregado']]];
+checkScore(Score::percentage('PROGRAMACION',$otherOnly,'2026-11-23',$daily)===0.0
+    && Score::programmerBreakdown($otherOnly,'2026-11-23',$daily,[1,1,1,1,1,1])['entregadas_otras']===1,
+    'A completed task from another daily category yields an explained zero');
 $junior=['date'=>'2026-11-23','shift'=>'Mañana','biometricVerified'=>true,
     'goal'=>'PRODUCCION_AUDIOVISUAL','activities'=>[
         ['type'=>'VIDEO','status'=>'ENTREGADO'],['type'=>'VIDEO','status'=>'PENDIENTE']]];

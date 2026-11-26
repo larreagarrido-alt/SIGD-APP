@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace WebSitePlus\Controllers;
 
+use PDO;
 use WebSitePlus\Auth\AuditService;
 use WebSitePlus\Auth\Authorization;
 use WebSitePlus\Core\Database;
@@ -29,6 +30,29 @@ final class PersonalController
             || !is_array($image) || !in_array($image[2]??null,[IMAGETYPE_JPEG,IMAGETYPE_PNG],true)) {
             Response::error('Foto no disponible',404,'NOT_FOUND');
         }
+        if ($request->getQuery('size')==='avatar' && function_exists('imagecreatefromstring')
+            && function_exists('imagecreatetruecolor') && function_exists('imagecopyresampled')) {
+            $source=@imagecreatefromstring((string)file_get_contents($path));
+            if ($source!==false) {
+                $width=imagesx($source); $height=imagesy($source);
+                if ($width>0 && $height>0) {
+                    $scale=min(1.0,192/max($width,$height));
+                    $target=imagecreatetruecolor(max(1,(int)round($width*$scale)),max(1,(int)round($height*$scale)));
+                    imagefill($target,0,0,imagecolorallocate($target,255,255,255));
+                    imagecopyresampled($target,$source,0,0,0,0,imagesx($target),imagesy($target),$width,$height);
+                    ob_start(); imagejpeg($target,null,78); $bytes=ob_get_clean();
+                    imagedestroy($target); imagedestroy($source);
+                    if (is_string($bytes) && $bytes!=='') {
+                        header('Content-Type: image/jpeg');
+                        header('Content-Length: '.strlen($bytes));
+                        header('Cache-Control: private, max-age=300');
+                        header('X-Content-Type-Options: nosniff');
+                        echo $bytes;
+                        return;
+                    }
+                } else imagedestroy($source);
+            }
+        }
         header('Content-Type: '.(($image[2]??null)===IMAGETYPE_PNG ? 'image/png' : 'image/jpeg'));
         header('Content-Length: '.filesize($path));
         header('Cache-Control: private, no-store');
@@ -47,13 +71,13 @@ final class PersonalController
         $db = Database::getConnection();
 
         $tipo = $request->getQuery('tipo');         // 'Colaborador', 'Practicante'
-        $estado = $request->getQuery('estado');     // 'Activo', 'Inactivo'
+        $estado = $request->getQuery('estado');     // Legacy callers may ask for Activo only.
         $cargoId = $request->getQuery('id_cargo');
         $search = $request->getQuery('q');
         $limit=$request->getQuery('limit','100');
         $offset=$request->getQuery('offset','0');
         if(($tipo!==null&&!in_array($tipo,['Practicante','Colaborador'],true))
-            ||($estado!==null&&!in_array($estado,['Activo','Inactivo'],true))
+            ||($estado!==null&&$estado!=='Activo')
             ||($cargoId!==null&&(!ctype_digit((string)$cargoId)||(int)$cargoId<1||(int)$cargoId>2147483647))
             ||($search!==null&&mb_strlen((string)$search)>150)
             ||!ctype_digit((string)$limit)||(int)$limit<1||(int)$limit>100
@@ -62,7 +86,7 @@ final class PersonalController
         }
         $limit=(int)$limit;$offset=(int)$offset;
 
-        $sql = 'SELECT *, (SELECT t.foto_perfil FROM trabajadores t WHERE t.id_trabajador=vw_wp_empleados_estado.id_trabajador LIMIT 1) AS foto_perfil FROM vw_wp_empleados_estado WHERE 1=1';
+        $sql = 'SELECT *, (SELECT t.foto_perfil FROM trabajadores t WHERE t.id_trabajador=vw_wp_empleados_estado.id_trabajador LIMIT 1) AS foto_perfil FROM vw_wp_empleados_estado WHERE estado_asistencia="Activo" AND situacion_websiteplus<>"DESVINCULADO"';
         $params = [];
         if($scope!=='TODOS'){
             $own=(int)($session['id_trabajador']??0);
@@ -76,10 +100,6 @@ final class PersonalController
         if (!empty($tipo)) {
             $sql .= ' AND tipo_trabajador = ?';
             $params[] = $tipo;
-        }
-        if (!empty($estado)) {
-            $sql .= ' AND estado_asistencia = ?';
-            $params[] = $estado;
         }
         if (!empty($cargoId)) {
             $sql .= ' AND id_cargo = ?';
@@ -119,7 +139,12 @@ final class PersonalController
         Authorization::require($session, 'empleados.ver', $workerId ?? null);
         $db = Database::getConnection();
 
-        $stmt = $db->prepare('SELECT *, (SELECT t.foto_perfil FROM trabajadores t WHERE t.id_trabajador=vw_wp_empleados_estado.id_trabajador LIMIT 1) AS foto_perfil FROM vw_wp_empleados_estado WHERE id_trabajador = ? LIMIT 1');
+        $stmt = $db->prepare('SELECT *,
+            (SELECT t.foto_perfil FROM trabajadores t WHERE t.id_trabajador=vw_wp_empleados_estado.id_trabajador LIMIT 1) AS foto_perfil,
+            (SELECT p.fecha_inicio FROM wp_periodos_laborales p
+                WHERE p.id_trabajador=vw_wp_empleados_estado.id_trabajador AND p.fecha_fin IS NULL
+                ORDER BY p.fecha_inicio DESC,p.id_periodo DESC LIMIT 1) AS fecha_inicio
+            FROM vw_wp_empleados_estado WHERE id_trabajador = ? LIMIT 1');
         $stmt->execute([$workerId]);
         $worker = $stmt->fetch();
 
@@ -170,11 +195,62 @@ final class PersonalController
         $stPl->execute([$workerId]);
         $leaves = $stPl->fetchAll();
 
+        $month=date('Y-m');
+        $monthStart=$month.'-01 00:00:00';
+        $monthEnd=date('Y-m-d 00:00:00',strtotime($monthStart.' +1 month'));
+        $indicators=$db->prepare('SELECT d.id_kpi,d.nombre,d.descripcion,d.periodicidad,d.meta_esperada,d.unidad_medida,
+            (SELECT ROUND(SUM(e.porcentaje_cumplimiento*e.peso_snapshot)/NULLIF(SUM(e.peso_snapshot),0),2)
+             FROM wp_kpi_evaluaciones e WHERE e.id_kpi=d.id_kpi AND e.id_trabajador=?
+               AND e.estado="Aprobado" AND e.fecha_limite>=? AND e.fecha_limite<?
+               AND e.peso_snapshot>0 AND e.porcentaje_cumplimiento IS NOT NULL) AS porcentaje_actual
+            FROM wp_kpi_definiciones d WHERE d.id_cargo_objetivo=? AND d.activo=1
+              AND d.regla_aprobada_en IS NOT NULL ORDER BY d.id_kpi');
+        $indicators->execute([$workerId,$monthStart,$monthEnd,(int)$worker['id_cargo']]);
+        $officialIndicators=$indicators->fetchAll(PDO::FETCH_ASSOC);
+        $approved=$db->prepare('SELECT COUNT(*) AS evaluaciones_aprobadas,
+            ROUND(SUM(e.porcentaje_cumplimiento*e.peso_snapshot)/NULLIF(SUM(e.peso_snapshot),0),2) AS porcentaje,
+            COALESCE(SUM(e.puntos_otorgados),0) AS puntos
+            FROM wp_kpi_evaluaciones e WHERE e.id_trabajador=? AND e.estado="Aprobado"
+              AND e.fecha_limite>=? AND e.fecha_limite<? AND e.peso_snapshot>0
+              AND e.porcentaje_cumplimiento IS NOT NULL AND e.puntos_otorgados IS NOT NULL
+              AND EXISTS (SELECT 1 FROM wp_kpi_reporte_evaluaciones l
+                  JOIN wp_kpi_formularios_detalle f ON f.id_detalle=l.id_detalle
+                  WHERE l.id_evaluacion=e.id_evaluacion AND l.payload_sha256=f.payload_sha256)
+              AND NOT EXISTS (SELECT 1 FROM wp_kpi_reporte_evaluaciones l
+                  JOIN wp_kpi_formularios_detalle f ON f.id_detalle=l.id_detalle
+                  WHERE l.id_evaluacion=e.id_evaluacion AND l.payload_sha256<>f.payload_sha256)');
+        $approved->execute([$workerId,$monthStart,$monthEnd]);
+        $result=$approved->fetch(PDO::FETCH_ASSOC);
+        $received=$db->prepare('SELECT COUNT(*) FROM wp_kpi_formularios_detalle f
+            WHERE f.id_trabajador=? AND f.actualizado_en>=? AND f.actualizado_en<?');
+        $received->execute([$workerId,$monthStart,$monthEnd]);
+        $receivedCount=(int)$received->fetchColumn();
+        $awaiting=$db->prepare('SELECT COUNT(*) FROM wp_kpi_formularios_detalle f
+            WHERE f.id_trabajador=? AND f.actualizado_en>=? AND f.actualizado_en<?
+              AND NOT EXISTS (SELECT 1 FROM wp_kpi_reporte_evaluaciones l WHERE l.id_detalle=f.id_detalle)');
+        $awaiting->execute([$workerId,$monthStart,$monthEnd]);
+        $history=$db->prepare('SELECT DATE_FORMAT(e.fecha_limite,"%Y-%m") AS periodo,
+            ROUND(SUM(e.porcentaje_cumplimiento*e.peso_snapshot)/NULLIF(SUM(e.peso_snapshot),0),2) AS porcentaje
+            FROM wp_kpi_evaluaciones e WHERE e.id_trabajador=? AND e.estado="Aprobado"
+              AND e.peso_snapshot>0 AND e.porcentaje_cumplimiento IS NOT NULL
+              AND EXISTS (SELECT 1 FROM wp_kpi_reporte_evaluaciones l
+                  JOIN wp_kpi_formularios_detalle f ON f.id_detalle=l.id_detalle
+                  WHERE l.id_evaluacion=e.id_evaluacion AND l.payload_sha256=f.payload_sha256)
+            GROUP BY DATE_FORMAT(e.fecha_limite,"%Y-%m") ORDER BY periodo DESC LIMIT 6');
+        $history->execute([$workerId]);
+
         Response::success([
             'empleado'           => $worker,
             'periodos_laborales' => $periods,
             'eventos_transicion' => $events,
             'permisos_laborales' => $leaves,
+            'kpi_resumen' => ['periodo'=>$month,'indicadores_asignados'=>count($officialIndicators),
+                'formularios_recibidos'=>$receivedCount,
+                'sin_revisar'=>(int)$awaiting->fetchColumn(),
+                'evaluaciones_aprobadas'=>(int)($result['evaluaciones_aprobadas']??0),
+                'porcentaje'=>$result['porcentaje']??null,'puntos'=>(int)($result['puntos']??0)],
+            'kpi_indicadores'=>$officialIndicators,
+            'kpi_historial'=>$history->fetchAll(PDO::FETCH_ASSOC),
         ]);
     }
 

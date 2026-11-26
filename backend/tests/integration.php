@@ -611,7 +611,11 @@ check($profile['code']===200 && ($profile['data']['worker']['cargo_nombre'] ?? n
        && isset($emptyDashboard['data']['actividades']['actividades_pendientes_revision']),
        'empty dashboard KPI period returns numeric zero counts for notices');
  check(api('/personal',null,$adminToken)['code']===200,'HTTP admin personnel list available');
- check(api('/personal/1',null,$adminToken)['code']===200,'HTTP admin personnel detail available');
+ $personalDetail=api('/personal/1',null,$adminToken);
+ check($personalDetail['code']===200 && isset($personalDetail['data']['kpi_resumen'])
+       && isset($personalDetail['data']['kpi_indicadores'])
+       && isset($personalDetail['data']['kpi_historial']),
+       'HTTP personnel detail includes real current-month KPI summary and history');
  check(api('/personal/1/foto')['code']===401,'profile photo requires authentication');
  check(api('/personal/1/foto',null,$adminToken)['code']===404,
        'profile photo endpoint has no public fallback or synthetic personal image');

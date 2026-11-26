@@ -22,6 +22,10 @@ $initial=$readObservation(104);$repeat=LaborObservationService::observe(104);
 check($repeat['eventos']===0&&$readObservation(104)===$initial,'Unchanged source leaves snapshot timestamps and immutable history identical');
 LaborObservationService::observe(105);
 check($db->query('SELECT situacion FROM wp_situacion_laboral WHERE id_trabajador=105')->fetchColumn()==='VIGENTE','Initially inactive collaborator remains an observed restriction, not a termination');
+$activeRoster=api('/personal',null,$employeeAdmin);
+$activeIds=array_map('intval',array_column($activeRoster['data']['empleados']??[],'id_trabajador'));
+check($activeRoster['code']===200 && in_array(104,$activeIds,true) && !in_array(105,$activeIds,true),
+    'Personal shows active attendance workers and hides inactive workers');
 // The first observation itself must be idempotent when no complementary row exists yet.
 $admin->exec("INSERT INTO `$source`.trabajadores(id_trabajador,dni,nombres,apellidos,fecha_nacimiento,id_cargo,id_agencia,tipo,fecha_inicio,estado) VALUES(106,'00000106','Concurrent','Baseline','2000-01-01',1,1,'Practicante','2026-01-01','Activo')");
 $children=[];
@@ -37,6 +41,8 @@ $a=TokenService::createSession(104,null,'PASSWORD','127.0.0.1',$observationHash)
 $b=TokenService::createSession(105,null,'PASSWORD','127.0.0.1',$observationHash);
 $admin->exec("UPDATE `$source`.trabajadores SET estado='Inactivo',tipo='Colaborador',id_cargo=104,id_agencia=2 WHERE id_trabajador=104");
 $observed=LaborObservationService::observe(104);$snapshot=$readObservation(104);
+check(!in_array(104,array_map('intval',array_column(api('/personal',null,$employeeAdmin)['data']['empleados']??[],'id_trabajador')),true),
+    'Inactivation in Asistencias removes a worker from Personal without deleting their account');
 check($observed['eventos']===4&&$observed['sesiones_revocadas']===2,'Inactivity plus type, job and agency changes append four events and revoke both accounts');
 check($snapshot[0]['situacion']==='VIGENTE'&&$snapshot[0]['ultimo_estado_visto']==='Inactivo','Temporary inactivity never changes complementary termination status');
 check($snapshot[2]===$originalPeriods,'Source changes preserve period values and dates without fabricated boundaries');
@@ -47,6 +53,8 @@ check(api('/auth/login',['username'=>'observation-owner','password'=>'Synthetic-
 check(api('/auth/me',null,$a['access_token'])['code']===401&&api('/auth/refresh',['refresh_token'=>$a['refresh_token']])['code']===401,'Observed inactivity blocks existing access and refresh');
 $admin->exec("UPDATE `$source`.trabajadores SET estado='Activo' WHERE id_trabajador=104");
 $return=LaborObservationService::observe(104);
+check(in_array(104,array_map('intval',array_column(api('/personal',null,$employeeAdmin)['data']['empleados']??[],'id_trabajador')),true),
+    'Reactivation in Asistencias restores the worker to Personal automatically');
 check($return['eventos']===1&&$db->query('SELECT tipo_evento FROM wp_eventos_laborales WHERE id_trabajador=104 ORDER BY id_evento DESC LIMIT 1')->fetchColumn()==='REACTIVACION','Inactive to active records return only with a prior locked observation');
 check(api('/auth/refresh',['refresh_token'=>$b['refresh_token']])['code']===401&&TokenService::validateAccessToken($b['access_token'])===null,'A second account never used during inactivity cannot resurrect its old tokens');
 check(api('/auth/login',['username'=>'observation-owner','password'=>'Synthetic-only-123!'])['code']===200,'Reactivated worker can establish a new session');

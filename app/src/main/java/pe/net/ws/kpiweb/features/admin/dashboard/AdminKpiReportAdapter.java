@@ -54,16 +54,19 @@ final class AdminKpiReportAdapter extends RecyclerView.Adapter<AdminKpiReportAda
                 AdminKpiOfficialFormatter.safeString(item, "tipo_formulario"));
         String worker = AdminKpiOfficialFormatter.formatWorkerLabel(
                 AdminKpiOfficialFormatter.safeString(item, "nombre_completo"), workerId);
+        String cargo = AdminKpiOfficialFormatter.safeString(item, "cargo_nombre");
+        String date = AdminKpiOfficialFormatter.safeString(item, "fecha_reporte");
         String state = AdminKpiOfficialFormatter.safeString(item, "estado_evaluacion");
-        String percent = AdminKpiOfficialFormatter.safeString(item, "porcentaje_cumplimiento");
-        if (percent.isEmpty()) percent = AdminKpiOfficialFormatter.safeString(item, "porcentaje_estimado");
-        String evalText = evals == 0 ? "Por calcular" :
-                (state.isEmpty() ? "En revisión" : state)
-                + (percent.isEmpty() ? "" : " · " + percent + " %");
-        if (evals == 0 && !percent.isEmpty()) evalText = "Calculado · " + percent + " %";
+        String approvedPercent = AdminKpiOfficialFormatter.safeString(item, "porcentaje_cumplimiento");
+        String estimatedPercent = AdminKpiOfficialFormatter.safeString(item, "porcentaje_estimado");
+        String evalText = evals == 0 ? "Recibido · por evaluar"
+                : "Entregado".equalsIgnoreCase(state) ? "Calculado · pendiente de decisión"
+                : state.isEmpty() ? "En revisión" : state;
 
-        holder.title.setText(area + " · Reporte #" + reportId);
-        holder.subtitle.setText(worker);
+        holder.title.setText(worker);
+        holder.subtitle.setText((cargo.isEmpty() ? "Cargo no disponible" : cargo) + " · " + area);
+        holder.initials.setText(initials(worker));
+        holder.meta.setText("Ficha #" + reportId + (date.isEmpty() ? "" : " · " + date));
         holder.evals.setText(evalText);
         boolean approved = state.equalsIgnoreCase("APROBADA")
                 || state.equalsIgnoreCase("APROBADO");
@@ -83,14 +86,30 @@ final class AdminKpiReportAdapter extends RecyclerView.Adapter<AdminKpiReportAda
         holder.evals.setCompoundDrawablePadding(4);
         android.graphics.drawable.Drawable statusIcon = holder.evals.getCompoundDrawables()[0];
         if (statusIcon != null) statusIcon.setTint(holder.evals.getCurrentTextColor());
+        if (!approvedPercent.isEmpty() && approved) {
+            holder.score.setText("Resultado aprobado: " + approvedPercent + " % · "
+                    + AdminKpiOfficialFormatter.safeString(item, "puntos_otorgados") + " puntos");
+        } else if (!estimatedPercent.isEmpty()) {
+            String explanation="";
+            if (item.has("detalle_calculo") && item.get("detalle_calculo").isJsonObject()) {
+                JsonObject detail=item.getAsJsonObject("detalle_calculo");
+                explanation=" · " + AdminKpiOfficialFormatter.safeString(detail,"entregadas_tipo")
+                        + " de " + AdminKpiOfficialFormatter.safeString(detail,"meta_tareas")
+                        + " tareas de " + AdminKpiOfficialFormatter.safeString(detail,"tipo_esperado");
+            }
+            holder.score.setText("Avance calculado: " + estimatedPercent + " %" + explanation
+                    + " · pendiente de validación");
+        } else {
+            holder.score.setText("Abre la ficha para calcularla con la meta oficial.");
+        }
 
         boolean hasAction = listener != null && reportId > 0;
         holder.actionRow.setVisibility(hasAction ? View.VISIBLE : View.GONE);
         holder.itemView.setClickable(hasAction);
         holder.itemView.setFocusable(hasAction);
         holder.itemView.setContentDescription(
-                "Reporte número " + reportId + ", " + area + ", " + worker + ", " + evalText
-                        + (hasAction ? ". Ver detalle" : ""));
+                worker + ", " + area + ", ficha número " + reportId + ", " + evalText
+                        + (hasAction ? ". Abrir ficha" : ""));
         holder.itemView.setOnClickListener(hasAction ? v -> listener.onReportClick(reportId) : null);
     }
 
@@ -99,10 +118,20 @@ final class AdminKpiReportAdapter extends RecyclerView.Adapter<AdminKpiReportAda
         return items.size();
     }
 
+    private static String initials(String name) {
+        String[] parts=name.trim().split("\\s+");
+        if (parts.length==0 || parts[0].isEmpty()) return "?";
+        return parts[0].substring(0,1).toUpperCase(java.util.Locale.ROOT)
+                + (parts.length>1 ? parts[parts.length-1].substring(0,1).toUpperCase(java.util.Locale.ROOT) : "");
+    }
+
     static final class Holder extends RecyclerView.ViewHolder {
         final TextView title;
         final TextView subtitle;
         final TextView evals;
+        final TextView initials;
+        final TextView meta;
+        final TextView score;
         final View actionRow;
 
         Holder(@NonNull View itemView) {
@@ -110,6 +139,9 @@ final class AdminKpiReportAdapter extends RecyclerView.Adapter<AdminKpiReportAda
             title = itemView.findViewById(R.id.kpi_report_title);
             subtitle = itemView.findViewById(R.id.kpi_report_subtitle);
             evals = itemView.findViewById(R.id.kpi_report_evals);
+            initials = itemView.findViewById(R.id.kpi_report_initials);
+            meta = itemView.findViewById(R.id.kpi_report_meta);
+            score = itemView.findViewById(R.id.kpi_report_score);
             actionRow = itemView.findViewById(R.id.kpi_report_action_row);
         }
     }

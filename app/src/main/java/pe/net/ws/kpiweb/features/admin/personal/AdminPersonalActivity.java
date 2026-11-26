@@ -358,7 +358,6 @@ public class AdminPersonalActivity extends AppCompatActivity {
         layoutStatusChips.removeAllViews();
         addStatusChip("Todos", null, R.drawable.admin_ic_users_round, 0xFFC69BF5);
         addStatusChip("Activos", WorkStatus.ACTIVO, R.drawable.personal_ic_user_round_check, 0xFF57D6A0);
-        addStatusChip("Inactivos", WorkStatus.INACTIVO, R.drawable.personal_ic_user_round_x, 0xFFF28C9B);
     }
 
     private void addStatusChip(String label, @Nullable WorkStatus status, @DrawableRes int iconRes, int accentColor) {
@@ -369,9 +368,9 @@ public class AdminPersonalActivity extends AppCompatActivity {
     }
 
     private void updateStatusChipsVisuals(Stats counts) {
-        WorkStatus[] ordered = new WorkStatus[] { null, WorkStatus.ACTIVO, WorkStatus.INACTIVO };
-        int[] accents = new int[] { 0xFFC69BF5, 0xFF57D6A0, 0xFFF28C9B };
-        int[] values = new int[] { counts.total, counts.active, counts.inactive };
+        WorkStatus[] ordered = new WorkStatus[] { null, WorkStatus.ACTIVO };
+        int[] accents = new int[] { 0xFFC69BF5, 0xFF57D6A0 };
+        int[] values = new int[] { counts.total, counts.active };
         for (int i = 0; i < ordered.length && i < layoutStatusChips.getChildCount(); i++) {
             View child = layoutStatusChips.getChildAt(i);
             if (child instanceof LinearLayout) {

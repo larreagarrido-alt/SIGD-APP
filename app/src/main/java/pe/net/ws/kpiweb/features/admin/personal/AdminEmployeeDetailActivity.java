@@ -6,12 +6,14 @@ import android.graphics.drawable.GradientDrawable;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.view.WindowCompat;
 import androidx.core.content.ContextCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -23,6 +25,8 @@ import pe.net.ws.kpiweb.core.network.ApiClient;
 import pe.net.ws.kpiweb.core.network.ApiResponse;
 import pe.net.ws.kpiweb.core.session.SessionManager;
 import pe.net.ws.kpiweb.features.admin.personal.data.PersonalRemoteMapper;
+import pe.net.ws.kpiweb.features.collaborator.common.CollaboratorProfilePhotoLoader;
+import pe.net.ws.kpiweb.features.collaborator.common.CollaboratorThemeHelper;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -52,6 +56,7 @@ public class AdminEmployeeDetailActivity extends AppCompatActivity {
 
     // Header del Perfil
     private TextView tvAvatar;
+    private ImageView ivPhoto;
     private TextView tvName;
     private TextView tvRole;
     private TextView tvDeptCode;
@@ -108,6 +113,8 @@ public class AdminEmployeeDetailActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.admin_activity_employee_detail);
+        WindowCompat.setDecorFitsSystemWindows(getWindow(), true);
+        CollaboratorThemeHelper.setupSystemBars(this);
 
         repository = PersonalRepository.getInstance();
         String employeeId = getIntent().getStringExtra(EXTRA_EMPLOYEE_ID);
@@ -155,7 +162,7 @@ public class AdminEmployeeDetailActivity extends AppCompatActivity {
                     Toast.makeText(AdminEmployeeDetailActivity.this, "No se pudo consultar el detalle real", Toast.LENGTH_LONG).show();
                     return;
                 }
-                employee = PersonalRemoteMapper.employee(body.getData().getAsJsonObject("empleado"));
+                employee = PersonalRemoteMapper.detail(body.getData());
                 bindEmployeeHeader();
                 bindSummaryTab();
                 bindKpiTab();
@@ -175,6 +182,7 @@ public class AdminEmployeeDetailActivity extends AppCompatActivity {
 
         // Header
         tvAvatar = findViewById(R.id.tv_detail_avatar);
+        ivPhoto = findViewById(R.id.iv_detail_photo);
         tvName = findViewById(R.id.tv_detail_name);
         tvRole = findViewById(R.id.tv_detail_role);
         tvDeptCode = findViewById(R.id.tv_detail_dept_code);
@@ -234,6 +242,10 @@ public class AdminEmployeeDetailActivity extends AppCompatActivity {
         tvRole.setText(employee.getRole());
         tvDeptCode.setText(employee.getDepartment() + " • " + employee.getId());
         tvAvatar.setText(employee.getAvatarInitials());
+        try {
+            CollaboratorProfilePhotoLoader.load(this, ivPhoto, tvAvatar,
+                    employee.getPhotoUrl(), Integer.parseInt(employee.getId()));
+        } catch (NumberFormatException ignored) { }
 
         GradientDrawable avatarBg = new GradientDrawable();
         avatarBg.setShape(GradientDrawable.OVAL);
@@ -308,7 +320,7 @@ public class AdminEmployeeDetailActivity extends AppCompatActivity {
 
     private void bindSummaryTab() {
         int score = employee.getKpiSummaryScore();
-        tvHeroPeriod.setText(score >= 0 ? "Período consultado" : "KPI sin datos conectados");
+        tvHeroPeriod.setText("KPI del mes actual");
         if (score >= 0) {
             cpvHeroScore.setProgress(score, "de avance");
             tvHeroStatus.setText(employee.getPerformanceSummaryStatus());
@@ -316,18 +328,17 @@ public class AdminEmployeeDetailActivity extends AppCompatActivity {
             pbHeroEvaluations.setProgress(score);
         } else {
             cpvHeroScore.setProgress(-1, "Pendiente");
-            tvHeroStatus.setText("Pendiente de evaluación");
-            tvHeroSubtitle.setText("Sin evaluación registrada este período");
+            tvHeroStatus.setText(employee.getPerformanceSummaryStatus());
+            tvHeroSubtitle.setText(employee.getPerformanceComparisonText());
             pbHeroEvaluations.setProgress(0);
         }
 
-        tvHeroEvaluations.setText(score >= 0 ? employee.getEvaluationsCountText()
-                : "Evaluaciones no disponibles en esta vista");
+        tvHeroEvaluations.setText(employee.getEvaluationsCountText());
 
         // Estadísticas personales
-        tvStatAssigned.setText(score >= 0 ? String.valueOf(employee.getKpiAssignedCount()) : "—");
-        tvStatCompleted.setText(score >= 0 ? String.valueOf(employee.getKpiCompletedCount()) : "—");
-        tvStatPending.setText(score >= 0 ? String.valueOf(employee.getKpiPendingCount()) : "—");
+        tvStatAssigned.setText(String.valueOf(employee.getKpiAssignedCount()));
+        tvStatCompleted.setText(String.valueOf(employee.getKpiCompletedCount()));
+        tvStatPending.setText(String.valueOf(employee.getKpiPendingCount()));
 
         // Gráfico de líneas de evolución
         chartPerformanceEvolution.setData(employee.getEvaluationHistory());
@@ -337,6 +348,10 @@ public class AdminEmployeeDetailActivity extends AppCompatActivity {
         tvLaborSchedule.setText(available(employee.getWorkSchedule()));
         tvLaborContract.setText(available(employee.getContractType()));
         tvLaborModality.setText(available(employee.getWorkModality()));
+        ((View)tvLaborSchedule.getParent()).setVisibility(employee.getWorkSchedule().isEmpty()
+                ? View.GONE : View.VISIBLE);
+        ((View)tvLaborModality.getParent()).setVisibility(employee.getWorkModality().isEmpty()
+                ? View.GONE : View.VISIBLE);
     }
 
     private String available(String value) {

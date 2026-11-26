@@ -3,6 +3,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/personal_bg_main"
+    android:fitsSystemWindows="true"
     android:orientation="vertical">
 
     <!-- Barra Superior Sticky -->
@@ -74,16 +75,28 @@
                     android:orientation="horizontal">
 
                     <!-- Avatar -->
-                    <TextView
-                        android:id="@+id/tv_detail_avatar"
+                    <FrameLayout
                         android:layout_width="54dp"
                         android:layout_height="54dp"
                         android:background="@drawable/personal_bg_avatar_circle"
-                        android:gravity="center"
-                        android:text="CM"
-                        android:textColor="#FFFFFF"
-                        android:textSize="18sp"
-                        android:textStyle="bold" />
+                        android:clipToOutline="true">
+                        <ImageView
+                            android:id="@+id/iv_detail_photo"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:contentDescription="Foto del colaborador"
+                            android:scaleType="centerCrop"
+                            android:visibility="gone" />
+                        <TextView
+                            android:id="@+id/tv_detail_avatar"
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:gravity="center"
+                            android:text="CM"
+                            android:textColor="#FFFFFF"
+                            android:textSize="18sp"
+                            android:textStyle="bold" />
+                    </FrameLayout>
 
                     <!-- Nombre, Cargo y Código -->
                     <LinearLayout
@@ -606,7 +619,7 @@
                             <TextView
                                 android:layout_width="wrap_content"
                                 android:layout_height="wrap_content"
-                                android:text="@string/personal_labor_contract"
+                                android:text="Tipo de vínculo"
                                 android:textColor="@color/personal_text_muted"
                                 android:textSize="11sp" />
 

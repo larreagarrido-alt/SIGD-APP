@@ -121,16 +121,20 @@ final class KpiOfficialAdminController
         $db=Database::getConnection();
         $rows=$db->query('SELECT f.id_detalle,f.id_trabajador,f.id_cargo,f.tipo_formulario,f.revision,f.meta_revision,
             f.payload_json,
-            f.actualizado_en,COUNT(l.id_evaluacion) AS evaluaciones_vinculadas,
-            MAX(e.id_evaluacion) AS id_evaluacion,MAX(e.estado) AS estado_evaluacion,
-            MAX(e.porcentaje_cumplimiento) AS porcentaje_cumplimiento,
-            MAX(e.puntos_otorgados) AS puntos_otorgados,
+            f.actualizado_en,
+            (SELECT COUNT(*) FROM wp_kpi_reporte_evaluaciones linked
+                WHERE linked.id_detalle=f.id_detalle) AS evaluaciones_vinculadas,
+            e.id_evaluacion,e.estado AS estado_evaluacion,
+            e.porcentaje_cumplimiento,e.puntos_otorgados,
             (SELECT v.nombre_completo FROM vw_wp_empleados_estado v
-                WHERE v.id_trabajador=f.id_trabajador LIMIT 1) AS nombre_completo
+                WHERE v.id_trabajador=f.id_trabajador LIMIT 1) AS nombre_completo,
+            (SELECT c.nombre FROM cargos c WHERE c.id_cargo=f.id_cargo LIMIT 1) AS cargo_nombre
             FROM wp_kpi_formularios_detalle f
             LEFT JOIN wp_kpi_reporte_evaluaciones l ON l.id_detalle=f.id_detalle
+                AND l.id_evaluacion=(SELECT MAX(latest.id_evaluacion)
+                    FROM wp_kpi_reporte_evaluaciones latest WHERE latest.id_detalle=f.id_detalle)
             LEFT JOIN wp_kpi_evaluaciones e ON e.id_evaluacion=l.id_evaluacion
-            GROUP BY f.id_detalle ORDER BY f.actualizado_en DESC LIMIT 200')->fetchAll(PDO::FETCH_ASSOC);
+            ORDER BY f.actualizado_en DESC LIMIT 200')->fetchAll(PDO::FETCH_ASSOC);
         $rows=array_values(array_filter($rows,fn(array $row): bool =>
             Authorization::allows($session,'kpi.revisar',(int)$row['id_trabajador'])));
         $approved=$db->query('SELECT id_cargo_objetivo,periodicidad FROM wp_kpi_definiciones
@@ -144,10 +148,12 @@ final class KpiOfficialAdminController
             $period=KpiOfficialScore::period($type);
             $payload=json_decode((string)$row['payload_json'],true);
             unset($row['payload_json']);
+            $row['fecha_reporte']=substr((string)$row['actualizado_en'],0,10);
             if (!is_array($payload) || $period===null || ($rules[(int)$row['id_cargo']]??null)!==$period) continue;
             $units=KpiFormCompletion::units($type,$payload);
             if (!$units) continue;
             $day=substr(max(array_keys($units)),0,10);
+            $row['fecha_reporte']=$day;
             $from=$period==='DIARIO' ? $day : date('Y-m-d',strtotime($day.' -'.((int)date('N',strtotime($day))-1).' days'));
             $to=$period==='DIARIO' ? $day : date('Y-m-d',strtotime($from.' +6 days'));
             $key=$row['id_trabajador'].':'.$from.':'.$to;
@@ -157,7 +163,13 @@ final class KpiOfficialAdminController
                 if ($type==='VENTAS') [$scorePayload]=self::salesWeek($db,$row+['payload_json'=>json_encode($payload)],$day);
                 $goals=KpiOfficialGoals::forReport($db,$type,$row['meta_revision']===null ? null : (int)$row['meta_revision']);
                 $score=KpiOfficialScore::percentage($type,$scorePayload,$day,$coverageCache[$key],$goals);
-                if ($score!==null) $row['porcentaje_estimado']=$score;
+                if ($score!==null) {
+                    $row['porcentaje_estimado']=$score;
+                    if ($type==='PROGRAMACION') {
+                        $row['detalle_calculo']=KpiOfficialScore::programmerBreakdown(
+                            $scorePayload,$day,$coverageCache[$key],$goals);
+                    }
+                }
             } catch (\Throwable $ignored) {
                 // A report can still be inspected when Asistencias has not settled its calendar.
             }
@@ -248,6 +260,8 @@ final class KpiOfficialAdminController
             : max(0.01,round((float)$row['meta_esperada']
                 *$coverage['turnos_exigibles']/$coverage['turnos_programados'],2));
         $percentage=min(150.0,round($value/$effectiveMeta*100,2));
+        $scoreBreakdown=$row['tipo_formulario']==='PROGRAMACION'
+            ? KpiOfficialScore::programmerBreakdown($payload,$day,$coverage,$goals) : null;
         $projectedPoints=KpiPointsPolicy::forPercentage($percentage);
         $closed=$db->prepare('SELECT 1 FROM wp_ranking_cierres WHERE periodo_clave=?');
         $closed->execute([substr($day,0,7)]);
@@ -298,6 +312,7 @@ final class KpiOfficialAdminController
         Response::success(['id_evaluacion'=>$id,'estado'=>'Entregado','valor_calculado'=>$value,
             'unidad_medida'=>$row['unidad_medida'],'meta_aprobada'=>$row['meta_esperada'],
             'meta_efectiva'=>$effectiveMeta,'porcentaje_estimado'=>$percentage,
+            'detalle_calculo'=>$scoreBreakdown,
             'puntos_si_aprueba'=>$projectedPoints,
             'requiere_aprobacion'=>true]);
     }

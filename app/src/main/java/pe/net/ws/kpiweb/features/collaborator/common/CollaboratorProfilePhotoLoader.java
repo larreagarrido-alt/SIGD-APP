@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.net.Uri;
+import android.util.LruCache;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -22,6 +23,18 @@ import pe.net.ws.kpiweb.core.session.SessionManager;
 public final class CollaboratorProfilePhotoLoader {
     private static final ExecutorService EXECUTOR = Executors.newFixedThreadPool(4);
     private static final int MAX_BYTES = 2 * 1024 * 1024;
+    private static final long CACHE_MS = 10 * 60 * 1000L;
+    private static final LruCache<String, CacheEntry> CACHE = new LruCache<String, CacheEntry>(8 * 1024) {
+        @Override protected int sizeOf(String key, CacheEntry value) {
+            return Math.max(1, value.bitmap.getByteCount() / 1024);
+        }
+    };
+
+    private static final class CacheEntry {
+        final Bitmap bitmap;
+        final long loadedAt;
+        CacheEntry(Bitmap bitmap) { this.bitmap = bitmap; loadedAt = android.os.SystemClock.elapsedRealtime(); }
+    }
 
     private CollaboratorProfilePhotoLoader() { }
 
@@ -38,10 +51,19 @@ public final class CollaboratorProfilePhotoLoader {
         SessionManager session = new SessionManager(activity);
         String token = session.getAccessToken();
         String privateUrl = workerId > 0 && session.isLoggedIn() && token != null && !token.isEmpty()
-                ? ApiClient.BASE_URL + "personal/" + workerId + "/foto" : null;
+                ? ApiClient.BASE_URL + "personal/" + workerId + "/foto?size=avatar" : null;
         String key = privateUrl != null ? privateUrl : safeUrl;
         photoView.setTag(key);
         if (key == null) return;
+        String cacheKey = session.getUserId() + ":" + key;
+        CacheEntry cached;
+        synchronized (CACHE) { cached = CACHE.get(cacheKey); }
+        if (cached != null && android.os.SystemClock.elapsedRealtime() - cached.loadedAt < CACHE_MS) {
+            photoView.setImageBitmap(cached.bitmap);
+            photoView.setVisibility(View.VISIBLE);
+            initialsView.setVisibility(View.GONE);
+            return;
+        }
 
         EXECUTOR.execute(() -> {
             try {
@@ -52,6 +74,7 @@ public final class CollaboratorProfilePhotoLoader {
                 }
                 if (bitmap == null && safeUrl != null) bitmap = fetch(safeUrl, null);
                 if (bitmap == null) return;
+                synchronized (CACHE) { CACHE.put(cacheKey, new CacheEntry(bitmap)); }
                 Bitmap loaded = bitmap;
                 activity.runOnUiThread(() -> {
                     if (activity.isFinishing() || activity.isDestroyed()

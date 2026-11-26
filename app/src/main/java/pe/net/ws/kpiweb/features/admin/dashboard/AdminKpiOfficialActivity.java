@@ -464,13 +464,20 @@ public final class AdminKpiOfficialActivity extends AppCompatActivity {
         run(ApiClient.getService().reviewOfficialKpiReport(token, report, body), data -> {
                         int id = number(data, "id_evaluacion");
                         refresh();
+                        String explanation="";
+                        if (data.has("detalle_calculo") && data.get("detalle_calculo").isJsonObject()) {
+                            JsonObject detail=data.getAsJsonObject("detalle_calculo");
+                            explanation="\n\nPara este día se contaron "
+                                    + string(detail,"entregadas_tipo") + " de "
+                                    + string(detail,"meta_tareas") + " tareas entregadas de tipo "
+                                    + string(detail,"tipo_esperado") + ". Las tareas de otros tipos no suman a esta meta diaria.";
+                        }
                         AlertDialog dialog = new AlertDialog.Builder(this)
                                 .setTitle("Evaluación #" + id + " preparada")
-                                .setMessage("Resultado del servidor: " + string(data, "valor_calculado") + " "
-                                        + string(data, "unidad_medida") + " / meta exigible "
-                                        + string(data, "meta_efectiva") + " = "
-                                        + string(data, "porcentaje_estimado") + " %. Si apruebas su validez: "
-                                        + string(data, "puntos_si_aprueba") + " puntos. Revisa la ficha antes de aprobar.")
+                                .setMessage("Cumplimiento calculado: " + string(data, "porcentaje_estimado")
+                                        + " %." + explanation + "\n\nSi apruebas la validez de la ficha: "
+                                        + string(data, "puntos_si_aprueba")
+                                        + " puntos. La aprobación confirma los datos, no cambia el cálculo.")
                                 .setNegativeButton("Después", null)
                                 .setNeutralButton("Observar", (d, which) -> observeEvaluation(id))
                                 .setPositiveButton("Aprobar", (d, which) -> approveEvaluation(id))
