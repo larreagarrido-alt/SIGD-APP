@@ -62,14 +62,22 @@ public class CollaboratorDashboardActivity extends AppCompatActivity {
     private Call<ApiResponse<JsonObject>> formRequest;
     private Call<ApiResponse<JsonObject>> allowedFormsRequest;
     private Call<ApiResponse<JsonObject>> pointsRequest;
+    private Call<ApiResponse<JsonObject>> attendanceRequest;
     private KpiServerAssignments latestKpis;
     private int latestKpisWorkerId;
     private Integer latestRawFormCount;
     private int latestRawFormsWorkerId;
     private int latestAllowedFormCount;
     private int latestAllowedFormsWorkerId;
+    private String latestAllowedFormsPeriod;
+    private int latestSubmittedFormTypes;
+    private int latestPendingShifts;
+    private String latestFormDueDate;
     private Integer latestBalance;
     private int latestPointsWorkerId;
+    private Integer latestAttendanceDays;
+    private int latestAttendanceWorkerId;
+    private String latestAttendanceMonth;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -95,12 +103,16 @@ public class CollaboratorDashboardActivity extends AppCompatActivity {
     protected void onResume() {
         super.onResume();
         SessionManager activeSession = new SessionManager(this);
-        if (activeSession.isLoggedIn() && activeSession.getWorkerId() > 0)
+        if (activeSession.isLoggedIn() && activeSession.getWorkerId() > 0) {
             pe.net.ws.kpiweb.features.kpi.notification.KpiReminderScheduler.scheduleAllReminders(this);
+            pe.net.ws.kpiweb.features.kpi.sync.KpiFormSyncManager.retry(this);
+        }
         CollaboratorThemeHelper.setupSystemBars(this);
         currentProfile = CollaboratorSessionManager.getInstance(this).getActiveProfile();
         bindCollaboratorProfile(currentProfile);
-        if (latestKpis != null && latestKpisWorkerId == new SessionManager(this).getWorkerId()) renderRealKpis(latestKpis);
+        if (latestKpis != null && latestKpisWorkerId == new SessionManager(this).getWorkerId()
+                && pe.net.ws.kpiweb.core.time.IsoWeekPeriod.currentInLima().equals(latestKpis.getPeriod()))
+            renderRealKpis(latestKpis);
         if (latestBalance != null && latestPointsWorkerId == new SessionManager(this).getWorkerId()) renderRealPoints(latestBalance);
         refreshServerData();
         CollaboratorBottomNavHelper.setup(this, CollaboratorBottomNavHelper.NavTab.HOME);
@@ -312,6 +324,10 @@ public class CollaboratorDashboardActivity extends AppCompatActivity {
                 pbKpi.setProgress(stats.getKpiProgressPercent());
             }
         }
+        if (latestAttendanceDays != null && latestAttendanceWorkerId == new SessionManager(this).getWorkerId()
+                && currentMonth().equals(latestAttendanceMonth)) {
+            renderRealAttendance(latestAttendanceDays);
+        }
 
         // 5. Próxima Entrega / Actividad Destacada
         CollaboratorActivityItem nextAct = profile.getNextActivity();
@@ -431,7 +447,17 @@ public class CollaboratorDashboardActivity extends AppCompatActivity {
                         || data.get("id_trabajador").getAsInt() != workerId
                         || !data.has("tipos_formulario") || !data.get("tipos_formulario").isJsonArray()) return;
                 latestAllowedFormCount = data.getAsJsonArray("tipos_formulario").size();
+                latestSubmittedFormTypes = data.has("tipos_con_entrega_semana")
+                        && data.get("tipos_con_entrega_semana").isJsonArray()
+                        ? data.getAsJsonArray("tipos_con_entrega_semana").size() : 0;
+                latestPendingShifts = data.has("turnos_kpi_pendientes")
+                        && !data.get("turnos_kpi_pendientes").isJsonNull()
+                        ? data.get("turnos_kpi_pendientes").getAsInt() : 0;
+                latestFormDueDate = data.has("proxima_entrega_kpi")
+                        && !data.get("proxima_entrega_kpi").isJsonNull()
+                        ? data.get("proxima_entrega_kpi").getAsString() : null;
                 latestAllowedFormsWorkerId = workerId;
+                latestAllowedFormsPeriod = period;
                 if (latestKpis != null && latestKpisWorkerId == workerId) renderRealKpis(latestKpis);
             }
             @Override public void onFailure(Call<ApiResponse<JsonObject>> call, Throwable error) { }
@@ -456,6 +482,41 @@ public class CollaboratorDashboardActivity extends AppCompatActivity {
             }
             @Override public void onFailure(Call<ApiResponse<JsonObject>> call, Throwable error) { }
         });
+
+        if (attendanceRequest != null) attendanceRequest.cancel();
+        final String attendanceMonth = currentMonth();
+        attendanceRequest = ApiClient.getService().getOwnAttendance(session.getBearerToken(), attendanceMonth);
+        attendanceRequest.enqueue(new Callback<ApiResponse<JsonObject>>() {
+            @Override public void onResponse(Call<ApiResponse<JsonObject>> call, Response<ApiResponse<JsonObject>> response) {
+                if (!isCurrent(call, token)) return;
+                ApiResponse<JsonObject> body = response.body();
+                JsonObject data = body == null ? null : body.getData();
+                JsonObject summary = data == null ? null : data.getAsJsonObject("resumen");
+                if (!response.isSuccessful() || body == null || !body.isSuccessful() || summary == null
+                        || !summary.has("dias_con_marcacion")) {
+                    setText(R.id.collab_tv_stat_attendance_badge, "No disponible");
+                    return;
+                }
+                latestAttendanceDays = summary.get("dias_con_marcacion").getAsInt();
+                latestAttendanceWorkerId = workerId;
+                latestAttendanceMonth = attendanceMonth;
+                renderRealAttendance(latestAttendanceDays);
+            }
+            @Override public void onFailure(Call<ApiResponse<JsonObject>> call, Throwable error) {
+                if (isCurrent(call, token)) setText(R.id.collab_tv_stat_attendance_badge, "Sin conexión");
+            }
+        });
+    }
+
+    private void renderRealAttendance(int days) {
+        setText(R.id.collab_tv_stat_attendance_value, String.valueOf(days));
+        setText(R.id.collab_tv_stat_attendance_badge, days == 1 ? "Día con marcación este mes" : "Días con marcación este mes");
+    }
+
+    private static String currentMonth() {
+        java.text.SimpleDateFormat format = new java.text.SimpleDateFormat("yyyy-MM", Locale.ROOT);
+        format.setTimeZone(java.util.TimeZone.getTimeZone("America/Lima"));
+        return format.format(new Date());
     }
 
     private void renderRealPoints(int balance) {
@@ -472,33 +533,43 @@ public class CollaboratorDashboardActivity extends AppCompatActivity {
     }
 
     private void renderRealKpis(KpiServerAssignments data) {
+        if (!pe.net.ws.kpiweb.core.time.IsoWeekPeriod.currentInLima().equals(data.getPeriod())) return;
+        boolean allowedCurrent = latestAllowedFormsWorkerId == data.getWorkerId()
+                && data.getPeriod().equals(latestAllowedFormsPeriod);
         int assigned = Math.max(data.getAssignments().size(),
-                latestAllowedFormsWorkerId == data.getWorkerId() ? latestAllowedFormCount : 0);
+                allowedCurrent ? latestAllowedFormCount : 0);
         int done = 0;
-                int pending = 0;
                 KpiServerAssignment next = null;
                 for (KpiServerAssignment item : data.getAssignments()) {
                     String status = item.getStatus() == null ? "" : item.getStatus();
                     boolean completed = "Aprobado".equalsIgnoreCase(status) || "Entregado".equalsIgnoreCase(status);
                     boolean active = !"Cancelado".equalsIgnoreCase(status) && !"No exigible".equalsIgnoreCase(status);
                     if (completed) done++;
-                    else if (active) pending++;
                     if (active && !completed && item.getDueAt() != null && !item.getDueAt().isEmpty()
                             && (next == null || item.getDueAt().compareTo(next.getDueAt()) < 0)) next = item;
                 }
+                int received = allowedCurrent
+                        ? latestSubmittedFormTypes : 0;
+                int delivered = Math.min(assigned, Math.max(done, received));
                 setText(R.id.collab_tv_kpi_assigned_count, String.valueOf(assigned));
-                setText(R.id.collab_tv_kpi_completed_count, String.valueOf(done));
-                setText(R.id.collab_tv_kpi_pending_count, String.valueOf(pending));
-                setText(R.id.collab_tv_stat_kpi_value, done + "/" + assigned);
+                setText(R.id.collab_tv_kpi_completed_count, String.valueOf(delivered));
+                setText(R.id.collab_tv_kpi_pending_count,
+                        allowedCurrent
+                                ? String.valueOf(latestPendingShifts) : "—");
+                setText(R.id.collab_tv_stat_kpi_value, delivered + "/" + assigned);
                 setText(R.id.collab_tv_stat_kpi_sub, "Período " + data.getPeriod()
-                        + (latestRawFormCount != null && latestRawFormsWorkerId == data.getWorkerId()
-                        ? " · " + latestRawFormCount + " formularios recibidos (sin evaluar)" : ""));
+                        + (received > done ? " · Reporte recibido, pendiente de aprobación" : ""));
                 ProgressBar progress = findViewById(R.id.collab_pb_stat_kpi);
-                if (progress != null) progress.setProgress(assigned == 0 ? 0 : done * 100 / assigned);
-                setText(R.id.collab_tv_kpi_next_due_summary, next == null ? "Sin entregas pendientes" : next.getDueAt());
-                setText(R.id.collab_tv_next_due_date, next == null ? "Al día" : next.getDueAt());
-                setText(R.id.collab_tv_next_title, next == null ? "Sin próximas entregas" : next.getName());
-                setText(R.id.collab_tv_next_subtitle, next == null ? "No hay KPI con fecha de entrega en este período" : "KPI asignado · " + next.getStatus());
+                if (progress != null) progress.setProgress(assigned == 0 ? 0 : delivered * 100 / assigned);
+                String due = next != null ? next.getDueAt()
+                        : allowedCurrent ? latestFormDueDate : null;
+                setText(R.id.collab_tv_kpi_next_due_summary, due == null ? "Sin entregas pendientes" : due);
+                setText(R.id.collab_tv_next_due_date, due == null ? "Al día" : due);
+                setText(R.id.collab_tv_next_title, next != null ? next.getName()
+                        : due == null ? "Sin próximas entregas" : "Próximo reporte KPI");
+                setText(R.id.collab_tv_next_subtitle, next != null ? "KPI asignado · " + next.getStatus()
+                        : due == null ? "No hay turno exigible pendiente en este período"
+                        : "Según tu horario vigente en Asistencias");
     }
 
     private boolean isCurrent(Call<?> call, String expectedToken) {
@@ -512,6 +583,7 @@ public class CollaboratorDashboardActivity extends AppCompatActivity {
         if (formRequest != null) formRequest.cancel();
         if (allowedFormsRequest != null) allowedFormsRequest.cancel();
         if (pointsRequest != null) pointsRequest.cancel();
+        if (attendanceRequest != null) attendanceRequest.cancel();
         super.onDestroy();
     }
 

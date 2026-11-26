@@ -30,7 +30,7 @@ public final class FaceRegistrationRequest {
             if(!localCode.isEmpty())text+="\nDiagnóstico local: "+localCode+".";
             if("FRESH_PASSWORD_REQUIRED".equals(backendCode))text+="\nVuelve a ingresar con contraseña y autoriza antes de cinco minutos. La sesión por huella no permite registrar una clave facial.";
             if("INVALID_TOKEN".equals(backendCode)||"UNAUTHORIZED".equals(backendCode))text+="\nLa sesión no está autorizada. Vuelve a ingresar con contraseña.";
-            if(uncertain)text+="\nResultado no confirmado. No repitas la autorización ni borres los datos de la app. Primero hay que comprobar el estado en el servidor.";
+            if(uncertain)text+="\nResultado no confirmado. No borres los datos de la app. Toca \"Comprobar estado y reintentar\" para verificarlo con el servidor usando la misma clave.";
             return text;
         }
     }
@@ -39,6 +39,14 @@ public final class FaceRegistrationRequest {
         void failure(Diagnostic diagnostic);
     }
     private FaceRegistrationRequest() {}
+    /** Only the exception type is classified; messages are never exposed. */
+    static String failureCode(Throwable failure){
+        if(failure instanceof java.net.SocketTimeoutException||failure instanceof java.io.InterruptedIOException)return "CONEXION_TIEMPO_AGOTADO";
+        if(failure instanceof java.net.UnknownHostException)return "CONEXION_SIN_INTERNET";
+        if(failure instanceof javax.net.ssl.SSLException)return "CONEXION_SSL";
+        if(failure instanceof java.net.ConnectException)return "CONEXION_RECHAZADA";
+        return "CONEXION_SIN_RESPUESTA";
+    }
     private static String safeCode(String value){return value!=null&&value.matches("[A-Z][A-Z0-9_]{0,63}")?value:"";}
     public static void enqueue(Call<ResponseBody> call,Stage stage,Listener listener){
         call.enqueue(new Callback<ResponseBody>(){
@@ -73,7 +81,7 @@ public final class FaceRegistrationRequest {
                 listener.failure(new Diagnostic(stage,response.code(),code,json==null?"RESPUESTA_NO_VALIDA":"",uncertain));
             }
             @Override public void onFailure(Call<ResponseBody> call,Throwable failure){
-                if(!call.isCanceled())listener.failure(new Diagnostic(stage,0,"","CONEXION_SIN_RESPUESTA",true));
+                if(!call.isCanceled())listener.failure(new Diagnostic(stage,0,"",failureCode(failure),true));
             }
         });
     }

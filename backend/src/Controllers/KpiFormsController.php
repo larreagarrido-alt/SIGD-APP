@@ -41,16 +41,42 @@ final class KpiFormsController
         $leave = LaborPolicy::approvedLeaveOnDate($worker, date('Y-m-d'));
         $calendar=KpiLaborCalendar::currentWeek($worker);
         $completed=[];
+        $completedTypes=[];
+        $weekStart=(string)$calendar['semana_desde'];
+        $weekEnd=(new \DateTimeImmutable($weekStart))->modify('+7 days')->format('Y-m-d');
         $reports=Database::getConnection()->prepare('SELECT tipo_formulario,payload_json FROM wp_kpi_formularios_detalle WHERE id_trabajador=? AND actualizado_en>=? ORDER BY id_detalle DESC LIMIT 200');
         $reports->execute([$worker,$calendar['semana_desde']]);
         foreach ($reports as $report) {
             if (!in_array($report['tipo_formulario'],$types,true)) continue;
             $payload=json_decode((string)$report['payload_json'],true);
-            if (is_array($payload)) $completed+=KpiFormCompletion::units((string)$report['tipo_formulario'],$payload);
+            if (is_array($payload)) {
+                $units=KpiFormCompletion::units((string)$report['tipo_formulario'],$payload);
+                $completed+=$units;
+                foreach (array_keys($units) as $unit) {
+                    $date=substr($unit,0,10);
+                    if ($date >= $weekStart && $date < $weekEnd) {
+                        $completedTypes[(string)$report['tipo_formulario']]=true;
+                        break;
+                    }
+                }
+            }
+        }
+        $nextDue=null;
+        foreach ($calendar['dias'] as $day) {
+            $date=(string)$day['fecha'];
+            if (!empty($day['permiso_aprobado'])
+                || !empty($completed[$date.':DIA'])) continue;
+            if ((!empty($day['manana']) && empty($completed[$date.':MANANA']))
+                || (!empty($day['tarde']) && empty($completed[$date.':TARDE']))) {
+                $nextDue=$date;
+                break;
+            }
         }
         Response::success(['id_trabajador'=>$worker,'id_cargo'=>$cargo,
             'cargo_nombre'=>(string)$labor['cargo_nombre'],'tipo_trabajador'=>(string)$labor['tipo'],
             'tipos_formulario'=>$types,
+            'tipos_con_entrega_semana'=>array_keys($completedTypes),
+            'proxima_entrega_kpi'=>$types ? $nextDue : null,
             'calendario_laboral'=>$calendar,
             'turnos_kpi_pendientes'=>$types ? KpiFormCompletion::pending($calendar,$completed,date('Y-m-d')) : 0,
             'ausencia_aprobada'=>$leave ? [

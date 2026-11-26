@@ -100,6 +100,7 @@ public final class FaceEnrollmentActivity extends AppCompatActivity {
             .setNegativeButton(R.string.auth_cancel,null).setPositiveButton(R.string.auth_face_disable,(d,w)->disableFaceAccess()).show());
         registrationAttempt=new FaceRegistrationAttempt(getSharedPreferences("wsp_face_registration_attempt",MODE_PRIVATE));
         prepareKey.setOnClickListener(v->{
+            if(registrationAttempt.unresolved()){resolveUncertainRegistration();return;}
             if(faceStore.matches(store))new com.google.android.material.dialog.MaterialAlertDialogBuilder(this, R.style.ThemeOverlay_KPIWeb_SecurityDarkDialog)
                 .setTitle(R.string.auth_face_rotate_key).setMessage(R.string.auth_face_rotate_explanation)
                 .setNegativeButton(R.string.auth_cancel,null).setPositiveButton(R.string.auth_face_rotate_key,(d,w)->prepareFaceKey(true)).show();
@@ -426,8 +427,16 @@ public final class FaceEnrollmentActivity extends AppCompatActivity {
     }
     private void showUncertainRegistration(){
         if(camera!=null)camera.closeCamera();if(overlay!=null)overlay.setScanning(false);
-        status.setText(registrationAttempt.diagnostic().display());start.setEnabled(false);prepareKey.setEnabled(false);
+        status.setText(registrationAttempt.diagnostic().display());start.setEnabled(false);
+        // Recovery path: re-send register with the SAME persisted key. The server answers already_active
+        // (binding saved) or a fresh challenge, so the uncertain result is resolved without rotating keys.
+        prepareKey.setText(R.string.auth_face_check_and_retry);prepareKey.setEnabled(pending==null&&linked());
         updateVisualState("Pendiente", "Estado por verificar", COLOR_CORAL, Color.parseColor("#2BFF819D"), R.drawable.admin_ic_alert_triangle);
+    }
+    private void resolveUncertainRegistration(){
+        if(pending!=null||!linked())return;
+        if(!registrationAttempt.resolved()){localRegistrationError("No se pudo limpiar el estado local.");return;}
+        prepareFaceKey(false);
     }
     private void localRegistrationError(String message){
         if(registrationAttempt.unresolved()){showUncertainRegistration();return;}

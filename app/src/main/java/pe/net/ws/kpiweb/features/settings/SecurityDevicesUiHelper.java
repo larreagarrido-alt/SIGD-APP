@@ -166,6 +166,9 @@ public final class SecurityDevicesUiHelper {
                 boolean faceActive = faceAccessIds.contains(accessId);
                 boolean isCurrent = localUsernameMatches && localAccessId > 0 && accessId == localAccessId;
 
+                // Old bindings replaced by a newer registration (no fingerprint, no face) are
+                // history, not linked devices. Keep only the current one so recovery still works.
+                if (!fpActive && !faceActive && !isCurrent) continue;
                 DeviceBindingItem item = new DeviceBindingItem(accessId, name, fpActive, faceActive, isCurrent);
                 items.add(item);
                 if (isCurrent) {

@@ -14,8 +14,8 @@
     <!-- Resumen de Indicadores del Colaborador (Sección 4) -->
     <string name="collab_section_kpi_overview">RESUMEN DE MIS INDICADORES</string>
     <string name="collab_kpi_assigned_label">KPI asignados</string>
-    <string name="collab_kpi_completed_label">KPI completados</string>
-    <string name="collab_kpi_pending_label">KPI pendientes</string>
+    <string name="collab_kpi_completed_label">KPI entregados</string>
+    <string name="collab_kpi_pending_label">Turnos pendientes</string>
     <string name="collab_kpi_next_due_label">Próxima entrega</string>
 
     <!-- 4 Tarjetas de Estadísticas Personales -->

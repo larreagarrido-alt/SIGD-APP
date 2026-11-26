@@ -94,6 +94,7 @@ public class LoginActivity extends AppCompatActivity {
     private TextView tvFaceStatus;
     private TextView tvFacePrompt;
     private ProgressBar pbFaceProgress;
+    private SigdSplashController splashController;
 
     private final ActivityResultLauncher<String> cameraPermissionLauncher = registerForActivityResult(
             new ActivityResultContracts.RequestPermission(), isGranted -> {
@@ -157,16 +158,30 @@ public class LoginActivity extends AppCompatActivity {
         biometricHint = findViewById(R.id.tv_biometric_hint);
         loadingView = findViewById(R.id.tv_auth_loading);
         loadingRow = findViewById(R.id.auth_loading_row);
-        View card = findViewById(R.id.card_login);
-        card.setAlpha(0f);
-        card.setTranslationY(18 * getResources().getDisplayMetrics().density);
-        card.animate().alpha(1f).translationY(0f).setDuration(260).start();
-
         View root = findViewById(R.id.login_root);
+        View scrollView = findViewById(R.id.login_scroll);
+        splashController = new SigdSplashController(root);
+        boolean launchSplash = savedInstanceState == null
+                && Intent.ACTION_MAIN.equals(getIntent().getAction())
+                && !getIntent().getBooleanExtra("forget_android_access", false);
+        if (!splashController.playIfEligible(launchSplash)) {
+            View card = findViewById(R.id.card_login);
+            card.setAlpha(0f);
+            card.setTranslationY(18 * getResources().getDisplayMetrics().density);
+            card.animate().alpha(1f).translationY(0f).setDuration(260).start();
+        }
+
         ViewCompat.setOnApplyWindowInsetsListener(root, (view, insets) -> {
             Insets bars = insets.getInsets(WindowInsetsCompat.Type.systemBars());
             Insets keyboard = insets.getInsets(WindowInsetsCompat.Type.ime());
-            view.setPadding(bars.left, bars.top, bars.right, Math.max(bars.bottom, keyboard.bottom));
+            if (scrollView != null) {
+                scrollView.setPadding(bars.left, bars.top, bars.right, Math.max(bars.bottom, keyboard.bottom));
+            } else {
+                view.setPadding(bars.left, bars.top, bars.right, Math.max(bars.bottom, keyboard.bottom));
+            }
+            if (splashController != null) {
+                splashController.applyBottomInset(bars.bottom);
+            }
             return insets;
         });
         new WindowInsetsControllerCompat(getWindow(), root).setAppearanceLightStatusBars(false);
@@ -850,6 +865,7 @@ public class LoginActivity extends AppCompatActivity {
 
     @Override
     protected void onDestroy() {
+        if (splashController != null) splashController.cancel();
         rateLimitHandler.removeCallbacksAndMessages(null);
         if (pendingCall != null) pendingCall.cancel();
         if (androidBiometrics != null) androidBiometrics.destroy();

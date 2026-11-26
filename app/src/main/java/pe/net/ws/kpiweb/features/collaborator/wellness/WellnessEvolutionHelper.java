@@ -8,8 +8,10 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Locale;
+import java.util.TimeZone;
 
 /**
  * Lógica pura de formateo y organización del historial real de "Mi evolución de bienestar".
@@ -72,6 +74,17 @@ public final class WellnessEvolutionHelper {
     };
 
     private WellnessEvolutionHelper() {}
+
+    public static String currentPeriodKey(String testCode, long timestamp) {
+        Calendar now = Calendar.getInstance(TimeZone.getTimeZone("America/Lima"));
+        now.setTimeInMillis(timestamp);
+        if ("DANI_SEMANAL".equals(testCode)) {
+            return pe.net.ws.kpiweb.core.time.IsoWeekPeriod.format(now);
+        }
+        SimpleDateFormat month = new SimpleDateFormat("yyyy-MM", Locale.ROOT);
+        month.setTimeZone(now.getTimeZone());
+        return month.format(now.getTime());
+    }
 
     public static List<EvaluationRecord> parseHistory(JsonArray rows) {
         List<EvaluationRecord> result = new ArrayList<>();

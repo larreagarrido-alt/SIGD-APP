@@ -46,6 +46,7 @@
         <activity
             android:name=".MainActivity"
             android:exported="false"
+            android:theme="@style/Theme.KPIWeb.Login"
             android:windowSoftInputMode="adjustResize" />
         <activity android:name=".features.auth.FaceEnrollmentActivity"
             android:exported="false" android:theme="@style/Theme.KPIWeb.SecurityDark" android:windowSoftInputMode="adjustResize" />

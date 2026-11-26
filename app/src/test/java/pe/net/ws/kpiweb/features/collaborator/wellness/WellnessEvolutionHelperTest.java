@@ -6,6 +6,8 @@ import com.google.gson.JsonObject;
 import org.junit.Test;
 
 import java.util.List;
+import java.util.Calendar;
+import java.util.TimeZone;
 
 import pe.net.ws.kpiweb.features.collaborator.wellness.WellnessEvolutionHelper.EvaluationRecord;
 import pe.net.ws.kpiweb.features.collaborator.wellness.WellnessEvolutionHelper.StatusTone;
@@ -17,6 +19,16 @@ import static org.junit.Assert.assertNull;
 import static org.junit.Assert.assertTrue;
 
 public class WellnessEvolutionHelperTest {
+
+    @Test
+    public void completedWeekFromNovember14DoesNotCloseNovember26() {
+        Calendar now = Calendar.getInstance(TimeZone.getTimeZone("America/Lima"));
+        now.set(2026, Calendar.NOVEMBER, 26, 12, 0, 0);
+        assertEquals("2026-W48", WellnessEvolutionHelper.currentPeriodKey("DANI_SEMANAL", now.getTimeInMillis()));
+        assertEquals("2026-11", WellnessEvolutionHelper.currentPeriodKey("DANI_MENSUAL", now.getTimeInMillis()));
+        assertFalse("2026-W46".equals(WellnessEvolutionHelper.currentPeriodKey(
+                "DANI_SEMANAL", now.getTimeInMillis())));
+    }
 
     @Test
     public void formatPeriodKey_handlesMonthlyWeeklyAndCampaignFormats() {

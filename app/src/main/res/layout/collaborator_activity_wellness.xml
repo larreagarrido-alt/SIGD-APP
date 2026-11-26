@@ -727,6 +727,67 @@
                         android:textStyle="bold" />
                 </LinearLayout>
 
+                <!-- Recursos de apoyo reales (catálogo verificado del proyecto) -->
+                <LinearLayout
+                    android:id="@+id/collab_wellness_evo_resources_section"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="22dp"
+                    android:orientation="vertical">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <FrameLayout
+                            android:layout_width="36dp"
+                            android:layout_height="36dp"
+                            android:background="@drawable/collab_bg_icon_badge_purple">
+
+                            <ImageView
+                                android:layout_width="18dp"
+                                android:layout_height="18dp"
+                                android:layout_gravity="center"
+                                android:contentDescription="Recursos de apoyo"
+                                android:src="@drawable/collab_ic_notif_heart_handshake"
+                                app:tint="@color/collab_notif_violet_soft" />
+                        </FrameLayout>
+
+                        <LinearLayout
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_marginStart="11dp"
+                            android:layout_weight="1"
+                            android:orientation="vertical">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:text="Recursos de apoyo"
+                                android:textColor="@color/collab_text_primary"
+                                android:textSize="16sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:layout_marginTop="2dp"
+                                android:text="Guías verificadas para tu bienestar emocional y laboral"
+                                android:textColor="@color/collab_prog_text_secondary"
+                                android:textSize="11.5sp" />
+                        </LinearLayout>
+                    </LinearLayout>
+
+                    <LinearLayout
+                        android:id="@+id/collab_wellness_evo_resources_list"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:orientation="vertical" />
+                </LinearLayout>
+
                 <LinearLayout
                     android:layout_width="match_parent"
                     android:layout_height="wrap_content"
@@ -1449,67 +1510,6 @@
                     android:orientation="vertical"
                     android:padding="16dp"
                     android:visibility="gone" />
-
-                <!-- 7. RECURSOS DE APOYO REALES (CATÁLOGO VERIFICADO DEL PROYECTO) -->
-                <LinearLayout
-                    android:id="@+id/collab_wellness_evo_resources_section"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:layout_marginTop="22dp"
-                    android:orientation="vertical">
-
-                    <LinearLayout
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:gravity="center_vertical"
-                        android:orientation="horizontal">
-
-                        <FrameLayout
-                            android:layout_width="36dp"
-                            android:layout_height="36dp"
-                            android:background="@drawable/collab_bg_icon_badge_purple">
-
-                            <ImageView
-                                android:layout_width="18dp"
-                                android:layout_height="18dp"
-                                android:layout_gravity="center"
-                                android:contentDescription="Recursos de apoyo"
-                                android:src="@drawable/collab_ic_notif_heart_handshake"
-                                app:tint="@color/collab_notif_violet_soft" />
-                        </FrameLayout>
-
-                        <LinearLayout
-                            android:layout_width="0dp"
-                            android:layout_height="wrap_content"
-                            android:layout_marginStart="11dp"
-                            android:layout_weight="1"
-                            android:orientation="vertical">
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:text="Recursos de apoyo"
-                                android:textColor="@color/collab_text_primary"
-                                android:textSize="16sp"
-                                android:textStyle="bold" />
-
-                            <TextView
-                                android:layout_width="match_parent"
-                                android:layout_height="wrap_content"
-                                android:layout_marginTop="2dp"
-                                android:text="Guías verificadas para tu bienestar emocional y laboral"
-                                android:textColor="@color/collab_prog_text_secondary"
-                                android:textSize="11.5sp" />
-                        </LinearLayout>
-                    </LinearLayout>
-
-                    <LinearLayout
-                        android:id="@+id/collab_wellness_evo_resources_list"
-                        android:layout_width="match_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_marginTop="12dp"
-                        android:orientation="vertical" />
-                </LinearLayout>
             </LinearLayout>
 
             <!-- ================================================================= -->

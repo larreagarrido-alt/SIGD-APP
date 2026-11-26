@@ -28,7 +28,7 @@ public final class FaceRegistrationClient {
                 };
                 return chain.proceed(request.newBuilder().method(request.method(),oneShot).build());
             })
-            .connectTimeout(15,TimeUnit.SECONDS).readTimeout(15,TimeUnit.SECONDS).build();
+            .connectTimeout(20,TimeUnit.SECONDS).writeTimeout(30,TimeUnit.SECONDS).readTimeout(40,TimeUnit.SECONDS).build();
     }
     private static final class Holder {
         private static final FaceRegistrationApi API=createService(ApiClient.BASE_URL,java.util.concurrent.Executors.newSingleThreadExecutor());

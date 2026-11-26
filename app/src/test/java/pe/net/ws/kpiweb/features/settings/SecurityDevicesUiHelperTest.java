@@ -76,6 +76,34 @@ public class SecurityDevicesUiHelperTest {
     }
 
     @Test
+    public void buildSnapshot_hidesStaleInactiveBindingOfReplacedRegistration() {
+        JsonArray android = new JsonArray();
+        JsonObject stale = new JsonObject();
+        stale.addProperty("id_acceso", 1);
+        stale.addProperty("nombre", "motorola moto g75 5G");
+        stale.addProperty("huella_habilitada", 0);
+        android.add(stale);
+        JsonObject current = new JsonObject();
+        current.addProperty("id_acceso", 6);
+        current.addProperty("nombre", "motorola moto g75 5G");
+        current.addProperty("huella_habilitada", 1);
+        android.add(current);
+        JsonArray faces = new JsonArray();
+        JsonObject face = new JsonObject();
+        face.addProperty("id_acceso_android", 6);
+        faces.add(face);
+
+        SecurityDevicesUiHelper.SecuritySnapshot snapshot = SecurityDevicesUiHelper.buildSnapshot(
+                android, faces, 6, true, false, "Motorola moto g75 5G",
+                SecurityDevicesUiHelper.HardwareStatus.AVAILABLE,
+                SecurityDevicesUiHelper.HardwareStatus.AVAILABLE);
+
+        assertEquals(1, snapshot.linkedDevices.size());
+        assertEquals(6, snapshot.linkedDevices.get(0).accessId);
+        assertEquals(1, snapshot.totalDevices);
+    }
+
+    @Test
     public void buildSnapshot_distinguishesAvailableNotConfiguredAndUnavailableHardware() {
         JsonArray android = new JsonArray();
         JsonObject other = new JsonObject();

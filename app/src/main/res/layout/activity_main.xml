@@ -1,19 +1,145 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:id="@+id/main" android:layout_width="match_parent" android:layout_height="match_parent"
-    android:orientation="vertical" android:gravity="center" android:padding="24dp"
-    android:background="@color/auth_card_bg">
-    <ProgressBar android:id="@+id/entry_progress" android:layout_width="48dp" android:layout_height="48dp" />
-    <TextView android:id="@+id/entry_status" android:layout_width="match_parent" android:layout_height="wrap_content"
-        android:layout_marginTop="20dp" android:gravity="center" android:text="@string/nav_verifying_session"
-        android:textColor="@color/auth_ink" android:textSize="18sp" />
-    <com.google.android.material.button.MaterialButton android:id="@+id/entry_retry"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp"
-        android:layout_marginTop="24dp" android:text="@string/nav_retry" android:enabled="false" />
-    <com.google.android.material.button.MaterialButton android:id="@+id/entry_account"
-        android:layout_width="match_parent" android:layout_height="wrap_content" android:minHeight="48dp"
-        android:text="@string/nav_account_title" />
-    <com.google.android.material.button.MaterialButton android:id="@+id/btn_logout"
-        style="@style/Widget.Material3.Button.TextButton" android:layout_width="match_parent"
-        android:layout_height="wrap_content" android:minHeight="48dp" android:text="@string/auth_sign_out" />
-</LinearLayout>
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/main"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/auth_background">
+
+    <!-- Seamless dark-violet SIGD aurora backdrop (matches Login & Splash) -->
+    <pe.net.ws.kpiweb.features.auth.SigdSplashBackdropView
+        android:id="@+id/entry_backdrop"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent" />
+
+    <!-- Minimal, clean loading transition (no white flash, no status clutter or buttons) -->
+    <LinearLayout
+        android:id="@+id/entry_loading_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="28dp">
+
+        <FrameLayout
+            android:layout_width="172dp"
+            android:layout_height="172dp">
+
+            <View
+                android:layout_width="172dp"
+                android:layout_height="172dp"
+                android:layout_gravity="center"
+                android:alpha="0.85"
+                android:background="@drawable/auth_splash_halo" />
+
+            <ImageView
+                android:layout_width="116dp"
+                android:layout_height="124dp"
+                android:layout_gravity="center"
+                android:contentDescription="@string/auth_logo_description"
+                android:scaleType="fitCenter"
+                android:src="@drawable/auth_sigd_logo_transparent" />
+        </FrameLayout>
+
+        <FrameLayout
+            android:id="@+id/entry_progress"
+            android:layout_width="116dp"
+            android:layout_height="3.5dp"
+            android:layout_marginTop="14dp"
+            android:background="@drawable/auth_splash_loader_track"
+            android:clipChildren="true"
+            android:clipToPadding="true">
+
+            <View
+                android:id="@+id/entry_loader_beam"
+                android:layout_width="52dp"
+                android:layout_height="match_parent"
+                android:background="@drawable/auth_splash_loader_beam" />
+        </FrameLayout>
+    </LinearLayout>
+
+    <!-- Recovery card: ONLY visible if session verification actually fails -->
+    <LinearLayout
+        android:id="@+id/entry_error_group"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="24dp"
+        android:visibility="gone">
+
+        <ImageView
+            android:layout_width="96dp"
+            android:layout_height="104dp"
+            android:contentDescription="@string/auth_logo_description"
+            android:scaleType="fitCenter"
+            android:src="@drawable/auth_sigd_logo_transparent" />
+
+        <com.google.android.material.card.MaterialCardView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="20dp"
+            app:cardBackgroundColor="@color/auth_card_bg"
+            app:cardCornerRadius="22dp"
+            app:cardElevation="6dp"
+            app:strokeColor="@color/auth_card_stroke"
+            app:strokeWidth="1dp">
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:gravity="center_horizontal"
+                android:orientation="vertical"
+                android:padding="22dp">
+
+                <TextView
+                    android:id="@+id/entry_status"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:lineSpacingExtra="3dp"
+                    android:text="@string/nav_session_unavailable"
+                    android:textColor="@color/auth_ink"
+                    android:textSize="15.5sp"
+                    android:textStyle="bold" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/entry_retry"
+                    style="@style/Widget.WebSitePlus.Button.Primary"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="20dp"
+                    android:minHeight="48dp"
+                    android:text="@string/nav_retry"
+                    app:backgroundTint="@color/auth_brand_purple"
+                    app:cornerRadius="14dp" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/entry_account"
+                    style="@style/Widget.Material3.Button.OutlinedButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="10dp"
+                    android:minHeight="48dp"
+                    android:text="@string/nav_account_title"
+                    android:textAllCaps="false"
+                    android:textColor="@color/auth_brand_purple"
+                    app:cornerRadius="14dp"
+                    app:strokeColor="@color/auth_biometric_btn_stroke" />
+
+                <com.google.android.material.button.MaterialButton
+                    android:id="@+id/btn_logout"
+                    style="@style/Widget.Material3.Button.TextButton"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="6dp"
+                    android:minHeight="44dp"
+                    android:text="@string/auth_sign_out"
+                    android:textAllCaps="false"
+                    android:textColor="@color/auth_muted" />
+            </LinearLayout>
+        </com.google.android.material.card.MaterialCardView>
+    </LinearLayout>
+</FrameLayout>

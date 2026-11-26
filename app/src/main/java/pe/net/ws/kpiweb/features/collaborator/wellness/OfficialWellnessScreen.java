@@ -64,6 +64,8 @@ final class OfficialWellnessScreen {
     private JsonArray historyRows = new JsonArray();
     private boolean submitting;
     private boolean formOpen;
+    private boolean historyDirty;
+    private int detailRequestSeq;
     private JsonObject currentTest;
     private Long currentCampaignId;
     private JsonArray currentQuestions;
@@ -112,10 +114,6 @@ final class OfficialWellnessScreen {
         activity.findViewById(R.id.collab_wellness_ryff_chart_placeholder).setVisibility(View.GONE);
         activity.findViewById(R.id.collab_wellness_preferences_toggle).setVisibility(View.GONE);
         activity.findViewById(R.id.collab_wellness_btn_back).setOnClickListener(v -> goBack());
-        View evoRetry = activity.findViewById(R.id.collab_wellness_evo_btn_retry);
-        if (evoRetry != null) {
-            evoRetry.setOnClickListener(v -> refreshHistory(true));
-        }
         renderSupportResources();
         boolean returnToAdmin = activity.getIntent().getBooleanExtra(CollaboratorWellnessActivity.EXTRA_RETURN_ADMIN, false);
         if (returnToAdmin) {
@@ -131,7 +129,7 @@ final class OfficialWellnessScreen {
 
     private void page(View visible) {
         overview.setVisibility(visible == overview ? View.VISIBLE : View.GONE);
-        evolution.setVisibility(visible == evolution ? View.VISIBLE : View.GONE);
+        evolution.setVisibility(View.GONE);
         result.setVisibility(visible == result ? View.VISIBLE : View.GONE);
         step.setVisibility(visible == step ? View.VISIBLE : View.GONE);
         review.setVisibility(visible == review ? View.VISIBLE : View.GONE);
@@ -141,7 +139,14 @@ final class OfficialWellnessScreen {
         scroll.scrollTo(0, 0);
     }
 
-    private void showOverview() { page(overview); }
+    private void showOverview() {
+        detailRequestSeq++;
+        page(overview);
+        if (historyDirty) {
+            historyDirty = false;
+            refreshHistory();
+        }
+    }
 
     void goBack() {
         if (formOpen && (dynamic.getVisibility() == View.VISIBLE ||
@@ -151,9 +156,13 @@ final class OfficialWellnessScreen {
                     .setNegativeButton("Continuar", null)
                     .setPositiveButton("Salir", (dialog, which) -> { formOpen = false; showOverview(); })
                     .show();
-        } else if (result.getVisibility() == View.VISIBLE) history();
-        else if (evolution.getVisibility() == View.VISIBLE || dynamic.getVisibility() == View.VISIBLE) showOverview();
-        else activity.finish();
+        } else if (result.getVisibility() == View.VISIBLE
+                || evolution.getVisibility() == View.VISIBLE
+                || dynamic.getVisibility() == View.VISIBLE) {
+            showOverview();
+        } else {
+            activity.finish();
+        }
     }
 
     private boolean sameSession() { return originalToken.equals(session.getBearerToken()); }
@@ -231,7 +240,7 @@ final class OfficialWellnessScreen {
                     weeklyOverview.setOnClickListener(v -> { if (weeklyTest != null) {currentCampaignId=null;form(weeklyTest);} });
                 }
                 refreshRyffAvailability();
-                refreshHistory(false);
+                refreshHistory();
             }
             @Override public void onFailure(Call<ApiResponse<JsonObject>> call, Throwable error) {
                 if (sameSession() && !activity.isFinishing()) error(0, "Sin conexión. Tus respuestas no se han enviado.");
@@ -376,13 +385,24 @@ final class OfficialWellnessScreen {
         return null;
     }
 
+    private String currentPeriod(JsonObject testObj) {
+        if (testObj == null) return "";
+        return WellnessEvolutionHelper.currentPeriodKey(string(testObj, "codigo"), System.currentTimeMillis());
+    }
+
+    private JsonObject completedInCurrentPeriod(JsonObject testObj) {
+        JsonObject latest = latestByTest(testObj);
+        return latest != null && currentPeriod(testObj).equals(string(latest, "periodo_clave"))
+                ? latest : null;
+    }
+
     private JsonObject latestMonthly() {
         return latestByTest(monthlyTest);
     }
 
     private void renderHistory() {
-        JsonObject latest = latestMonthly();
-        JsonObject latestWeekly = latestByTest(weeklyTest);
+        JsonObject latest = completedInCurrentPeriod(monthlyTest);
+        JsonObject latestWeekly = completedInCurrentPeriod(weeklyTest);
 
         activity.<TextView>findViewById(R.id.collab_wellness_tv_status_title).setText(
                 latest == null ? "Un espacio para ti" : "Tu resumen está listo");
@@ -411,7 +431,8 @@ final class OfficialWellnessScreen {
             monthlyButton.setOnClickListener(v -> openDetail(latest));
         } else {
             monthlyBadge.setText(monthlyTest == null ? "No disponible" : "Disponible");
-            if (monthlyPeriodTv != null) monthlyPeriodTv.setText("Mes actual • 3 a 5 minutos");
+            if (monthlyPeriodTv != null) monthlyPeriodTv.setText(
+                    WellnessEvolutionHelper.formatPeriodKey(currentPeriod(monthlyTest)) + " • 3 a 5 minutos");
             monthlyButton.setText(monthlyTest == null ? "Evaluación mensual no disponible" : "Realizar evaluación");
             monthlyButton.setOnClickListener(v -> {
                 if (monthlyTest != null) {
@@ -433,7 +454,9 @@ final class OfficialWellnessScreen {
             if (latestWeekly != null) {
                 if (weeklyBadge != null) weeklyBadge.setText("Completada");
                 if (weeklyPeriod != null) {
-                    weeklyPeriod.setText(WellnessEvolutionHelper.formatPeriodKey(string(latestWeekly, "periodo_clave")));
+                    String pLabel = WellnessEvolutionHelper.formatPeriodKey(string(latestWeekly, "periodo_clave"));
+                    String doneDate = WellnessEvolutionHelper.formatCompletedDate(string(latestWeekly, "fecha_completada"));
+                    weeklyPeriod.setText(doneDate.isEmpty() ? pLabel : pLabel + " · " + doneDate);
                 }
                 if (weeklyBtn != null) {
                     weeklyBtn.setText("Ver mi resultado");
@@ -441,7 +464,8 @@ final class OfficialWellnessScreen {
                 }
             } else {
                 if (weeklyBadge != null) weeklyBadge.setText("Disponible");
-                if (weeklyPeriod != null) weeklyPeriod.setText("Seguimiento breve de la semana");
+                if (weeklyPeriod != null) weeklyPeriod.setText(
+                        WellnessEvolutionHelper.formatPeriodKey(currentPeriod(weeklyTest)) + " • Seguimiento breve");
                 if (weeklyBtn != null) {
                     weeklyBtn.setText("Comenzar evaluación semanal");
                     weeklyBtn.setOnClickListener(v -> {
@@ -453,202 +477,6 @@ final class OfficialWellnessScreen {
         } else if (weeklyCard != null) {
             weeklyCard.setVisibility(View.GONE);
         }
-
-        View loadingView = activity.findViewById(R.id.collab_wellness_evo_loading);
-        View errorView = activity.findViewById(R.id.collab_wellness_evo_error);
-        if (loadingView != null) loadingView.setVisibility(View.GONE);
-        if (errorView != null) errorView.setVisibility(View.GONE);
-
-        int monthlyTestId = monthlyTest != null && monthlyTest.has("id_test")
-                ? monthlyTest.get("id_test").getAsInt() : 0;
-        List<WellnessEvolutionHelper.EvaluationRecord> records = WellnessEvolutionHelper.parseHistory(historyRows);
-        WellnessEvolutionHelper.EvaluationRecord featured = WellnessEvolutionHelper.selectFeatured(records, monthlyTestId);
-        List<WellnessEvolutionHelper.EvaluationRecord> historyWithoutDuplicate =
-                WellnessEvolutionHelper.excludeFeatured(records, featured);
-
-        renderFeaturedEvolutionCard(featured);
-        bindEvolutionPrimaryAction(featured);
-        renderEvolutionTimeline(historyWithoutDuplicate, featured != null);
-
-        activity.findViewById(R.id.collab_wellness_evolution_record).setVisibility(View.GONE);
-    }
-
-    private void renderFeaturedEvolutionCard(WellnessEvolutionHelper.EvaluationRecord featured) {
-        View card = activity.findViewById(R.id.collab_wellness_evo_featured_card);
-        ImageView icon = activity.findViewById(R.id.collab_wellness_evo_featured_icon);
-        TextView title = activity.findViewById(R.id.collab_wellness_evo_featured_title);
-        TextView period = activity.findViewById(R.id.collab_wellness_evo_featured_period);
-        TextView badge = activity.findViewById(R.id.collab_wellness_evo_featured_badge);
-        TextView date = activity.findViewById(R.id.collab_wellness_evo_featured_date);
-        View chevron = activity.findViewById(R.id.collab_wellness_evo_featured_chevron);
-        if (card == null) return;
-        card.setVisibility(View.VISIBLE);
-
-        if (featured == null) {
-            if (icon != null) icon.setImageResource(R.drawable.collab_ill_wellness_clipboard_pending);
-            if (title != null) title.setText("Evaluación mensual");
-            if (period != null) {
-                period.setText(monthlyTest != null
-                        ? "Aún sin registros guardados"
-                        : "Sin invitación o evaluación activa");
-            }
-            if (badge != null) {
-                badge.setText(monthlyTest != null ? "Disponible" : "No disponible");
-                badge.setBackgroundResource(R.drawable.collab_bg_notif_chip_unselected);
-                badge.setTextColor(ContextCompat.getColor(activity, R.color.collab_notif_violet_soft));
-            }
-            if (date != null) date.setVisibility(View.GONE);
-            if (chevron != null) chevron.setVisibility(View.GONE);
-            card.setOnClickListener(null);
-            card.setClickable(false);
-            return;
-        }
-
-        boolean completed = featured.statusTone == WellnessEvolutionHelper.StatusTone.COMPLETED;
-        if (icon != null) {
-            icon.setImageResource(completed
-                    ? R.drawable.collab_ill_wellness_clipboard_done
-                    : R.drawable.collab_ill_wellness_clipboard_pending);
-        }
-        if (title != null) title.setText(featured.title);
-        if (period != null) period.setText(featured.periodDisplay);
-        if (badge != null) {
-            badge.setText(featured.statusDisplay);
-            applyStatusBadgeStyle(badge, featured.statusTone);
-        }
-        if (date != null) {
-            if (featured.hasCompletedDate()) {
-                date.setText(featured.completedAtDisplay);
-                date.setVisibility(View.VISIBLE);
-            } else {
-                date.setVisibility(View.GONE);
-            }
-        }
-        if (featured.canOpenDetail()) {
-            if (chevron != null) chevron.setVisibility(View.VISIBLE);
-            card.setClickable(true);
-            card.setOnClickListener(v -> openDetail(featured.rawRow));
-        } else {
-            if (chevron != null) chevron.setVisibility(View.GONE);
-            card.setClickable(false);
-            card.setOnClickListener(null);
-        }
-    }
-
-    private void bindEvolutionPrimaryAction(WellnessEvolutionHelper.EvaluationRecord featured) {
-        View primaryBtn = activity.findViewById(R.id.collab_wellness_evo_primary_cta);
-        TextView primaryLabel = activity.findViewById(R.id.collab_wellness_evo_primary_cta_label);
-        if (primaryBtn == null || primaryLabel == null) return;
-
-        // Si ya existe una tarjeta destacada clicable para consultar el resultado, eliminar botón duplicado
-        if (featured != null && featured.canOpenDetail()) {
-            primaryBtn.setVisibility(View.GONE);
-            primaryBtn.setOnClickListener(null);
-            return;
-        }
-        if (monthlyTest != null) {
-            primaryBtn.setVisibility(View.VISIBLE);
-            primaryBtn.setEnabled(true);
-            primaryBtn.setAlpha(1f);
-            primaryLabel.setText("Realizar evaluación mensual");
-            primaryBtn.setOnClickListener(v -> {
-                currentCampaignId = null;
-                form(monthlyTest);
-            });
-        } else {
-            primaryBtn.setVisibility(View.GONE);
-            primaryBtn.setOnClickListener(null);
-        }
-    }
-
-    private void renderEvolutionTimeline(List<WellnessEvolutionHelper.EvaluationRecord> records, boolean hasFeaturedRecord) {
-        LinearLayout months = activity.findViewById(R.id.collab_wellness_evolution_months);
-        if (months == null) return;
-        months.removeAllViews();
-
-        if (records.isEmpty()) {
-            LinearLayout empty = new LinearLayout(activity);
-            empty.setOrientation(LinearLayout.VERTICAL);
-            empty.setGravity(Gravity.CENTER);
-            empty.setBackgroundResource(R.drawable.collab_bg_notif_empty_card);
-            int pad = Math.round(18f * activity.getResources().getDisplayMetrics().density);
-            empty.setPadding(pad, pad, pad, pad);
-
-            TextView emptyTitle = new TextView(activity);
-            emptyTitle.setText(hasFeaturedRecord
-                    ? "Sin períodos anteriores adicionales"
-                    : "Aún no tienes evaluaciones guardadas");
-            emptyTitle.setTextColor(ContextCompat.getColor(activity, R.color.collab_text_primary));
-            emptyTitle.setTextSize(14f);
-            emptyTitle.setTypeface(CollaboratorThemeHelper.readableTypeface(Typeface.BOLD));
-            emptyTitle.setGravity(Gravity.CENTER);
-            empty.addView(emptyTitle);
-
-            TextView emptyDesc = new TextView(activity);
-            emptyDesc.setText(hasFeaturedRecord
-                    ? "Tu evaluación más reciente ya aparece arriba. Los siguientes períodos completados se irán listando aquí."
-                    : "Cuando completes tu primera evaluación en el servidor, aparecerá aquí ordenada cronológicamente.");
-            emptyDesc.setTextColor(ContextCompat.getColor(activity, R.color.collab_prog_text_secondary));
-            emptyDesc.setTextSize(12f);
-            emptyDesc.setGravity(Gravity.CENTER);
-            LinearLayout.LayoutParams descLp = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            descLp.topMargin = Math.round(6f * activity.getResources().getDisplayMetrics().density);
-            empty.addView(emptyDesc, descLp);
-
-            months.addView(empty);
-            CollaboratorThemeHelper.applyReadableTypeface(months);
-            return;
-        }
-
-        LayoutInflater inflater = LayoutInflater.from(activity);
-        for (int i = 0; i < records.size(); i++) {
-            WellnessEvolutionHelper.EvaluationRecord rec = records.get(i);
-            View row = inflater.inflate(R.layout.collaborator_item_wellness_history, months, false);
-            View dot = row.findViewById(R.id.wellness_hist_dot);
-            View line = row.findViewById(R.id.wellness_hist_line);
-            View card = row.findViewById(R.id.wellness_hist_card);
-            TextView tvTitle = row.findViewById(R.id.wellness_hist_tv_title);
-            TextView tvStatus = row.findViewById(R.id.wellness_hist_tv_status);
-            TextView tvPeriod = row.findViewById(R.id.wellness_hist_tv_period);
-            TextView tvDate = row.findViewById(R.id.wellness_hist_tv_date);
-            View chevron = row.findViewById(R.id.wellness_hist_chevron);
-
-            if (dot != null) {
-                dot.setBackgroundResource(rec.statusTone == WellnessEvolutionHelper.StatusTone.COMPLETED
-                        ? R.drawable.collab_bg_level_node_done
-                        : R.drawable.collab_bg_level_node_current);
-            }
-            if (line != null) {
-                line.setVisibility(i == records.size() - 1 ? View.INVISIBLE : View.VISIBLE);
-            }
-            if (tvTitle != null) tvTitle.setText(rec.title);
-            if (tvPeriod != null) tvPeriod.setText(rec.periodDisplay);
-            if (tvStatus != null) {
-                tvStatus.setText(rec.statusDisplay);
-                applyStatusBadgeStyle(tvStatus, rec.statusTone);
-            }
-            if (tvDate != null) {
-                if (rec.hasCompletedDate()) {
-                    tvDate.setText(rec.completedAtDisplay);
-                    tvDate.setVisibility(View.VISIBLE);
-                } else {
-                    tvDate.setVisibility(View.GONE);
-                }
-            }
-            if (card != null) {
-                if (rec.canOpenDetail()) {
-                    if (chevron != null) chevron.setVisibility(View.VISIBLE);
-                    card.setClickable(true);
-                    card.setOnClickListener(v -> openDetail(rec.rawRow));
-                } else {
-                    if (chevron != null) chevron.setVisibility(View.GONE);
-                    card.setClickable(false);
-                }
-            }
-            months.addView(row);
-        }
-        CollaboratorThemeHelper.applyReadableTypeface(months);
     }
 
     private void renderSupportResources() {
@@ -705,19 +533,6 @@ final class OfficialWellnessScreen {
         }
     }
 
-    private void addHistoryText(LinearLayout parent, String value, Runnable click) {
-        TextView item = new TextView(activity);
-        item.setText(value);
-        item.setTextColor(ContextCompat.getColor(activity, R.color.collab_text_primary));
-        item.setTextSize(15);
-        item.setPadding(18, 18, 18, 18);
-        item.setBackgroundResource(R.drawable.collab_bg_card);
-        LinearLayout.LayoutParams params = new LinearLayout.LayoutParams(-1, -2);
-        params.bottomMargin = 12;
-        parent.addView(item, params);
-        if (click != null) item.setOnClickListener(v -> click.run());
-    }
-
     private void openLatestMonthly() {
         JsonObject row = latestMonthly();
         if (row != null) openDetail(row);
@@ -730,7 +545,7 @@ final class OfficialWellnessScreen {
     private void openSavedDetail(JsonObject receipt) {
         if (receipt == null || !receipt.has("id_evaluacion_bienestar")) {
             heading("Tus respuestas quedaron guardadas en el servidor.");
-            button("Ver mi evolución", this::history);
+            button("Volver a Bienestar", this::showOverview);
             return;
         }
         JsonObject row = new JsonObject();
@@ -740,25 +555,29 @@ final class OfficialWellnessScreen {
 
     private void openDetail(JsonObject row, boolean freshlySaved) {
         int id = row.get("id_evaluacion_bienestar").getAsInt();
+        int reqSeq = ++detailRequestSeq;
         heading(freshlySaved ? "Respuestas guardadas. Preparando tu resultado…" :
                 "Cargando tus respuestas del servidor…");
         ApiClient.getService().getOwnWellnessDetail(originalToken, id).enqueue(new Callback<ApiResponse<JsonObject>>() {
             @Override public void onResponse(Call<ApiResponse<JsonObject>> call, Response<ApiResponse<JsonObject>> response) {
-                if (!sameSession() || activity.isFinishing()) return;
+                if (!sameSession() || activity.isFinishing() || reqSeq != detailRequestSeq) return;
                 if (!response.isSuccessful() || response.body() == null || !response.body().isSuccessful()) {
                     detailError(response.code(), row, freshlySaved); return;
                 }
                 JsonObject data = response.body().getData();
-                JsonObject evaluation = data.getAsJsonObject("evaluacion");
-                JsonArray answers = data.getAsJsonArray("respuestas");
-                if (monthlyTest != null && evaluation.get("id_test").getAsInt() == monthlyTest.get("id_test").getAsInt()) {
+                JsonObject evaluation = data != null && data.has("evaluacion") && data.get("evaluacion").isJsonObject()
+                        ? data.getAsJsonObject("evaluacion") : new JsonObject();
+                JsonArray answers = data != null && data.has("respuestas") && data.get("respuestas").isJsonArray()
+                        ? data.getAsJsonArray("respuestas") : new JsonArray();
+                if (monthlyTest != null && evaluation.has("id_test")
+                        && evaluation.get("id_test").getAsInt() == monthlyTest.get("id_test").getAsInt()) {
                     showMonthlyResult(evaluation, answers);
                 } else {
                     showAnswerDetail(evaluation, answers);
                 }
             }
             @Override public void onFailure(Call<ApiResponse<JsonObject>> call, Throwable error) {
-                if (sameSession() && !activity.isFinishing()) detailError(0, row, freshlySaved);
+                if (sameSession() && !activity.isFinishing() && reqSeq == detailRequestSeq) detailError(0, row, freshlySaved);
             }
         });
     }
@@ -768,53 +587,184 @@ final class OfficialWellnessScreen {
         heading(freshlySaved ? "Tus respuestas se guardaron, pero no se pudo cargar el resultado." :
                 "No se pudo cargar esta evaluación.");
         button("Reintentar", () -> openDetail(row, freshlySaved));
-        button("Mi evolución", this::history);
+        button("Volver a Bienestar", this::showOverview);
     }
 
     private void showAnswerDetail(JsonObject evaluation, JsonArray answers) {
-        LinearLayout record = activity.findViewById(R.id.collab_wellness_evolution_record);
-        record.removeAllViews();
+        dynamic.removeAllViews();
         float density = activity.getResources().getDisplayMetrics().density;
-        TextView title = new TextView(activity);
-        title.setText(string(evaluation, "titulo") + " · "
-                + WellnessEvolutionHelper.formatPeriodKey(string(evaluation, "periodo_clave")));
-        title.setTextSize(16);
-        title.setTypeface(CollaboratorThemeHelper.readableTypeface(Typeface.BOLD));
-        title.setTextColor(ContextCompat.getColor(activity, R.color.collab_text_primary));
-        title.setPadding(0, 0, 0, Math.round(10 * density));
-        record.addView(title);
-        for (JsonElement element : answers) {
-            JsonObject answer = element.getAsJsonObject();
-            LinearLayout itemBox = new LinearLayout(activity);
-            itemBox.setOrientation(LinearLayout.VERTICAL);
-            itemBox.setBackgroundResource(R.drawable.collab_bg_notif_card_read);
-            int pad = Math.round(12 * density);
-            itemBox.setPadding(pad, pad, pad, pad);
-            LinearLayout.LayoutParams lp = new LinearLayout.LayoutParams(
+        int dp4 = Math.round(4 * density);
+        int dp8 = Math.round(8 * density);
+        int dp10 = Math.round(10 * density);
+        int dp12 = Math.round(12 * density);
+        int dp14 = Math.round(14 * density);
+        int dp16 = Math.round(16 * density);
+        int dp20 = Math.round(20 * density);
+
+        // 1. Tarjeta resumen de la evaluación (semanal / Ryff / otras)
+        LinearLayout hero = new LinearLayout(activity);
+        hero.setOrientation(LinearLayout.VERTICAL);
+        hero.setBackgroundResource(R.drawable.collab_bg_card_hero);
+        hero.setPadding(dp20, dp20, dp20, dp20);
+
+        LinearLayout badgeRow = new LinearLayout(activity);
+        badgeRow.setOrientation(LinearLayout.HORIZONTAL);
+        badgeRow.setGravity(Gravity.CENTER_VERTICAL);
+
+        TextView eyebrow = new TextView(activity);
+        eyebrow.setText("RESULTADO DE EVALUACIÓN");
+        eyebrow.setTextColor(ContextCompat.getColor(activity, R.color.collab_purple_accent));
+        eyebrow.setTextSize(10.5f);
+        eyebrow.setTypeface(CollaboratorThemeHelper.readableTypeface(Typeface.BOLD));
+        eyebrow.setLetterSpacing(0.08f);
+        badgeRow.addView(eyebrow, new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f));
+
+        TextView statusBadge = new TextView(activity);
+        statusBadge.setText("Completada");
+        statusBadge.setTextSize(10.5f);
+        statusBadge.setTypeface(CollaboratorThemeHelper.readableTypeface(Typeface.BOLD));
+        statusBadge.setPadding(Math.round(10 * density), dp4, Math.round(10 * density), dp4);
+        applyStatusBadgeStyle(statusBadge, WellnessEvolutionHelper.StatusTone.COMPLETED);
+        badgeRow.addView(statusBadge);
+        hero.addView(badgeRow);
+
+        String evalTitle = string(evaluation, "titulo");
+        TextView titleTv = new TextView(activity);
+        titleTv.setText(evalTitle.isEmpty() ? "Evaluación completada" : evalTitle);
+        titleTv.setTextSize(20f);
+        titleTv.setTypeface(CollaboratorThemeHelper.readableTypeface(Typeface.BOLD));
+        titleTv.setTextColor(ContextCompat.getColor(activity, R.color.collab_text_primary));
+        LinearLayout.LayoutParams titleLp = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        titleLp.topMargin = dp8;
+        hero.addView(titleTv, titleLp);
+
+        String period = WellnessEvolutionHelper.formatPeriodKey(string(evaluation, "periodo_clave"));
+        String doneDate = WellnessEvolutionHelper.formatCompletedDate(string(evaluation, "fecha_completada"));
+        String meta = doneDate.isEmpty() ? period : (period.isEmpty() ? doneDate : period + " · " + doneDate);
+        if (!meta.isEmpty()) {
+            TextView periodTv = new TextView(activity);
+            periodTv.setText(meta);
+            periodTv.setTextSize(13f);
+            periodTv.setTypeface(CollaboratorThemeHelper.readableTypeface(Typeface.BOLD));
+            periodTv.setTextColor(ContextCompat.getColor(activity, R.color.collab_purple_accent));
+            LinearLayout.LayoutParams periodLp = new LinearLayout.LayoutParams(
                     ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            lp.bottomMargin = Math.round(8 * density);
-
-            TextView qTv = new TextView(activity);
-            qTv.setText(string(answer, "enunciado"));
-            qTv.setTextSize(13f);
-            qTv.setTextColor(ContextCompat.getColor(activity, R.color.collab_text_primary));
-            itemBox.addView(qTv);
-
-            TextView aTv = new TextView(activity);
-            aTv.setText(answerLabel(answer));
-            aTv.setTextSize(12.5f);
-            aTv.setTypeface(CollaboratorThemeHelper.readableTypeface(Typeface.BOLD));
-            aTv.setTextColor(ContextCompat.getColor(activity, R.color.collab_notif_violet_soft));
-            LinearLayout.LayoutParams aLp = new LinearLayout.LayoutParams(
-                    ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
-            aLp.topMargin = Math.round(4 * density);
-            itemBox.addView(aTv, aLp);
-
-            record.addView(itemBox, lp);
+            periodLp.topMargin = dp4;
+            hero.addView(periodTv, periodLp);
         }
-        CollaboratorThemeHelper.applyReadableTypeface(record);
-        record.setVisibility(View.VISIBLE);
-        page(evolution);
+
+        TextView noteTv = new TextView(activity);
+        noteTv.setText("Tus respuestas quedaron guardadas en el servidor. Solo tú puedes consultar este registro.");
+        noteTv.setTextSize(12.5f);
+        noteTv.setTextColor(ContextCompat.getColor(activity, R.color.collab_text_secondary));
+        LinearLayout.LayoutParams noteLp = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        noteLp.topMargin = dp12;
+        hero.addView(noteTv, noteLp);
+        dynamic.addView(hero);
+
+        // 2. Encabezado de respuestas
+        TextView sectionTitle = new TextView(activity);
+        sectionTitle.setText("Tus respuestas (" + answers.size() + ")");
+        sectionTitle.setTextSize(16f);
+        sectionTitle.setTypeface(CollaboratorThemeHelper.readableTypeface(Typeface.BOLD));
+        sectionTitle.setTextColor(ContextCompat.getColor(activity, R.color.collab_text_primary));
+        LinearLayout.LayoutParams secLp = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+        secLp.topMargin = dp20;
+        secLp.bottomMargin = dp12;
+        dynamic.addView(sectionTitle, secLp);
+
+        // 3. Lista de preguntas y respuestas con ícono visual
+        if (answers.size() == 0) {
+            TextView emptyTv = new TextView(activity);
+            emptyTv.setText("No hay respuestas registradas para esta evaluación.");
+            emptyTv.setTextSize(13.5f);
+            emptyTv.setTextColor(ContextCompat.getColor(activity, R.color.collab_text_secondary));
+            emptyTv.setBackgroundResource(R.drawable.collab_bg_card);
+            emptyTv.setPadding(dp16, dp16, dp16, dp16);
+            dynamic.addView(emptyTv);
+        } else {
+            for (int i = 0; i < answers.size(); i++) {
+                JsonObject answer = answers.get(i).getAsJsonObject();
+                String label = answerLabel(answer);
+                WellnessOptionVisualResolver.OptionVisual visual = WellnessOptionVisualResolver.resolveSingle(label);
+                int accent = ContextCompat.getColor(activity, visual.accentColorRes);
+
+                LinearLayout row = new LinearLayout(activity);
+                row.setOrientation(LinearLayout.HORIZONTAL);
+                row.setGravity(Gravity.CENTER_VERTICAL);
+                row.setBackgroundResource(R.drawable.collab_bg_card);
+                row.setPadding(dp14, dp12, dp14, dp12);
+                LinearLayout.LayoutParams rowLp = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.MATCH_PARENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                rowLp.bottomMargin = dp10;
+
+                if (visual.iconRes != 0) {
+                    FrameLayout iconWrap = new FrameLayout(activity);
+                    int wrapSize = Math.round((visual.isIllustratedFace() ? 44f : 38f) * density);
+                    GradientDrawable wrapBg = new GradientDrawable();
+                    wrapBg.setShape(visual.isIllustratedFace() ? GradientDrawable.OVAL : GradientDrawable.RECTANGLE);
+                    if (!visual.isIllustratedFace()) {
+                        wrapBg.setCornerRadius(11f * density);
+                    }
+                    wrapBg.setColor(Color.argb(26, Color.red(accent), Color.green(accent), Color.blue(accent)));
+                    iconWrap.setBackground(wrapBg);
+                    ImageView iv = new ImageView(activity);
+                    int iconSize = Math.round((visual.isIllustratedFace() ? 40f : 26f) * density);
+                    iv.setImageResource(visual.iconRes);
+                    iv.setContentDescription(null);
+                    iconWrap.addView(iv, new FrameLayout.LayoutParams(iconSize, iconSize, Gravity.CENTER));
+                    row.addView(iconWrap, new LinearLayout.LayoutParams(wrapSize, wrapSize));
+                }
+
+                LinearLayout col = new LinearLayout(activity);
+                col.setOrientation(LinearLayout.VERTICAL);
+                LinearLayout.LayoutParams colLp = new LinearLayout.LayoutParams(0, ViewGroup.LayoutParams.WRAP_CONTENT, 1f);
+                colLp.setMarginStart(visual.iconRes != 0 ? dp12 : 0);
+                col.setLayoutParams(colLp);
+
+                TextView qTv = new TextView(activity);
+                qTv.setText((i + 1) + ". " + string(answer, "enunciado"));
+                qTv.setTextSize(13.5f);
+                qTv.setTypeface(CollaboratorThemeHelper.readableTypeface(Typeface.BOLD));
+                qTv.setTextColor(ContextCompat.getColor(activity, R.color.collab_text_primary));
+                col.addView(qTv);
+
+                TextView aTv = new TextView(activity);
+                aTv.setText(label.isEmpty() ? "Sin respuesta" : label);
+                aTv.setTextSize(12.5f);
+                aTv.setTypeface(CollaboratorThemeHelper.readableTypeface(Typeface.BOLD));
+                aTv.setTextColor(accent);
+                LinearLayout.LayoutParams aLp = new LinearLayout.LayoutParams(
+                        ViewGroup.LayoutParams.WRAP_CONTENT, ViewGroup.LayoutParams.WRAP_CONTENT);
+                aLp.topMargin = dp4;
+                col.addView(aTv, aLp);
+
+                row.addView(col);
+                dynamic.addView(row, rowLp);
+            }
+        }
+
+        // 4. Botón para volver a la vista principal de Bienestar
+        TextView btnFinish = new TextView(activity);
+        btnFinish.setText("Finalizar");
+        btnFinish.setTextSize(14f);
+        btnFinish.setTypeface(CollaboratorThemeHelper.readableTypeface(Typeface.BOLD));
+        btnFinish.setTextColor(ContextCompat.getColor(activity, R.color.collab_text_primary));
+        btnFinish.setGravity(Gravity.CENTER);
+        btnFinish.setBackgroundResource(R.drawable.collab_bg_card);
+        btnFinish.setClickable(true);
+        btnFinish.setFocusable(true);
+        btnFinish.setOnClickListener(v -> showOverview());
+        LinearLayout.LayoutParams btnLp = new LinearLayout.LayoutParams(
+                ViewGroup.LayoutParams.MATCH_PARENT, Math.round(48 * density));
+        btnLp.topMargin = dp12;
+        dynamic.addView(btnFinish, btnLp);
+
+        CollaboratorThemeHelper.applyReadableTypeface(dynamic);
+        page(dynamic);
     }
 
     private static String answerLabel(JsonObject answer) {
@@ -872,42 +822,13 @@ final class OfficialWellnessScreen {
         page(result);
     }
 
-    private void history() {
-        page(evolution);
-        showEvolutionLoading();
-        refreshHistory(true);
-    }
-
-    private void showEvolutionLoading() {
-        View loadingView = activity.findViewById(R.id.collab_wellness_evo_loading);
-        View errorView = activity.findViewById(R.id.collab_wellness_evo_error);
-        View featured = activity.findViewById(R.id.collab_wellness_evo_featured_card);
-        if (loadingView != null) loadingView.setVisibility(View.VISIBLE);
-        if (errorView != null) errorView.setVisibility(View.GONE);
-        if (featured != null && historyRows.size() == 0) featured.setVisibility(View.GONE);
-    }
-
-    private void showEvolutionError(String message) {
-        View loadingView = activity.findViewById(R.id.collab_wellness_evo_loading);
-        View errorView = activity.findViewById(R.id.collab_wellness_evo_error);
-        TextView errorMsg = activity.findViewById(R.id.collab_wellness_evo_error_msg);
-        if (loadingView != null) loadingView.setVisibility(View.GONE);
-        if (errorMsg != null) errorMsg.setText(message);
-        if (errorView != null) errorView.setVisibility(View.VISIBLE);
-    }
-
-    private void refreshHistory(boolean showEvolution) {
-        if (showEvolution) showEvolutionLoading();
+    private void refreshHistory() {
         ApiClient.getService().getOwnWellnessHistory(originalToken).enqueue(new Callback<ApiResponse<JsonObject>>() {
             @Override public void onResponse(Call<ApiResponse<JsonObject>> call, Response<ApiResponse<JsonObject>> response) {
                 if (!sameSession() || activity.isFinishing()) return;
                 if (!response.isSuccessful() || response.body() == null || !response.body().isSuccessful()) {
                     if (response.code() == 401) {
                         error(401, "Sesión vencida");
-                    } else if (showEvolution) {
-                        showEvolutionError(response.code() == 403
-                                ? "Tu cuenta no tiene permiso para consultar este historial."
-                                : "No se pudo cargar tu historial del servidor.");
                     } else {
                         error(response.code(), "No se pudo cargar el historial.");
                     }
@@ -916,15 +837,10 @@ final class OfficialWellnessScreen {
                 JsonObject data = response.body().getData();
                 historyRows = data != null && data.has("evaluaciones") ? data.getAsJsonArray("evaluaciones") : new JsonArray();
                 renderHistory();
-                if (showEvolution) page(evolution);
             }
             @Override public void onFailure(Call<ApiResponse<JsonObject>> call, Throwable error) {
                 if (!sameSession() || activity.isFinishing()) return;
-                if (showEvolution) {
-                    showEvolutionError("Sin conexión. No se pudo consultar tu historial de evaluaciones.");
-                } else {
-                    error(0, "Sin conexión. No se pudo cargar el historial.");
-                }
+                error(0, "Sin conexión. No se pudo cargar el historial.");
             }
         });
     }
@@ -1137,6 +1053,7 @@ final class OfficialWellnessScreen {
                 activity.<TextView>findViewById(R.id.collab_wellness_btn_confirm_send).setText("Finalizar evaluación");
                 if (response.isSuccessful() && response.body() != null && response.body().isSuccessful()) {
                     formOpen = false;
+                    historyDirty = true;
                     openSavedDetail(response.body().getData());
                 } else if (response.code() == 401) error(401, "Sesión vencida");
                 else {
@@ -1251,6 +1168,7 @@ final class OfficialWellnessScreen {
                     if (!sameSession() || activity.isFinishing()) return;
                     if (response.isSuccessful() && response.body() != null && response.body().isSuccessful()) {
                         formOpen = false;
+                        historyDirty = true;
                         openSavedDetail(response.body().getData());
                     } else if (response.code() == 401) error(401, "Sesión vencida");
                     else {

@@ -24,7 +24,9 @@ public final class AccountNavigation {
     public static void afterAuthentication(AppCompatActivity activity,long faceStartedNanos){
         Intent intent=new Intent(activity,MainActivity.class);
         if(faceStartedNanos!=0)intent.putExtra(FACE_LOGIN_STARTED_NANOS,faceStartedNanos);
-        activity.startActivity(intent);activity.finish();
+        activity.startActivity(intent);
+        activity.overridePendingTransition(android.R.anim.fade_in,android.R.anim.fade_out);
+        activity.finish();
     }
     public static void openAccount(Context context){openAccount(context,false);}
     public static void openAccount(Context context,boolean noDashboard){

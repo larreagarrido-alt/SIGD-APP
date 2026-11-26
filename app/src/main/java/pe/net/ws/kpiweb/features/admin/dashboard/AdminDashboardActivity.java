@@ -114,6 +114,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
     private AdminDateFilterState dateFilterState;
     private Call<ApiResponse<JsonObject>> dashboardRequest;
     private Call<ApiResponse<LoginResponseData>> profileRequest;
+    private AdminKpiNoticeWatcher kpiNoticeWatcher;
     private final Locale localeEs = new Locale("es", "ES");
 
     @Override
@@ -142,6 +143,18 @@ public class AdminDashboardActivity extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        if (android.os.Build.VERSION.SDK_INT >= android.os.Build.VERSION_CODES.TIRAMISU
+                && ContextCompat.checkSelfPermission(this, android.Manifest.permission.POST_NOTIFICATIONS)
+                != android.content.pm.PackageManager.PERMISSION_GRANTED) {
+            android.content.SharedPreferences prefs = getSharedPreferences("admin_notice_cursor", MODE_PRIVATE);
+            if (!prefs.getBoolean("permission_asked", false)) {
+                prefs.edit().putBoolean("permission_asked", true).apply();
+                androidx.core.app.ActivityCompat.requestPermissions(this,
+                        new String[]{android.Manifest.permission.POST_NOTIFICATIONS}, 4103);
+            }
+        }
+        if (kpiNoticeWatcher == null) kpiNoticeWatcher = new AdminKpiNoticeWatcher(this);
+        kpiNoticeWatcher.start();
         setupWindowAppearance();
         bindAccountHeader();
         updateDashboardData();
@@ -149,6 +162,7 @@ public class AdminDashboardActivity extends AppCompatActivity {
 
     @Override
     protected void onStop() {
+        if (kpiNoticeWatcher != null) kpiNoticeWatcher.stop();
         if (dashboardRequest != null) dashboardRequest.cancel();
         if (profileRequest != null) profileRequest.cancel();
         super.onStop();

@@ -405,4 +405,7 @@
             </LinearLayout>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
+
+    <!-- Dynamic animated SIGD splash overlay (edge-to-edge on cold launch) -->
+    <include layout="@layout/auth_splash_overlay" />
 </FrameLayout>

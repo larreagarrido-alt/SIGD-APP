@@ -499,12 +499,12 @@ public class CollaboratorWellnessActivity extends AppCompatActivity {
 
     private void showResultScreen(String key, String label) {
         if (key == null || !key.matches("\\d{6}")) {
-            showEvolutionScreen();
+            showOverviewScreen();
             return;
         }
         String prefix = "monthly_v2_" + getCollabId() + "_" + key + "_";
         if (!prefs.getBoolean(prefix + "completed", false)) {
-            showEvolutionScreen();
+            showOverviewScreen();
             return;
         }
         int[] answers = new int[MONTHLY_QUESTIONS.length];
@@ -516,7 +516,7 @@ public class CollaboratorWellnessActivity extends AppCompatActivity {
             CollaboratorBannerHelper.showBanner(this, "Registro incompleto",
                     "No se puede generar una orientación sin las diez respuestas guardadas.",
                     R.drawable.collab_ic_info_circle);
-            showEvolutionScreen();
+            showOverviewScreen();
             return;
         }
         resultMonthKey = key;
@@ -906,7 +906,7 @@ public class CollaboratorWellnessActivity extends AppCompatActivity {
     private void startEvaluationFlow(EvaluationType type) {
         if (type == EvaluationType.RYFF_DEMO && !isRyffDemoAvailable()) return;
         if (type == EvaluationType.MONTHLY && isMonthlyCompleted()) {
-            showEvolutionScreen();
+            showResultScreen(monthKey(), monthLabel());
             return;
         }
         activeEvalType = type;

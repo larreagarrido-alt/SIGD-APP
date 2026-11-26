@@ -62,6 +62,19 @@ check((api('/kpi/formularios',null,$token)['data']['total']??null)===13,
     'KPI dashboard source counts only the 13 reports actually stored');
 check((int)$db->query("SELECT COUNT(*) FROM wp_notificaciones WHERE id_trabajador=2 AND referencia_tipo='kpi_formulario'")->fetchColumn()===1,
     'administrator receives a notice for a completed daily KPI, not unfinished weekly drafts');
+$currentWeekReport=['tipo_formulario'=>'GERENCIA','registro_uid'=>'fixture-current-week-dashboard',
+    'revision'=>1,'payload'=>['days'=>[['date'=>date('Y-m-d'),'isRegistered'=>true]]]];
+check(api('/kpi/formularios/sync',['records'=>[$currentWeekReport]],$token)['code']===200,
+    'current-week completed report reaches the server');
+$currentWeekAllowed=api('/kpi/formularios/permitidos',null,$token);
+check(in_array('GERENCIA',$currentWeekAllowed['data']['tipos_con_entrega_semana']??[],true),
+    'dashboard can distinguish a delivered KPI this week from an older report');
+check(is_int($currentWeekAllowed['data']['turnos_kpi_pendientes']??null)
+    && array_key_exists('proxima_entrega_kpi',$currentWeekAllowed['data']??[]),
+    'dashboard receives the labor-calendar pending count and next due date');
+$currentWeekId=(int)$db->query("SELECT id_detalle FROM wp_kpi_formularios_detalle WHERE registro_uid='fixture-current-week-dashboard'")->fetchColumn();
+$db->exec("DELETE FROM wp_notificaciones WHERE referencia_tipo='kpi_formulario' AND referencia_id=".$currentWeekId);
+$db->exec("DELETE FROM wp_kpi_formularios_detalle WHERE id_detalle=".$currentWeekId);
 $page1=api('/kpi/formularios?limit=5&after_id=0',null,$token);
 $cursor=(int)($page1['data']['next_after_id']??0);
 $page2=api('/kpi/formularios?limit=5&after_id='.$cursor,null,$token);

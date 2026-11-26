@@ -142,6 +142,7 @@
     <string name="auth_face_prepare_key">Activar reconocimiento facial</string>
     <string name="auth_face_attendance_available">Tu rostro ya está registrado en asistencia. No necesitas registrarlo otra vez. Autoriza este celular para ingresar a tu cuenta con Rostro.</string>
     <string name="auth_face_key_ready">Reconocimiento facial habilitado para tu cuenta en este celular. Ya puedes cerrar sesión e ingresar con Rostro.</string>
+    <string name="auth_face_check_and_retry">Comprobar estado y reintentar</string>
     <string name="auth_face_key_needed">Primero ingresa con contraseña y abre Seguridad facial para autorizar este celular.</string>
     <string name="auth_face_key_unsupported">Este equipo no ofrece la protección necesaria para la clave facial. Puedes utilizar tu contraseña o huella.</string>
     <string name="auth_face_recent_unlock">Confirma el bloqueo de pantalla para usar la clave facial protegida</string>
