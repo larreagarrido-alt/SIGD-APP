@@ -46,15 +46,15 @@ public class AccountActivity extends AppCompatActivity {
     @Override protected void onResume(){super.onResume();if(entry!=null)verifyAccount();}
     private void verifyAccount(){
         if(!session.isLoggedIn()){AccountNavigation.login(this,false);return;}
-        String token=session.getAccessToken();
+        int user=session.getUserId();
         findViewById(R.id.account_progress).setVisibility(View.VISIBLE);
         findViewById(R.id.account_status).setVisibility(View.VISIBLE);
         ((TextView)findViewById(R.id.account_status)).setText(R.string.nav_verifying_session);
         findViewById(R.id.account_retry).setEnabled(false);
         findViewById(R.id.account_retry).setVisibility(View.VISIBLE);
         findViewById(R.id.btn_face_enrollment).setEnabled(false);
-        entry.verify(ApiClient.getService().getProfile(session.getBearerToken()),session.getUserId(),
-            ()->!isFinishing()&&!isDestroyed()&&token.equals(session.getAccessToken()));
+        entry.verify(ApiClient.getService().getProfile(session.getBearerToken()),user,
+            ()->!isFinishing()&&!isDestroyed()&&session.isLoggedIn()&&user==session.getUserId());
     }
     private void showVerificationError(int message){
         findViewById(R.id.account_progress).setVisibility(View.GONE);

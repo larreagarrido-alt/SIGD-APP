@@ -6,6 +6,7 @@ import android.content.SharedPreferences;
 public final class SessionManager {
     private static final String PREF_NAME = "wsp_session_prefs";
     private static final String KEY_ACCESS_TOKEN = "access_token";
+    private static final String KEY_PREVIOUS_ACCESS = "previous_access_token";
     private static final String KEY_REFRESH_TOKEN = "refresh_token";
     private static final String KEY_USER_ID = "user_id";
     private static final String KEY_USERNAME = "username";
@@ -19,6 +20,7 @@ public final class SessionManager {
     private static final String KEY_WORKER_TIPO = "worker_tipo";
     private static final String KEY_WORKER_EMAIL = "worker_email";
     private static final String KEY_WORKER_PHOTO = "worker_photo";
+    private static final String KEY_SUPERVISOR_NAME = "supervisor_name";
     private static final String KEY_WORKER_STATUS = "worker_status";
     private static final String KEY_POINTS_BALANCE = "points_balance";
     private static final String KEY_DNI = "user_dni";
@@ -62,8 +64,28 @@ public final class SessionManager {
                 .putString(KEY_AGENCIA_NAME, agenciaName != null ? agenciaName : "")
                 .putString(KEY_WORKER_TIPO, workerTipo != null ? workerTipo : "")
                 .remove(KEY_POINTS_BALANCE);
-        if (!sameWorker) editor.remove(KEY_WORKER_EMAIL).remove(KEY_WORKER_PHOTO).remove(KEY_WORKER_STATUS).remove(KEY_DNI).remove(KEY_CARGO_ID);
+        if (refreshToken != null && !refreshToken.isEmpty()) editor.remove(KEY_PREVIOUS_ACCESS);
+        if (!sameWorker) editor.remove(KEY_WORKER_EMAIL).remove(KEY_WORKER_PHOTO).remove(KEY_WORKER_STATUS).remove(KEY_SUPERVISOR_NAME).remove(KEY_DNI).remove(KEY_CARGO_ID);
         editor.apply();
+        if (appContext != null && refreshToken != null && !refreshToken.isEmpty())
+            new SessionRefreshStore(appContext).save(refreshToken);
+    }
+
+    /** Rotate credentials without replacing the verified worker profile. */
+    public boolean rotateTokens(String oldAccess, String access, String refresh) {
+        if (appContext == null || !isLoggedIn() || !getAccessToken().equals(oldAccess)
+                || access == null || !access.matches("[a-fA-F0-9]{64}")) return false;
+        if (!new SessionRefreshStore(appContext).save(refresh)) return false;
+        return prefs.edit().putString(KEY_PREVIOUS_ACCESS, oldAccess)
+                .putString(KEY_ACCESS_TOKEN, access).commit();
+    }
+
+    public boolean wasPreviousAccess(String token) {
+        return token != null && token.equals(prefs.getString(KEY_PREVIOUS_ACCESS, ""));
+    }
+
+    public String getRefreshToken() {
+        return appContext == null ? "" : new SessionRefreshStore(appContext).read();
     }
 
     public void saveWorkerContact(String email, String photo, String status) {
@@ -159,6 +181,14 @@ public final class SessionManager {
         return prefs.getString(KEY_WORKER_PHOTO, "");
     }
 
+    public void saveSupervisorName(String name) {
+        prefs.edit().putString(KEY_SUPERVISOR_NAME, name == null ? "" : name.trim()).apply();
+    }
+
+    public String getSupervisorName() {
+        return prefs.getString(KEY_SUPERVISOR_NAME, "");
+    }
+
     public String getWorkerStatus() {
         return prefs.getString(KEY_WORKER_STATUS, "");
     }
@@ -195,5 +225,6 @@ public final class SessionManager {
     public void clearActiveSession() {
         // commit() is used intentionally to guarantee synchronous eviction before navigating away.
         prefs.edit().clear().commit();
+        if (appContext != null) new SessionRefreshStore(appContext).clear();
     }
 }

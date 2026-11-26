@@ -128,6 +128,8 @@ final class KpiOfficialAdminController
             e.porcentaje_cumplimiento,e.puntos_otorgados,
             (SELECT v.nombre_completo FROM vw_wp_empleados_estado v
                 WHERE v.id_trabajador=f.id_trabajador LIMIT 1) AS nombre_completo,
+            (SELECT t.foto_perfil FROM trabajadores t
+                WHERE t.id_trabajador=f.id_trabajador LIMIT 1) AS foto_perfil,
             (SELECT c.nombre FROM cargos c WHERE c.id_cargo=f.id_cargo LIMIT 1) AS cargo_nombre
             FROM wp_kpi_formularios_detalle f
             LEFT JOIN wp_kpi_reporte_evaluaciones l ON l.id_detalle=f.id_detalle

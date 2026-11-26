@@ -611,13 +611,15 @@ public class KpiFormFragment extends Fragment implements KpiActivityAdapter.OnAc
         pe.net.ws.kpiweb.features.kpi.data.KpiCollaboratorsRepository collabRepo =
                 pe.net.ws.kpiweb.features.kpi.data.KpiCollaboratorsRepository.getInstance(requireContext());
         pe.net.ws.kpiweb.features.kpi.model.KpiCollaboratorProfile prof = collabRepo.findByName(authUser);
-        String dbSupervisor = realAccount ? "" : (prof != null && prof.getSupervisor() != null && !prof.getSupervisor().trim().isEmpty()
+        String dbSupervisor = realAccount ? session.getSupervisorName() : (prof != null && prof.getSupervisor() != null && !prof.getSupervisor().trim().isEmpty()
                 && !prof.getSupervisor().contains("Carlos Ramírez"))
                 ? prof.getSupervisor().trim()
                 : "Ing. Jair Valdera (Supervisor de TI)";
 
+        if (dbSupervisor == null || dbSupervisor.trim().isEmpty()) dbSupervisor = "Supervisor sin asignar en Asistencias";
         String[] supervisores = {dbSupervisor};
-        ArrayAdapter<String> adapterSup = new ArrayAdapter<>(requireContext(), android.R.layout.simple_spinner_dropdown_item, supervisores);
+        ArrayAdapter<String> adapterSup = new ArrayAdapter<>(requireContext(), R.layout.kpi_spinner_supervisor, supervisores);
+        adapterSup.setDropDownViewResource(R.layout.kpi_spinner_supervisor);
         spSupervisor.setAdapter(adapterSup);
         currentReport.setSupervisor(dbSupervisor);
         currentReport.setFirmaSupervisor(realAccount ? "" : "Ing. Jair Valdera");
@@ -1214,23 +1216,36 @@ public class KpiFormFragment extends Fragment implements KpiActivityAdapter.OnAc
 
     private void recalcularVistasMetricas() {
         currentReport.recalcularResumen();
-
-        int porcentaje = currentReport.getCumplimientoMeta();
+        int[] metasOficiales = pe.net.ws.kpiweb.features.kpi.data.KpiScoreGoalConfig.read(
+                requireContext(), "PROGRAMADOR_JUNIOR");
+        int meta = selectedDayIndex >= 0 && selectedDayIndex < metasOficiales.length
+                ? metasOficiales[selectedDayIndex] : 0;
+        pe.net.ws.kpiweb.features.kpi.model.KpiProgrammerDailyScore.Result score =
+                pe.net.ws.kpiweb.features.kpi.model.KpiProgrammerDailyScore.calculate(
+                        selectedDayIndex, meta, currentReport.getActividades());
+        int porcentaje = score.percent();
+        boolean hasTasks = currentReport.getTareasAsignadas() > 0;
+        currentReport.setCumplimientoMeta(porcentaje);
+        currentReport.setNivelProductividad(porcentaje >= 90 ? "EXCELENTE"
+                : porcentaje >= 80 ? "MUY BUENO" : porcentaje >= 60 ? "BUENO"
+                : porcentaje >= 40 ? "REGULAR" : hasTasks ? "DEFICIENTE" : "PENDIENTE");
+        currentReport.setPuntaje(porcentaje >= 90 ? 20 : porcentaje >= 80 ? 17
+                : porcentaje >= 60 ? 14 : porcentaje >= 40 ? 12 : hasTasks ? 10 : 0);
         pbLiveProgress.setProgress(porcentaje);
 
         if (currentReport.isEsSalidaCampo() && programmingLockedByCampo) {
-            tvLivePercent.setText("100 % (JUSTIFICADO)");
+            tvLivePercent.setText("Por revisar");
             String hIni = currentReport.getHoraInicioCampo() != null ? currentReport.getHoraInicioCampo() : "--:--";
             String hFin = currentReport.getHoraFinCampo() != null ? currentReport.getHoraFinCampo() : "--:--";
-            tvLiveSummary.setText("SALIDA A CAMPO (" + hIni + " - " + hFin + ") · KPI PROTEGIDO AL 100%");
+            tvLiveSummary.setText("SALIDA A CAMPO (" + hIni + " - " + hFin + ") · pendiente de validación");
         } else if (currentReport.isEsSalidaCampo()) {
-            tvLivePercent.setText("100 % (JUSTIFICADO)");
-            tvLiveSummary.setText("SALIDA A CAMPO + " + currentReport.getTareasAsignadas() + " ACTIVIDAD(ES) TÉCNICAS · KPI 100%");
+            tvLivePercent.setText("Por revisar");
+            tvLiveSummary.setText("Salida a campo registrada · pendiente de validación");
         } else {
             tvLivePercent.setText(porcentaje + " %");
-            tvLiveSummary.setText(currentReport.getTareasAsignadas() + " ACTIVIDADES · "
-                    + currentReport.getTareasCompletadas() + " COMPLETADAS · "
-                    + currentReport.getTareasPendientes() + " PENDIENTES");
+            tvLiveSummary.setText(score.matching + " de " + score.goal + " tareas de "
+                    + score.requiredType + " entregadas" + (score.other > 0
+                    ? " · " + score.other + " de otro tipo (no suman)" : ""));
         }
 
         llSummaryRows.removeAllViews();
@@ -1262,7 +1277,7 @@ public class KpiFormFragment extends Fragment implements KpiActivityAdapter.OnAc
             if (currentReport.getCountMantenimiento() > 0) {
                 agregarFilaResumen("Mantenimiento Web", String.valueOf(currentReport.getCountMantenimiento()));
             }
-            agregarFilaResumen("Bugs detectados", String.valueOf(currentReport.getBugsDetectados()));
+            agregarFilaResumen("Bugs reportados (total; no suma al KPI)", String.valueOf(currentReport.getBugsDetectados()));
         }
 
         tvSummaryMetaPercent.setText(porcentaje + " %");

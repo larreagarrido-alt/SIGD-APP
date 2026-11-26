@@ -55,6 +55,7 @@ public class MainActivity extends AppCompatActivity {
                     if(worker.getIdCargo()!=null)session.updateVerifiedKpiLaborFields(
                         worker.getIdTrabajador(),worker.getIdCargo(),worker.getCargoNombre(),worker.getTipo());
                     session.saveWorkerContact(worker.getEmail(),worker.getFotoPerfil(),worker.getEstado());
+                    session.saveSupervisorName(worker.getSupervisorNombre());
                     session.saveVerifiedDni(worker.getIdTrabajador(),worker.getDni());
                     if(worker.getSaldoPuntos()!=null)session.savePointsBalance(worker.getSaldoPuntos());
                 }
@@ -89,8 +90,9 @@ public class MainActivity extends AppCompatActivity {
         findViewById(R.id.entry_retry).setEnabled(false);
         startTransitionMotion();
         profileRequestStarted=FaceTiming.now();
-        entry.verify(ApiClient.getService().getProfile(session.getBearerToken()),session.getUserId(),
-            ()->!isFinishing()&&!isDestroyed()&&token.equals(session.getAccessToken()));
+        int user=session.getUserId();
+        entry.verify(ApiClient.getService().getProfile(session.getBearerToken()),user,
+            ()->!isFinishing()&&!isDestroyed()&&session.isLoggedIn()&&user==session.getUserId());
     }
 
     private void startTransitionMotion(){

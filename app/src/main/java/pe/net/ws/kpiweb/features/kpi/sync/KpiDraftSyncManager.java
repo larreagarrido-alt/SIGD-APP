@@ -53,7 +53,10 @@ public final class KpiDraftSyncManager {
             ApiClient.getService().saveKpiDraft("Bearer " + token, sent).enqueue(new Callback<ApiResponse<JsonObject>>() {
                 @Override public void onResponse(Call<ApiResponse<JsonObject>> call, Response<ApiResponse<JsonObject>> response) {
                     if (response.errorBody() != null) response.errorBody().close();
-                    if (response.code() == 401) { new SessionManager(app).clearActiveSession(); return; }
+                    if (response.code() == 401) {
+                        if (sameAccount(app, user, token)) new SessionManager(app).clearActiveSession();
+                        return;
+                    }
                     JsonObject data = response.body() == null ? null : response.body().getData();
                     if (!response.isSuccessful() || response.body() == null || !response.body().isSuccessful()
                             || data == null || !sameAccount(app, user, token)
@@ -95,7 +98,10 @@ public final class KpiDraftSyncManager {
         ApiClient.getService().getKpiDrafts("Bearer " + token).enqueue(new Callback<ApiResponse<JsonObject>>() {
             @Override public void onResponse(Call<ApiResponse<JsonObject>> call, Response<ApiResponse<JsonObject>> response) {
                 if (response.errorBody() != null) response.errorBody().close();
-                if (response.code() == 401) { new SessionManager(app).clearActiveSession(); return; }
+                if (response.code() == 401) {
+                    if (sameAccount(app, user, token)) new SessionManager(app).clearActiveSession();
+                    return;
+                }
                 JsonObject data = response.body() == null ? null : response.body().getData();
                 if (!response.isSuccessful() || response.body() == null || !response.body().isSuccessful()
                         || !sameAccount(app, user, token) || data == null || !data.has("id_usuario")

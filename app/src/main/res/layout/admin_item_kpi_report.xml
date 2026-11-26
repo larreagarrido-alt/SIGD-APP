@@ -23,6 +23,14 @@
             android:layout_height="44dp"
             android:background="@drawable/admin_bg_icon_badge_purple">
 
+            <ImageView
+                android:id="@+id/kpi_report_photo"
+                android:layout_width="match_parent"
+                android:layout_height="match_parent"
+                android:contentDescription="@null"
+                android:scaleType="centerCrop"
+                android:visibility="gone" />
+
             <TextView
                 android:id="@+id/kpi_report_initials"
                 android:layout_width="match_parent"

@@ -13,6 +13,7 @@ import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import pe.net.ws.kpiweb.core.session.SessionManager;
+import pe.net.ws.kpiweb.core.network.ApiClient;
 import pe.net.ws.kpiweb.features.admin.dashboard.AdminKpiNoticeWatcher;
 
 /** Polls server KPI notices while any SIGD screen is visible. */
@@ -22,6 +23,7 @@ public final class SigdApplication extends Application implements Application.Ac
 
     @Override public void onCreate() {
         super.onCreate();
+        ApiClient.initialize(this);
         noticeWatcher = new AdminKpiNoticeWatcher(this);
         registerActivityLifecycleCallbacks(this);
     }

@@ -1,5 +1,6 @@
 package pe.net.ws.kpiweb.core.network;
 
+import android.content.Context;
 import okhttp3.OkHttpClient;
 import okhttp3.logging.HttpLoggingInterceptor;
 import retrofit2.Retrofit;
@@ -12,6 +13,8 @@ public final class ApiClient {
     public static final String BASE_URL = "https://ws.net.pe/websiteplus-api/api/v1/";
 
     private static Retrofit retrofit = null;
+    private static Context appContext;
+    public static void initialize(Context context) { appContext = context.getApplicationContext(); }
     public static FaceDeviceApi getFaceDeviceService(){getService();return retrofit.create(FaceDeviceApi.class);}
 
     public static FaceEnrollmentApi getFaceEnrollmentService() {
@@ -34,11 +37,12 @@ public final class ApiClient {
             // Login responses contain tokens; never log request/response bodies.
             logging.setLevel(HttpLoggingInterceptor.Level.NONE);
 
-            OkHttpClient client = new OkHttpClient.Builder()
+            OkHttpClient.Builder clientBuilder = new OkHttpClient.Builder()
                     .addInterceptor(logging)
                     .connectTimeout(15, TimeUnit.SECONDS)
-                    .readTimeout(15, TimeUnit.SECONDS)
-                    .build();
+                    .readTimeout(15, TimeUnit.SECONDS);
+            if (appContext != null) clientBuilder.authenticator(new SessionAuthenticator(appContext));
+            OkHttpClient client = clientBuilder.build();
 
             retrofit = new Retrofit.Builder()
                     .baseUrl(BASE_URL)

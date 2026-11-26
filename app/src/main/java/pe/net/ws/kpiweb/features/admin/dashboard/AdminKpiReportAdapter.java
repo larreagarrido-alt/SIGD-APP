@@ -3,7 +3,9 @@ package pe.net.ws.kpiweb.features.admin.dashboard;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.app.Activity;
 import android.widget.TextView;
+import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -14,6 +16,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pe.net.ws.kpiweb.R;
+import pe.net.ws.kpiweb.features.collaborator.common.CollaboratorProfilePhotoLoader;
 
 /** Optimized adapter for displaying KPI reports received for administrative review. */
 final class AdminKpiReportAdapter extends RecyclerView.Adapter<AdminKpiReportAdapter.Holder> {
@@ -66,6 +69,11 @@ final class AdminKpiReportAdapter extends RecyclerView.Adapter<AdminKpiReportAda
         holder.title.setText(worker);
         holder.subtitle.setText((cargo.isEmpty() ? "Cargo no disponible" : cargo) + " · " + area);
         holder.initials.setText(initials(worker));
+        if (holder.itemView.getContext() instanceof Activity) {
+            CollaboratorProfilePhotoLoader.load((Activity) holder.itemView.getContext(),
+                    holder.photo, holder.initials,
+                    AdminKpiOfficialFormatter.safeString(item, "foto_perfil"), workerId);
+        }
         holder.meta.setText("Ficha #" + reportId + (date.isEmpty() ? "" : " · " + date));
         holder.evals.setText(evalText);
         boolean approved = state.equalsIgnoreCase("APROBADA")
@@ -132,6 +140,7 @@ final class AdminKpiReportAdapter extends RecyclerView.Adapter<AdminKpiReportAda
         final TextView initials;
         final TextView meta;
         final TextView score;
+        final ImageView photo;
         final View actionRow;
 
         Holder(@NonNull View itemView) {
@@ -140,6 +149,7 @@ final class AdminKpiReportAdapter extends RecyclerView.Adapter<AdminKpiReportAda
             subtitle = itemView.findViewById(R.id.kpi_report_subtitle);
             evals = itemView.findViewById(R.id.kpi_report_evals);
             initials = itemView.findViewById(R.id.kpi_report_initials);
+            photo = itemView.findViewById(R.id.kpi_report_photo);
             meta = itemView.findViewById(R.id.kpi_report_meta);
             score = itemView.findViewById(R.id.kpi_report_score);
             actionRow = itemView.findViewById(R.id.kpi_report_action_row);

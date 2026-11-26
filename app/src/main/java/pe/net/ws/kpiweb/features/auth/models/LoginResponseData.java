@@ -121,6 +121,9 @@ public class LoginResponseData {
         @SerializedName("foto_perfil")
         private String fotoPerfil;
 
+        @SerializedName("supervisor_nombre")
+        private String supervisorNombre;
+
         @SerializedName("saldo_puntos")
         private Integer saldoPuntos;
 
@@ -137,6 +140,7 @@ public class LoginResponseData {
         public String getTelefono() { return telefono; }
         public String getFechaInicio() { return fechaInicio; }
         public String getFotoPerfil() { return fotoPerfil; }
+        public String getSupervisorNombre() { return supervisorNombre; }
         public Integer getSaldoPuntos() { return saldoPuntos; }
     }
 }

@@ -39,13 +39,15 @@ final class AuthController
         $stmt = $db->prepare('
             SELECT u.*, r.nombre AS rol_nombre,
                    t.nombres, t.apellidos, t.dni, t.email, t.estado AS estado_trabajador,
-                   t.tipo AS tipo_trabajador, t.id_cargo, t.id_agencia, t.foto_perfil,
+                   t.tipo AS tipo_trabajador, t.id_cargo, t.id_agencia, t.id_supervisor, t.foto_perfil,
+                   CONCAT(supervisor.nombres, CHAR(32), supervisor.apellidos) AS supervisor_nombre,
                    c.nombre AS cargo_nombre,
                    a.nombre AS agencia_nombre,
                    sl.situacion AS situacion_websiteplus
             FROM usuarios u
             JOIN roles r ON u.id_rol = r.id_rol
             LEFT JOIN trabajadores t ON u.id_trabajador = t.id_trabajador
+            LEFT JOIN trabajadores supervisor ON supervisor.id_trabajador = t.id_supervisor
             LEFT JOIN cargos c ON t.id_cargo = c.id_cargo
             LEFT JOIN agencias a ON t.id_agencia = a.id_agencia
             LEFT JOIN wp_situacion_laboral sl ON sl.id_trabajador = t.id_trabajador
@@ -129,6 +131,7 @@ final class AuthController
                 'id_agencia'         => $user['id_agencia'] ? (int) $user['id_agencia'] : null,
                 'agencia_nombre'     => $user['agencia_nombre'],
                 'foto_perfil'        => $user['foto_perfil'],
+                'supervisor_nombre' => $user['supervisor_nombre'],
             ] : null,
             'permissions' => array_keys($permissions),
         ], 'Inicio de sesion exitoso');
@@ -190,8 +193,10 @@ final class AuthController
         if (!empty($userSession['id_trabajador'])) {
             $stWorker = $db->prepare('
                 SELECT t.nombres, t.apellidos, t.dni, t.email, t.foto_perfil,
+                       CONCAT(supervisor.nombres, CHAR(32), supervisor.apellidos) AS supervisor_nombre,
                        c.nombre AS cargo_nombre, a.nombre AS agencia_nombre
                 FROM trabajadores t
+                LEFT JOIN trabajadores supervisor ON supervisor.id_trabajador = t.id_supervisor
                 LEFT JOIN cargos c ON c.id_cargo = t.id_cargo
                 LEFT JOIN agencias a ON a.id_agencia = t.id_agencia
                 WHERE t.id_trabajador = ? LIMIT 1
@@ -228,6 +233,7 @@ final class AuthController
                 'id_agencia'         => $userSession['id_agencia'] !== null ? (int) $userSession['id_agencia'] : null,
                 'agencia_nombre'     => $workerProfile['agencia_nombre'],
                 'foto_perfil'        => $workerProfile['foto_perfil'],
+                'supervisor_nombre'  => $workerProfile['supervisor_nombre'],
                 'saldo_puntos'       => $saldoPuntos,
                 'turno'              => $workerShift['turno'] ?? null,
                 'hora_entrada'       => $workerShift['hora_entrada'] ?? null,
